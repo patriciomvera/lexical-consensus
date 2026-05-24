@@ -1,0 +1,25 @@
+# Environment
+.env
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Results (raw data — too large for git, use releases)
+results/*.json
+results/*.csv
+!results/.gitkeep
+
+# Ground truth (never committed — contains the label mapping)
+**/ground_truth.enc
+**/ground_truth.json
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
