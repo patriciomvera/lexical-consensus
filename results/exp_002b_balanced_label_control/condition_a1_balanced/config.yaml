@@ -1,0 +1,6 @@
+assignment: round-robin with category offset (no random seed)
+description: Balanced centroid construction
+image_seed: 42
+n_seeds: 10
+subcondition: A1
+timestamp: '2026-05-25T19:57:49.755073'

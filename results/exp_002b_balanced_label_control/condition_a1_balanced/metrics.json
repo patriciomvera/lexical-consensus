@@ -1,0 +1,55 @@
+{
+  "subcondition": "A1_balanced_centroids",
+  "label_composition": {
+    "slithy": {
+      "frog": 4,
+      "horse": 3,
+      "ship": 3
+    },
+    "mimsy": {
+      "frog": 3,
+      "horse": 4,
+      "ship": 3
+    },
+    "vorpal": {
+      "frog": 3,
+      "horse": 3,
+      "ship": 4
+    }
+  },
+  "condition1_accuracy": 0.7166666666666667,
+  "condition1_per_label": {
+    "slithy": 0.85,
+    "mimsy": 0.55,
+    "vorpal": 0.75
+  },
+  "condition2_medium_accuracy": 0.5666666666666667,
+  "confusion_matrix": {
+    "labels": [
+      "slithy",
+      "mimsy",
+      "vorpal"
+    ],
+    "matrix": [
+      [
+        17,
+        1,
+        2
+      ],
+      [
+        6,
+        11,
+        3
+      ],
+      [
+        4,
+        1,
+        15
+      ]
+    ]
+  },
+  "collapse_threshold": 0.45,
+  "pass_c1": false,
+  "pass_c2": false,
+  "verdict": "PARTIAL \u2014 C1=FAIL, C2=FAIL"
+}
