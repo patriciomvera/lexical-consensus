@@ -4,6 +4,9 @@
 [![Status: In Progress](https://img.shields.io/badge/Status-In%20Progress-blue.svg)]()
 [![Paper: Vera et al. 20xx](https://img.shields.io/badge/Paper-Vera%20et%20al.-green.svg)](docs/paper_reference.md)
 
+> *We are not testing whether agents know the word.
+> We are testing whether agents can make a word become knowable.*
+
 ---
 
 ## What This Is
@@ -154,40 +157,53 @@ lexical-consensus/
 
 ## Roadmap
 
-### Phase 1 — Foundation (current)
-- [ ] Repository structure and documentation
-- [ ] Dataset pipeline (load, strip labels, define seed set)
-- [ ] Tutor interface (human → artificial label injection)
-- [ ] Single learner agent (3-layer architecture: DINOv2 + lexicon + consensus)
-- [ ] Diagnostic script: are CIFAR-10 clusters separable in DINOv2 embedding space?
+Experiments are numbered sequentially and gated: each must pass before
+the next begins. The experiment directory and its results directory share
+the same name (`exp_NNN_description`).
 
-### Phase 2 — Multi-Agent Consensus
-- [ ] N-agent network with shared PerceptionLayer
-- [ ] Consensus ledger (voting, threshold, stability window)
-- [ ] First multi-agent experiment (exp_001_baseline)
-- [ ] Basic metrics: convergence rate, stability index, generalization accuracy
+### exp_000 — Embedding Separability (current)
+- [ ] Implement `diagnostic.py`
+- [ ] Load 50 CIFAR-10 images per category, encode with DINOv2-small
+- [ ] Compute silhouette score and per-pair intra/inter distances
+- [ ] Generate UMAP projection
+- [ ] Write artifacts to `results/exp_000_embedding_separability/`
+- **Gate:** silhouette > 0.3 required to proceed
 
-### Phase 3 — Neo4j Integration and Shannon Metrics
+### exp_001 — Single Agent Lexicon
+- [ ] Tutor presents 5 seed images per Carroll label to one LearnerAgent
+- [ ] Agent builds centroids, classifies held-out images
+- [ ] Test Condition 1 (naming) and Condition 2 (inverse grounding)
+- [ ] Write artifacts to `results/exp_001_single_agent_lexicon/`
+- **Gate:** both conditions must pass to proceed
+
+### exp_002 — Multi-Agent Consensus
+- [ ] 3 agents, 3 Carroll labels, 25 rounds with ConsensusLedger
+- [ ] Track convergence round per label, agreement trajectory
+- [ ] Test both conditions post-consensus
+- [ ] Write artifacts to `results/exp_002_multi_agent_consensus/`
+- **Gate:** full convergence by round 25, both conditions pass
+
+### exp_003 — Neo4j Integration and Shannon Metrics
 - [ ] Graph model: agents, labels, centroids, transfers
 - [ ] Parallel logging to Neo4j alongside ledger
 - [ ] Cypher queries for label propagation and centroid drift
-- [ ] Animated visualization of lexical emergence per round
 - [ ] Shannon metrics per round: H(label|image), I(image;label), entropy reduction curve
+- [ ] Animated visualization of lexical emergence per round
 
-### Phase 4 — Centroid Drift and Sapir-Whorf Test
+### exp_004 — Centroid Drift and Sapir-Whorf Test
 - [ ] Track centroid trajectory per label per agent per round
 - [ ] Measure inter-agent centroid distance over time
 - [ ] Test: does consensus cause categorical alignment beyond label agreement?
 
-### Phase 5 — Regional Divergence and Biological Regimes
-- [ ] Implement Gaussian noise on centroid transmission (parameter σ)
+### exp_005 — Regional Divergence and Biological Regimes
 - [ ] Parameterize network topology (fully connected / clustered / isolated)
-- [ ] Run three experimental conditions: vervet / raven / latin
+- [ ] Implement Gaussian noise on centroid transmission (parameter σ)
+- [ ] Run three conditions: vervet (complete, σ=0) / raven (clustered, σ=0.05) / latin (isolated, σ=0.10)
 - [ ] Measure centroid divergence between clusters over time in Neo4j
 - [ ] Compare drift rates against historical phonetic change data (calibration)
 - [ ] Audio transmission design (architecture only — implementation deferred)
 
-### Phase 6 — Test 2 and Paper
+### exp_006 — Test 2 and Paper
 - [ ] Extend to second language acquisition using Test 1 lexicon as base
 - [ ] Full statistical analysis (confidence intervals, bootstrapping, VVUQ)
 - [ ] Reproducibility confirmation with independent seeds

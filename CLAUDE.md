@@ -79,16 +79,17 @@ Full details in README.md sections "Theoretical Extensions".
 
 ## Roadmap — Where We Are
 
-| Phase | Status | Description |
+| Experiment | Status | Description |
 |---|---|---|
-| 1 | In progress | Foundation: structure, single agent, basic metrics |
-| 2 | Pending | Multi-agent consensus, first full experiment |
-| 3 | Pending | Neo4j integration, Shannon metrics |
-| 4 | Pending | Centroid drift, Sapir-Whorf measurement |
-| 5 | Pending | Regional divergence — vervet/raven/Latin experiment |
-| 6 | Pending | Test 2, full paper |
+| exp_000 | In progress | Embedding separability: CIFAR-10 clusters in DINOv2 space |
+| exp_001 | Pending | Single agent lexicon: one agent, one tutor, Carroll vocabulary |
+| exp_002 | Pending | Multi-agent consensus: first full 3-agent run |
+| exp_003 | Pending | Neo4j integration, Shannon metrics |
+| exp_004 | Pending | Centroid drift, Sapir-Whorf measurement |
+| exp_005 | Pending | Regional divergence — vervet/raven/Latin experiment |
+| exp_006 | Pending | Test 2, full paper |
 
-**Always check the roadmap in README.md before suggesting features that belong to later phases.** A common failure mode is jumping ahead and breaking the incremental structure.
+**Each experiment gates the next. Always check the roadmap in README.md before suggesting features that belong to later experiments.** A common failure mode is jumping ahead and breaking the incremental structure.
 
 ---
 
@@ -145,13 +146,14 @@ lexical-consensus/
 |   |-- dataset/
 |   |   `-- artificial_vocab.py  # Carroll vocabulary definitions
 |   |
-|   |-- metrics/              # TODO: Phase 2-3
-|   |-- graph/                # TODO: Phase 3 (Neo4j)
+|   |-- metrics/              # TODO: exp_002+
+|   |-- graph/                # TODO: exp_003 (Neo4j)
 |   `-- utils/
 |
 |-- experiments/
-|   |-- exp_001_baseline/     # First multi-agent run
-|   `-- exp_002_control_conditions/  # Carroll vs ad-hoc vs numeric
+|   |-- exp_000_embedding_separability/  # Gate: CIFAR-10 separable in DINOv2?
+|   |-- exp_001_single_agent_lexicon/    # One agent, one tutor, Carroll vocab
+|   `-- exp_002_multi_agent_consensus/  # First full 3-agent run
 |
 |-- tests/                    # TODO
 |-- notebooks/                # Analysis
@@ -160,14 +162,23 @@ lexical-consensus/
 
 ---
 
-## Next Concrete Steps (Phase 1 Completion)
+## Next Concrete Steps
 
-1. **Diagnostic script:** verify CIFAR-10 categories form separable clusters in DINOv2 embedding space. If they don't, the experiment cannot work.
-2. **Update run.py:** the current `experiments/exp_001_baseline/run.py` uses an older LLM-based design and must be rewritten for the three-layer DINOv2 architecture.
-3. **First test run:** 3 agents, 3 Carroll labels, 25 rounds, synthetic dataset (3 classes from CIFAR-10).
-4. **Metric: Convergence round per label.**
+**Current task: implement exp_000_embedding_separability.**
 
-Each step should be a separate commit.
+1. **Implement `experiments/exp_000_embedding_separability/diagnostic.py`.**
+   See the TODO block and docstring in that file for the full specification.
+   Success criterion: silhouette score > 0.3.
+   Artifacts go to `results/exp_000_embedding_separability/`.
+
+2. **Run exp_000 and record results.**
+   If it passes, document which CIFAR-10 categories were selected and why.
+   If it fails, investigate category pairs and adjust before proceeding.
+
+3. **Only after exp_000 passes:** begin `experiments/exp_001_single_agent_lexicon/`.
+   See that directory's README for the design and success criteria.
+
+Each step should be a separate commit. Do not begin exp_001 until exp_000 artifacts exist.
 
 ---
 
