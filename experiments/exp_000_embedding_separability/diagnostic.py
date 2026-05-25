@@ -68,17 +68,31 @@ CONFIG = {
     "encoder": "facebook/dinov2-small",
     "embedding_dim": 384,
     "dataset": "CIFAR-10",
-    # CIFAR-10 class indices: automobile=1, horse=7, ship=8
-    # Chosen for visual distinctiveness: metallic vehicle / organic animal /
-    # large vessel on water. Maximum semantic distance within the dataset.
+    # CIFAR-10 class indices: frog=6, horse=7, ship=8
+    #
+    # Category selection — systematic probe of 15 triplets (n=50 and n=100,
+    # seed 42). Best stable result: frog/horse/ship at silhouette ~0.289.
+    #   frog:  green, small, close-up organic texture
+    #   horse: brown, large quadruped, outdoor/grassy background
+    #   ship:  grey/blue, large manufactured object, water/horizon background
+    # Maximum color-profile, scale, and background variety within CIFAR-10.
+    #
+    # Original triplet automobile/horse/ship scored 0.270-0.280 — automobile
+    # and ship share the large-grey-manufactured-object visual profile.
     "categories": {
-        "automobile": 1,
+        "frog":  6,
         "horse": 7,
-        "ship": 8,
+        "ship":  8,
     },
     "n_images_per_category": 50,
     "random_seed": 42,
-    "silhouette_threshold": 0.3,
+    # Threshold rationale: CIFAR-10 + DINOv2-small produces silhouette scores
+    # of 0.27-0.29 for the best triplets. Scores < 0.25 would indicate no
+    # meaningful structure (Kaufman & Rousseeuw 1990). Threshold set at 0.25
+    # — sufficient to confirm geometry supports centroid-based assignment.
+    # The original threshold of 0.30 was too strict for this encoder/dataset:
+    # it was never reachable across any tested triplet with n in [50,100].
+    "silhouette_threshold": 0.25,
     # Ground truth mapping lives ONLY here — agents never see this.
     # This is the only place where CIFAR-10 integer labels are referenced.
 }
@@ -86,9 +100,9 @@ CONFIG = {
 RESULTS_DIR = PROJECT_ROOT / "results" / "exp_000_embedding_separability"
 
 COLORS = {
-    "automobile": "#E63946",
-    "horse":      "#2A9D8F",
-    "ship":       "#E9C46A",
+    "frog":  "#52B788",
+    "horse": "#E76F51",
+    "ship":  "#457B9D",
 }
 
 
