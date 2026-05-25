@@ -1,0 +1,19 @@
+{
+  "condition": "D_oov_rejection",
+  "optimal_threshold": 0.528878927230835,
+  "oov_rejection_accuracy": 1.0,
+  "false_accept_rate": 0.0,
+  "false_reject_rate": 0.3,
+  "auroc": 0.9641666666666666,
+  "n_oov_trials": 30,
+  "n_trained_test": 60,
+  "thresholds": {
+    "a_accuracy": 0.45,
+    "b_accuracy": 0.45,
+    "c_accuracy": 0.5,
+    "d_auroc": 0.8,
+    "e_accuracy": 0.7
+  },
+  "pass_auroc": true,
+  "verdict": "PASS (AUROC meets threshold)"
+}

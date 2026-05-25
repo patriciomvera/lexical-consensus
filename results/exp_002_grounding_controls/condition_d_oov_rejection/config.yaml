@@ -1,0 +1,11 @@
+condition: D
+description: OOV rejection
+n_seeds: 10
+oov_categories:
+- airplane
+- deer
+- automobile
+oov_seed: 242
+random_seed: 42
+threshold_calibration: val_pos=seeds[0:10] of trained; val_neg=OOV[0:10]
+timestamp: '2026-05-25T18:53:45.753131'
