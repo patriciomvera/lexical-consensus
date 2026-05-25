@@ -1,0 +1,6 @@
+condition: C
+description: Permuted embedding control
+n_seeds: 10
+permutation: "frog\u2190ship, horse\u2190frog, ship\u2190horse (seeds only)"
+random_seed: 42
+timestamp: '2026-05-25T18:52:46.725062'

@@ -565,7 +565,7 @@ def run_condition_c(out_dir: Path, perception: PerceptionLayer) -> None:
 
     lexicon = build_lexicon(pairs, agent_id="ctrl_c")
     print("[Lexicon] Built with permuted seed embeddings.")
-    print(f"  Permutation: frog←ship, horse←frog, ship←horse")
+    print("  Permutation: frog<-ship, horse<-frog, ship<-horse")
 
     # Test set uses REAL embeddings
     test_embs = {c: embs[c][TEST_START:] for c in TRAINED_CATS}
