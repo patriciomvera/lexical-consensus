@@ -1,0 +1,20 @@
+experiment: exp_001b_condition2_hard
+date: '2026-05-25'
+agent: exp_001b
+n_seeds: 10
+encoder: facebook/dinov2-small
+dataset: CIFAR-10
+label_assignment:
+  frog: slithy
+  horse: mimsy
+  ship: vorpal
+level: hard
+n_trials_per_label: 20
+c2_image_pool: indices [10:30] of the 50 loaded per category
+distractor_seed: 142
+random_seed: 42
+success_threshold: 0.7
+categories_ground_truth:
+  frog: 6
+  horse: 7
+  ship: 8

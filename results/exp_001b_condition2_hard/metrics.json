@@ -1,0 +1,19 @@
+{
+  "level": "hard",
+  "n_trials": 60,
+  "n_correct": 60,
+  "overall_accuracy": 1.0,
+  "per_label_accuracy": {
+    "slithy": 1.0,
+    "mimsy": 1.0,
+    "vorpal": 1.0
+  },
+  "min_per_label_accuracy": 1.0,
+  "mean_retrieval_margin": 0.373,
+  "mean_entropy_bits": 1.557,
+  "success_threshold": 0.7,
+  "pass": true,
+  "failure_cases": {},
+  "hard_negative_error_rate": 0.0,
+  "hard_negative_errors_by_distractor_category": {}
+}
