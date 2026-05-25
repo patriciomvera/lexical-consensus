@@ -1,0 +1,6 @@
+condition: A
+description: Random label control
+n_seeds: 10
+random_seed: 42
+scramble_seed: 99
+timestamp: '2026-05-25T18:50:35.243292'
