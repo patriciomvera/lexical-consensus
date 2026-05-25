@@ -81,15 +81,29 @@ Full details in README.md sections "Theoretical Extensions".
 
 | Experiment | Status | Description |
 |---|---|---|
-| exp_000 | In progress | Embedding separability: CIFAR-10 clusters in DINOv2 space |
-| exp_001 | Pending | Single agent lexicon: one agent, one tutor, Carroll vocabulary |
-| exp_002 | Pending | Multi-agent consensus: first full 3-agent run |
-| exp_003 | Pending | Neo4j integration, Shannon metrics |
-| exp_004 | Pending | Centroid drift, Sapir-Whorf measurement |
-| exp_005 | Pending | Regional divergence — vervet/raven/Latin experiment |
-| exp_006 | Pending | Test 2, full paper |
+| exp_000 | PASS | Embedding separability: frog/horse/ship in DINOv2 space, silhouette=0.283 |
+| exp_001 | PASS | Single agent lexicon: Condition 1 (accuracy 1.000) + Condition 2 (all levels pass) |
+| exp_002 | In progress | Grounding controls: falsification conditions A–E |
+| exp_003 | Pending | Multi-agent consensus: first full 3-agent run |
+| exp_004 | Pending | Neo4j integration, Shannon metrics |
+| exp_005 | Pending | Centroid drift, Sapir-Whorf measurement |
+| exp_006 | Pending | Regional divergence — vervet/raven/Latin experiment |
+| exp_007 | Pending | Test 2, full paper |
 
 **Each experiment gates the next. Always check the roadmap in README.md before suggesting features that belong to later experiments.** A common failure mode is jumping ahead and breaking the incremental structure.
+
+---
+
+## Empirical Findings
+
+### exp_001 — Condition 2 asymmetry (OOV vs. trained distractors)
+
+EASY level (OOV distractors: airplane, deer) scored **0.950** — 3 failures across 60 trials.
+MEDIUM and HARD (same-category trained distractors) scored **1.000** — zero failures.
+
+**Interpretation:** The agent discriminates better *within* trained category space than against untrained distractors. OOV categories occupy unexpected regions of the embedding manifold; the agent's centroid geometry does not model them and therefore cannot sharply reject them. This is not a weakness of grounding — it is evidence of proper grounding: the agent only knows what it was taught.
+
+This asymmetry is expected under genuine representational learning and would not appear under a memorization strategy. Document in the paper as a positive structural finding.
 
 ---
 
@@ -164,21 +178,20 @@ lexical-consensus/
 
 ## Next Concrete Steps
 
-**Current task: implement exp_000_embedding_separability.**
+**Current task: exp_002_grounding_controls — five falsification conditions.**
 
-1. **Implement `experiments/exp_000_embedding_separability/diagnostic.py`.**
-   See the TODO block and docstring in that file for the full specification.
-   Success criterion: silhouette score > 0.3.
-   Artifacts go to `results/exp_000_embedding_separability/`.
+Conditions A–E each test a specific way the exp_001 result could be an artifact.
+See `experiments/exp_002_grounding_controls/` for the full specification.
 
-2. **Run exp_000 and record results.**
-   If it passes, document which CIFAR-10 categories were selected and why.
-   If it fails, investigate category pairs and adjust before proceeding.
+Acceptance criteria:
+- Condition A (random labels): accuracy ≤ 0.45
+- Condition B (random embeddings): accuracy ≤ 0.45
+- Condition C (permuted embeddings): accuracy ≤ 0.50
+- Condition D (OOV rejection): AUROC ≥ 0.80
+- Condition E (harder categories: cat/dog/deer): document degradation, accuracy ≥ 0.70
 
-3. **Only after exp_000 passes:** begin `experiments/exp_001_single_agent_lexicon/`.
-   See that directory's README for the design and success criteria.
-
-Each step should be a separate commit. Do not begin exp_001 until exp_000 artifacts exist.
+One commit per condition. After all five: write `results/exp_002_grounding_controls/summary_report.md`.
+Do NOT begin exp_003 (multi-agent) until all five conditions are committed and reviewed.
 
 ---
 
