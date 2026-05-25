@@ -1,77 +1,83 @@
-# Experiment 001 — Baseline Consensus Dynamics
+# Experiment 000 — Embedding Separability
 
-The first end-to-end experiment of the lexical-consensus project.
-
----
-
-## Goal
-
-Test whether a small network of agents (N=3) can converge on a shared
-artificial vocabulary for a minimal set of visual categories (3 CIFAR-10
-classes) through the three-layer architecture:
-
-```
-DINOv2 (perception) -> Lexicon (centroids) -> Consensus (voting)
-```
+**Status:** pending implementation
+**Gate:** must PASS before exp_001 may run
 
 ---
 
-## Sequence of Steps
+## Purpose
 
-This experiment must be built incrementally. Each step is a separate commit.
+This is a standalone, falsifiable experiment — not a warm-up step.
 
-### Step 1 — Diagnostic
-File: `diagnostic.py`
+It asks one question: **Do the CIFAR-10 visual categories that will be
+used in subsequent experiments form separable clusters in DINOv2 (small)
+embedding space?**
 
-Verify that CIFAR-10 categories form separable clusters in DINOv2 embedding
-space. If they don't, the experiment cannot work — we need to know this
-before investing time in the full multi-agent loop.
+If they do not, the centroid-based lexicon (Layer 2) has no geometric
+substrate. Labels assigned to centroids would overlap in embedding
+space, making consistent label retrieval impossible. No amount of
+tuning the consensus mechanism can fix a failed perceptual substrate.
 
-**Success criterion:** silhouette score > 0.3 across selected categories.
+---
 
-### Step 2 — Single Agent Learning
-File: `step_2_single_agent.py` (to be created)
+## Success Criterion
 
-Verify that a single LearnerAgent can:
-- Receive tutor instructions for 3 Carroll labels on 3 CIFAR-10 categories
-- Correctly classify new images of the same categories
-- Pass Condition 2 (inverse grounding) on a small test set
+**Silhouette score > 0.3** across the selected CIFAR-10 categories.
 
-This isolates the agent architecture before adding consensus complexity.
+This threshold is conservative. A score of 0.3 means clusters are
+discernible but not perfectly separated — sufficient for the
+nearest-centroid assignment in the lexicon to work above chance.
 
-### Step 3 — Multi-Agent Consensus
-File: `run.py` (to be created)
+If the score falls below 0.3, the experiment FAILS and the next step
+is to investigate which category pairs are most confused, then either:
+- Select different CIFAR-10 categories with better separation
+- Evaluate a different encoder (DINOv2-base instead of small)
 
-Full experiment: 3 agents, 3 categories, 25 rounds, with full consensus loop.
+---
 
-### Step 4 — Metrics and Analysis
-Files: in `notebooks/`
+## Script
 
-Compute convergence metrics, generate plots, document findings.
+`diagnostic.py` — main and only script for this experiment.
+
+```
+python -m experiments.exp_000_embedding_separability.diagnostic
+```
 
 ---
 
 ## Configuration
 
-To be defined in `config.yaml` once Step 3 is reached. Initial parameters:
-
 | Parameter | Value |
 |---|---|
-| Number of agents | 3 |
-| Carroll labels | vorpal, slithy, mimsy |
-| CIFAR-10 categories | TBD by diagnostic |
+| Encoder | DINOv2-small (frozen) |
+| Dataset | CIFAR-10 |
 | Images per category | 50 |
-| Seed images per category | 5 |
-| Rounds | 25 |
-| Convergence threshold | 0.70 |
-| Rejection threshold | 0.20 |
+| Categories | TBD — chosen for semantic distance |
 | Random seed | 42 |
+| Silhouette threshold | 0.3 |
 
 ---
 
-## Expected Outputs
+## Artifacts
 
-- `results/exp_001_diagnostic.json` — cluster separability metrics
-- `results/exp_001_baseline_runN.json` — per-run results (N = seed)
-- `results/exp_001_baseline_summary.json` — aggregated across runs
-- `notebooks/exp_001_analysis.ipynb` — plots and discussion
+All outputs are written to `results/exp_000_embedding_separability/`:
+
+| File | Contents |
+|---|---|
+| `config.yaml` | Full experiment configuration |
+| `metrics.json` | Per-pair intra/inter-class distances, silhouette score, PASS/FAIL flag |
+| `report.md` | Human-readable summary with interpretation |
+| `umap_projection.png` | 2D UMAP projection of all embeddings, colored by category |
+
+---
+
+## Connection to Subsequent Experiments
+
+```
+exp_000 PASS  ->  proceed to exp_001_single_agent_lexicon
+exp_000 FAIL  ->  stop, diagnose, do not build agent infrastructure
+```
+
+This gate exists because the agent architecture assumes separability.
+Verifying it empirically before building the agent is basic scientific
+discipline — not a precaution.
