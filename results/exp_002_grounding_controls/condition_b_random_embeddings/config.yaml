@@ -1,0 +1,6 @@
+condition: B
+description: Random embedding control
+embedding_seed: 99
+n_seeds: 10
+random_seed: 42
+timestamp: '2026-05-25T18:51:40.541820'

@@ -1,0 +1,34 @@
+{
+  "condition": "B_random_embeddings",
+  "random_embedding_seed": 99,
+  "condition1": {
+    "overall_accuracy": 0.3,
+    "per_label_accuracy": {
+      "slithy": 0.35,
+      "mimsy": 0.4,
+      "vorpal": 0.15
+    },
+    "mean_margin": -0.037064138659825344,
+    "n_test": 60
+  },
+  "condition2_medium": {
+    "overall_accuracy": 0.25,
+    "per_label_accuracy": {
+      "slithy": 0.3,
+      "mimsy": 0.2,
+      "vorpal": 0.25
+    },
+    "mean_margin": -0.044718392003000415,
+    "n_trials": 60
+  },
+  "thresholds": {
+    "a_accuracy": 0.45,
+    "b_accuracy": 0.45,
+    "c_accuracy": 0.5,
+    "d_auroc": 0.8,
+    "e_accuracy": 0.7
+  },
+  "pass_c1_degraded": true,
+  "pass_c2_degraded": true,
+  "verdict": "PASS (degraded as expected)"
+}
