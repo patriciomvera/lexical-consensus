@@ -1,0 +1,45 @@
+{
+  "n_test_images": 60,
+  "overall_accuracy": 0.9833,
+  "per_label_accuracy": {
+    "slithy": 0.95,
+    "mimsy": 1.0,
+    "vorpal": 1.0
+  },
+  "min_per_label_accuracy": 0.95,
+  "mean_margin": 0.3766,
+  "mean_entropy_bits": 1.5554,
+  "confusion_matrix": {
+    "labels": [
+      "slithy",
+      "mimsy",
+      "vorpal"
+    ],
+    "matrix": [
+      [
+        19,
+        0,
+        1
+      ],
+      [
+        0,
+        20,
+        0
+      ],
+      [
+        0,
+        0,
+        20
+      ]
+    ]
+  },
+  "thresholds": {
+    "accuracy": 0.7,
+    "per_label_min_accuracy": 0.6,
+    "mean_margin": 0.05
+  },
+  "pass_accuracy": true,
+  "pass_per_label_accuracy": true,
+  "pass_mean_margin": true,
+  "pass": true
+}
