@@ -4,6 +4,9 @@
 [![Status: In Progress](https://img.shields.io/badge/Status-In%20Progress-blue.svg)]()
 [![Paper: Vera et al. 20xx](https://img.shields.io/badge/Paper-Vera%20et%20al.-green.svg)](docs/paper_reference.md)
 
+> *We are not testing whether agents know the word.
+> We are testing whether agents can make a word become knowable.*
+
 ---
 
 ## What This Is
