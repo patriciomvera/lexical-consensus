@@ -79,17 +79,24 @@ Full details in README.md sections "Theoretical Extensions".
 
 ## Roadmap — Where We Are
 
+Note on numbering: exp_002_grounding_controls and exp_002b were added after
+the original plan to strengthen the falsification argument. This shifted
+the original exp_002 (multi-agent consensus) to exp_003, and all subsequent
+numbers forward by one. The table below reflects the actual execution order.
+
 | Experiment | Status | Description |
 |---|---|---|
 | exp_000 | PASS | Embedding separability: frog/horse/ship in DINOv2 space, silhouette=0.283 |
-| exp_001 | PASS | Single agent lexicon: Condition 1 (accuracy 1.000) + Condition 2 (all levels pass) |
-| exp_002 | PASS | Grounding controls: falsification conditions A–E |
-| exp_002b | PASS | Balanced label control: closes Condition A weak point |
-| exp_003 | PASS | Multi-agent consensus: 003a converged round 6 (unanimous=0.978, held=1.000); 003b baseline 0.933/0.983 |
-| exp_004 | Pending | Neo4j integration, Shannon metrics |
-| exp_005 | Pending | Centroid drift, Sapir-Whorf measurement |
-| exp_006 | Pending | Regional divergence — vervet/raven/Latin experiment |
-| exp_007 | Pending | Test 2, full paper |
+| exp_001a/b/c | PASS | Single-agent naming curve: 5/10/15 seeds → accuracy 1.000 at 10 seeds |
+| exp_001b_condition2 | PASS | Inverse grounding: easy/medium/hard — all levels pass (hard=1.000) |
+| exp_002_grounding_controls | PASS | Falsification: conditions A–E all degrade as predicted |
+| exp_002b_balanced_label_control | PASS | Closes condition A — population mean C1=0.342 ≈ chance |
+| exp_003a_consensus_feedback | PASS | Multi-agent consensus with feedback: converged round 6, held=1.000 |
+| exp_003b_no_feedback_baseline | PASS | Control: unanimous=0.933, held=0.983 — DINOv2 alignment precedes feedback |
+| exp_004_neo4j_shannon | Pending | Neo4j integration + Shannon metrics (was exp_003 in original plan) |
+| exp_005_centroid_drift_sapirwhorf | Pending | Centroid drift, Sapir-Whorf measurement (was exp_004) |
+| exp_006_regional_divergence | Pending | Vervet/raven/Latin experiment (was exp_005) |
+| exp_007_test2_paper | Pending | Test 2, full paper (was exp_006) |
 
 **Each experiment gates the next. Always check the roadmap in README.md before suggesting features that belong to later experiments.** A common failure mode is jumping ahead and breaking the incremental structure.
 
@@ -207,14 +214,17 @@ lexical-consensus/
 |   |-- dataset/
 |   |   `-- artificial_vocab.py  # Carroll vocabulary definitions
 |   |
-|   |-- metrics/              # TODO: exp_002+
-|   |-- graph/                # TODO: exp_003 (Neo4j)
+|   |-- metrics/              # TODO: exp_004 (Shannon metrics)
+|   |-- graph/                # TODO: exp_004 (Neo4j)
 |   `-- utils/
 |
 |-- experiments/
-|   |-- exp_000_embedding_separability/  # Gate: CIFAR-10 separable in DINOv2?
-|   |-- exp_001_single_agent_lexicon/    # One agent, one tutor, Carroll vocab
-|   `-- exp_002_multi_agent_consensus/  # First full 3-agent run
+|   |-- exp_000_embedding_separability/        # Gate: CIFAR-10 separable in DINOv2?
+|   |-- exp_001_single_agent_lexicon/          # Naming acquisition curve + inverse grounding
+|   |-- exp_002_grounding_controls/            # Falsification conditions A–E
+|   |-- exp_002b_balanced_label_control/       # Closes condition A
+|   |-- exp_002_multi_agent_consensus/         # Old placeholder (README only, no code)
+|   `-- exp_003_multi_agent_consensus/         # 003a (feedback) + 003b (baseline) + compare.py
 |
 |-- tests/                    # TODO
 |-- notebooks/                # Analysis
@@ -225,7 +235,7 @@ lexical-consensus/
 
 ## Next Concrete Steps
 
-**Current task: exp_004 — Neo4j integration, Shannon metrics.**
+**Current task: exp_004_neo4j_shannon** (was exp_003 in the original plan — numbering shifted when grounding controls were added).
 
 exp_003 is complete (both 003a and 003b). The multi-agent consensus mechanism
 works. Key results:

@@ -138,10 +138,11 @@ lexical-consensus/
 │       └── api_client.py        # LLM API abstraction layer
 │
 ├── experiments/
-│   └── exp_001_baseline/        # First experiment: baseline consensus dynamics
-│       ├── config.yaml          # Experiment parameters
-│       ├── run.py               # Entry point
-│       └── README.md            # What this specific experiment tests
+│   ├── exp_000_embedding_separability/  # DINOv2 substrate gate — PASS
+│   ├── exp_001_single_agent_lexicon/    # Naming + inverse grounding — PASS
+│   ├── exp_002_grounding_controls/      # Falsification conditions A–E — PASS
+│   ├── exp_002b_balanced_label_control/ # Condition A closure — PASS
+│   └── exp_003_multi_agent_consensus/   # 003a (feedback) + 003b (baseline) — PASS
 │
 ├── tests/                       # Unit and integration tests
 ├── notebooks/                   # Analysis and visualization notebooks
@@ -155,47 +156,92 @@ lexical-consensus/
 
 ---
 
+## Completed Experiments
+
+Results are stored locally in `results/`. One-line summary per experiment:
+
+| Experiment | Result | Artifact path |
+|---|---|---|
+| exp_000_embedding_separability | silhouette=0.283, PASS — DINOv2 substrate viable | `results/exp_000_embedding_separability/` |
+| exp_001a/b/c_single_agent_lexicon | naming accuracy=1.000 @ 10 seeds (Condition 1 PASS) | `results/exp_001{a,b,c}_seed_{05,10,15}/` |
+| exp_001b_condition2 | inverse grounding 100% hard level (Condition 2 PASS) | `results/exp_001b_seed_10/` |
+| exp_002_grounding_controls | all 5 falsification conditions degrade as predicted | `results/exp_002_grounding_controls/` |
+| exp_002b_balanced_label_control | population mean C1=0.342 ≈ chance — condition A closed | `results/exp_002b_balanced_label_control/` |
+| exp_003a_consensus_feedback | consensus accuracy=1.000, converged round 6 | `results/exp_003a_consensus_feedback/` |
+| exp_003b_no_feedback_baseline | baseline unanimous=0.933, held=0.983 — DINOv2 alignment precedes feedback | `results/exp_003b_no_feedback_baseline/` |
+
+**Note on experiment numbering:** The original plan had exp_002 = multi-agent
+consensus and exp_003 = Neo4j. Between exp_001 and the multi-agent run, two
+additional falsification experiments (exp_002_grounding_controls and
+exp_002b_balanced_label_control) were added to strengthen the scientific
+argument. This shifted multi-agent consensus to exp_003 and all subsequent
+numbers forward by one. The roadmap below reflects this reconciled numbering.
+
+---
+
 ## Roadmap
 
 Experiments are numbered sequentially and gated: each must pass before
 the next begins. The experiment directory and its results directory share
 the same name (`exp_NNN_description`).
 
-### exp_000 — Embedding Separability (current)
-- [ ] Implement `diagnostic.py`
-- [ ] Load 50 CIFAR-10 images per category, encode with DINOv2-small
-- [ ] Compute silhouette score and per-pair intra/inter distances
-- [ ] Generate UMAP projection
-- [ ] Write artifacts to `results/exp_000_embedding_separability/`
-- **Gate:** silhouette > 0.3 required to proceed
+### exp_000 — Embedding Separability ✓ PASS
+- [x] Implement `diagnostic.py`
+- [x] Load 50 CIFAR-10 images per category, encode with DINOv2-small
+- [x] Compute silhouette score and per-pair intra/inter distances
+- [x] Generate UMAP projection
+- [x] Write artifacts to `results/exp_000_embedding_separability/`
+- **Result:** silhouette=0.283 (gate threshold was 0.3; visual separation confirmed, threshold revised — see CLAUDE.md)
 
-### exp_001 — Single Agent Lexicon
-- [ ] Tutor presents 5 seed images per Carroll label to one LearnerAgent
-- [ ] Agent builds centroids, classifies held-out images
-- [ ] Test Condition 1 (naming) and Condition 2 (inverse grounding)
-- [ ] Write artifacts to `results/exp_001_single_agent_lexicon/`
-- **Gate:** both conditions must pass to proceed
+### exp_001 — Single Agent Lexicon ✓ PASS
+- [x] Tutor presents 5/10/15 seed images per Carroll label (variants 001a/b/c)
+- [x] Agent builds centroids, classifies held-out images (Condition 1)
+- [x] Test Condition 2 — inverse grounding at easy/medium/hard difficulty levels
+- [x] Write artifacts to `results/exp_001{a,b,c}_seed_{05,10,15}/`
+- **Result:** Condition 1 accuracy=1.000 @ 10 seeds. Condition 2 hard=1.000. Both pass.
 
-### exp_002 — Multi-Agent Consensus
-- [ ] 3 agents, 3 Carroll labels, 25 rounds with ConsensusLedger
-- [ ] Track convergence round per label, agreement trajectory
-- [ ] Test both conditions post-consensus
-- [ ] Write artifacts to `results/exp_002_multi_agent_consensus/`
-- **Gate:** full convergence by round 25, both conditions pass
+### exp_002_grounding_controls — Falsification Controls ✓ PASS
+*(Added between exp_001 and multi-agent consensus to strengthen scientific argument)*
+- [x] Condition A: scrambled label assignment (random centroids)
+- [x] Condition B: wrong-category centroids
+- [x] Condition C: random noise centroids
+- [x] Condition D: OOV detection (AUROC)
+- [x] Condition E: harder categories (airplane, deer, automobile)
+- [x] Write artifacts to `results/exp_002_grounding_controls/`
+- **Result:** All 5 conditions degrade as predicted. Grounding is real.
 
-### exp_003 — Neo4j Integration and Shannon Metrics
+### exp_002b_balanced_label_control — Closes Condition A ✓ PASS
+*(Added to address A1 weak point: single-scramble result seed=99 was 0.550)*
+- [x] A1: balanced round-robin 4:3 centroid — produces C1=0.717 (sensitivity finding)
+- [x] A2: 100 random scrambles — population mean C1=0.342 ≈ chance
+- [x] Write artifacts to `results/exp_002b_balanced_label_control/`
+- **Result:** Population mean confirms chance level. A1 sensitivity documented.
+
+### exp_003 — Multi-Agent Consensus ✓ PASS
+*(Was exp_002 in original plan; shifted when grounding controls were added)*
+- [x] 3 agents, 3 Carroll labels, disjoint seed sets (5 seeds/agent/category)
+- [x] exp_003a: feedback condition — ACCEPTED labels update centroids
+- [x] exp_003b: no-feedback baseline — lexicons frozen after seeding
+- [x] Comparison analysis: feedback vs. shared-perception-only baseline
+- [x] Write artifacts to `results/exp_003a_consensus_feedback/` and `results/exp_003b_no_feedback_baseline/`
+- **Result:** 003a converged at round 6, unanimous=0.978, held=1.000. 003b baseline unanimous=0.933, held=0.983. Feedback adds +0.045 unanimity, +0.017 accuracy.
+
+### exp_004_neo4j_shannon — Neo4j Integration and Shannon Metrics
+*(Was exp_003 in original plan)*
 - [ ] Graph model: agents, labels, centroids, transfers
 - [ ] Parallel logging to Neo4j alongside ledger
 - [ ] Cypher queries for label propagation and centroid drift
 - [ ] Shannon metrics per round: H(label|image), I(image;label), entropy reduction curve
 - [ ] Animated visualization of lexical emergence per round
 
-### exp_004 — Centroid Drift and Sapir-Whorf Test
+### exp_005_centroid_drift_sapirwhorf — Centroid Drift and Sapir-Whorf Test
+*(Was exp_004 in original plan)*
 - [ ] Track centroid trajectory per label per agent per round
 - [ ] Measure inter-agent centroid distance over time
 - [ ] Test: does consensus cause categorical alignment beyond label agreement?
 
-### exp_005 — Regional Divergence and Biological Regimes
+### exp_006_regional_divergence — Regional Divergence and Biological Regimes
+*(Was exp_005 in original plan)*
 - [ ] Parameterize network topology (fully connected / clustered / isolated)
 - [ ] Implement Gaussian noise on centroid transmission (parameter σ)
 - [ ] Run three conditions: vervet (complete, σ=0) / raven (clustered, σ=0.05) / latin (isolated, σ=0.10)
@@ -203,7 +249,8 @@ the same name (`exp_NNN_description`).
 - [ ] Compare drift rates against historical phonetic change data (calibration)
 - [ ] Audio transmission design (architecture only — implementation deferred)
 
-### exp_006 — Test 2 and Paper
+### exp_007_test2_paper — Test 2 and Paper
+*(Was exp_006 in original plan)*
 - [ ] Extend to second language acquisition using Test 1 lexicon as base
 - [ ] Full statistical analysis (confidence intervals, bootstrapping, VVUQ)
 - [ ] Reproducibility confirmation with independent seeds
