@@ -249,7 +249,7 @@ def run() -> None:
     # Round loop
     print(f"\n[Rounds] Max={MAX_ROUNDS} | "
           f"Stop: {STOP_UNANIMOUS_ROUNDS} consecutive unanimous + "
-          f"held_acc≥0.90 + coverage==3")
+          f"held_acc>=0.90 + coverage==3")
     print("-" * 75)
 
     metrics_rows:  list[dict] = []
@@ -303,8 +303,11 @@ def run() -> None:
             f"cov={interaction_m['label_coverage']}"
         )
 
-        # Stopping criterion
-        if interaction_m["unanimous_agreement"] >= 1.0:
+        # Stopping criterion.
+        # Threshold relaxed to 0.95 (not 1.0): images that are genuinely
+        # ambiguous in DINOv2 space get unanimous UNCERTAIN from all agents —
+        # correct behaviour, not a failure. Requiring 1.0 would never terminate.
+        if interaction_m["unanimous_agreement"] >= 0.95:
             consecutive_unanimous += 1
         else:
             consecutive_unanimous = 0

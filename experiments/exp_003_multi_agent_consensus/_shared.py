@@ -275,10 +275,10 @@ def compute_interaction_metrics(
         entropies.append(h)
     mean_entropy = float(np.mean(entropies)) if entropies else 0.0
 
-    # Label coverage and balance
+    # Label coverage: distinct Carroll labels appearing as majority (excludes UNCERTAIN)
     majority_labels_used = {
         c["majority_label"] for c in consensus.values()
-        if c["majority_label"] is not None
+        if c["majority_label"] is not None and c["majority_label"] != "UNCERTAIN"
     }
     label_coverage = len(majority_labels_used)
 
