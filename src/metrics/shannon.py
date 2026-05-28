@@ -250,3 +250,87 @@ def compute_all_rounds(
         m     = compute_round_metrics(round_num, dists, n_labels)
         results.append(m)
     return results
+
+
+def distributions_from_ledger_carroll_only(
+    ledger_rows: list[dict],
+    n_agents: int,
+    pool: Optional[str] = None,
+) -> tuple[dict[int, list[dict]], dict[int, int]]:
+    """
+    Like distributions_from_ledger() but excludes UNCERTAIN assignments.
+
+    For each image per round:
+      - Drop any UNCERTAIN label from the agent votes
+      - Renormalize the remaining Carroll-label probabilities to sum to 1.0
+      - If ALL agents said UNCERTAIN, exclude the image entirely
+
+    Args:
+        ledger_rows: rows from ledger_events.csv
+        n_agents: number of agents (unused as denominator; we count Carroll votes directly)
+        pool: optional pool filter ("interaction" | "held_out" | None = all)
+
+    Returns:
+        (round_dists, n_excluded_per_round)
+        round_dists: round -> list of Carroll-only {label: probability} dicts
+        n_excluded_per_round: round -> number of images excluded (all-UNCERTAIN)
+    """
+    from collections import defaultdict
+
+    if pool is not None:
+        ledger_rows = [r for r in ledger_rows if r["pool"] == pool]
+
+    # round -> image_id -> list of all predicted labels (including UNCERTAIN)
+    all_labels: dict[int, dict[str, list[str]]] = defaultdict(lambda: defaultdict(list))
+    for row in ledger_rows:
+        all_labels[int(row["round"])][row["image_id"]].append(row["predicted_label"])
+
+    result:     dict[int, list[dict]] = {}
+    n_excluded: dict[int, int]        = {}
+
+    for r, images in all_labels.items():
+        dists:    list[dict] = []
+        excluded: int        = 0
+
+        for img_hash, labels in images.items():
+            carroll = [lbl for lbl in labels if lbl != "UNCERTAIN"]
+            if not carroll:
+                excluded += 1   # all agents said UNCERTAIN — exclude image
+                continue
+            total = len(carroll)
+            counts: dict[str, int] = {}
+            for lbl in carroll:
+                counts[lbl] = counts.get(lbl, 0) + 1
+            dists.append({lbl: cnt / total for lbl, cnt in counts.items()})
+
+        result[r]     = dists
+        n_excluded[r] = excluded
+
+    return result, n_excluded
+
+
+def compute_all_rounds_carroll_only(
+    ledger_rows: list[dict],
+    n_agents: int,
+    n_labels: int,
+    pool: Optional[str] = "interaction",
+) -> tuple[list[dict], dict[int, int]]:
+    """
+    Compute Carroll-only Shannon metrics for every round (UNCERTAIN excluded).
+
+    Returns: (rounds_metrics, n_excluded_per_round)
+    Each round dict has the standard compute_round_metrics fields plus:
+      n_images_included: images with at least one Carroll-label vote
+      n_images_excluded_uncertain: images where all agents said UNCERTAIN
+    """
+    round_dists, n_excluded = distributions_from_ledger_carroll_only(
+        ledger_rows, n_agents, pool=pool
+    )
+    results: list[dict] = []
+    for round_num in sorted(round_dists.keys()):
+        dists = round_dists[round_num]
+        m = compute_round_metrics(round_num, dists, n_labels)
+        m["n_images_included"]           = len(dists)
+        m["n_images_excluded_uncertain"] = n_excluded.get(round_num, 0)
+        results.append(m)
+    return results, n_excluded

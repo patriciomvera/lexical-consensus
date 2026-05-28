@@ -208,10 +208,17 @@ def log_consensus_edges(logger: Neo4jLogger, ledger_rows: list[dict]) -> None:
 
 
 # ─── Cypher queries ────────────────────────────────────────────────────────────
+#
+# Each query is run twice: once filtered to the interaction pool and once to
+# held_out. Queries 1 and 2 directly filter by asgn.pool. Queries 3 and 4 are
+# centroid-level and have no natural pool dimension; they produce identical
+# results for both pool suffixes — the duplication is kept for consistency and
+# to make the pool dimension explicit in every output file name.
 
 QUERY_1 = """
 MATCH (a:Agent)-[:MADE]->(asgn:Assignment)-[:USES_LABEL]->(l:Label)
 WHERE asgn.experiment_id = 'exp_003a'
+  AND asgn.pool = $pool
 RETURN asgn.round AS round, l.name AS label,
        count(asgn) AS n_assignments,
        avg(asgn.confidence) AS mean_confidence,
@@ -223,6 +230,7 @@ QUERY_2 = """
 MATCH (asgn:Assignment)-[:USES_LABEL]->(l:Label)
 WHERE asgn.experiment_id = 'exp_003a'
   AND asgn.status = 'accepted'
+  AND asgn.pool = $pool
 WITH asgn.round AS round,
      l.name AS label,
      asgn.image_id AS image_id,
@@ -252,27 +260,34 @@ RETURN agent, label, mean_shift
 ORDER BY label, mean_shift ASC
 """
 
+POOLS = ["interaction", "held_out"]
+
 
 def run_queries(logger: Neo4jLogger) -> None:
     EXP_004_DIR.mkdir(parents=True, exist_ok=True)
 
     print("\n[Queries]")
 
-    print("  Query 1: label assignments per round...")
-    rows = logger.run_query(QUERY_1)
-    write_csv(rows, EXP_004_DIR / "query_1_label_assignments.csv")
+    for pool in POOLS:
+        print(f"  Pool: {pool}")
 
-    print("  Query 2: first unanimous round per label per image...")
-    rows = logger.run_query(QUERY_2)
-    write_csv(rows, EXP_004_DIR / "query_2_first_unanimous.csv")
+        print(f"    Query 1: label assignments per round...")
+        rows = logger.run_query(QUERY_1, pool=pool)
+        write_csv(rows, EXP_004_DIR / f"query_1_label_assignments_{pool}.csv")
 
-    print("  Query 3: centroid stability trajectory...")
-    rows = logger.run_query(QUERY_3)
-    write_csv(rows, EXP_004_DIR / "query_3_centroid_trajectory.csv")
+        print(f"    Query 2: first unanimous round per label per image...")
+        rows = logger.run_query(QUERY_2, pool=pool)
+        write_csv(rows, EXP_004_DIR / f"query_2_first_unanimous_{pool}.csv")
 
-    print("  Query 4: most stable agent per label...")
-    rows = logger.run_query(QUERY_4)
-    write_csv(rows, EXP_004_DIR / "query_4_most_stable_agent.csv")
+        # Q3/Q4 are centroid-level — pool-agnostic. Run once per pool label
+        # for naming consistency; results are identical across pools.
+        print(f"    Query 3: centroid stability trajectory...")
+        rows = logger.run_query(QUERY_3)
+        write_csv(rows, EXP_004_DIR / f"query_3_centroid_trajectory_{pool}.csv")
+
+        print(f"    Query 4: most stable agent per label...")
+        rows = logger.run_query(QUERY_4)
+        write_csv(rows, EXP_004_DIR / f"query_4_most_stable_agent_{pool}.csv")
 
 
 # ─── Main ─────────────────────────────────────────────────────────────────────
