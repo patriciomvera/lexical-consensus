@@ -1,0 +1,52 @@
+{
+  "experiment": "exp_005",
+  "reconstruction": "full_operational",
+  "centroid_source": "seed_embeddings + interaction_pool_accepted_cumulative",
+  "hypothesis": {
+    "H0": "Consensus feedback does not reduce inter-agent centroid distance.",
+    "H1": "Consensus feedback reduces inter-agent centroid distance."
+  },
+  "per_label": {
+    "slithy": {
+      "alignment_gain": 0.00381724,
+      "AUC_003a": 0.17328838,
+      "AUC_003b": 0.19237458,
+      "difference_in_differences": 0.00381724,
+      "d_003a_round1": 0.03206243,
+      "d_003a_final": 0.02824519,
+      "d_003b_round1": 0.03206243,
+      "d_003b_final": 0.03206243,
+      "round_representational_convergence": -1,
+      "repr_convergence_threshold": 0.01603122
+    },
+    "mimsy": {
+      "alignment_gain": 0.0,
+      "AUC_003a": 0.12536046,
+      "AUC_003b": 0.12536046,
+      "difference_in_differences": 0.0,
+      "d_003a_round1": 0.02089341,
+      "d_003a_final": 0.02089341,
+      "d_003b_round1": 0.02089341,
+      "d_003b_final": 0.02089341,
+      "round_representational_convergence": -1,
+      "repr_convergence_threshold": 0.01044671
+    },
+    "vorpal": {
+      "alignment_gain": 0.00079719,
+      "AUC_003a": 0.08958039,
+      "AUC_003b": 0.09197196,
+      "difference_in_differences": 0.00079719,
+      "d_003a_round1": 0.01532866,
+      "d_003a_final": 0.01453147,
+      "d_003b_round1": 0.01532866,
+      "d_003b_final": 0.01532866,
+      "round_representational_convergence": -1,
+      "repr_convergence_threshold": 0.00766433
+    }
+  },
+  "mean_alignment_gain": 0.00153814,
+  "h1_supported": false,
+  "notes": [
+    "mimsy: alignment_gain=0.000000 <= 0 \u2014 feedback did not reduce inter-agent full-centroid distance."
+  ]
+}

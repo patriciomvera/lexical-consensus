@@ -195,6 +195,116 @@ geometry drives labels, not the other way around.
 
 ---
 
+## 6b. Full Operational Centroid Analysis
+
+**Source:** `experiments/exp_005_centroid_alignment/full_centroid_analysis.py`
+**Outputs:** `centroid_vectors_full.npz`, `inter_agent_distances_full.csv`,
+`alignment_summary_full.json`, `centroid_alignment_comparison.png`
+
+### Two reconstruction methods
+
+Sections 1–6 above used **interaction-only** centroids: the cumulative set of
+accepted interaction-pool images per (agent, label, round). Seed images were
+excluded because they are not recorded in `ledger_events.csv`.
+
+This section adds the **full operational** centroid: the mean of seed embeddings
+plus the cumulative accepted interaction embeddings — the representation each
+agent actually uses for classification at every round.
+
+The critical difference is the seed sets. Agents hold disjoint 5-image slices:
+
+| Agent | Seed indices (per category) |
+|---|---|
+| agent_00 | 0–4   (e.g. frog_000–frog_004) |
+| agent_01 | 5–9   (e.g. frog_005–frog_009) |
+| agent_02 | 10–14 (e.g. frog_010–frog_014) |
+
+Each agent starts from a different region of the category's DINOv2 manifold.
+This seed divergence is invisible in the interaction-only reconstruction because
+seeds are excluded. Including seeds reveals the true representational gap.
+
+### Results
+
+| Label | 003a Round 1 | 003a Final (R6) | 003b Final | Alignment gain |
+|---|---|---|---|---|
+| **slithy** | 0.03206 | 0.02825 | 0.03206 | **+0.00382** |
+| **mimsy**  | 0.02089 | 0.02089 | 0.02089 | **0.00000** |
+| **vorpal** | 0.01533 | 0.01453 | 0.01533 | **+0.00080** |
+
+Mean alignment gain (full operational): **+0.00154**. H1 not supported (mimsy
+gain = 0).
+
+### Interpretation by label
+
+**slithy:** Distance drops from 0.03206 to 0.02825 at round 2 via the same
+mechanism as the interaction-only analysis — agent_01's missing frog image
+is added at round 2. Distances remain elevated relative to the interaction-only
+result (0.028 vs 0.006) because seed divergence contributes ~0.025 of the
+baseline distance. The 003b control stays flat at 0.03206 across all rounds.
+
+Pairwise breakdown (003a):
+
+| Agent pair | Round 1 | Round 2–6 |
+|---|---|---|
+| agent_00 – agent_01 | 0.03196 | **0.02665** |
+| agent_00 – agent_02 | 0.02930 | 0.02930 |
+| agent_01 – agent_02 | 0.03492 | 0.02879 |
+
+**mimsy:** Flat at 0.02089 across all rounds and both conditions. The residual
+distance is entirely seed-driven: 5 different horse images per agent produce
+non-identical centroids from the start. Since all 14 interaction-pool horse
+images are accepted identically by all agents (same images added equally to all
+centroids), interaction has no differential effect on inter-agent distance.
+Feedback cannot reduce seed-driven divergence because seeds are fixed after
+injection.
+
+**vorpal:** Distance drops from 0.01533 to 0.01453 at round 4 — exactly when
+vorpal achieves lexical consensus (Section 6: round_lexical_consensus = 4). The
+gain is small (+0.00080) and occurs one step after representational geometry is
+already stable in the interaction-only reconstruction.
+
+### What the d=0 in sections 1–6 was
+
+The d=0.000 reported for mimsy and vorpal in Section 1 (interaction-only) was a
+methodological artifact, not a physical finding. Excluding seeds removed the
+only source of inter-agent distance for those labels: all 14 accepted interaction
+images are identical across agents (they receive identical feedback), so
+interaction-only centroids are literally computed from the same images and
+therefore have cosine distance exactly zero.
+
+The full operational analysis corrects this: residual distances of 0.021 (mimsy)
+and 0.015 (vorpal) reflect the real representational divergence that each agent's
+classification geometry must resolve. Both are small relative to the embedding
+scale, confirming that DINOv2's category geometry is consistent across index
+slices — but the divergence is non-zero and feedback provides only marginal
+reduction.
+
+### Comparison of the two reconstructions
+
+| Label | Interaction-only gain | Full operational gain |
+|---|---|---|
+| slithy | +0.00491 | +0.00382 |
+| mimsy  | 0.00000  | 0.00000  |
+| vorpal | 0.00000  | +0.00080 |
+| Mean   | +0.00164 | +0.00154 |
+| H1     | False    | False    |
+
+Both reconstructions agree on the headline: H1 is not supported. The full
+operational result additionally shows that vorpal has a small positive gain
+(+0.00080) that the interaction-only analysis obscured (d was already at 0.0
+without seeds). The null result for mimsy holds in both reconstructions.
+
+### Representational convergence with full centroids
+
+The 50% threshold (d_r1 × 0.5) is never reached for any label in the full
+operational analysis. The threshold values are 0.01603 (slithy), 0.01045
+(mimsy), and 0.00766 (vorpal). Final distances (0.02825, 0.02089, 0.01453) all
+remain above their respective thresholds. Seed divergence sets a floor that
+feedback cannot cross: the residual ~0.01–0.02 distance persists regardless of
+how many interaction images are accepted.
+
+---
+
 ## Formal Hypothesis Test Summary
 
 **H₀:** Consensus feedback does not reduce inter-agent centroid distance
@@ -203,15 +313,28 @@ relative to the no-feedback baseline.
 **H₁:** Consensus feedback reduces inter-agent centroid distance relative to
 the no-feedback baseline.
 
-**Result:** H₀ is not rejected. Two of three Carroll labels (mimsy, vorpal)
-show zero alignment gain because both conditions achieve perfect representational
-alignment from round 1. The third label (slithy) shows a small positive gain
-(+0.00491) attributable to feedback resolving one agent pair's gap. The overall
-mean alignment gain is +0.00164, positive but driven by a single label.
+**Result: H₀ is not rejected under either reconstruction.**
 
-The null result has a structural explanation: the feedback mechanism can only
-improve representational alignment when there is a representational gap to close.
-DINOv2's geometric consistency leaves no gap for 2/3 of the vocabulary.
+| Reconstruction | Mean alignment gain | Labels with gain > 0 | H1 |
+|---|---|---|---|
+| Interaction-only | +0.00164 | 1/3 (slithy) | **False** |
+| Full operational  | +0.00154 | 2/3 (slithy, vorpal) | **False** |
+
+The stopping rule requires alignment_gain > 0 for ALL three labels. In both
+reconstructions, mimsy fails this criterion: feedback produces zero alignment
+gain because the same interaction images are accepted identically by all agents,
+leaving only the fixed seed divergence, which feedback cannot reduce.
+
+The interaction-only null result was structurally simpler: d=0 for mimsy/vorpal
+means there is no gap to close. The full operational null result is more
+informative: mimsy has a real residual distance (0.021) that persists throughout
+all rounds of 003a, confirming that this divergence is structurally immune to
+the feedback mechanism.
+
+For slithy, both reconstructions show a small positive gain (interaction-only:
++0.00491; full operational: +0.00382). The gain is attributable to consensus
+feedback resolving one agent pair's missing image. The remaining distance after
+resolution is dominated by seed divergence.
 
 ---
 
@@ -221,12 +344,22 @@ DINOv2's geometric consistency leaves no gap for 2/3 of the vocabulary.
 |---|---|
 | exp_003b Centroid nodes (rounds 1–6) | 54 |
 | exp_003b Agent nodes | 3 |
-| PROXIMITY_TO edges (003a) | 54 |
-| PROXIMITY_TO edges (003b) | 54 |
+| PROXIMITY_TO edges (003a, interaction_only) | 54 |
+| PROXIMITY_TO edges (003b, interaction_only) | 54 |
 | Centroid properties updated | 108 |
+| Centroid nodes tagged interaction_only | 108 |
+| full_operational Centroid nodes (003a) | 54 |
+| full_operational Centroid nodes (003b) | 54 |
+| PROXIMITY_TO edges (003a, full_operational) | 54 |
+| PROXIMITY_TO edges (003b, full_operational) | 54 |
 
-New Centroid node properties: `mean_pairwise_distance`, `distance_to_agent_00`,
-`distance_to_agent_01`, `distance_to_agent_02`, `vector_hash`, `vector_path`.
+Existing Centroid nodes: `centroid_type = 'interaction_only'`.
+New full_operational nodes: `centroid_id = 'full_{experiment_id}_{agent_id}_{label}_{round}'`,
+`centroid_type = 'full_operational'`.
+
+PROXIMITY_TO edge `condition` values: `'003a_feedback'`, `'003b_no_feedback'`
+(interaction-only); `'003a_feedback_full'`, `'003b_nofeedback_full'`
+(full operational).
 
 Queries 5–7 confirm Neo4j returns consistent results with the Python-computed
 values. Query 7 (Neo4j) alignment_gain: slithy = +0.00409, mimsy = 0.000,
@@ -243,12 +376,27 @@ representational alignment beyond surface label agreement. A positive
 alignment_gain would constitute an operational analogue of weak Sapir-Whorf:
 shared labels acting as attractors over agent-specific category representations.
 
-**The data does not support this prediction.** For 2/3 labels (mimsy, vorpal),
-agents' category centroids are already perfectly aligned (d=0) from the first
-interaction, independent of feedback. For slithy, feedback provides marginal
-improvement (+0.00491) by resolving one specific inter-agent gap that frozen
-lexicons cannot close. Representational convergence systematically precedes
-lexical agreement across all labels — geometry organizes first, labels follow.
+**The data does not support this prediction under either reconstruction.**
+
+The interaction-only analysis showed d=0 for mimsy and vorpal — no gap existed
+for feedback to close. The full operational analysis reveals that this was partly
+a methodological artifact: disjoint seed sets produce residual inter-agent
+distances of 0.021 (mimsy) and 0.015 (vorpal) that persist across all rounds
+of both conditions. The feedback mechanism does not reduce seed-driven divergence
+because seeds are frozen after injection and the interaction images are accepted
+identically by all agents.
+
+For slithy, both reconstructions show a small positive gain (full operational:
++0.00382) driven by consensus feedback resolving one agent pair's missing image
+at round 2. The remaining distance reflects a permanent seed divergence that
+feedback cannot eliminate.
+
+Representational convergence systematically precedes lexical agreement in the
+interaction-only analysis (geometry first, labels second). In the full operational
+analysis, representational convergence thresholds are never reached for any label
+— the seed-driven residual distances are too high to halve — confirming that the
+feedback mechanism's representational effect is marginal relative to the baseline
+established by DINOv2's geometry across disjoint seed sets.
 
 The primary driver of shared perceptual representations in this system is
 DINOv2's frozen embedding geometry, not the consensus feedback mechanism.
