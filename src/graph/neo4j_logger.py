@@ -97,7 +97,7 @@ class Neo4jLogger:
         print(f"[Neo4j] Clearing experiment '{experiment_id}'...")
         query = (
             "MATCH (n {experiment_id: $eid}) "
-            "CALL { WITH n DETACH DELETE n } IN TRANSACTIONS OF 500 ROWS"
+            "CALL (n) { DETACH DELETE n } IN TRANSACTIONS OF 500 ROWS"
         )
         with self._driver.session() as session:
             session.run(query, eid=experiment_id)
