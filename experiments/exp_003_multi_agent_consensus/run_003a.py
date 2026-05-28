@@ -38,9 +38,10 @@ from _shared import (  # noqa: E402
     CARROLL_LABELS, CAT_TO_CARROLL, INTERACTION_SLICE, HELD_OUT_SLICE,
     CONFIDENCE_THRESHOLD, MAX_ROUNDS, STOP_UNANIMOUS_ROUNDS, SUCCESS_CRITERIA,
     load_all_images, encode_all_images, build_pools,
-    label_pool, compute_consensus, compute_interaction_metrics, evaluate_held_out,
-    snapshot_centroids, compute_centroid_drift,
-    write_metrics_csv, write_drift_csv,
+    compute_consensus, compute_interaction_metrics,
+    label_pool_detailed, collect_ledger_events,
+    snapshot_centroids_rich, compute_centroid_drift_rich,
+    write_metrics_csv, write_ledger_events_csv, write_drift_rich_csv,
     plot_convergence_curve, plot_entropy_curve, plot_per_agent_accuracy,
 )
 from src.agents.learner_agent import LearnerAgent  # noqa: E402
@@ -254,8 +255,10 @@ def run() -> None:
 
     metrics_rows:  list[dict] = []
     drift_records: list[dict] = []
+    ledger_events: list[dict] = []
     stable_counts: dict       = {h: (None, 0) for h in interaction_hashes}
-    prev_centroids            = snapshot_centroids(agents)
+    initial_snap              = snapshot_centroids_rich(agents)
+    prev_snap_rich            = initial_snap
     consecutive_unanimous     = 0
 
     for round_num in range(1, MAX_ROUNDS + 1):
@@ -263,25 +266,68 @@ def run() -> None:
             agent.advance_round()
 
         # Step 1-2: label interaction pool (read-only)
-        agent_labels = label_pool(agents, interaction_hashes, embeddings)
+        detailed_interaction = label_pool_detailed(agents, interaction_hashes, embeddings)
+        agent_labels = {
+            aid: {h: d["label"] for h, d in det.items()}
+            for aid, det in detailed_interaction.items()
+        }
 
         # Step 3: compute consensus
         consensus = compute_consensus(agent_labels)
+        ledger_events.extend(collect_ledger_events(
+            "exp_003a", round_num, detailed_interaction, consensus,
+            interaction_hashes, "interaction",
+        ))
 
         # Steps 4-5: feedback → lexicon update (ACCEPTED only)
         apply_feedback(agents, consensus, embeddings, round_num)
 
-        # Step 6: evaluate held-out (no feedback, no update)
-        held_out = evaluate_held_out(agents, held_out_hashes, embeddings, ground_truth)
+        # Step 6: evaluate held-out with details (no feedback, no update)
+        detailed_held = label_pool_detailed(agents, held_out_hashes, embeddings)
+        agent_labels_held = {
+            aid: {h: d["label"] for h, d in det.items()}
+            for aid, det in detailed_held.items()
+        }
+        ho_consensus = compute_consensus(agent_labels_held)
+        ledger_events.extend(collect_ledger_events(
+            "exp_003a", round_num, detailed_held, ho_consensus,
+            held_out_hashes, "held_out",
+        ))
+
+        n_held_out    = len(held_out_hashes)
+        n_majority_ho = sum(1 for c in ho_consensus.values() if c["majority_label"] is not None)
+        majority_correct_ho = sum(
+            1 for img_hash, c in ho_consensus.items()
+            if c["majority_label"] is not None
+            and c["majority_label"] == ground_truth.get(img_hash)
+        )
+        per_agent_acc = {
+            aid: round(
+                sum(1 for h, lbl in labels.items() if lbl == ground_truth.get(h)) / n_held_out,
+                4,
+            )
+            for aid, labels in agent_labels_held.items()
+        }
+        held_out = {
+            "per_agent_accuracy":          per_agent_acc,
+            "held_out_consensus_accuracy": round(
+                majority_correct_ho / n_majority_ho if n_majority_ho > 0 else 0.0, 4
+            ),
+            "inter_agent_agreement": round(
+                n_majority_ho / n_held_out if n_held_out > 0 else 0.0, 4
+            ),
+        }
 
         # Step 7: compute and log round metrics
         interaction_m, stable_counts = compute_interaction_metrics(
             consensus, ground_truth, stable_counts
         )
 
-        curr_centroids = snapshot_centroids(agents)
-        drift_records.extend(compute_centroid_drift(prev_centroids, curr_centroids, round_num))
-        prev_centroids = curr_centroids
+        curr_snap_rich = snapshot_centroids_rich(agents)
+        drift_records.extend(compute_centroid_drift_rich(
+            prev_snap_rich, curr_snap_rich, initial_snap, round_num, "exp_003a"
+        ))
+        prev_snap_rich = curr_snap_rich
 
         row: dict = {
             "round":       round_num,
@@ -322,7 +368,8 @@ def run() -> None:
     # Write all artifacts
     print(f"\n[Artifacts]")
     write_metrics_csv(metrics_rows, RESULTS_DIR / "round_by_round_metrics.csv")
-    write_drift_csv(drift_records,  RESULTS_DIR / "centroid_drift.csv")
+    write_ledger_events_csv(ledger_events, RESULTS_DIR / "ledger_events.csv")
+    write_drift_rich_csv(drift_records,    RESULTS_DIR / "centroid_drift.csv")
     plot_convergence_curve(metrics_rows, "003a with feedback", RESULTS_DIR / "convergence_curve.png")
     plot_entropy_curve(metrics_rows,     "003a with feedback", RESULTS_DIR / "entropy_curve.png")
     plot_per_agent_accuracy(metrics_rows, "003a with feedback", RESULTS_DIR / "per_agent_accuracy.png")

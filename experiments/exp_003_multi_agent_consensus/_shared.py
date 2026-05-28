@@ -434,6 +434,220 @@ def write_drift_csv(records: list[dict], out_path: Path) -> None:
     print(f"  Saved: {out_path.name}")
 
 
+# ─── Detailed labeling (for ledger_events export) ────────────────────────────
+
+def _classify_detailed(
+    lexicon,
+    embedding: np.ndarray,
+) -> tuple[str, float, float]:
+    """
+    Like LexiconLayer.classify(), but also returns the raw margin
+    (second-best distance minus best distance) before the penalty step.
+
+    Returns: (label, confidence, margin)
+    Threshold check (UNCERTAIN) is left to the caller.
+    """
+    labels = lexicon.get_labels()
+    if not labels:
+        return "UNCERTAIN", 0.0, 0.0
+
+    distances: dict[str, float] = {}
+    for lbl in labels:
+        entry = lexicon.get_entry(lbl)
+        if entry is not None and entry.centroid is not None:
+            distances[lbl] = entry.distance_to(embedding)
+
+    if not distances:
+        return "UNCERTAIN", 0.0, 0.0
+
+    sorted_dists = sorted(distances.values())
+    best_label   = min(distances, key=distances.get)
+    best_dist    = distances[best_label]
+
+    confidence = max(0.0, 1.0 - best_dist)
+    margin     = (sorted_dists[1] - sorted_dists[0]) if len(sorted_dists) > 1 else 1.0
+
+    # Mirror LexiconLayer.classify() ambiguity penalty
+    if len(sorted_dists) > 1 and margin < 0.1:
+        confidence *= margin / 0.1
+
+    return best_label, round(confidence, 6), round(margin, 6)
+
+
+def label_pool_detailed(
+    agents,
+    pool_hashes: dict[str, str],
+    embeddings: dict[str, np.ndarray],
+) -> dict[str, dict[str, dict]]:
+    """
+    Like label_pool(), but also returns confidence and margin per image.
+
+    Returns: agent_id -> {img_hash -> {label, confidence, margin}}
+    """
+    result: dict[str, dict[str, dict]] = {}
+    for agent in agents:
+        details: dict[str, dict] = {}
+        for img_hash in pool_hashes:
+            emb = embeddings[img_hash]
+            if agent.lexicon.is_empty():
+                details[img_hash] = {"label": "UNCERTAIN", "confidence": 0.0, "margin": 0.0}
+            else:
+                label, confidence, margin = _classify_detailed(agent.lexicon, emb)
+                if confidence < CONFIDENCE_THRESHOLD:
+                    label = "UNCERTAIN"
+                details[img_hash] = {"label": label, "confidence": confidence, "margin": margin}
+        result[agent.agent_id] = details
+    return result
+
+
+def collect_ledger_events(
+    experiment_id: str,
+    round_num: int,
+    detailed_labels: dict[str, dict[str, dict]],
+    consensus: dict[str, dict],
+    pool_hashes: dict[str, str],     # img_hash -> cat_name
+    pool_name: str,                  # "interaction" | "held_out"
+) -> list[dict]:
+    """
+    Build one ledger row per (agent, image) from detailed labels + consensus.
+
+    status:
+      "accepted"   — agent's label == majority_label
+      "rejected"   — majority exists but agent's label differs
+      "unresolved" — no majority (3-way split or all UNCERTAIN)
+    """
+    rows: list[dict] = []
+    for agent_id, img_details in detailed_labels.items():
+        for img_hash, detail in img_details.items():
+            cons      = consensus.get(img_hash, {})
+            majority  = cons.get("majority_label")
+            agent_lbl = detail["label"]
+
+            if majority is None:
+                status = "unresolved"
+            elif agent_lbl == majority:
+                status = "accepted"
+            else:
+                status = "rejected"
+
+            rows.append({
+                "experiment_id":   experiment_id,
+                "round":           round_num,
+                "agent_id":        agent_id,
+                "image_id":        img_hash,
+                "true_category":   pool_hashes.get(img_hash, ""),
+                "predicted_label": agent_lbl,
+                "confidence":      detail["confidence"],
+                "margin":          detail["margin"],
+                "status":          status,
+                "pool":            pool_name,
+            })
+    return rows
+
+
+# ─── Rich centroid snapshots (for centroid_drift export) ──────────────────────
+
+def snapshot_centroids_rich(agents) -> dict[str, dict[str, dict | None]]:
+    """
+    Richer snapshot: centroid vector + cohesion + vector_norm + n_points.
+
+    vector_norm = L2 norm of the pre-normalization mean of all embeddings.
+    For unit-normalized embeddings it ranges (0, 1]: 1.0 means all embeddings
+    point in the same direction; near 0 means the cluster is spread.
+    """
+    snap: dict[str, dict] = {}
+    for agent in agents:
+        snap[agent.agent_id] = {}
+        for lbl in CARROLL_LABELS:
+            entry = agent.lexicon.get_entry(lbl)
+            if entry is not None and entry.centroid is not None and entry.embeddings:
+                raw_mean = np.mean(entry.embeddings, axis=0)
+                snap[agent.agent_id][lbl] = {
+                    "centroid":    entry.centroid.copy(),
+                    "cohesion":    round(float(entry.confidence), 6),
+                    "vector_norm": round(float(np.linalg.norm(raw_mean)), 6),
+                    "n_points":    len(entry.embeddings),
+                }
+            else:
+                snap[agent.agent_id][lbl] = None
+    return snap
+
+
+def compute_centroid_drift_rich(
+    prev_snap:     dict[str, dict],
+    curr_snap:     dict[str, dict],
+    initial_snap:  dict[str, dict],
+    round_num:     int,
+    experiment_id: str,
+) -> list[dict]:
+    """
+    Extended centroid drift — all required centroid_drift.csv columns.
+
+    shift_from_previous: cosine distance between consecutive-round centroids.
+    distance_to_initial: cosine distance from the post-seed centroid.
+    """
+    records: list[dict] = []
+    for agent_id in curr_snap:
+        for lbl in CARROLL_LABELS:
+            curr = curr_snap[agent_id].get(lbl)
+            if curr is None:
+                continue  # label not yet in lexicon
+
+            prev = prev_snap[agent_id].get(lbl)
+            init = initial_snap[agent_id].get(lbl) if initial_snap else None
+
+            shift = 0.0
+            if prev is not None:
+                shift = max(0.0, float(1.0 - np.dot(prev["centroid"], curr["centroid"])))
+
+            dist_to_initial = 0.0
+            if init is not None:
+                dist_to_initial = max(0.0, float(1.0 - np.dot(init["centroid"], curr["centroid"])))
+
+            records.append({
+                "experiment_id":       experiment_id,
+                "round":               round_num,
+                "agent_id":            agent_id,
+                "label":               lbl,
+                "cohesion":            curr["cohesion"],
+                "vector_norm":         curr["vector_norm"],
+                "shift_from_previous": round(shift, 6),
+                "distance_to_initial": round(dist_to_initial, 6),
+                "n_points":            curr["n_points"],
+            })
+    return records
+
+
+def write_ledger_events_csv(rows: list[dict], out_path: Path) -> None:
+    if not rows:
+        return
+    fieldnames = [
+        "experiment_id", "round", "agent_id", "image_id",
+        "true_category", "predicted_label", "confidence",
+        "margin", "status", "pool",
+    ]
+    with open(out_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+    print(f"  Saved: {out_path.name}")
+
+
+def write_drift_rich_csv(records: list[dict], out_path: Path) -> None:
+    if not records:
+        return
+    fieldnames = [
+        "experiment_id", "round", "agent_id", "label",
+        "cohesion", "vector_norm", "shift_from_previous",
+        "distance_to_initial", "n_points",
+    ]
+    with open(out_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(records)
+    print(f"  Saved: {out_path.name}")
+
+
 # ─── Plots ────────────────────────────────────────────────────────────────────
 
 def plot_convergence_curve(rows: list[dict], title_suffix: str, out_path: Path) -> None:
