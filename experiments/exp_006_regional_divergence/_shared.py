@@ -235,6 +235,149 @@ def agent_cluster(agent_id: str) -> str:
     raise KeyError(agent_id)
 
 
+# ─── Noise mechanism ──────────────────────────────────────────────────────────
+
+def noisy_centroid(
+    clean: np.ndarray,
+    sigma: float,
+    rng:   np.random.Generator,
+) -> np.ndarray:
+    """
+    Transmission noise model: clean centroid + N(0, sigma^2) per element,
+    renormalized to unit length.
+
+    The renormalization matters. Without it, noise would shrink the
+    cosine similarity to anything by adding mass in random directions,
+    producing trivially low confidence across the board. With it, only
+    the DIRECTION of the centroid drifts — which is what should drive
+    misclassification in a frozen-DINOv2 + unit-norm setup.
+
+    sigma=0 short-circuits to a no-op so the vervet regime is bit-for-bit
+    deterministic (and faster).
+    """
+    if sigma <= 0.0:
+        return clean
+    noisy = clean + sigma * rng.standard_normal(clean.shape).astype(clean.dtype)
+    n = float(np.linalg.norm(noisy))
+    if n < 1e-9:
+        return clean
+    return (noisy / n).astype(clean.dtype)
+
+
+# ─── Classification with optional noise ───────────────────────────────────────
+
+def classify_with_centroids(
+    embedding: np.ndarray,
+    centroids: dict[str, np.ndarray],
+) -> tuple[str, float, float]:
+    """
+    Same nearest-centroid + margin-penalty rule as exp_003 / exp_005b, but
+    operating on whatever centroids the caller passes in (clean or noisy).
+
+    Returns (label, confidence, margin). The UNCERTAIN threshold is
+    applied by the caller so per-agent confidence stays visible in the
+    ledger for diagnostics.
+    """
+    if not centroids:
+        return "UNCERTAIN", 0.0, 0.0
+    distances = {
+        label: max(0.0, 1.0 - float(np.dot(embedding, c)))
+        for label, c in centroids.items()
+    }
+    sorted_d   = sorted(distances.values())
+    best_label = min(distances, key=distances.get)
+    best_d     = distances[best_label]
+    confidence = max(0.0, 1.0 - best_d)
+    margin     = (sorted_d[1] - sorted_d[0]) if len(sorted_d) > 1 else 1.0
+    if margin < 0.1:
+        confidence *= margin / 0.1
+    return best_label, confidence, margin
+
+
+# ─── Consensus computation (variable group size) ──────────────────────────────
+
+def compute_consensus(
+    agent_labels: dict[str, dict[str, str]],
+    majority_threshold: float = 2 / 3,
+) -> dict[str, dict]:
+    """
+    Same majority rule as exp_003 / exp_005b, but parameterized so a 6-agent
+    bridge group can use the same function as a 3-agent cluster group.
+    Threshold is fraction-of-voters; default 2/3 means 2 of 3 or 4 of 6.
+
+    Returns img_hash -> {
+        agent_labels:   {agent_id: label},
+        label_counts:   {label: count},
+        majority_label: str or None,
+        unanimous:      bool,
+        unresolved:     bool,
+    }
+    """
+    all_hashes: set[str] = set()
+    for labels in agent_labels.values():
+        all_hashes.update(labels.keys())
+
+    result: dict[str, dict] = {}
+    for img_hash in all_hashes:
+        votes = {
+            aid: labels[img_hash]
+            for aid, labels in agent_labels.items()
+            if img_hash in labels
+        }
+        n_voters     = len(votes)
+        label_counts = Counter(votes.values())
+        majority_label: Optional[str] = None
+        for lbl, count in label_counts.most_common(1):
+            if n_voters > 0 and count / n_voters >= majority_threshold:
+                majority_label = lbl
+        n_distinct = len(label_counts)
+        result[img_hash] = {
+            "agent_labels":   votes,
+            "label_counts":   dict(label_counts),
+            "majority_label": majority_label,
+            "unanimous":      (majority_label is not None and n_distinct == 1),
+            "unresolved":     (majority_label is None),
+        }
+    return result
+
+
+# ─── Cluster centroid (collective) ────────────────────────────────────────────
+
+def cluster_centroid(
+    agent_centroids: list[dict[str, np.ndarray]],
+    label:           str,
+) -> Optional[np.ndarray]:
+    """
+    Cluster's collective centroid for a label = L2-normalized mean of all
+    agent centroids for that label, restricted to agents that actually
+    have a centroid for it. Returns None if no agent in the cluster has
+    accepted any image of this label yet.
+    """
+    vecs = [c[label] for c in agent_centroids if label in c]
+    if not vecs:
+        return None
+    X = np.stack(vecs, axis=0)
+    m = X.mean(axis=0)
+    n = float(np.linalg.norm(m))
+    if n < 1e-9:
+        return None
+    return (m / n).astype(np.float32)
+
+
+def pairwise_mean_distance(vecs: list[np.ndarray]) -> float:
+    """
+    Mean cosine distance over all unordered pairs in `vecs`.
+    Returns 0.0 for fewer than 2 vectors.
+    """
+    if len(vecs) < 2:
+        return 0.0
+    dists: list[float] = []
+    for i in range(len(vecs)):
+        for j in range(i + 1, len(vecs)):
+            dists.append(max(0.0, 1.0 - float(np.dot(vecs[i], vecs[j]))))
+    return float(sum(dists) / len(dists)) if dists else 0.0
+
+
 # ─── CSV helper (shared with the rest of the module) ─────────────────────────
 
 def write_csv(rows: list[dict], path: Path, fieldnames: Optional[list[str]] = None) -> None:
