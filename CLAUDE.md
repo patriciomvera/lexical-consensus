@@ -107,7 +107,7 @@ numbers forward by one. The table below reflects the actual execution order.
 | exp_003b_no_feedback_baseline | PASS | Control: unanimous=0.933, held=0.983 — DINOv2 alignment precedes feedback |
 | exp_004_neo4j_shannon | PASS | Neo4j integration + Shannon metrics — grounding threshold reached round 1 in both 003a (NMI=0.988) and 003b (NMI=0.966) |
 | exp_005_centroid_alignment | PASS (null) | Centroid alignment — H1 not supported. DINOv2 geometry, not feedback, drives convergence. Seed-divergence floor is permanent under gradient-free architecture. |
-| exp_005b_language_conditioned_geometry | In progress | LexicalAdapter (first gradient component). Three conditions: A frozen / B consensus-trained / C random-feedback. Proper operational test of weak Sapir-Whorf. |
+| exp_005b_language_conditioned_geometry | PASS (null) | LexicalAdapter (first gradient component), 3 conditions × 25 rounds. H1 not supported: B (consensus) final projected distance 0.058 vs A (frozen) 0.056 vs C (random) 0.039. Random training aligns agents MORE than consensus, because consensus signal is more individualized per agent. |
 | exp_006_regional_divergence | Pending | Vervet/raven/Latin experiment (was exp_005) |
 | exp_007_test2_paper | Pending | Test 2, full paper (was exp_006) |
 
@@ -116,6 +116,49 @@ numbers forward by one. The table below reflects the actual execution order.
 ---
 
 ## Empirical Findings
+
+### exp_005b — Language-conditioned geometry (first gradient experiment)
+
+Three conditions × 3 agents × 25 rounds. The LexicalAdapter is mutable but
+regularized toward identity (β = 0.1) and trained per accepted/rejected image
+with Adam (lr = 1e-3, λ = 0.5, margin = 0.2).
+
+**Final mean projected inter-agent centroid distance:**
+- A frozen:    0.0557 (held-out acc 1.000, drift 0.000)
+- B consensus: 0.0581 (held-out acc 0.983, drift 4.068)
+- C random:    0.0393 (held-out acc 0.983, drift 4.086)
+
+**H1 not supported.** Consensus-driven W training does NOT reduce projected
+distance more than frozen baseline (B is slightly worse than A on the
+final-state metric), and does NOT reduce it more than random feedback
+(C beats B on every label).
+
+**Most informative finding:** C beats B. Random feedback aligns agents MORE
+than consensus feedback. Two contributing mechanisms:
+1. The β·‖W − I‖² regularizer dominates the gradient signal per step (its
+   gradient norm ≈ 0.77 at init vs the per-image cosine loss gradient on a
+   single image, which is much smaller).
+2. Consensus signal is structured per-agent (each agent's gradient depends
+   on its own accepted set and label assignments); random signal is uniform
+   over labels and averages out agent-specific bias. Individualization is
+   the opposite of alignment.
+
+**Methodological note:** The H1 criteria in `alignment_summary.json` are
+evaluated on FINAL projected distance rather than the spec-literal
+`alignment_gain = d_round1 − d_final`. The spec-literal metric overstates
+convergence because Adam's first step inflates d_round1 in B and C; the
+"gain" is then mostly recovery from that perturbation. Both quantities are
+reported; the report explains the choice.
+
+**Raw DINOv2 distances** stay within ≈ 0.005 across all conditions, all
+rounds — confirms the encoder is genuinely frozen and the observed
+projected-space movement is the work of W.
+
+**Implication for exp_006:** the adapter is unlikely to be the load-bearing
+component. The substantive question for exp_006 is whether differing
+*input distributions* across regional sub-populations can break the
+DINOv2-driven geometric consensus that exp_003/005/005b have repeatedly
+shown to dominate inter-agent alignment.
 
 ### exp_003 — Multi-agent consensus results
 

@@ -1,0 +1,189 @@
+{
+  "experiment": "exp_005b_language_conditioned_geometry",
+  "spec_question": "Does mutable per-agent geometry let consensus feedback act as an attractor over inter-agent representational distance?",
+  "n_agents": 3,
+  "labels": [
+    "slithy",
+    "mimsy",
+    "vorpal"
+  ],
+  "conditions": [
+    "frozen",
+    "consensus",
+    "random"
+  ],
+  "condition_labels": {
+    "frozen": "A \u2014 Frozen (control)",
+    "consensus": "B \u2014 Consensus-trained",
+    "random": "C \u2014 Random-feedback"
+  },
+  "success_criteria": {
+    "held_out_accuracy": 0.9,
+    "label_coverage": 3,
+    "max_label_fraction": 0.5
+  },
+  "per_condition": {
+    "frozen": {
+      "label": "A \u2014 Frozen (control)",
+      "per_label": {
+        "slithy": {
+          "d_round1_projected": 0.06357797,
+          "d_final_projected": 0.06028589,
+          "d_round1_raw": 0.03206243,
+          "d_final_raw": 0.02824521,
+          "alignment_gain_projected": 0.00329208,
+          "alignment_gain_raw": 0.00381722,
+          "consensus_specific_gain": -0.05892551,
+          "distortion_penalty": 0.0,
+          "held_out_accuracy_final": 1.0
+        },
+        "mimsy": {
+          "d_round1_projected": 0.05146585,
+          "d_final_projected": 0.05455983,
+          "d_round1_raw": 0.02089337,
+          "d_final_raw": 0.02296511,
+          "alignment_gain_projected": -0.00309398,
+          "alignment_gain_raw": -0.00207174,
+          "consensus_specific_gain": -0.11853033,
+          "distortion_penalty": 0.0,
+          "held_out_accuracy_final": 1.0
+        },
+        "vorpal": {
+          "d_round1_projected": 0.05524075,
+          "d_final_projected": 0.05235847,
+          "d_round1_raw": 0.01824166,
+          "d_final_raw": 0.01532871,
+          "alignment_gain_projected": 0.00288228,
+          "alignment_gain_raw": 0.00291295,
+          "consensus_specific_gain": -0.08382662,
+          "distortion_penalty": 0.0,
+          "held_out_accuracy_final": 1.0
+        }
+      },
+      "mean_projected_gain": 0.00102679,
+      "mean_final_distance_projected": 0.05573473,
+      "mean_final_minus_frozen": 0.0,
+      "mean_final_minus_random": 0.01642801,
+      "mean_drift": 0.0,
+      "held_out_final": 1.0,
+      "label_coverage_final": 3,
+      "max_label_fraction": 0.3333,
+      "criteria_evaluated": {
+        "beats_frozen_in_projected_final": false,
+        "beats_random_in_projected_final": false,
+        "held_out_accuracy_passes": true,
+        "label_coverage_passes": true,
+        "no_label_collapse": true
+      },
+      "h1_supported": false
+    },
+    "consensus": {
+      "label": "B \u2014 Consensus-trained",
+      "per_label": {
+        "slithy": {
+          "d_round1_projected": 0.07662866,
+          "d_final_projected": 0.03271687,
+          "d_round1_raw": 0.03206243,
+          "d_final_raw": 0.02367278,
+          "alignment_gain_projected": 0.04391179,
+          "alignment_gain_raw": 0.00838965,
+          "consensus_specific_gain": -0.0183058,
+          "distortion_penalty": 4.068034,
+          "held_out_accuracy_final": 0.9833
+        },
+        "mimsy": {
+          "d_round1_projected": 0.16406632,
+          "d_final_projected": 0.0545761,
+          "d_round1_raw": 0.02089337,
+          "d_final_raw": 0.01956312,
+          "alignment_gain_projected": 0.10949022,
+          "alignment_gain_raw": 0.00133025,
+          "consensus_specific_gain": -0.00594613,
+          "distortion_penalty": 4.068034,
+          "held_out_accuracy_final": 0.9833
+        },
+        "vorpal": {
+          "d_round1_projected": 0.15368203,
+          "d_final_projected": 0.08702781,
+          "d_round1_raw": 0.01824166,
+          "d_final_raw": 0.01453151,
+          "alignment_gain_projected": 0.06665422,
+          "alignment_gain_raw": 0.00371015,
+          "consensus_specific_gain": -0.02005468,
+          "distortion_penalty": 4.068034,
+          "held_out_accuracy_final": 0.9833
+        }
+      },
+      "mean_projected_gain": 0.07335208,
+      "mean_final_distance_projected": 0.05810693,
+      "mean_final_minus_frozen": 0.0023722,
+      "mean_final_minus_random": 0.0188002,
+      "mean_drift": 4.068034,
+      "held_out_final": 0.9833,
+      "label_coverage_final": 3,
+      "max_label_fraction": 0.3333,
+      "criteria_evaluated": {
+        "beats_frozen_in_projected_final": false,
+        "beats_random_in_projected_final": false,
+        "held_out_accuracy_passes": true,
+        "label_coverage_passes": true,
+        "no_label_collapse": true
+      },
+      "h1_supported": false
+    },
+    "random": {
+      "label": "C \u2014 Random-feedback",
+      "per_label": {
+        "slithy": {
+          "d_round1_projected": 0.09042412,
+          "d_final_projected": 0.02820653,
+          "d_round1_raw": 0.03206243,
+          "d_final_raw": 0.02367278,
+          "alignment_gain_projected": 0.06221759,
+          "alignment_gain_raw": 0.00838965,
+          "consensus_specific_gain": 0.0,
+          "distortion_penalty": 4.085767,
+          "held_out_accuracy_final": 0.9833
+        },
+        "mimsy": {
+          "d_round1_projected": 0.1582459,
+          "d_final_projected": 0.04280955,
+          "d_round1_raw": 0.02089337,
+          "d_final_raw": 0.02089337,
+          "alignment_gain_projected": 0.11543635,
+          "alignment_gain_raw": 0.0,
+          "consensus_specific_gain": 0.0,
+          "distortion_penalty": 4.085767,
+          "held_out_accuracy_final": 0.9833
+        },
+        "vorpal": {
+          "d_round1_projected": 0.13361299,
+          "d_final_projected": 0.04690409,
+          "d_round1_raw": 0.01824166,
+          "d_final_raw": 0.01453151,
+          "alignment_gain_projected": 0.0867089,
+          "alignment_gain_raw": 0.00371015,
+          "consensus_specific_gain": 0.0,
+          "distortion_penalty": 4.085767,
+          "held_out_accuracy_final": 0.9833
+        }
+      },
+      "mean_projected_gain": 0.08812095,
+      "mean_final_distance_projected": 0.03930672,
+      "mean_final_minus_frozen": -0.01642801,
+      "mean_final_minus_random": 0.0,
+      "mean_drift": 4.085767,
+      "held_out_final": 0.9833,
+      "label_coverage_final": 3,
+      "max_label_fraction": 0.3333,
+      "criteria_evaluated": {
+        "beats_frozen_in_projected_final": true,
+        "beats_random_in_projected_final": false,
+        "held_out_accuracy_passes": true,
+        "label_coverage_passes": true,
+        "no_label_collapse": true
+      },
+      "h1_supported": false
+    }
+  }
+}

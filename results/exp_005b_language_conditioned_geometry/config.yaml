@@ -1,0 +1,41 @@
+experiment: exp_005b_language_conditioned_geometry
+date: '2026-06-04'
+encoder: facebook/dinov2-small (frozen)
+adapter: LexicalAdapter (W = I + epsilon*N(0,1), trainable per agent)
+dataset: CIFAR-10
+label_assignment:
+  frog: slithy
+  horse: mimsy
+  ship: vorpal
+agent_seed_slices:
+  agent_00:
+  - 0
+  - 5
+  agent_01:
+  - 5
+  - 10
+  agent_02:
+  - 10
+  - 15
+interaction_slice:
+- 15
+- 30
+held_out_slice:
+- 30
+- 50
+n_agents: 3
+conditions:
+- frozen
+- consensus
+- random
+max_rounds: 25
+adapter_epsilon: 0.01
+learning_rate: 0.001
+lambda_reject: 0.5
+beta_frobenius: 0.1
+reject_margin: 0.2
+random_seed: 42
+success_criteria:
+  held_out_accuracy: 0.9
+  label_coverage: 3
+  max_label_fraction: 0.5
