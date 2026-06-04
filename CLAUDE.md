@@ -108,7 +108,7 @@ numbers forward by one. The table below reflects the actual execution order.
 | exp_004_neo4j_shannon | PASS | Neo4j integration + Shannon metrics — grounding threshold reached round 1 in both 003a (NMI=0.988) and 003b (NMI=0.966) |
 | exp_005_centroid_alignment | PASS (null) | Centroid alignment — H1 not supported. DINOv2 geometry, not feedback, drives convergence. Seed-divergence floor is permanent under gradient-free architecture. |
 | exp_005b_language_conditioned_geometry | PASS (null) | LexicalAdapter (first gradient component), 3 conditions × 25 rounds. H1 not supported: B (consensus) final projected distance 0.058 vs A (frozen) 0.056 vs C (random) 0.039. Random training aligns agents MORE than consensus, because consensus signal is more individualized per agent. |
-| exp_006_regional_divergence | Pending | Vervet/raven/Latin experiment (was exp_005) |
+| exp_006_regional_divergence | PASS (anchor) | Vervet/raven/Latin × 6 agents × 2 clusters × 25 rounds. Even latin (isolation + σ=0.1 + disjoint inputs) does not diverge over time; growth rate is NEGATIVE in every label of every regime. Shared DINOv2 perception is a strong universal anchor. Held-out btw_agreement = 0.978 even in latin. |
 | exp_007_test2_paper | Pending | Test 2, full paper (was exp_006) |
 
 **Each experiment gates the next. Always check the roadmap in README.md before suggesting features that belong to later experiments.** A common failure mode is jumping ahead and breaking the incremental structure.
@@ -116,6 +116,47 @@ numbers forward by one. The table below reflects the actual execution order.
 ---
 
 ## Empirical Findings
+
+### exp_006 — Regional divergence (vervet / raven / latin)
+
+Six agents in two clusters of three. Each cluster sees a disjoint 25-image
+slice per category; the 30-image held-out pool is shared. Three regimes
+vary in network topology and transmission noise σ.
+
+**Final mean between-cluster centroid distance (round 25):**
+- vervet (σ=0,    full):     0.005   (flat from round 2)
+- raven  (σ=0.05, bridge=5): 0.006   (high until round 5, then crashes to vervet level)
+- latin  (σ=0.10, isolated): 0.078   (starts at 0.12, slowly converges)
+
+**Critical finding:** divergence_growth_rate is NEGATIVE in every label of
+every regime including latin. The latin clusters do not diverge over time —
+they start elevated from disjoint seeding and slowly converge as the shared
+DINOv2 attractors pull them in. Cross-cluster held-out label agreement is
+0.978 in latin (88/90 images), 0.989 in vervet/raven. The two isolated
+clusters use the same Carroll labels for the same images even after 25
+rounds of zero communication and σ=0.1 noise.
+
+**Bridge mechanism works:** raven's between-cluster distance climbs to ≈0.07
+over rounds 1-4 (pre-bridge) then drops sharply to ≈0.008 at round 5 (the
+first bridge round) and stays near vervet levels for the rest of the run.
+Periodic bridges (rounds 10, 15, 20, 25) preserve alignment.
+
+**Why no Latin → Romance:** the experimental conditions are not sufficient.
+Real Romance divergence involved local phonological shifts, substrate
+languages, contact, and changing referents — all ways the input
+distribution could diverge that DINOv2-on-CIFAR-10 cannot capture. Within
+CIFAR-10's three categories, both 25-image cluster slices end up pointing
+at the same DINOv2 attractors regardless of which exact images each cluster
+sees. To produce regional divergence in agents, one of (a) cluster-specific
+encoders, (b) visually-distinct sub-types within a category large enough to
+anchor separate concepts, or (c) much longer time horizons with larger
+noise budgets is required.
+
+**Together with exp_005 and exp_005b**, three experiments now establish
+that shared DINOv2 perception dominates inter-agent alignment under every
+perturbation we've thrown at it: gradient-free centroid feedback (exp_005),
+gradient-based per-agent linear adapter (exp_005b), and topology +
+input-distribution + transmission noise (exp_006).
 
 ### exp_005b — Language-conditioned geometry (first gradient experiment)
 
@@ -284,7 +325,8 @@ lexical-consensus/
 |   |-- exp_003_multi_agent_consensus/         # 003a (feedback) + 003b (baseline) + compare.py
 |   |-- exp_004_neo4j_shannon/                 # Shannon metrics + Neo4j replay
 |   |-- exp_005_centroid_alignment/            # Gradient-free Sapir-Whorf test (null)
-|   `-- exp_005b_language_conditioned_geometry/ # First gradient experiment — 3 conditions
+|   |-- exp_005b_language_conditioned_geometry/ # First gradient experiment — 3 conditions
+|   `-- exp_006_regional_divergence/            # 3 regimes × 2 clusters, anchoring result
 |
 |-- tests/
 |   |-- agents/test_lexical_adapter.py

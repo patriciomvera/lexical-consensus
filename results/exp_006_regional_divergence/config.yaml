@@ -1,0 +1,59 @@
+experiment: exp_006_regional_divergence
+date: '2026-06-04'
+encoder: facebook/dinov2-small (frozen)
+adapter: none (per exp_005b decision)
+dataset: CIFAR-10
+label_assignment:
+  frog: slithy
+  horse: mimsy
+  ship: vorpal
+n_agents: 6
+clusters:
+  cluster_1:
+  - agent_00
+  - agent_01
+  - agent_02
+  cluster_2:
+  - agent_03
+  - agent_04
+  - agent_05
+cluster_image_slices:
+  cluster_1:
+  - 0
+  - 25
+  cluster_2:
+  - 25
+  - 50
+held_out_slice:
+- 50
+- 80
+agent_seed_slices_per_cluster:
+- - 0
+  - 5
+- - 5
+  - 10
+- - 10
+  - 15
+interaction_slice_per_cluster:
+- 15
+- 25
+regimes:
+  vervet:
+    sigma: 0.0
+    bridge_every_n_rounds: 1
+    description: fully connected, zero noise
+  raven:
+    sigma: 0.05
+    bridge_every_n_rounds: 5
+    description: clustered, weak bridge every 5 rounds
+  latin:
+    sigma: 0.1
+    bridge_every_n_rounds: 0
+    description: isolated clusters, no bridge after seeding
+max_rounds: 25
+confidence_threshold: 0.3
+random_seed: 42
+success_criteria:
+  within_cluster_agreement_min: 0.9
+  shared_held_out_accuracy_min: 0.8
+  divergence_signal_threshold: 0.005

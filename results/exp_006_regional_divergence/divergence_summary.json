@@ -1,0 +1,155 @@
+{
+  "experiment": "exp_006_regional_divergence",
+  "spec_question": "Do isolated agent clusters with different input distributions diverge lexically, or does shared DINOv2 perception anchor them together?",
+  "regimes": {
+    "vervet": {
+      "sigma": 0.0,
+      "bridge_every_n_rounds": 1,
+      "description": "fully connected, zero noise"
+    },
+    "raven": {
+      "sigma": 0.05,
+      "bridge_every_n_rounds": 5,
+      "description": "clustered, weak bridge every 5 rounds"
+    },
+    "latin": {
+      "sigma": 0.1,
+      "bridge_every_n_rounds": 0,
+      "description": "isolated clusters, no bridge after seeding"
+    }
+  },
+  "clusters": {
+    "cluster_1": [
+      "agent_00",
+      "agent_01",
+      "agent_02"
+    ],
+    "cluster_2": [
+      "agent_03",
+      "agent_04",
+      "agent_05"
+    ]
+  },
+  "labels": [
+    "slithy",
+    "mimsy",
+    "vorpal"
+  ],
+  "success_criteria": {
+    "within_cluster_agreement_min": 0.9,
+    "shared_held_out_accuracy_min": 0.8,
+    "divergence_signal_threshold": 0.005
+  },
+  "per_regime": {
+    "vervet": {
+      "description": "fully connected, zero noise",
+      "sigma": 0.0,
+      "bridge_every_n_rounds": 1,
+      "per_label": {
+        "slithy": {
+          "final_between_cluster_distance": 0.00551647,
+          "divergence_growth_rate": -7.15e-06,
+          "within_cluster_distance_final": 0.01314717,
+          "net_divergence": -0.0076307
+        },
+        "mimsy": {
+          "final_between_cluster_distance": 0.00361955,
+          "divergence_growth_rate": -2.12e-06,
+          "within_cluster_distance_final": 0.01108688,
+          "net_divergence": -0.00746733
+        },
+        "vorpal": {
+          "final_between_cluster_distance": 0.00608879,
+          "divergence_growth_rate": -1.762e-05,
+          "within_cluster_distance_final": 0.01322248,
+          "net_divergence": -0.00713369
+        }
+      },
+      "mean_final_between_cluster_distance": 0.00507494,
+      "mean_divergence_growth_rate": -8.96e-06,
+      "held_out_accuracy_per_cluster": {
+        "cluster_1": 0.9889,
+        "cluster_2": 0.9778
+      },
+      "shared_held_out_consensus_accuracy": 0.9888,
+      "between_cluster_label_agreement_final": 0.9889,
+      "within_cluster_accuracy_passes": true,
+      "shared_held_out_passes": true
+    },
+    "raven": {
+      "description": "clustered, weak bridge every 5 rounds",
+      "sigma": 0.05,
+      "bridge_every_n_rounds": 5,
+      "per_label": {
+        "slithy": {
+          "final_between_cluster_distance": 0.00704783,
+          "divergence_growth_rate": -0.00245457,
+          "within_cluster_distance_final": 0.01521211,
+          "net_divergence": -0.00816428
+        },
+        "mimsy": {
+          "final_between_cluster_distance": 0.00375122,
+          "divergence_growth_rate": -0.00182795,
+          "within_cluster_distance_final": 0.01184709,
+          "net_divergence": -0.00809587
+        },
+        "vorpal": {
+          "final_between_cluster_distance": 0.00608879,
+          "divergence_growth_rate": -0.00184881,
+          "within_cluster_distance_final": 0.01322248,
+          "net_divergence": -0.00713369
+        }
+      },
+      "mean_final_between_cluster_distance": 0.00562928,
+      "mean_divergence_growth_rate": -0.00204378,
+      "held_out_accuracy_per_cluster": {
+        "cluster_1": 0.9889,
+        "cluster_2": 0.9778
+      },
+      "shared_held_out_consensus_accuracy": 0.9888,
+      "between_cluster_label_agreement_final": 0.9889,
+      "within_cluster_accuracy_passes": true,
+      "shared_held_out_passes": true
+    },
+    "latin": {
+      "description": "isolated clusters, no bridge after seeding",
+      "sigma": 0.1,
+      "bridge_every_n_rounds": 0,
+      "per_label": {
+        "slithy": {
+          "final_between_cluster_distance": 0.11110651,
+          "divergence_growth_rate": -0.00122198,
+          "within_cluster_distance_final": 0.13476768,
+          "net_divergence": -0.02366117
+        },
+        "mimsy": {
+          "final_between_cluster_distance": 0.05848622,
+          "divergence_growth_rate": -0.00065094,
+          "within_cluster_distance_final": 0.05656096,
+          "net_divergence": 0.00192526
+        },
+        "vorpal": {
+          "final_between_cluster_distance": 0.06577265,
+          "divergence_growth_rate": -0.00253875,
+          "within_cluster_distance_final": 0.07344744,
+          "net_divergence": -0.00767479
+        }
+      },
+      "mean_final_between_cluster_distance": 0.07845513,
+      "mean_divergence_growth_rate": -0.00147056,
+      "held_out_accuracy_per_cluster": {
+        "cluster_1": 0.9889,
+        "cluster_2": 0.9667
+      },
+      "shared_held_out_consensus_accuracy": 0.9886,
+      "between_cluster_label_agreement_final": 0.9778,
+      "within_cluster_accuracy_passes": true,
+      "shared_held_out_passes": true
+    }
+  },
+  "divergence_signal": {
+    "latin_minus_vervet_final_between_cluster": 0.07338019,
+    "exceeds_threshold": true,
+    "interpretation": "If the difference exceeds the success threshold, isolation + noise + input-distribution differences produced a measurable divergence over shared perception. If it does not, shared DINOv2 perception anchored the clusters together despite isolation."
+  }
+}
