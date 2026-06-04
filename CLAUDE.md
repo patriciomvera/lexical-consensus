@@ -48,6 +48,18 @@ LAYER 3 — Consensus (in src/consensus/)
 
 **Artificial vocabulary:** Lewis Carroll's invented words from *Jabberwocky* (vorpal, slithy, mimsy, borogove, tulgey, frumious, manxome, galumphing, uffish, jubjub). Chosen because they are phonotactically valid, semantically empty, and symbolically resonant with the experiment's themes.
 
+**LexicalAdapter (exp_005b onward):** an agent-specific trainable linear
+projection `z_i = normalize(W_i @ x)` over the frozen DINOv2 embedding `x`.
+Lives in `src/agents/lexical_adapter.py`. Introduced in exp_005b to give
+consensus feedback a mechanism for actual representational rewriting — the
+gradient-free architecture used in exp_001 through exp_005 only let centroids
+change through which images were accepted, not through how agents transform
+perceptual space. The adapter is initialized as `I + epsilon * N(0, 1)` so
+agents start near identical, and trained via Adam on cosine-distance losses
+driven by consensus ACCEPT / REJECT events. DINOv2 itself is still frozen —
+only `W_i` is learned, and it is per-agent. Earlier experiments do not use
+the adapter and remain bit-for-bit reproducible.
+
 ---
 
 ## Two Conditions That Must Pass
@@ -93,8 +105,9 @@ numbers forward by one. The table below reflects the actual execution order.
 | exp_002b_balanced_label_control | PASS | Closes condition A — population mean C1=0.342 ≈ chance |
 | exp_003a_consensus_feedback | PASS | Multi-agent consensus with feedback: converged round 6, held=1.000 |
 | exp_003b_no_feedback_baseline | PASS | Control: unanimous=0.933, held=0.983 — DINOv2 alignment precedes feedback |
-| exp_004_neo4j_shannon | Pending | Neo4j integration + Shannon metrics (was exp_003 in original plan) |
-| exp_005_centroid_drift_sapirwhorf | Pending | Centroid drift, Sapir-Whorf measurement (was exp_004) |
+| exp_004_neo4j_shannon | PASS | Neo4j integration + Shannon metrics — grounding threshold reached round 1 in both 003a (NMI=0.988) and 003b (NMI=0.966) |
+| exp_005_centroid_alignment | PASS (null) | Centroid alignment — H1 not supported. DINOv2 geometry, not feedback, drives convergence. Seed-divergence floor is permanent under gradient-free architecture. |
+| exp_005b_language_conditioned_geometry | In progress | LexicalAdapter (first gradient component). Three conditions: A frozen / B consensus-trained / C random-feedback. Proper operational test of weak Sapir-Whorf. |
 | exp_006_regional_divergence | Pending | Vervet/raven/Latin experiment (was exp_005) |
 | exp_007_test2_paper | Pending | Test 2, full paper (was exp_006) |
 
@@ -169,7 +182,7 @@ This asymmetry is expected under genuine representational learning and would not
 
 3. **Reproducibility is non-negotiable.** Every experiment run logs: random seed, model versions, full configuration, all interactions. See VVUQ section in PROTOCOL.md.
 
-4. **Do not introduce LLMs into the classification pipeline.** The architecture is intentionally LLM-free for classification to eliminate label contamination. LLMs may appear in future phases for natural-language description generation, but not for the core consensus loop.
+4. **Do not introduce LLMs into the classification pipeline.** The architecture is intentionally LLM-free for classification to eliminate label contamination. LLMs may appear in future phases for natural-language description generation, but not for the core consensus loop. The `LexicalAdapter` (exp_005b onward) is the only gradient-trained component in the project, and even it is a single linear layer per agent over the frozen DINOv2 output — not a deep network and not an LLM.
 
 5. **Carroll vocabulary is fixed.** Do not propose replacing vorpal/slithy/mimsy with "cleaner" alternatives. The contamination concern is documented as a known limitation with a three-condition control experiment in PROTOCOL.md section 8.
 
@@ -204,8 +217,9 @@ lexical-consensus/
 |-- src/
 |   |-- agents/
 |   |   |-- base_agent.py     # Abstract agent interface
-|   |   |-- perception.py     # DINOv2 wrapper (Layer 1)
+|   |   |-- perception.py     # DINOv2 wrapper (Layer 1, frozen)
 |   |   |-- lexicon.py        # Centroid-based lexicon (Layer 2)
+|   |   |-- lexical_adapter.py # Per-agent trainable projection (exp_005b+)
 |   |   `-- learner_agent.py  # Full three-layer agent
 |   |
 |   |-- consensus/
@@ -214,8 +228,8 @@ lexical-consensus/
 |   |-- dataset/
 |   |   `-- artificial_vocab.py  # Carroll vocabulary definitions
 |   |
-|   |-- metrics/              # TODO: exp_004 (Shannon metrics)
-|   |-- graph/                # TODO: exp_004 (Neo4j)
+|   |-- metrics/              # exp_004 (Shannon metrics)
+|   |-- graph/                # exp_004 (Neo4j)
 |   `-- utils/
 |
 |-- experiments/
@@ -224,9 +238,14 @@ lexical-consensus/
 |   |-- exp_002_grounding_controls/            # Falsification conditions A–E
 |   |-- exp_002b_balanced_label_control/       # Closes condition A
 |   |-- exp_002_multi_agent_consensus/         # Old placeholder (README only, no code)
-|   `-- exp_003_multi_agent_consensus/         # 003a (feedback) + 003b (baseline) + compare.py
+|   |-- exp_003_multi_agent_consensus/         # 003a (feedback) + 003b (baseline) + compare.py
+|   |-- exp_004_neo4j_shannon/                 # Shannon metrics + Neo4j replay
+|   |-- exp_005_centroid_alignment/            # Gradient-free Sapir-Whorf test (null)
+|   `-- exp_005b_language_conditioned_geometry/ # First gradient experiment — 3 conditions
 |
-|-- tests/                    # TODO
+|-- tests/
+|   |-- agents/test_lexical_adapter.py
+|   `-- metrics/test_shannon.py
 |-- notebooks/                # Analysis
 `-- results/                  # Experiment outputs (gitignored)
 ```
