@@ -87,95 +87,200 @@ This experiment is a minimal but falsifiable test of that capacity. A positive r
 
 This experiment is directly inspired by Luc Steels' **Talking Heads experiment**, where physically embodied robotic agents developed shared lexicons through interaction. The key differences in our work:
 
-| Steels (1996–2015) | This work |
-|---|---|
-| Physical robots with cameras | LLM agents via API |
-| Simple reinforcement rules | Distributed consensus mechanism |
-| Small populations (2–10 agents) | Scalable N-agent architecture |
-| Custom agent architecture | Commodity LLMs (GPT-4, Claude, etc.) |
-| Labels for real objects | Artificial labels on stripped datasets |
+| Steels (1996–2015) | This work (design) | Experimental result |
+|---|---|---|
+| Physical robots with cameras | LLM agents via API → DINOv2 + centroid | DINOv2 dominates alignment |
+| Simple reinforcement rules | Distributed consensus mechanism | Consensus refines but does not drive |
+| Small populations (2–10) | Scalable N-agent architecture | Tested with 3 and 6 agents |
+| Custom agent architecture | Commodity LLMs → Frozen encoder + learnable lexicon | Three-layer architecture validated |
+| Labels for real objects | Artificial labels (Carroll vocabulary) | Carroll labels acquired bidirectionally |
 
 This shift from embodied robots to commodity LLMs tests whether the consensus dynamics Steels observed generalize to a fundamentally different substrate.
 
 ---
 
-## Repository Structure
+## Repository File Structure
 
 ```
 lexical-consensus/
 │
-├── docs/                        # Theoretical background and protocol documentation
-│   ├── protocol.md              # Formal experiment protocol (citable)
-│   ├── metrics.md               # Definition of all metrics used
-│   ├── artificial_lexicon.md    # The invented label vocabulary
-│   └── paper_reference.md       # Link to the originating theoretical paper
+├── docs/                              # Theoretical background and protocol documentation
+│   └── experiment_summary.md          # One-page summary for external review
 │
 ├── src/
-│   ├── agents/                  # LLM agent implementations
-│   │   ├── base_agent.py        # Abstract agent interface
-│   │   ├── tutor_agent.py       # The human instructor interface
-│   │   └── learner_agent.py     # The learning agent (LLM-backed)
+│   ├── agents/
+│   │   ├── base_agent.py              # Abstract agent interface
+│   │   ├── perception.py              # DINOv2 wrapper (Layer 1, frozen)
+│   │   ├── lexicon.py                 # Centroid-based lexicon (Layer 2)
+│   │   ├── lexical_adapter.py         # Per-agent trainable projection (exp_005b+)
+│   │   └── learner_agent.py           # Full three-layer agent
 │   │
-│   ├── consensus/               # The distributed consensus mechanism
-│   │   ├── ledger.py            # Label ledger (who said what, when)
-│   │   ├── voting.py            # Weighted voting and threshold logic
-│   │   └── drift_detector.py    # Detects label instability over time
+│   ├── consensus/
+│   │   └── ledger.py                  # Consensus mechanism (Layer 3)
 │   │
-│   ├── dataset/                 # Dataset handling
-│   │   ├── loader.py            # Load images, strip labels
-│   │   ├── seed_set.py          # Define the tutor's initial instruction set
-│   │   └── artificial_vocab.py  # The artificial label definitions
+│   ├── dataset/
+│   │   └── artificial_vocab.py        # Carroll vocabulary definitions
 │   │
-│   ├── metrics/                 # Measurement and evaluation
-│   │   ├── convergence.py       # Convergence speed metrics
-│   │   ├── stability.py         # Label stability over time
-│   │   ├── generalization.py    # Generalization to unseen instances
-│   │   └── efficiency_index.py  # The composite efficiency metric (per paper)
+│   ├── graph/
+│   │   ├── neo4j_logger.py            # Parallel Neo4j logging alongside ledger
+│   │   └── replay_exp003.py           # exp_003a/b graph replay for Neo4j
 │   │
-│   └── utils/                   # Shared utilities
-│       ├── logger.py            # Structured experiment logging
-│       ├── config.py            # Configuration management
-│       └── api_client.py        # LLM API abstraction layer
+│   ├── metrics/
+│   │   └── shannon.py                 # Shannon entropy and NMI per round
+│   │
+│   └── utils/
 │
 ├── experiments/
 │   ├── exp_000_embedding_separability/  # DINOv2 substrate gate — PASS
 │   ├── exp_001_single_agent_lexicon/    # Naming + inverse grounding — PASS
 │   ├── exp_002_grounding_controls/      # Falsification conditions A–E — PASS
 │   ├── exp_002b_balanced_label_control/ # Condition A closure — PASS
-│   └── exp_003_multi_agent_consensus/   # 003a (feedback) + 003b (baseline) — PASS
+│   ├── exp_002_multi_agent_consensus/   # Placeholder (README only, superseded by exp_003)
+│   ├── exp_003_multi_agent_consensus/   # 003a (feedback) + 003b (baseline) — PASS
+│   ├── exp_004_neo4j_shannon/           # Shannon metrics + Neo4j replay — PASS
+│   ├── exp_005_centroid_alignment/      # Passive Sapir-Whorf test — PASS (null)
+│   ├── exp_005b_language_conditioned_geometry/  # Active Sapir-Whorf, LexicalAdapter — PASS (null)
+│   └── exp_006_regional_divergence/    # Three biological regimes — PASS (anchor)
 │
-├── tests/                       # Unit and integration tests
-├── notebooks/                   # Analysis and visualization notebooks
-├── results/                     # Experiment outputs (gitignored except structure)
+├── tests/
+│   ├── agents/test_lexical_adapter.py
+│   └── metrics/test_shannon.py
 │
-├── README.md                    # This file
-├── PROTOCOL.md                  # Short-form protocol for reproducibility
-├── requirements.txt             # Python dependencies
-└── LICENSE                      # MIT
+├── notebooks/                         # Analysis and visualization
+├── scripts/                           # Utility scripts
+│
+├── results/                           # Experiment outputs (gitignored except structure)
+│   ├── exp_000_embedding_separability/
+│   ├── exp_001a_seed_05/
+│   ├── exp_001b_seed_10/
+│   ├── exp_001b_condition2_easy/
+│   ├── exp_001b_condition2_medium/
+│   ├── exp_001b_condition2_hard/
+│   ├── exp_001c_seed_15/
+│   ├── exp_002_grounding_controls/
+│   ├── exp_002b_balanced_label_control/
+│   ├── exp_003a_consensus_feedback/
+│   ├── exp_003b_no_feedback_baseline/
+│   ├── exp_003_comparison/
+│   ├── exp_004_neo4j_shannon/
+│   ├── exp_005_centroid_alignment/
+│   ├── exp_005b_language_conditioned_geometry/
+│   └── exp_006_regional_divergence/
+│
+├── README.md                          # This file
+├── PROTOCOL.md                        # Formal experiment protocol (citable)
+├── CLAUDE.md                          # AI assistant context and coding principles
+├── SETUP.md                           # Environment setup instructions
+├── requirements.txt                   # Python dependencies
+└── .gitignore
 ```
 
 ---
 
 ## Completed Experiments
 
-Results are stored locally in `results/`. One-line summary per experiment:
+Results are stored locally in `results/`. Experiments are gated — each must pass before the next begins.
 
-| Experiment | Result | Artifact path |
-|---|---|---|
-| exp_000_embedding_separability | silhouette=0.283, PASS — DINOv2 substrate viable | `results/exp_000_embedding_separability/` |
-| exp_001a/b/c_single_agent_lexicon | naming accuracy=1.000 @ 10 seeds (Condition 1 PASS) | `results/exp_001{a,b,c}_seed_{05,10,15}/` |
-| exp_001b_condition2 | inverse grounding 100% hard level (Condition 2 PASS) | `results/exp_001b_seed_10/` |
-| exp_002_grounding_controls | all 5 falsification conditions degrade as predicted | `results/exp_002_grounding_controls/` |
-| exp_002b_balanced_label_control | population mean C1=0.342 ≈ chance — condition A closed | `results/exp_002b_balanced_label_control/` |
-| exp_003a_consensus_feedback | consensus accuracy=1.000, converged round 6 | `results/exp_003a_consensus_feedback/` |
-| exp_003b_no_feedback_baseline | baseline unanimous=0.933, held=0.983 — DINOv2 alignment precedes feedback | `results/exp_003b_no_feedback_baseline/` |
+**Note on experiment numbering:** The original plan had exp_002 = multi-agent consensus and exp_003 = Neo4j. Between exp_001 and the multi-agent run, two additional falsification experiments (exp_002_grounding_controls and exp_002b_balanced_label_control) were added to strengthen the scientific argument. This shifted multi-agent consensus to exp_003 and all subsequent numbers forward by one. The roadmap below reflects this reconciled numbering.
 
-**Note on experiment numbering:** The original plan had exp_002 = multi-agent
-consensus and exp_003 = Neo4j. Between exp_001 and the multi-agent run, two
-additional falsification experiments (exp_002_grounding_controls and
-exp_002b_balanced_label_control) were added to strengthen the scientific
-argument. This shifted multi-agent consensus to exp_003 and all subsequent
-numbers forward by one. The roadmap below reflects this reconciled numbering.
+---
+
+### exp_000 — Embedding Separability
+**Status:** PASS
+**Result:** Silhouette score 0.2826 on frog/horse/ship. DINOv2-small provides viable perceptual substrate with moderate separation. Visual UMAP projection confirms cluster structure.
+**Artifacts:** `results/exp_000_embedding_separability/`
+**Key files:** `config.yaml`, `metrics.json`, `pca.png`, `umap.png`, `report.md`
+
+---
+
+### exp_001 — Single Agent Lexicon
+**Status:** PASS (all sub-experiments)
+**Sub-experiments:**
+- exp_001a (5 seeds): C1 accuracy 0.983, 1 error (slithy→vorpal)
+- exp_001b (10 seeds): C1 accuracy 1.000, C2 accuracy 1.000 (all levels)
+- exp_001c (15 seeds): C1 accuracy 1.000
+- exp_001b_condition2_easy: accuracy 0.950 (3 failures, OOV distractors)
+- exp_001b_condition2_medium: accuracy 1.000
+- exp_001b_condition2_hard: accuracy 1.000
+
+**Result:** Single agent acquires Carroll labels from minimal instruction and generalizes bidirectionally. Behavioral saturation at 10 seeds; centroid drift continues through 15 seeds. OOV asymmetry (easy < hard) is a positive structural finding: the agent only knows what it was taught.
+**Artifacts:** `results/exp_001a_seed_05/`, `results/exp_001b_seed_10/`, `results/exp_001c_seed_15/`, `results/exp_001b_condition2_{easy,medium,hard}/`
+
+---
+
+### exp_002 — Grounding Controls (Falsification)
+**Status:** PASS (4/5 conditions clean; Condition A closed by exp_002b)
+**Conditions:**
+- A — Random labels: C1=0.550 (partial), C2=0.433 (collapsed)
+- B — Random embeddings: C1=0.300, C2=0.250 (chance)
+- C — Permuted embeddings: C1=0.000, C2=0.000 (complete collapse)
+- D — OOV rejection: AUROC=0.964
+- E — Harder categories (cat/dog/deer): C1=0.950, C2=0.867
+
+**Result:** The grounding effect disappears when perception, binding, or label consistency is broken. Falsification argument complete.
+**Artifacts:** `results/exp_002_grounding_controls/`, `results/exp_002b_balanced_label_control/`
+
+---
+
+### exp_003 — Multi-Agent Consensus
+**Status:** PASS
+**Sub-experiments:**
+- exp_003a (with feedback): consensus accuracy 1.000 in 6 rounds; unanimous=0.978
+- exp_003b (no feedback): baseline unanimous=0.933, held=0.983 (flat from round 1)
+
+**Result:** Three agents with disjoint seed sets converge on shared Carroll vocabulary. Feedback provides measurable refinement (+0.017 consensus accuracy, +0.045 unanimity) on top of an already high perceptual baseline. DINOv2 geometric consistency is the primary driver — 003b achieves 0.983 held-out accuracy with zero feedback.
+**Artifacts:** `results/exp_003a_consensus_feedback/`, `results/exp_003b_no_feedback_baseline/`, `results/exp_003_comparison/`
+
+---
+
+### exp_004 — Neo4j Integration + Shannon Metrics
+**Status:** PASS
+**Result:** Normalized MI reaches 0.966 (no feedback) to 0.988 (with feedback) from round 1. Grounding threshold (normalized_MI > 0.5) exceeded immediately. Shannon analysis confirms high information transfer between images and Carroll labels. Complete experiment graph stored in Neo4j AuraDB.
+**Artifacts:** `results/exp_004_neo4j_shannon/`
+**Key files:** `entropy_curve.png`, `shannon_metrics_003a.json`, `shannon_metrics_003b.json`, `query_1–4_label_assignments*.csv`
+
+---
+
+### exp_005 — Centroid Alignment (Sapir-Whorf Test, Passive)
+**Status:** PASS — H1 not supported (informative null)
+**Result:** Consensus feedback does not substantially reshape representational geometry under frozen centroid architecture. Alignment gain only for slithy (+0.004) and vorpal (+0.001). Geometry drives labels, not the reverse. Two reconstructions reported (interaction-only and full operational) to eliminate floor-effect artifacts.
+**Artifacts:** `results/exp_005_centroid_alignment/`
+**Key files:** `alignment_summary.json`, `centroid_alignment_curve.png`, `alignment_gain_by_label.png`
+
+---
+
+### exp_005b — Language-Conditioned Geometry (Sapir-Whorf Test, Active)
+**Status:** PASS — H1 not supported (clean null)
+**Sub-experiments:**
+- Condition A (frozen adapter): final projected distance 0.056, held-out acc 1.000
+- Condition B (consensus feedback): final projected distance 0.058, held-out acc 0.983
+- Condition C (random feedback): final projected distance 0.039, held-out acc 0.983
+
+**Result:** Even with a mutable LexicalAdapter (trainable W per agent), consensus feedback does not act as a representational attractor. Random feedback (Condition C) aligned agents more than consensus (Condition B) — the β-regularizer dominates gradient magnitude, and consensus signal is individualized per agent rather than averaging toward shared representations.
+**Artifacts:** `results/exp_005b_language_conditioned_geometry/`
+
+---
+
+### exp_006 — Regional Divergence (Three Biological Regimes)
+**Status:** PASS — divergence hypothesis not supported (strong anchoring result)
+**Regimes:**
+- vervet (σ=0, full network): final between-cluster distance 0.005 (flat from round 2)
+- raven (σ=0.05, bridge every 5 rounds): 0.006 (climbs to ≈0.07 pre-bridge, crashes at round 5)
+- latin (σ=0.10, fully isolated): 0.078 (starts at 0.12, slowly converges — growth rate NEGATIVE)
+
+**Result:** Shared DINOv2 perception resists linguistic divergence even under maximal isolation, high transmission noise, and disjoint input distributions. Latin clusters do not diverge — they start elevated from disjoint seeding and slowly converge as shared DINOv2 attractors pull them in. Cross-cluster held-out label agreement: 0.978 in latin, 0.989 in vervet/raven.
+**Artifacts:** `results/exp_006_regional_divergence/`
+
+---
+
+### Transversal Finding
+
+> Shared perceptual grounding is a stronger stabilizer than regional isolation is a destabilizer.
+> The consensus mechanism coordinates decisions (lexical agreement) and resolves boundary cases
+> (grounding), but does not reorganize internal representations. DINOv2's geometric consistency
+> is the universal anchor across all three perturbation classes: gradient-free centroid feedback
+> (exp_005), gradient-based per-agent linear adapter (exp_005b), and topology + input-distribution
+> + transmission noise (exp_006).
 
 ---
 
@@ -185,76 +290,23 @@ Experiments are numbered sequentially and gated: each must pass before
 the next begins. The experiment directory and its results directory share
 the same name (`exp_NNN_description`).
 
-### exp_000 — Embedding Separability ✓ PASS
-- [x] Implement `diagnostic.py`
-- [x] Load 50 CIFAR-10 images per category, encode with DINOv2-small
-- [x] Compute silhouette score and per-pair intra/inter distances
-- [x] Generate UMAP projection
-- [x] Write artifacts to `results/exp_000_embedding_separability/`
-- **Result:** silhouette=0.283 (gate threshold was 0.3; visual separation confirmed, threshold revised — see CLAUDE.md)
+### Completed
 
-### exp_001 — Single Agent Lexicon ✓ PASS
-- [x] Tutor presents 5/10/15 seed images per Carroll label (variants 001a/b/c)
-- [x] Agent builds centroids, classifies held-out images (Condition 1)
-- [x] Test Condition 2 — inverse grounding at easy/medium/hard difficulty levels
-- [x] Write artifacts to `results/exp_001{a,b,c}_seed_{05,10,15}/`
-- **Result:** Condition 1 accuracy=1.000 @ 10 seeds. Condition 2 hard=1.000. Both pass.
+- [x] exp_000 — Embedding separability diagnostic
+- [x] exp_001 — Single agent lexicon (naming + inverse grounding)
+- [x] exp_002 — Grounding controls (falsification)
+- [x] exp_002b — Balanced label control (closes Condition A)
+- [x] exp_003 — Multi-agent consensus (feedback + no-feedback baseline)
+- [x] exp_004 — Neo4j integration + Shannon metrics
+- [x] exp_005 — Centroid alignment (passive Sapir-Whorf test)
+- [x] exp_005b — Language-conditioned geometry (active Sapir-Whorf test)
+- [x] exp_006 — Regional divergence (three biological regimes)
 
-### exp_002_grounding_controls — Falsification Controls ✓ PASS
-*(Added between exp_001 and multi-agent consensus to strengthen scientific argument)*
-- [x] Condition A: scrambled label assignment (random centroids)
-- [x] Condition B: wrong-category centroids
-- [x] Condition C: random noise centroids
-- [x] Condition D: OOV detection (AUROC)
-- [x] Condition E: harder categories (airplane, deer, automobile)
-- [x] Write artifacts to `results/exp_002_grounding_controls/`
-- **Result:** All 5 conditions degrade as predicted. Grounding is real.
+### Next
 
-### exp_002b_balanced_label_control — Closes Condition A ✓ PASS
-*(Added to address A1 weak point: single-scramble result seed=99 was 0.550)*
-- [x] A1: balanced round-robin 4:3 centroid — produces C1=0.717 (sensitivity finding)
-- [x] A2: 100 random scrambles — population mean C1=0.342 ≈ chance
-- [x] Write artifacts to `results/exp_002b_balanced_label_control/`
-- **Result:** Population mean confirms chance level. A1 sensitivity documented.
-
-### exp_003 — Multi-Agent Consensus ✓ PASS
-*(Was exp_002 in original plan; shifted when grounding controls were added)*
-- [x] 3 agents, 3 Carroll labels, disjoint seed sets (5 seeds/agent/category)
-- [x] exp_003a: feedback condition — ACCEPTED labels update centroids
-- [x] exp_003b: no-feedback baseline — lexicons frozen after seeding
-- [x] Comparison analysis: feedback vs. shared-perception-only baseline
-- [x] Write artifacts to `results/exp_003a_consensus_feedback/` and `results/exp_003b_no_feedback_baseline/`
-- **Result:** 003a converged at round 6, unanimous=0.978, held=1.000. 003b baseline unanimous=0.933, held=0.983. Feedback adds +0.045 unanimity, +0.017 accuracy.
-
-### exp_004_neo4j_shannon — Neo4j Integration and Shannon Metrics
-*(Was exp_003 in original plan)*
-- [ ] Graph model: agents, labels, centroids, transfers
-- [ ] Parallel logging to Neo4j alongside ledger
-- [ ] Cypher queries for label propagation and centroid drift
-- [ ] Shannon metrics per round: H(label|image), I(image;label), entropy reduction curve
-- [ ] Animated visualization of lexical emergence per round
-
-### exp_005_centroid_drift_sapirwhorf — Centroid Drift and Sapir-Whorf Test
-*(Was exp_004 in original plan)*
-- [ ] Track centroid trajectory per label per agent per round
-- [ ] Measure inter-agent centroid distance over time
-- [ ] Test: does consensus cause categorical alignment beyond label agreement?
-
-### exp_006_regional_divergence — Regional Divergence and Biological Regimes
-*(Was exp_005 in original plan)*
-- [ ] Parameterize network topology (fully connected / clustered / isolated)
-- [ ] Implement Gaussian noise on centroid transmission (parameter σ)
-- [ ] Run three conditions: vervet (complete, σ=0) / raven (clustered, σ=0.05) / latin (isolated, σ=0.10)
-- [ ] Measure centroid divergence between clusters over time in Neo4j
-- [ ] Compare drift rates against historical phonetic change data (calibration)
-- [ ] Audio transmission design (architecture only — implementation deferred)
-
-### exp_007_test2_paper — Test 2 and Paper
-*(Was exp_006 in original plan)*
-- [ ] Extend to second language acquisition using Test 1 lexicon as base
-- [ ] Full statistical analysis (confidence intervals, bootstrapping, VVUQ)
-- [ ] Reproducibility confirmation with independent seeds
-- [ ] Empirical paper draft
+- [ ] First empirical paper draft (based on exp_000–006)
+- [ ] exp_007 — Test 2: second language acquisition (future)
+- [ ] exp_008 — Interactive visualization: Game of Life (future)
 
 ---
 
@@ -488,6 +540,24 @@ None of these are measured by the Turing Test. Together, they constitute the fir
 
 ---
 
+## Neo4j Graph Status
+
+The Neo4j AuraDB instance contains the complete experimental record for experiments that ran with live graph logging:
+
+| Content | Count |
+|---|---|
+| Nodes | 2,023+ |
+| Relationships | 7,610+ |
+| Experiments logged | exp_003a, exp_005, exp_005b, exp_006 |
+
+**Node types:** Experiment, Agent, Label, Image, Assignment, Centroid, Adapter
+
+**Relationship types:** HAS_AGENT, HAS_LABEL, HAS_IMAGE, MADE, USES_LABEL, APPLIES_TO, HAS_CENTROID, CONSENSUS_WITH, PROXIMITY_TO, PROJECTED_PROXIMITY_TO, HAS_ADAPTER
+
+Replay scripts in `src/graph/replay_exp003.py` reconstruct the full exp_003a assignment graph from ledger logs. `src/graph/neo4j_logger.py` provides the parallel logging interface used in all subsequent experiments.
+
+---
+
 ## Reproducibility Commitment
 
 Every experiment in this repository follows the **VVUQ guidelines** (Verification, Validation & Uncertainty Quantification) referenced in the originating paper (Adams, 2012; Coveney & Highfield, 2021). Specifically:
@@ -527,9 +597,10 @@ If you use this repository, please cite both the theoretical paper and this impl
 }
 
 @software{vera2024lexical,
-  title={Lexical Consensus: Emergent Language Acquisition in Multi-Agent LLM Systems},
-  author={Vera, Patricio and Moya, Pedro and Barraza, Lisa},
-  year={2024},
-  url={https://github.com/neurocreaciones/lexical-consensus}
+  title={Lexical Consensus: Emergent Language Acquisition
+         in Multi-Agent Systems with Frozen Visual Perception},
+  author={Vera, Patricio},
+  year={2024--2026},
+  url={https://github.com/patriciomvera/lexical-consensus}
 }
 ```
