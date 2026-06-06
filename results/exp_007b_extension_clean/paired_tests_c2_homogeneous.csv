@@ -1,0 +1,97 @@
+tier,pool_type,comparison,metric,mean_diff,ci_low,ci_high,wilcoxon_p,effect_size,supported,n
+native,std_nway,exemplar_knn_k3 vs centroid,c2,0.0494,0.0333,0.0694,2e-05,1.0,True,30
+native,n/a (C1 is pool-independent),exemplar_knn_k3 vs centroid,c1,-0.0113,-0.0187,-0.0042,0.0069,-0.63,False,30
+native,std_nway,logreg vs centroid,c2,0.06,0.0394,0.0833,2e-05,1.0,True,30
+native,n/a (C1 is pool-independent),logreg vs centroid,c1,0.0062,-0.0013,0.0138,0.06618,0.4466,False,30
+native,std_nway,linsvm vs centroid,c2,0.0594,0.0389,0.0828,2e-05,1.0,True,30
+native,n/a (C1 is pool-independent),linsvm vs centroid,c1,0.0069,-0.0004,0.0142,0.01122,0.6166,False,30
+native,small,exemplar_knn_k3 vs centroid,c2,0.0589,0.0406,0.0778,2e-05,0.9867,True,30
+native,small,logreg vs centroid,c2,0.0722,0.0489,0.0978,1e-05,1.0,True,30
+native,small,linsvm vs centroid,c2,0.0761,0.0528,0.1022,1e-05,1.0,True,30
+native,medium,exemplar_knn_k3 vs centroid,c2,0.075,0.0556,0.0967,1e-05,0.9868,True,30
+native,medium,logreg vs centroid,c2,0.0872,0.065,0.1117,1e-05,0.9921,True,30
+native,medium,linsvm vs centroid,c2,0.0933,0.0678,0.1217,1e-05,0.9943,True,30
+native,large,exemplar_knn_k3 vs centroid,c2,0.0928,0.0717,0.1139,1e-05,0.9729,True,30
+native,large,logreg vs centroid,c2,0.1244,0.0978,0.1517,0.0,0.9926,True,30
+native,large,linsvm vs centroid,c2,0.1267,0.0983,0.1556,0.0,0.9926,True,30
+native,hard,exemplar_knn_k3 vs centroid,c2,0.0317,0.0067,0.0556,0.0172,0.5238,True,30
+native,hard,logreg vs centroid,c2,0.1511,0.1194,0.1883,0.0,0.9931,True,30
+native,hard,linsvm vs centroid,c2,0.1483,0.1144,0.1872,1e-05,0.9701,True,30
+native,oov_25,exemplar_knn_k3 vs centroid,c2,0.0394,0.0261,0.0539,7e-05,0.9493,True,30
+native,oov_25,logreg vs centroid,c2,0.0567,0.0422,0.0739,0.0,0.9931,True,30
+native,oov_25,linsvm vs centroid,c2,0.055,0.0394,0.0711,1e-05,0.9921,True,30
+native,oov_50,exemplar_knn_k3 vs centroid,c2,0.0233,0.0078,0.04,0.027,0.5046,True,30
+native,oov_50,logreg vs centroid,c2,0.0361,0.0167,0.055,0.00259,0.6752,True,30
+native,oov_50,linsvm vs centroid,c2,0.0311,0.0122,0.0494,0.00564,0.6085,True,30
+near,std_nway,exemplar_knn_k3 vs centroid,c2,0.0783,0.0622,0.095,0.0,0.9871,True,30
+near,n/a (C1 is pool-independent),exemplar_knn_k3 vs centroid,c1,-0.0136,-0.0213,-0.0051,0.00223,-0.672,False,30
+near,std_nway,logreg vs centroid,c2,0.0961,0.08,0.1111,0.0,1.0,True,30
+near,n/a (C1 is pool-independent),logreg vs centroid,c1,-0.0038,-0.0138,0.0047,0.60492,-0.1138,False,30
+near,std_nway,linsvm vs centroid,c2,0.1022,0.085,0.12,0.0,1.0,True,30
+near,n/a (C1 is pool-independent),linsvm vs centroid,c1,0.0007,-0.0071,0.0084,0.95697,-0.0123,False,30
+near,small,exemplar_knn_k3 vs centroid,c2,0.0933,0.0733,0.1133,1e-05,1.0,True,30
+near,small,logreg vs centroid,c2,0.1111,0.0933,0.1289,0.0,1.0,True,30
+near,small,linsvm vs centroid,c2,0.1172,0.0967,0.1367,0.0,1.0,True,30
+near,medium,exemplar_knn_k3 vs centroid,c2,0.1044,0.0778,0.1306,0.0,0.9613,True,30
+near,medium,logreg vs centroid,c2,0.1189,0.0972,0.1406,0.0,1.0,True,30
+near,medium,linsvm vs centroid,c2,0.1278,0.1061,0.1489,0.0,1.0,True,30
+near,large,exemplar_knn_k3 vs centroid,c2,0.1022,0.0761,0.1267,1e-05,0.9441,True,30
+near,large,logreg vs centroid,c2,0.1339,0.1089,0.1606,0.0,1.0,True,30
+near,large,linsvm vs centroid,c2,0.135,0.1067,0.1644,0.0,1.0,True,30
+near,hard,exemplar_knn_k3 vs centroid,c2,0.0739,0.0506,0.0978,2e-05,0.931,True,30
+near,hard,logreg vs centroid,c2,0.1417,0.1206,0.1611,0.0,1.0,True,30
+near,hard,linsvm vs centroid,c2,0.1483,0.1289,0.1672,0.0,1.0,True,30
+near,oov_25,exemplar_knn_k3 vs centroid,c2,0.07,0.05,0.0894,1e-05,0.9606,True,30
+near,oov_25,logreg vs centroid,c2,0.0894,0.0717,0.1095,0.0,1.0,True,30
+near,oov_25,linsvm vs centroid,c2,0.0872,0.0678,0.11,0.0,1.0,True,30
+near,oov_50,exemplar_knn_k3 vs centroid,c2,0.0456,0.0233,0.0672,0.00106,0.7477,True,30
+near,oov_50,logreg vs centroid,c2,0.0567,0.0344,0.0794,0.0002,0.7908,True,30
+near,oov_50,linsvm vs centroid,c2,0.0439,0.0217,0.0678,0.00453,0.6133,True,30
+mid,std_nway,exemplar_knn_k3 vs centroid,c2,0.0656,0.045,0.0861,3e-05,0.8943,True,30
+mid,n/a (C1 is pool-independent),exemplar_knn_k3 vs centroid,c1,-0.004,-0.016,0.0073,0.49533,-0.1448,False,30
+mid,std_nway,logreg vs centroid,c2,0.0689,0.0494,0.09,2e-05,0.9471,True,30
+mid,n/a (C1 is pool-independent),logreg vs centroid,c1,-0.0131,-0.0271,-0.0002,0.20563,-0.269,False,30
+mid,std_nway,linsvm vs centroid,c2,0.0744,0.0561,0.0944,1e-05,0.9586,True,30
+mid,n/a (C1 is pool-independent),linsvm vs centroid,c1,-0.0098,-0.0196,0.0002,0.06314,-0.4246,False,30
+mid,small,exemplar_knn_k3 vs centroid,c2,0.0717,0.0489,0.0939,2e-05,0.8966,True,30
+mid,small,logreg vs centroid,c2,0.0794,0.0583,0.1006,1e-05,0.9517,True,30
+mid,small,linsvm vs centroid,c2,0.0828,0.0606,0.105,1e-05,0.9632,True,30
+mid,medium,exemplar_knn_k3 vs centroid,c2,0.0889,0.0694,0.1111,1e-05,1.0,True,30
+mid,medium,logreg vs centroid,c2,0.1072,0.0878,0.1272,0.0,1.0,True,30
+mid,medium,linsvm vs centroid,c2,0.1022,0.0839,0.1217,0.0,1.0,True,30
+mid,large,exemplar_knn_k3 vs centroid,c2,0.0767,0.0528,0.1006,2e-05,0.9573,True,30
+mid,large,logreg vs centroid,c2,0.0961,0.0733,0.1194,0.0,0.9931,True,30
+mid,large,linsvm vs centroid,c2,0.0928,0.0678,0.1194,1e-05,0.9678,True,30
+mid,hard,exemplar_knn_k3 vs centroid,c2,0.0661,0.0467,0.0883,0.0,0.9951,True,30
+mid,hard,logreg vs centroid,c2,0.1122,0.0906,0.135,0.0,0.9957,True,30
+mid,hard,linsvm vs centroid,c2,0.11,0.0867,0.1344,0.0,0.9951,True,30
+mid,oov_25,exemplar_knn_k3 vs centroid,c2,0.045,0.0256,0.0656,0.00028,0.7989,True,30
+mid,oov_25,logreg vs centroid,c2,0.0611,0.0422,0.0817,1e-05,0.9264,True,30
+mid,oov_25,linsvm vs centroid,c2,0.0528,0.0294,0.0761,0.00023,0.7816,True,30
+mid,oov_50,exemplar_knn_k3 vs centroid,c2,0.0194,0.0011,0.0383,0.05857,0.4089,False,30
+mid,oov_50,logreg vs centroid,c2,0.0444,0.0239,0.0661,0.00061,0.754,True,30
+mid,oov_50,linsvm vs centroid,c2,0.0411,0.0144,0.0678,0.00724,0.5613,True,30
+far,std_nway,exemplar_knn_k3 vs centroid,c2,0.0644,0.0439,0.085,3e-05,0.8874,True,30
+far,n/a (C1 is pool-independent),exemplar_knn_k3 vs centroid,c1,-0.0004,-0.0102,0.0089,0.93935,0.0181,False,30
+far,std_nway,logreg vs centroid,c2,0.075,0.0511,0.1,3e-05,0.892,True,30
+far,n/a (C1 is pool-independent),logreg vs centroid,c1,0.0053,-0.0053,0.0158,0.16991,0.32,False,30
+far,std_nway,linsvm vs centroid,c2,0.0844,0.0617,0.1089,1e-05,0.9683,True,30
+far,n/a (C1 is pool-independent),linsvm vs centroid,c1,0.0033,-0.0067,0.0138,0.49252,0.16,False,30
+far,small,exemplar_knn_k3 vs centroid,c2,0.0428,0.0244,0.0628,0.00027,0.8854,True,30
+far,small,logreg vs centroid,c2,0.0511,0.0333,0.0711,3e-05,0.899,True,30
+far,small,linsvm vs centroid,c2,0.0544,0.0333,0.0772,5e-05,0.8719,True,30
+far,medium,exemplar_knn_k3 vs centroid,c2,0.0189,0.0067,0.0311,0.00582,0.6558,True,30
+far,medium,logreg vs centroid,c2,0.0272,0.0122,0.0428,0.00266,0.7312,True,30
+far,medium,linsvm vs centroid,c2,0.0261,0.0128,0.0411,0.00224,0.6985,True,30
+far,large,exemplar_knn_k3 vs centroid,c2,0.0167,0.005,0.0289,0.01825,0.5731,True,30
+far,large,logreg vs centroid,c2,0.0233,0.0111,0.0372,0.00268,0.6724,True,30
+far,large,linsvm vs centroid,c2,0.0211,0.0067,0.0372,0.0214,0.5053,True,30
+far,hard,exemplar_knn_k3 vs centroid,c2,0.0483,0.0272,0.0711,0.00029,0.7833,True,30
+far,hard,logreg vs centroid,c2,0.1,0.0772,0.1217,1e-05,0.9632,True,30
+far,hard,linsvm vs centroid,c2,0.1133,0.0844,0.14,1e-05,0.9312,True,30
+far,oov_25,exemplar_knn_k3 vs centroid,c2,0.0111,-0.0044,0.0272,0.19707,0.2831,False,30
+far,oov_25,logreg vs centroid,c2,0.0183,0.0044,0.0328,0.02074,0.5079,True,30
+far,oov_25,linsvm vs centroid,c2,0.0161,-0.0,0.0322,0.0811,0.3903,False,30
+far,oov_50,exemplar_knn_k3 vs centroid,c2,0.0033,-0.0056,0.0128,0.45404,0.164,False,30
+far,oov_50,logreg vs centroid,c2,0.0117,-0.0,0.025,0.06602,0.3966,False,30
+far,oov_50,linsvm vs centroid,c2,0.0044,-0.0067,0.0161,0.68069,0.1048,False,30
