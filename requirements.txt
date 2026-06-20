@@ -30,3 +30,8 @@ pytest>=7.0.0
 
 # Graph database — Neo4j AuraDB
 neo4j>=5.14.0
+
+# exp_008 — Perceptual vs Semantic Dissociation
+nltk>=3.8.0           # WordNet (Wu-Palmer semantic distances)
+statsmodels>=0.14.0   # OLS regression, VIF, partial R²
+seaborn>=0.13.0       # figure styling
