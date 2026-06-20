@@ -13,6 +13,42 @@
 
 ---
 
+## The Carroll Framework — Following the White Rabbit
+
+> *"'When I use a word,' Humpty Dumpty said, in rather a scornful tone, 'it means just what I choose it to mean — neither more nor less.'*
+> *'The question is,' said Alice, 'whether you can make words mean so many different things.'*
+> *'The question is,' said Humpty Dumpty, 'which is to be master — that's all.'"*
+> — Lewis Carroll, *Through the Looking-Glass* (1871)
+
+Lewis Carroll — Charles Dodgson, mathematician and logician at Oxford — wrote "Jabberwocky" in 1872 as a poem full of invented words that mean nothing. And yet readers immediately build intuitions about them. "Vorpal" sounds sharp and precise. "Slithy" sounds smooth and sinuous. "Mimsy" sounds small and frail. Nobody explains this — readers infer it from sound, grammar, and context alone.
+
+That is exactly the mechanism this experiment tests. The agents receive labels with no prior semantic content. All meaning must emerge from perception and consensus — exactly as Humpty Dumpty describes, except the agents must agree with each other, not just decree.
+
+**The entire artificial vocabulary in this experiment consists of Carroll's invented words.**
+
+This choice is not decorative. It is scientifically precise:
+
+- The words are phonotactically valid English — agents can use them in sentences without syntactic friction
+- They carry no semantic grounding in any language — no pre-training can contaminate their meaning
+- They were constructed by a logician — their internal structure is deliberate, not random
+- They are culturally resonant — making results communicable to general audiences without simplification
+
+**The symbolic layers run deep:**
+
+*Following the White Rabbit* — the tutor is the White Rabbit. Agents enter a world where the rules of language must be built from scratch, not inherited.
+
+*Through the Looking-Glass* — Condition 2 of the experiment is literally a mirror: image → label, then label → image. The bidirectional grounding test is Carroll's looking-glass made computational.
+
+*The Cheshire Cat* — the consensus that persists after individual agents are removed. The label that remains stable when the agent that coined it is gone.
+
+*The vorpal blade went snicker-snack* — the label that cuts the continuous embedding space into discrete categories. Clean, decisive, irreversible.
+
+**For general audiences, the experiment can be described in one sentence:**
+
+> *Lewis Carroll invented "vorpal" in 1872 — a word with no meaning, only sound and feeling. One hundred and fifty years later, we asked artificial agents to agree on what "vorpal" means by looking at images together. This experiment is about how meaning is born.*
+
+---
+
 ## Key Finding
 
 Lexical acquisition over frozen perception is not arbitrary set learning. It follows a **monotonic perceptual-coherence gradient**: concepts whose positive examples form a tight, coherent cluster in DINOv2 embedding space are acquired reliably (native C1 ≈ 0.943), while concepts defined as arbitrary unions of perceptually distant classes degrade toward chance (far C1 ≈ 0.530, chance = 0.333). The four tiers of this gradient — native → near-disjunctive → mid-disjunctive → far-disjunctive — are documented in exp_007b_extension_clean (centroid learner: 0.943 → 0.847 → 0.654 → 0.530; all other supervised learners follow the same monotonic ordering).
