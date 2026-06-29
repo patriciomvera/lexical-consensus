@@ -1,0 +1,22 @@
+{
+  "silhouette_score": 0.2826,
+  "davies_bouldin_index": 2.2224,
+  "pass": true,
+  "silhouette_threshold": 0.25,
+  "intra_cluster_cosine_distance": {
+    "frog": 0.6962,
+    "horse": 0.5725,
+    "ship": 0.6266
+  },
+  "inter_cluster_cosine_distance": {
+    "frog_vs_horse": 0.9008,
+    "frog_vs_ship": 0.8947,
+    "horse_vs_ship": 0.894
+  },
+  "separation_ratio_inter_over_intra": {
+    "frog_vs_horse": 1.42,
+    "frog_vs_ship": 1.3528,
+    "horse_vs_ship": 1.4911
+  },
+  "most_confused_pair": "horse_vs_ship"
+}

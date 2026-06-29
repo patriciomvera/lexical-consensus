@@ -1,0 +1,12 @@
+experiment: exp_000_embedding_separability
+date: '2026-05-25'
+encoder: facebook/dinov2-small
+embedding_dim: 384
+dataset: CIFAR-10
+categories:
+  frog: 6
+  horse: 7
+  ship: 8
+n_images_per_category: 50
+random_seed: 42
+silhouette_threshold: 0.25

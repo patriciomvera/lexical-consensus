@@ -9,7 +9,7 @@
 
 ## What This Is
 
-**Lexical Consensus** is an experimental framework that tests whether artificial agents can acquire, stabilize, and bidirectionally use a novel grounded lexicon over a frozen perceptual substrate. Agents receive opaque invented labels for visual categories and must construct shared meaning from minimal instruction and mutual agreement — without access to any pre-existing semantic knowledge about those labels. The repository is the empirical implementation of **Test 1** from Vera, Moya & Barraza (2023), "Rethinking the Evaluating Framework for Natural Language Understanding in AI Systems: Language Acquisition as a Core for Future Metrics" (arXiv:2309.11981), which proposes language acquisition — not behavioral imitation — as the appropriate proxy for evaluating machine intelligence. The full experimental program spans nine families of experiments (exp_000 through exp_008) and is documented alongside the paper "Lexical Consensus: Grounded Word Learning and Shared Meaning in Artificial Agents" (Vera, 2026), currently submitted for arXiv preprint and TMLR review.
+**Lexical Consensus** is an experimental framework that tests whether artificial agents can acquire, stabilize, and bidirectionally use a novel grounded lexicon over a frozen perceptual substrate. Agents receive opaque invented labels for visual categories and must construct shared meaning from minimal instruction and mutual agreement — without access to any pre-existing semantic knowledge about those labels. The repository is the empirical implementation of **Test 1** from Vera, Moya & Barraza (2023), "Rethinking the Evaluating Framework for Natural Language Understanding in AI Systems: Language Acquisition as a Core for Future Metrics" (arXiv:2309.11981), which proposes language acquisition — not behavioral imitation — as the appropriate proxy for evaluating machine intelligence. The full experimental program spans nine families of experiments (exp_000 through exp_008) and is documented alongside the paper "Lexical Consensus: Grounded Word Learning and Shared Meaning in Artificial Agents".
 
 ---
 
@@ -290,14 +290,7 @@ WordNet class-to-synset mappings used for Wu-Palmer computation are archived at 
 If you use this code or the experimental findings, please cite:
 
 ```bibtex
-@article{vera2026lexical,
-  author      = {Vera, P. M.},
-  title       = {Lexical Consensus: Grounded Word Learning and Shared Meaning
-                 in Artificial Agents},
-  year        = {2026},
-  institution = {Neurocreaciones},
-  note        = {Manuscript submitted to arXiv and TMLR}
-}
+
 
 @misc{vera2023rethinking,
   author        = {Vera, P. and Moya, P. and Barraza, L.},

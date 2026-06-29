@@ -1,0 +1,67 @@
+{
+  "experiment": "exp_005",
+  "condition_a": "exp_003a_with_feedback",
+  "condition_b": "exp_003b_no_feedback_baseline",
+  "n_rounds_a": 6,
+  "n_rounds_b": 100,
+  "centroid_source": "interaction_pool_accepted_cumulative",
+  "hypothesis": {
+    "H0": "Consensus feedback does not reduce inter-agent centroid distance relative to the no-feedback baseline.",
+    "H1": "Consensus feedback reduces inter-agent centroid distance relative to the no-feedback baseline."
+  },
+  "per_label": {
+    "slithy": {
+      "alignment_gain": 0.00490659,
+      "AUC_003a": 0.03012675,
+      "AUC_003b": 0.0546597,
+      "difference_in_differences": 0.00490659,
+      "d_003a_round1": 0.00910995,
+      "d_003a_final": 0.00420336,
+      "d_003b_round1": 0.00910995,
+      "d_003b_final": 0.00910995,
+      "round_lexical_consensus": -1,
+      "round_representational_convergence": 2,
+      "repr_convergence_threshold": 0.00455498,
+      "convergence_order": "representational_first"
+    },
+    "mimsy": {
+      "alignment_gain": 0.0,
+      "AUC_003a": 0.0,
+      "AUC_003b": 0.0,
+      "difference_in_differences": 0.0,
+      "d_003a_round1": 0.0,
+      "d_003a_final": 0.0,
+      "d_003b_round1": 0.0,
+      "d_003b_final": 0.0,
+      "round_lexical_consensus": -1,
+      "round_representational_convergence": 1,
+      "repr_convergence_threshold": 0.0,
+      "convergence_order": "representational_first"
+    },
+    "vorpal": {
+      "alignment_gain": 0.0,
+      "AUC_003a": 0.0,
+      "AUC_003b": 0.0,
+      "difference_in_differences": 0.0,
+      "d_003a_round1": 0.0,
+      "d_003a_final": 0.0,
+      "d_003b_round1": 0.0,
+      "d_003b_final": 0.0,
+      "round_lexical_consensus": 4,
+      "round_representational_convergence": 1,
+      "repr_convergence_threshold": 0.0,
+      "convergence_order": "representational_first"
+    }
+  },
+  "mean_alignment_gain": 0.00163553,
+  "h1_supported": false,
+  "notes": [
+    "mimsy: alignment_gain=0.000000 <= 0 \u2014 feedback did not reduce inter-agent distance for this label.",
+    "vorpal: alignment_gain=0.000000 <= 0 \u2014 feedback did not reduce inter-agent distance for this label."
+  ],
+  "3_agent_pairs": [
+    "00_01",
+    "00_02",
+    "01_02"
+  ]
+}

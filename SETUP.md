@@ -27,7 +27,7 @@ git --version       # should show 2.x
 Open PowerShell and navigate to where you want the project to live:
 
 ```powershell
-cd C:\Users\Patricio\dev      # or wherever you keep your projects
+cd C:\path\to\your\projects      # or wherever you keep your projects
 ```
 
 Run the setup script (after copying `setup.ps1` from this session):

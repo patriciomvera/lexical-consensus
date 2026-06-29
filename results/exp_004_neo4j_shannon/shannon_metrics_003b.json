@@ -1,0 +1,848 @@
+{
+  "experiment": "exp_003b",
+  "condition": "no_feedback_baseline",
+  "pool": "interaction",
+  "n_rounds": 100,
+  "n_agents": 3,
+  "n_carroll_labels": 3,
+  "n_effective_symbols": 4,
+  "effective_symbols": [
+    "slithy",
+    "mimsy",
+    "vorpal",
+    "UNCERTAIN"
+  ],
+  "note": "UNCERTAIN is emitted when agent confidence < threshold (0.3). It is treated as a fourth symbol in Shannon calculations, which explains H(label) > log2(3) = 1.585. This is intentional \u2014 it represents genuine labeling uncertainty, not a bug.",
+  "shannon_including_uncertain": {
+    "grounding_threshold_round": 1,
+    "round_1_normalized_mi": 0.965931,
+    "final_H_label": 1.796908,
+    "final_H_label_given_image": 0.06122,
+    "final_mutual_information": 1.735688,
+    "final_normalized_mi": 0.965931,
+    "final_normalized_ce": 0.03061,
+    "entropy_curve": [
+      {
+        "round": 1,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 2,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 3,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 4,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 5,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 6,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 7,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 8,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 9,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 10,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 11,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 12,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 13,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 14,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 15,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 16,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 17,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 18,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 19,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 20,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 21,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 22,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 23,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 24,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 25,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 26,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 27,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 28,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 29,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 30,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 31,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 32,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 33,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 34,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 35,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 36,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 37,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 38,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 39,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 40,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 41,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 42,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 43,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 44,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 45,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 46,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 47,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 48,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 49,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 50,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 51,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 52,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 53,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 54,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 55,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 56,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 57,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 58,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 59,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 60,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 61,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 62,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 63,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 64,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 65,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 66,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 67,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 68,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 69,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 70,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 71,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 72,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 73,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 74,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 75,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 76,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 77,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 78,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 79,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 80,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 81,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 82,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 83,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 84,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 85,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 86,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 87,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 88,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 89,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 90,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 91,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 92,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 93,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 94,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 95,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 96,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 97,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 98,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 99,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      },
+      {
+        "round": 100,
+        "H_label": 1.796908,
+        "H_label_given_image": 0.06122,
+        "mutual_information": 1.735688,
+        "normalized_mi": 0.965931,
+        "normalized_conditional_entropy": 0.03061
+      }
+    ]
+  },
+  "shannon_carroll_only": {
+    "H_label": 1.584211,
+    "H_label_given_image": 0.0,
+    "mutual_information": 1.584211,
+    "normalized_mi": 1.0,
+    "n_images_included": 44,
+    "n_images_excluded_uncertain": 1
+  },
+  "delta_vs_003a": {
+    "delta_H_label_given_image": 0.040813,
+    "delta_mutual_information": 0.026136,
+    "delta_normalized_mi": -0.022273
+  },
+  "interpretation": {
+    "3_agent_entropy_reference": {
+      "unanimous_3_3": 0.0,
+      "majority_2_1": 0.9182958340544894,
+      "unresolved_1_1_1": 1.5849625007211563
+    },
+    "n_disagreements_formula": "n_disagreements \u2248 mean_entropy \u00d7 n_images / 0.9182958"
+  }
+}

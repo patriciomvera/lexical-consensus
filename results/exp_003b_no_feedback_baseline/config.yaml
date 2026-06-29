@@ -1,0 +1,30 @@
+experiment: exp_003b_no_feedback_baseline
+date: '2026-05-28'
+encoder: facebook/dinov2-small
+dataset: CIFAR-10
+label_assignment:
+  frog: slithy
+  horse: mimsy
+  ship: vorpal
+agent_seed_slices:
+  agent_00:
+  - 0
+  - 5
+  agent_01:
+  - 5
+  - 10
+  agent_02:
+  - 10
+  - 15
+interaction_slice:
+- 15
+- 30
+held_out_slice:
+- 30
+- 50
+n_agents: 3
+max_rounds: 100
+feedback: none
+confidence_threshold: 0.3
+random_seed: 42
+note: Lexicons frozen after seed phase. All rounds are deterministic.

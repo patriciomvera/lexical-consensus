@@ -10,7 +10,7 @@ Arquitectura inspirada directamente en el proceso descrito en Vera et al.:
   forma la palabra. Luego la 'magia' ocurre de vuelta: cuando esa etiqueta
   es escuchada por el niño, este tiene la representación multimodal de la
   etiqueta dentro de su cerebro."
-                                        — Patricio Vera, 2024
+                                        — Anonymous, 2024
 
 TRES CAPAS:
 

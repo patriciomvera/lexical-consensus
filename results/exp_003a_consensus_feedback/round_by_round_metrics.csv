@@ -1,0 +1,7 @@
+round,majority_agreement,unanimous_agreement,consensus_accuracy,mean_entropy,stable_label_count,label_coverage,label_balance_slithy,label_balance_mimsy,label_balance_vorpal,per_agent_accuracy_agent_00,per_agent_accuracy_agent_01,per_agent_accuracy_agent_02,held_out_consensus_accuracy,inter_agent_agreement
+1,1.0,0.9333,0.9556,0.0612,0,3,0.3333,0.3111,0.3111,1.0,1.0,1.0,1.0,1.0
+2,1.0,0.9778,0.9556,0.0204,0,3,0.3333,0.3111,0.3111,1.0,1.0,1.0,1.0,1.0
+3,1.0,0.9778,0.9556,0.0204,45,3,0.3333,0.3111,0.3111,1.0,1.0,1.0,1.0,1.0
+4,1.0,0.9778,0.9778,0.0204,44,3,0.3333,0.3111,0.3333,1.0,1.0,1.0,1.0,1.0
+5,1.0,0.9778,0.9778,0.0204,44,3,0.3333,0.3111,0.3333,1.0,1.0,1.0,1.0,1.0
+6,1.0,0.9778,0.9778,0.0204,45,3,0.3333,0.3111,0.3333,1.0,1.0,1.0,1.0,1.0

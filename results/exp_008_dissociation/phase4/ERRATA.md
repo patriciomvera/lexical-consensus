@@ -5,7 +5,7 @@
 **Affected file:** `regression_table.csv` (this directory)
 **Run timestamp:** 20260608_173255
 **Date of correction:** 2026-06-20
-**Corrected by:** Patricio Vera
+**Corrected by:** Anonymous
 
 ### What was wrong
 

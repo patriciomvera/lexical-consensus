@@ -1,0 +1,51 @@
+# exp_008 — Perceptual vs Semantic Dissociation
+# All hyperparameters in one place. Phase scripts read from here.
+
+experiment:
+  name: exp_008_dissociation
+  encoder: facebook/dinov2-small
+  embedding_dim: 384
+
+dataset:
+  name: cifar100
+  train_size_per_class: 500
+  episode_pool_per_class: 200   # sampled from train split, seed=42
+
+phase1:
+  n_classes: 100
+
+phase2:
+  n_pairs_per_quadrant: 25
+  sample_seed: 42
+  min_pairs_per_quadrant: 5    # warn if any quadrant has fewer
+
+phase3:
+  n_ways: 3
+  n_shots: 5
+  n_query_per_concept: 50
+  n_episodes: 30
+  master_seed: 42
+  # Carroll labels for the 3-way episodes (same as exp_007)
+  carroll_labels:
+    - vorpal    # disjunctive target
+    - slithy    # native contrast 1
+    - mimsy     # native contrast 2
+  learners:
+    - centroid
+    - exemplar_knn_k3
+    - logreg
+    - random
+  contrast_base_seed: 9000   # contrast_seed = contrast_base_seed + pair_id
+
+phase4:
+  bootstrap_resamples: 10000
+  alpha: 0.05
+  # Rule A criteria (pre-registered)
+  rule_a_beta_perc_pvalue_threshold: 0.05
+  rule_a_beta_sem_pvalue_threshold: 0.10
+  rule_a_partial_r2_ratio: 3.0
+  rule_a_dissociation_rho_min: 0.30
+  # Rule C criteria (pre-registered)
+  rule_c_rho_gap: 0.15
+  # Collinearity warning threshold
+  collinearity_flag_r: 0.85

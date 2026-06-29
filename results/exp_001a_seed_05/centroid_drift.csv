@@ -1,0 +1,16 @@
+category,carroll_label,seed_n,n_embeddings,centroid_shift
+frog,slithy,1,1,
+horse,mimsy,1,1,
+ship,vorpal,1,1,
+frog,slithy,2,2,0.192971
+horse,mimsy,2,2,0.108748
+ship,vorpal,2,2,0.188094
+frog,slithy,3,3,0.094885
+horse,mimsy,3,3,0.074823
+ship,vorpal,3,3,0.082258
+frog,slithy,4,4,0.054933
+horse,mimsy,4,4,0.040307
+ship,vorpal,4,4,0.043635
+frog,slithy,5,5,0.041525
+horse,mimsy,5,5,0.030675
+ship,vorpal,5,5,0.026239

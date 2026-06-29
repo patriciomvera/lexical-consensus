@@ -1,0 +1,76 @@
+{
+  "dissociation_subset": {
+    "centroid": {
+      "n_pairs": 50,
+      "rho_perc": -0.475,
+      "rho_perc_p": 0.0005,
+      "rho_sem": 0.3272,
+      "rho_sem_p": 0.0204
+    },
+    "exemplar_knn_k3": {
+      "n_pairs": 50,
+      "rho_perc": -0.4163,
+      "rho_perc_p": 0.0026,
+      "rho_sem": 0.2551,
+      "rho_sem_p": 0.0738
+    },
+    "logreg": {
+      "n_pairs": 50,
+      "rho_perc": -0.4908,
+      "rho_perc_p": 0.0003,
+      "rho_sem": 0.369,
+      "rho_sem_p": 0.0084
+    },
+    "random": {
+      "n_pairs": 50,
+      "rho_perc": 0.042,
+      "rho_perc_p": 0.7721,
+      "rho_sem": -0.1184,
+      "rho_sem_p": 0.4127
+    }
+  },
+  "quadrant_medians": {
+    "centroid": {
+      "Q1": 0.8862,
+      "Q2": 0.8276,
+      "Q3": 0.8367,
+      "Q4": 0.8762
+    },
+    "exemplar_knn_k3": {
+      "Q1": 0.8642,
+      "Q2": 0.8227,
+      "Q3": 0.8382,
+      "Q4": 0.8611
+    },
+    "logreg": {
+      "Q1": 0.8678,
+      "Q2": 0.822,
+      "Q3": 0.8429,
+      "Q4": 0.872
+    },
+    "random": {
+      "Q1": 0.3336,
+      "Q2": 0.334,
+      "Q3": 0.3358,
+      "Q4": 0.3336
+    }
+  },
+  "superclass_analysis": {
+    "beta_d_perc": -0.20088,
+    "beta_same_sc": 0.01537,
+    "beta_same_sc_p": 0.5279479687783135,
+    "beta_same_sc_ci_low": -0.03279,
+    "beta_same_sc_ci_high": 0.06353,
+    "r2": 0.2529,
+    "interpretation": "no significant superclass effect beyond d_perc"
+  },
+  "decision": {
+    "rule": "A",
+    "evidence": [
+      "A1: \u03b2_perc=-0.2119 significant (p=0.000) and negative \u2713",
+      "A2: \u03b2_sem not dominant (p=0.660, partial_R\u00b2_perc/partial_R\u00b2_sem=0.2453/0.0020) \u2713",
+      "A3: Spearman(C1,d_perc) in Q3+Q4 = -0.475 (negative, |\u03c1|>0.3, |\u03c1_perc|>|\u03c1_sem|=0.327) \u2713",
+      "A4: Q4 median C1=0.876 > Q3 median C1=0.837 \u2713"
+    ]
+  }
+}

@@ -3,8 +3,8 @@
 
 **Version:** 0.1.0  
 **Status:** Draft  
-**Authors:** Vera, P., Moya, P., Barraza, L.  
-**Last updated:** 2024
+**Authors:** Anonymous.  
+**Last updated:** 2026
 
 ---
 
@@ -12,7 +12,7 @@
 
 To test whether a network of LLM-based agents can acquire and stabilize a shared artificial lexicon for novel visual concepts, using only progressive verbal instruction from a human tutor — without access to pre-existing label knowledge.
 
-This constitutes a minimal, reproducible instantiation of **Test 1** from Vera et al. (20xx):
+This constitutes a minimal, reproducible instantiation of **Test 1** from Vera et al. (2023):
 
 > *"The first proposed test for machine intelligence should assess whether a machine, through direct verbal instruction from a human teacher, can describe its surroundings without any preloaded data sets or algorithms."*
 

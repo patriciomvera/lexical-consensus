@@ -1,0 +1,22 @@
+experiment: exp_001c_seed_15
+variant: c
+date: '2026-05-25'
+encoder: facebook/dinov2-small
+dataset: CIFAR-10
+label_assignment:
+  frog: slithy
+  horse: mimsy
+  ship: vorpal
+n_seeds: 15
+n_test_per_category: 20
+n_total_per_category: 50
+random_seed: 42
+test_slice: '[30:50]'
+thresholds:
+  accuracy: 0.7
+  per_label_min_accuracy: 0.6
+  mean_margin: 0.05
+categories_ground_truth:
+  frog: 6
+  horse: 7
+  ship: 8

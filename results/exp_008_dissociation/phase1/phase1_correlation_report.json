@@ -1,0 +1,111 @@
+{
+  "n_pairs": 4950,
+  "pearson_r": 0.1555,
+  "pearson_p": 3.7115522284326462e-28,
+  "spearman_rho": 0.0886,
+  "spearman_p": 4.214488652036192e-10,
+  "collinearity_flag": false,
+  "collinearity_threshold": 0.85,
+  "interpretation": "Moderate to low collinearity (|r|=0.155). Adequate dissociation power expected.",
+  "top5_most_perceptually_distant": [
+    {
+      "class_u": "bed",
+      "class_v": "poppy",
+      "d_perc": 0.943,
+      "d_sem": 0.6364
+    },
+    {
+      "class_u": "keyboard",
+      "class_v": "poppy",
+      "d_perc": 0.9429,
+      "d_sem": 0.619
+    },
+    {
+      "class_u": "orchid",
+      "class_v": "wardrobe",
+      "d_perc": 0.9378,
+      "d_sem": 0.619
+    },
+    {
+      "class_u": "keyboard",
+      "class_v": "orchid",
+      "d_perc": 0.9301,
+      "d_sem": 0.619
+    },
+    {
+      "class_u": "chair",
+      "class_v": "mountain",
+      "d_perc": 0.9261,
+      "d_sem": 0.625
+    }
+  ],
+  "top5_most_semantically_distant": [
+    {
+      "class_u": "cattle",
+      "class_v": "ray",
+      "d_perc": 0.7063,
+      "d_sem": 0.92
+    },
+    {
+      "class_u": "dolphin",
+      "class_v": "ray",
+      "d_perc": 0.4722,
+      "d_sem": 0.9167
+    },
+    {
+      "class_u": "chimpanzee",
+      "class_v": "ray",
+      "d_perc": 0.7239,
+      "d_sem": 0.9167
+    },
+    {
+      "class_u": "cattle",
+      "class_v": "table",
+      "d_perc": 0.7345,
+      "d_sem": 0.913
+    },
+    {
+      "class_u": "lion",
+      "class_v": "ray",
+      "d_perc": 0.7158,
+      "d_sem": 0.913
+    }
+  ],
+  "top5_most_dissociated": [
+    {
+      "class_u": "orchid",
+      "class_v": "sunflower",
+      "d_perc": 0.8765,
+      "d_sem": 0.0833,
+      "rank_gap": 4877
+    },
+    {
+      "class_u": "ray",
+      "class_v": "shark",
+      "d_perc": 0.2762,
+      "d_sem": 0.9091,
+      "rank_gap": 4871
+    },
+    {
+      "class_u": "forest",
+      "class_v": "pine_tree",
+      "d_perc": 0.1873,
+      "d_sem": 0.8947,
+      "rank_gap": 4850
+    },
+    {
+      "class_u": "forest",
+      "class_v": "willow_tree",
+      "d_perc": 0.1901,
+      "d_sem": 0.8824,
+      "rank_gap": 4793
+    },
+    {
+      "class_u": "ray",
+      "class_v": "turtle",
+      "d_perc": 0.3006,
+      "d_sem": 0.8889,
+      "rank_gap": 4760
+    }
+  ]
+}

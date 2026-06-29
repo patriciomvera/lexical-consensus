@@ -1,0 +1,9 @@
+{
+  "total_pairs": 4950,
+  "median_d_perc": 0.711799,
+  "median_d_sem": 0.619048,
+  "Q1_concordant_near": 1255,
+  "Q2_concordant_far": 1444,
+  "Q3_dissociation_A": 1031,
+  "Q4_dissociation_B": 1220
+}
