@@ -1,0 +1,12 @@
+centroid original_Q34 n=50 rho(perc,sem)=-0.793 rho_sem=0.327 partial_sem|perc(S)=-0.092 p=0.529 (P)=-0.009 p=0.949 partial_perc|sem(S)=-0.374 p=0.0081
+centroid corrected_Q34 n=35 rho(perc,sem)=-0.733 rho_sem=0.359 partial_sem|perc(S)=0.040 p=0.822 (P)=-0.118 p=0.506 partial_perc|sem(S)=-0.305 p=0.079
+centroid original_all100 n=100 rho(perc,sem)=0.013 rho_sem=-0.075 partial_sem|perc(S)=-0.079 p=0.439 (P)=-0.045 p=0.660 partial_perc|sem(S)=-0.502 p=1.2e-07
+exemplar_knn_k3 original_Q34 n=50 rho(perc,sem)=-0.793 rho_sem=0.255 partial_sem|perc(S)=-0.135 p=0.354 (P)=-0.031 p=0.835 partial_perc|sem(S)=-0.363 p=0.01
+exemplar_knn_k3 corrected_Q34 n=35 rho(perc,sem)=-0.733 rho_sem=0.291 partial_sem|perc(S)=-0.006 p=0.971 (P)=-0.126 p=0.477 partial_perc|sem(S)=-0.291 p=0.095
+exemplar_knn_k3 original_all100 n=100 rho(perc,sem)=0.013 rho_sem=-0.099 partial_sem|perc(S)=-0.103 p=0.311 (P)=-0.070 p=0.492 partial_perc|sem(S)=-0.426 p=1.1e-05
+logreg original_Q34 n=50 rho(perc,sem)=-0.793 rho_sem=0.369 partial_sem|perc(S)=-0.038 p=0.796 (P)=0.018 p=0.900 partial_perc|sem(S)=-0.350 p=0.014
+logreg corrected_Q34 n=35 rho(perc,sem)=-0.733 rho_sem=0.439 partial_sem|perc(S)=0.105 p=0.553 (P)=-0.091 p=0.607 partial_perc|sem(S)=-0.317 p=0.068
+logreg original_all100 n=100 rho(perc,sem)=0.013 rho_sem=-0.082 partial_sem|perc(S)=-0.088 p=0.387 (P)=-0.061 p=0.547 partial_perc|sem(S)=-0.515 p=4.8e-08
+random original_Q34 n=50 rho(perc,sem)=-0.793 rho_sem=-0.118 partial_sem|perc(S)=-0.140 p=0.338 (P)=-0.070 p=0.632 partial_perc|sem(S)=-0.086 p=0.56
+random corrected_Q34 n=35 rho(perc,sem)=-0.733 rho_sem=0.143 partial_sem|perc(S)=0.192 p=0.276 (P)=0.100 p=0.573 partial_perc|sem(S)=0.130 p=0.46
+random original_all100 n=100 rho(perc,sem)=0.013 rho_sem=-0.026 partial_sem|perc(S)=-0.027 p=0.791 (P)=0.022 p=0.830 partial_perc|sem(S)=0.085 p=0.4

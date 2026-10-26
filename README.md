@@ -1,7 +1,6 @@
-# Lexical Consensus
+# Novel-Word Learning over Frozen Perception — Experimental Code
 
 [![Status: Complete](https://img.shields.io/badge/Status-Complete-green.svg)]()
-[![Paper: arXiv](https://img.shields.io/badge/Paper-arXiv%3A2309.11981-blue.svg)](https://arxiv.org/abs/2309.11981)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)]()
 [![License: See note](https://img.shields.io/badge/License-See%20note-lightgrey.svg)](#license)
 
@@ -9,7 +8,7 @@
 
 ## What This Is
 
-**Lexical Consensus** is an experimental framework that tests whether artificial agents can acquire, stabilize, and bidirectionally use a novel grounded lexicon over a frozen perceptual substrate. Agents receive opaque invented labels for visual categories and must construct shared meaning from minimal instruction and mutual agreement — without access to any pre-existing semantic knowledge about those labels. The repository is the empirical implementation of **Test 1** from Vera, Moya & Barraza (2023), "Rethinking the Evaluating Framework for Natural Language Understanding in AI Systems: Language Acquisition as a Core for Future Metrics" (arXiv:2309.11981), which proposes language acquisition — not behavioral imitation — as the appropriate proxy for evaluating machine intelligence. The full experimental program spans nine families of experiments (exp_000 through exp_008) and is documented alongside the paper "Lexical Consensus: Grounded Word Learning and Shared Meaning in Artificial Agents".
+This repository contains an experimental framework that tests whether artificial agents can acquire, stabilize, and bidirectionally use a novel grounded lexicon over a frozen perceptual substrate. Agents receive opaque invented labels for visual categories and must construct shared meaning from minimal instruction and mutual agreement — without access to any pre-existing semantic knowledge about those labels. The framework treats language acquisition, rather than behavioral imitation, as the object of evaluation. The full experimental program spans nine families of experiments (exp_000 through exp_008); additional robustness analyses run on the released code and data are in [`revision_analyses/`](revision_analyses/).
 
 ---
 
@@ -73,7 +72,7 @@ The experimental framework is organized into four layers:
 Maps between embeddings and Carroll labels bidirectionally. Default implementation: centroid-based nearest-neighbor (one centroid per label, updated by ACCEPT events). Additional learner variants: multi-centroid (k-centroid), exemplar k-NN (k = 3), logistic regression, linear SVM, and random baseline. Introduced in exp_007 to separate the contribution of learning mechanism from perceptual structure. A per-agent trainable linear projection (`LexicalAdapter`, introduced in exp_005b) is available as an optional additive gradient component but is not the default; DINOv2 remains frozen throughout.
 
 **Layer 3 — Multi-agent consensus (optional)**
-A distributed ledger (`src/consensus/ledger.py`) mediates label competition across agents. A label is ACCEPTED when ≥ τ = 0.70 of the agent population agrees; REJECTED when < 0.20 agree. Active in exp_003 onward; disabled in baseline conditions (exp_003b) and single-agent experiments.
+Label competition across agents is mediated by majority agreement: a label is ACCEPTED when ≥ τ = 2/3 of the agent population agrees (as implemented in `experiments/exp_003_multi_agent_consensus/_shared.py` and `run_003a.py`). The standalone `src/consensus/ledger.py` module is not used by the experiment scripts. Active in exp_003 onward; disabled in baseline conditions (exp_003b) and single-agent experiments.
 
 **Layer 4 — Measurement layer**
 All experiments report at minimum: Condition 1 (C1) naming accuracy, Condition 2 (C2) inverse grounding retrieval, and confidence margins. Consensus experiments additionally report: convergence round, unanimity trajectory, held-out accuracy, Shannon entropy (NMI), and centroid drift. The dissociation experiment (exp_008) adds: partial R² decomposition, likelihood ratio tests, and quadrant-stratified dissociation analysis (Q1–Q4 defined by median split of d_perc × d_sem).
@@ -111,7 +110,7 @@ Each experiment family is gated — it must pass before the next begins. Outcome
 The actual directory layout is:
 
 ```
-lexical-consensus/
+./
 │
 ├── src/
 │   ├── agents/
@@ -201,12 +200,13 @@ lexical-consensus/
 │   ├── learners/                       # Learner interface and exemplar weighting tests
 │   └── metrics/test_shannon.py
 │
+├── revision_analyses/                  # Robustness analyses r01–r07b (see its README)
+│
 ├── docs/
 │   └── experiment_summary.md           # One-page summary for external review
 │
 ├── README.md                           # This file
 ├── PROTOCOL.md                         # Formal experiment protocol (citable)
-├── CLAUDE.md                           # AI-assistant context and coding principles
 ├── SETUP.md                            # Environment setup instructions
 └── requirements.txt                    # Python dependencies
 ```
@@ -219,7 +219,7 @@ The dissociation experiment (exp_008) was pre-registered before Phase 3 data col
 
 The pre-registered data collection and analysis proceeded without modification. Rule A was triggered on the first and only run (all four criteria met; see [`results/exp_008_dissociation/exp_008_decision.md`](results/exp_008_dissociation/exp_008_decision.md)).
 
-**VIF correction (documented errata):** The original Phase 4 run (`phase4/regression_table.csv`, timestamp 20260608_173255) reported VIF = 9.693 for both predictors in Model PS. This value arose from a statsmodels intercept artifact: the auxiliary VIF regression was fit without an intercept, inflating the condition number. The corrected VIF, fit with an intercept, is **1.0105** — indicating negligible multicollinearity (confirmed by the Phase 1 correlation diagnostic: Pearson r = 0.155, Spearman ρ = 0.089 between d_perc and d_sem). The correction does not affect any regression coefficients, standard errors, p-values, partial R² values, or Rule A/B/C decision outcomes. A corrected regression table is archived at [`results/exp_008_dissociation/exp_008_regression_table_corrected.csv`](results/exp_008_dissociation/exp_008_regression_table_corrected.csv). The errata are also noted in [`results/exp_008_dissociation/exp_008_report_corrected.md`](results/exp_008_dissociation/exp_008_report_corrected.md) and in [`results/exp_008_dissociation/phase4/ERRATA.md`](results/exp_008_dissociation/phase4/ERRATA.md). The full record, including the spurious Rule B trigger that the original VIF would have produced and its removal after correction, appears in Appendix I of the paper.
+**VIF correction (documented errata):** The original Phase 4 run (`phase4/regression_table.csv`, timestamp 20260608_173255) reported VIF = 9.693 for both predictors in Model PS. This value arose from a statsmodels intercept artifact: the auxiliary VIF regression was fit without an intercept, inflating the condition number. The corrected VIF, fit with an intercept, is **1.0105** — indicating negligible multicollinearity (confirmed by the Phase 1 correlation diagnostic: Pearson r = 0.155, Spearman ρ = 0.089 between d_perc and d_sem). The correction does not affect any regression coefficients, standard errors, p-values, partial R² values, or Rule A/B/C decision outcomes. A corrected regression table is archived at [`results/exp_008_dissociation/exp_008_regression_table_corrected.csv`](results/exp_008_dissociation/exp_008_regression_table_corrected.csv). The errata are also noted in [`results/exp_008_dissociation/exp_008_report_corrected.md`](results/exp_008_dissociation/exp_008_report_corrected.md) and in [`results/exp_008_dissociation/phase4/ERRATA.md`](results/exp_008_dissociation/phase4/ERRATA.md). The full record, including the spurious Rule B trigger that the original VIF would have produced and its removal after correction, is documented in the errata files above.
 
 ---
 
@@ -285,28 +285,12 @@ WordNet class-to-synset mappings used for Wu-Palmer computation are archived at 
 
 ---
 
-## Citation
+## Robustness Analyses
 
-If you use this code or the experimental findings, please cite:
-
-```bibtex
-
-
-@misc{vera2023rethinking,
-  author        = {Vera, P. and Moya, P. and Barraza, L.},
-  title         = {Rethinking the Evaluating Framework for Natural Language
-                   Understanding in {AI} Systems: Language Acquisition as a
-                   Core for Future Metrics},
-  year          = {2023},
-  eprint        = {2309.11981},
-  archivePrefix = {arXiv},
-  primaryClass  = {cs.CL},
-  url           = {https://arxiv.org/abs/2309.11981}
-}
-```
+The folder [`revision_analyses/`](revision_analyses/) contains additional analysis scripts (r01–r07b) that re-use the committed code and results: an exp_008 semantic-measure and bootstrap check (r01), multiple-comparison corrections (r02), embedding-cache rebuild (r03), multi-seed re-runs of exp_007b_extension_clean (r04, r06), tier-distance tabulation (r05), and a partial-correlation check and observed quadrant-median difference for exp_008 (r07, r07b). Small text/CSV outputs are in `revision_analyses/out/`. See [`revision_analyses/README.md`](revision_analyses/README.md) for usage.
 
 ---
 
 ## License
 
-**No LICENSE file is present at the repository root.** The prior README referenced an MIT license, but the file is absent. This must be resolved before public release or arXiv submission. Please add a `LICENSE` file to the repository root.
+**No LICENSE file is present at the repository root.** The prior README referenced an MIT license, but the file is absent. A license file will be added in a later release.

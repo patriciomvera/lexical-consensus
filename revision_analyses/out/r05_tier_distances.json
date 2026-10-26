@@ -1,0 +1,46 @@
+{
+ "near_threshold": 0.4767,
+ "far_median": 0.6964,
+ "band_summary": [
+  {
+   "band": "far",
+   "count": 6.0,
+   "min": 0.6988,
+   "50%": 0.7157,
+   "max": 0.7343
+  },
+  {
+   "band": "mid",
+   "count": 31.0,
+   "min": 0.4914,
+   "50%": 0.6185,
+   "max": 0.6959
+  },
+  {
+   "band": "near",
+   "count": 8.0,
+   "min": 0.2795,
+   "50%": 0.4334,
+   "max": 0.4767
+  }
+ ],
+ "far_concepts": {
+  "far:gleth": 0.6783,
+  "far:mivor": 0.7343,
+  "far:plonk": 0.6492,
+  "far:quax": 0.7144
+ },
+ "native_nearest_other": {
+  "frog": 0.4489,
+  "horse": 0.4178,
+  "ship": 0.5305,
+  "automobile": 0.3985,
+  "airplane": 0.5305,
+  "bird": 0.3979,
+  "cat": 0.2795,
+  "deer": 0.3979,
+  "dog": 0.2795,
+  "truck": 0.3985
+ },
+ "check_vs_concept_gate": 0.0
+}

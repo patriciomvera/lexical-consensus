@@ -1,0 +1,237 @@
+{
+ "F2_n_tests": 96,
+ "F2_raw_sig": 81,
+ "F2_holm_sig": 65,
+ "F2_bh_sig": 81,
+ "F2_lost_under_holm": [
+  {
+   "tier": "native",
+   "pool_type": "n/a (C1 is pool-independent)",
+   "comparison": "exemplar_knn_k3 vs centroid",
+   "metric": "c1",
+   "mean_diff": -0.0113,
+   "p_exact": 0.006902403820322361,
+   "F2_all_holm": 0.1587552878674143
+  },
+  {
+   "tier": "native",
+   "pool_type": "n/a (C1 is pool-independent)",
+   "comparison": "linsvm vs centroid",
+   "metric": "c1",
+   "mean_diff": 0.0069,
+   "p_exact": 0.011223445282516323,
+   "F2_all_holm": 0.2356923509328428
+  },
+  {
+   "tier": "native",
+   "pool_type": "hard",
+   "comparison": "exemplar_knn_k3 vs centroid",
+   "metric": "c2",
+   "mean_diff": 0.0317,
+   "p_exact": 0.01719872124315476,
+   "F2_all_holm": 0.3439744248630952
+  },
+  {
+   "tier": "native",
+   "pool_type": "oov_50",
+   "comparison": "exemplar_knn_k3 vs centroid",
+   "metric": "c2",
+   "mean_diff": 0.0233,
+   "p_exact": 0.027002887013357173,
+   "F2_all_holm": 0.43204619221371476
+  },
+  {
+   "tier": "native",
+   "pool_type": "oov_50",
+   "comparison": "logreg vs centroid",
+   "metric": "c2",
+   "mean_diff": 0.0361,
+   "p_exact": 0.00258832343878066,
+   "F2_all_holm": 0.07506137972463914
+  },
+  {
+   "tier": "native",
+   "pool_type": "oov_50",
+   "comparison": "linsvm vs centroid",
+   "metric": "c2",
+   "mean_diff": 0.0311,
+   "p_exact": 0.005638892784866892,
+   "F2_all_holm": 0.1409723196216723
+  },
+  {
+   "tier": "near",
+   "pool_type": "n/a (C1 is pool-independent)",
+   "comparison": "exemplar_knn_k3 vs centroid",
+   "metric": "c1",
+   "mean_diff": -0.0136,
+   "p_exact": 0.002228854167755302,
+   "F2_all_holm": 0.06909447920041437
+  },
+  {
+   "tier": "near",
+   "pool_type": "oov_50",
+   "comparison": "linsvm vs centroid",
+   "metric": "c2",
+   "mean_diff": 0.0439,
+   "p_exact": 0.004533352065432756,
+   "F2_all_holm": 0.11786715370125164
+  },
+  {
+   "tier": "mid",
+   "pool_type": "oov_50",
+   "comparison": "linsvm vs centroid",
+   "metric": "c2",
+   "mean_diff": 0.0411,
+   "p_exact": 0.007235592303713132,
+   "F2_all_holm": 0.1591830306816889
+  },
+  {
+   "tier": "far",
+   "pool_type": "medium",
+   "comparison": "exemplar_knn_k3 vs centroid",
+   "metric": "c2",
+   "mean_diff": 0.0189,
+   "p_exact": 0.005815972622653503,
+   "F2_all_holm": 0.1409723196216723
+  },
+  {
+   "tier": "far",
+   "pool_type": "medium",
+   "comparison": "logreg vs centroid",
+   "metric": "c2",
+   "mean_diff": 0.0272,
+   "p_exact": 0.002660541203118811,
+   "F2_all_holm": 0.07506137972463914
+  },
+  {
+   "tier": "far",
+   "pool_type": "medium",
+   "comparison": "linsvm vs centroid",
+   "metric": "c2",
+   "mean_diff": 0.0261,
+   "p_exact": 0.002238901042062416,
+   "F2_all_holm": 0.06909447920041437
+  },
+  {
+   "tier": "far",
+   "pool_type": "large",
+   "comparison": "exemplar_knn_k3 vs centroid",
+   "metric": "c2",
+   "mean_diff": 0.0167,
+   "p_exact": 0.018252505979579104,
+   "F2_all_holm": 0.34679761361200295
+  },
+  {
+   "tier": "far",
+   "pool_type": "large",
+   "comparison": "logreg vs centroid",
+   "metric": "c2",
+   "mean_diff": 0.0233,
+   "p_exact": 0.002680621049967753,
+   "F2_all_holm": 0.07506137972463914
+  },
+  {
+   "tier": "far",
+   "pool_type": "large",
+   "comparison": "linsvm vs centroid",
+   "metric": "c2",
+   "mean_diff": 0.0211,
+   "p_exact": 0.021398932139135542,
+   "F2_all_holm": 0.37333856705139534
+  },
+  {
+   "tier": "far",
+   "pool_type": "oov_25",
+   "comparison": "logreg vs centroid",
+   "metric": "c2",
+   "mean_diff": 0.0183,
+   "p_exact": 0.020741031502855296,
+   "F2_all_holm": 0.37333856705139534
+  }
+ ],
+ "F2_lost_under_bh": [],
+ "F2_c2_positive_and_holm_sig": 65,
+ "F2_c2_n": 84,
+ "F1_table2": [
+  {
+   "tier": "native",
+   "mean_diff": 0.0317,
+   "p_exact": 0.01719872124315476,
+   "F1_table2_holm": 0.01719872124315476,
+   "F1_table2_bh": 0.01719872124315476,
+   "F2_all_holm": 0.3439744248630952,
+   "F2_all_bh": 0.021442561549907233
+  },
+  {
+   "tier": "near",
+   "mean_diff": 0.0739,
+   "p_exact": 1.6683908375884172e-05,
+   "F1_table2_holm": 5.0051725127652516e-05,
+   "F1_table2_bh": 3.3367816751768344e-05,
+   "F2_all_holm": 0.0008675632355459769,
+   "F2_all_bh": 3.4749271326070615e-05
+  },
+  {
+   "tier": "mid",
+   "mean_diff": 0.0661,
+   "p_exact": 4.162269121079345e-06,
+   "F1_table2_holm": 1.664907648431738e-05,
+   "F1_table2_bh": 1.664907648431738e-05,
+   "F2_all_holm": 0.0003204947223231096,
+   "F2_all_bh": 1.7634878171537517e-05
+  },
+  {
+   "tier": "far",
+   "mean_diff": 0.0483,
+   "p_exact": 0.0002890867259046145,
+   "F1_table2_holm": 0.000578173451809229,
+   "F1_table2_bh": 0.0003854489678728193,
+   "F2_all_holm": 0.009869381269497858,
+   "F2_all_bh": 0.00044051310614036496
+  }
+ ],
+ "F3_dissociation": [
+  {
+   "test": "beta_perc (P+S)",
+   "p": 1.8746979248899774e-07,
+   "holm": 1.1248187549339865e-06,
+   "bh": 6.561442737114922e-07
+  },
+  {
+   "test": "beta_sem (P+S)",
+   "p": 0.6603189623238565,
+   "holm": 1.0,
+   "bh": 0.6603189623238565
+  },
+  {
+   "test": "LRT add sem",
+   "p": 0.6546091097207716,
+   "holm": 1.0,
+   "bh": 0.6603189623238565
+  },
+  {
+   "test": "LRT add perc",
+   "p": 1.128840225351997e-07,
+   "holm": 7.901881577463978e-07,
+   "bh": 6.561442737114922e-07
+  },
+  {
+   "test": "rho_perc Q3+Q4",
+   "p": 0.0005,
+   "holm": 0.0025,
+   "bh": 0.0011666666666666668
+  },
+  {
+   "test": "rho_sem Q3+Q4",
+   "p": 0.0204,
+   "holm": 0.0816,
+   "bh": 0.0357
+  },
+  {
+   "test": "beta_same_superclass",
+   "p": 0.5279479687783135,
+   "holm": 1.0,
+   "bh": 0.6603189623238565
+  }
+ ]
+}
