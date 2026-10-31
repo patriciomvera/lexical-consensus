@@ -9,7 +9,8 @@ curl -L -o "$SC/cifar10h-counts.npy" https://github.com/jcpeterson/cifar-10h/raw
 [ -d "$ROOT/XTMEM" ] || git clone https://github.com/mllewis/XTMEM "$ROOT/XTMEM"
 git -C "$ROOT/XTMEM" checkout 220ed17ec2b85d30a4053711209252fdbc3cb166
 mkdir -p "$(dirname "$0")/xtmem"
-echo "Copy all_raw_A.csv and experiment_key.csv from $ROOT/XTMEM (see data/README.md) into data/xtmem/, then run scripts/h4_prep.py."
+echo "Copy all_raw_A.csv and experiment_key.csv from $ROOT/XTMEM (see data/README.md) into data/xtmem/, then run scripts/h4_prep.py and scripts/h4_first_session.py."
+# Alternative source with explicit license (CC BY 4.0): OSF https://osf.io/yekhj/ -> data/anonymized_data/all_raw_A.csv (https://osf.io/download/qyzcg/, md5 e42712b8a15187983620a1d9f6edb5e9)
 # THINGS odd-one-out / SPoSE (CC BY 4.0) and ImageNet-HSJ (CC BY 4.0): processed versions are included in data/.
 # Raw sources, only needed to rebuild data/map_*.json and data/hsj_trials.csv.gz:
 #   THINGS: https://osf.io/f5rn6/   (concepts-metadata_things.tsv, spose_embedding_66d_sorted.txt)

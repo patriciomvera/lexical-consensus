@@ -1,0 +1,75 @@
+    
+     1-3 3-1
+  1    1   0
+  2    1   0
+  3    0   1
+  4    0   1
+  5    1   0
+  6    0   1
+  7    1   0
+  8    0   1
+  9    0   1
+  10   1   0
+  11   0   1
+  12   1   0
+N obs=172800 personas=520 obs_1-3=86400 obs_3-1=86400
+Mbase warn:  singular: FALSE 
+Mb warn:  singular: FALSE 
+                      Estimate Std. Error  z value Pr(>|z|)
+(Intercept)            -3.8552     0.7296  -5.2843   0.0000
+zd                     -3.1149     0.0427 -72.9511   0.0000
+conditionsub           -1.9809     0.0759 -26.1076   0.0000
+conditionbas           -0.3716     0.0531  -7.0009   0.0000
+conditionsup            2.0273     0.0413  49.1140   0.0000
+order3-1               -1.2175     0.0726 -16.7648   0.0000
+levelsub                0.1325     1.0297   0.1287   0.8976
+levelsup                1.0392     0.8916   1.1656   0.2438
+zd:conditionsub         0.1540     0.0306   5.0399   0.0000
+zd:conditionbas        -0.7911     0.0401 -19.7333   0.0000
+zd:conditionsup        -1.2360     0.0368 -33.6023   0.0000
+conditionsub:order3-1   2.0027     0.0917  21.8493   0.0000
+conditionbas:order3-1   1.1749     0.0797  14.7390   0.0000
+conditionsup:order3-1   1.0177     0.0684  14.8720   0.0000
+zd:order3-1             0.2041     0.0410   4.9723   0.0000
+Data: d
+Models:
+mb0: selected ~ zd * condition + condition * order + level + (1 + zd | person) + (1 | image)
+mb: selected ~ zd + condition + order + level + (1 + zd | person) + (1 | image) + zd:condition + condition:order + zd:order
+    npar   AIC   BIC logLik -2*log(L)  Chisq Df Pr(>Chisq)    
+mb0   18 58628 58809 -29296     58592                         
+mb    19 58605 58796 -29284     58567 24.586  1  7.107e-07 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Mc warn:  singular: FALSE 
+                         Estimate Std. Error  z value Pr(>|z|)
+(Intercept)               -3.8261     0.7287  -5.2507   0.0000
+zd                        -3.0444     0.0454 -67.0754   0.0000
+conditionsub              -2.1970     0.0928 -23.6822   0.0000
+conditionbas              -0.3800     0.0538  -7.0638   0.0000
+conditionsup               2.0049     0.0412  48.6734   0.0000
+order3-1                  -1.3292     0.0789 -16.8493   0.0000
+levelsub                   0.1173     1.0284   0.1141   0.9092
+levelsup                   1.0337     0.8905   1.1609   0.2457
+zd:conditionsub           -0.0270     0.0467  -0.5789   0.5626
+zd:conditionbas           -0.8095     0.0568 -14.2572   0.0000
+zd:conditionsup           -1.3203     0.0520 -25.4021   0.0000
+conditionsub:order3-1      2.3811     0.1213  19.6314   0.0000
+conditionbas:order3-1      1.2596     0.0890  14.1520   0.0000
+conditionsup:order3-1      1.1274     0.0748  15.0822   0.0000
+zd:order3-1                0.0614     0.0532   1.1548   0.2482
+zd:conditionsub:order3-1   0.3235     0.0624   5.1846   0.0000
+zd:conditionbas:order3-1   0.0551     0.0778   0.7087   0.4785
+zd:conditionsup:order3-1   0.1773     0.0702   2.5234   0.0116
+Data: d
+Models:
+mb: selected ~ zd + condition + order + level + (1 + zd | person) + (1 | image) + zd:condition + condition:order + zd:order
+mc: selected ~ zd + condition + order + level + (1 + zd | person) + (1 | image) + zd:condition + condition:order + zd:order + zd:condition:order
+   npar   AIC   BIC logLik -2*log(L)  Chisq Df Pr(>Chisq)    
+mb   19 58605 58796 -29284     58567                         
+mc   22 58582 58803 -29269     58538 29.122  3  2.111e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+LR_zd_order chi2(1)=24.586 p=7.107e-07 p_holm2=1.421e-06
+LR_zd_cond_order chi2(3)=29.123 p=2.111e-06 p_holm2=2.111e-06
+MB zd:order3-1=0.2041 SE=0.0410 CI[0.1236, 0.2845] z=4.972 p=6.617e-07
+MB zd(ref one, 1-3)=-3.1149 SE=0.0427

@@ -89,3 +89,34 @@ Cada entrada: qué cambió, por qué, y efecto conocido. Fechas en hora de Santi
    - Pendiente de z(d) dentro de cada nivel (modelo con nivel × z(d), condición, RE por persona): básico −3.21 [−3.40, −3.03], subordinado −4.22 [−4.46, −3.98], supraordinado −0.94 [−1.25, −0.62].
    - El R² marginal (Nakagawa) se calculó pero no se interpreta: baja al añadir la distancia (0.735 → 0.684) porque cambia la varianza de los efectos aleatorios; no es una medida adecuada del aporte incremental aquí.
    - No cambia ninguna decisión confirmatoria. No se re-ejecutó ningún análisis del plan.
+
+## Análisis post hoc tras revisión automática externa (paperreview.ai, 2026-10-31; aprobados por el autor a las 17:50 hora de Santiago)
+Especificaciones escritas ANTES de correr los modelos. Corrección de hora (anotada 18:45 hora de Santiago, 2026-10-31): este archivo y los scripts 04f/04g quedaron guardados juntos a las 17:52:33 (mtime); la ejecución de 04g terminó a las 17:53:51 y el proceso actual de 04f se inició a las 18:06:53 (ps lstart). La hora '~18:05' que figuraba antes aquí era errónea (posterior a la escritura real). Las especificaciones también están resumidas en la cabecera de cada script, guardada a la misma hora. Ambos son EXPLORATORIOS POST HOC, motivados por una revisión automática externa (paperreview.ai, preguntas Q4 y Q1); no están en el plan congelado, no entran en la familia Holm y no cambian ninguna decisión confirmatoria. Los resultados se reportan tal como salgan.
+
+34. **ESPECIFICACIÓN, EXPLORATORIO POST HOC: moderación por orden de ensayos (Q4).**
+   - Moderador: `order` de `data/xtmem/experiment_key.csv` (XTMEM 220ed17), variable de nivel de experimento: "3-1" = los ensayos de 3 ejemplares (3sub) preceden al de 1 ejemplar; "1-3" = al revés. Está definida para los 12 experimentos (1-3: exps 1, 2, 5, 7, 10, 12; 3-1: exps 3, 4, 6, 8, 9, 11), así que se usan todos. Antes de correr verifiqué en `all_raw_A.csv` que en los experimentos "3-1" los ensayos 1–3 son 3sub y en los "1-3" son "one". Es una variable entre experimentos: se confunde parcialmente con blocking y timing, y no se intenta separar.
+   - Datos: `data/h4_long.csv`, 24 ítems, 172.800 obs., 520 personas (como §32).
+   - Modelos (glmer binomial, bobyqa, RE `(1+zd|persona) + (1|imagen)`, z(d) estandarizada sobre los 24 ítems como en §32):
+     - Mbase: `selected ~ zd*condition + condition*order + level`
+     - Mb: Mbase + `zd:order` → LR χ²(1): ¿varía la pendiente de la distancia según el orden?
+     - Mc: Mb + `zd:condition:order` → LR χ²(3): ¿varía la interacción distancia × condición según el orden?
+   - Se reportan: LR, gl, p, coeficientes de los términos con orden (Wald), N obs., N personas, advertencias/singularidad. Si Mc no converge, se reporta así y se reporta solo Mb.
+   - Qué cuenta como evidencia: p < .05 en el LR correspondiente (dos pruebas; se informa también Holm sobre esas 2). Con N tan grande, se reporta también el tamaño del coeficiente y no solo la p.
+   - Script `scripts/04f_h4_order_moderation.R`, salida `out/h4_order_moderation.txt`.
+
+35. **ESPECIFICACIÓN, EXPLORATORIO POST HOC: modelo solo con ítems supraordinados (Q1).**
+   - Datos: `data/h4_long.csv` restringido a `in_target == 1 & level == "sup"` (los 4 ítems supraordinados de la categoría enseñada en cada ensayo; 12 imágenes en total). z(d) re-estandarizada dentro de este subconjunto.
+   - Modelos (glmer binomial, bobyqa, RE `(1|persona) + (1|imagen)`):
+     - Md: `selected ~ zd`; Mc: `selected ~ condition`; Mdc: `selected ~ zd + condition`.
+     - LR condición | distancia: Mdc vs Md, χ²(3). LR distancia | condición: Mdc vs Mc, χ²(1).
+   - Sensibilidad (también especificada ahora): lo mismo con `(1+zd|persona)` en vez de `(1|persona)`; si no converge o es singular, se reporta así.
+   - Se reportan: ambos LR, coeficientes de Mdc, N obs., N personas, advertencias.
+   - Qué cuenta como evidencia de aporte incremental: p < .05 en el LR respectivo, reportando también los coeficientes.
+   - Script `scripts/04g_h4_superordinate_only.R`, salida `out/h4_superordinate_only.txt`.
+
+## Licencias y redistribución (2026-10-31, ~21:00 hora de Santiago; tras la revisión final previa al envío)
+36. **`data/h4_first_session.csv` deja de redistribuirse.** Es un derivado por participante (subid, primer experimento) de `all_raw_A.csv` de XTMEM. Ahora lo genera `scripts/h4_first_session.py` a partir de la descarga original (AcceptTime más temprano por subid; reproduce byte a byte el archivo usado en §29, 520 filas) y queda en `.gitignore`, igual que `data/h4_long.csv`. No cambia ningún resultado. El archivo sigue en el historial de git (commits 66ad8f4 y 1c50c3b).
+   - Licencia de XTMEM verificada en fuentes primarias: el repositorio GitHub mllewis/XTMEM no tiene archivo LICENSE; el proyecto OSF de los autores (https://osf.io/yekhj/, del que se registró https://osf.io/zcbp7/ con la plantilla AsPredicted) declara CC BY 4.0 y contiene `data/anonymized_data/all_raw_A.csv`, idéntico (md5 e42712b8…) al usado aquí. La mención "CC BY 4.0 (OSF)" del plan congelado es correcta; el plan no se modifica.
+   - Los agregados de CIFAR-10H (columna `d_c10h`) son CC BY-NC-SA 4.0: esos archivos se marcan como share-alike en `data/README.md` y `README.md`.
+   - wordfreq (datos CC BY-SA 4.0) pide no reempaquetar sus datos como CSV: la columna `zipf` se quita de `data/h5_*_glasgow.csv` y `scripts/05_h5.py` la calcula en tiempo de ejecución con `wordfreq.zipf_frequency`. Verificado con wordfreq 3.1.1: los valores coinciden exactamente con los antes distribuidos y `out/h5_results.json` se reproduce idéntico (ρ parcial, IC, p, p_BH). No cambia ningún resultado.
+

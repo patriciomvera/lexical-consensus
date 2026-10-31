@@ -4,6 +4,7 @@
 suppressMessages(library(lme4)); set.seed(42)
 d <- read.csv("data/h4_long.csv"); d$person <- factor(d$subid)
 d$condition <- factor(c(one="one",three_subordinate="sub","3sub"="sub",three_basic="bas","3bas"="bas",three_superordinate="sup","3sup"="sup")[d$condition], levels=c("one","sub","bas","sup"))
+# data/h4_first_session.csv is not redistributed: build it with scripts/h4_first_session.py
 fsx <- read.csv("data/h4_first_session.csv"); first <- setNames(fsx$first_exp, fsx$subid)
 ctl <- glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=2e5))
 prep <- function(dd) { dd$zd <- as.numeric(scale(dd$dist)); dd$level <- factor(dd$level); dd$image <- factor(dd$image); dd }

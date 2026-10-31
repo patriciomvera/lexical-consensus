@@ -27,4 +27,17 @@ Bootstrap seeds are fixed in each script.
 
 ## Licenses
 - Code: MIT (`LICENSE`).
-- Third-party data keep their own licenses (CC BY 4.0, CC BY-SA 4.0 or CC BY-NC-SA 4.0; see `data/README.md`). The CIFAR-10H aggregates are non-commercial.
+- Third-party data keep their own licenses (see `data/README.md`), as verified on the primary sources:
+
+| Dataset | License | Source | In this repo |
+|---|---|---|---|
+| Lewis & Frank (2018), XTMEM | CC BY 4.0 on the authors' OSF project; the GitHub repo has no LICENSE file | https://osf.io/yekhj/ , https://github.com/mllewis/XTMEM | Not redistributed (raw data and all per-participant/per-trial derivatives are rebuilt locally by `download_data.sh`, `h4_prep.py`, `h4_first_session.py`) |
+| THINGS odd-one-out (Hebart et al., 2023) | CC BY 4.0, with exceptions for some images (LICENSE.txt) | https://osf.io/f5rn6/ | Mappings and distances only; no images |
+| ImageNet-HSJ (Roads & Love, 2021) | CC BY 4.0 | https://osf.io/cn2s3/ | `hsj_trials.csv.gz` (CIFAR-mapped classes) |
+| Glasgow Norms (Scott et al., 2019) | Article published under CC BY 4.0 | https://doi.org/10.3758/s13428-018-1099-3 | `aoa_glasgow` column |
+| wordfreq (Speer, 2022) | Data CC BY-SA 4.0 (code Apache 2.0) | https://github.com/rspeer/wordfreq | `zipf` computed at runtime by `05_h5.py` (not shipped) |
+| CIFAR-10H (Peterson et al., 2019) | CC BY-NC-SA 4.0 | https://github.com/jcpeterson/cifar-10h | 45 class-pair aggregates (`d_c10h`) — **share-alike, non-commercial** |
+| CVCL model (Vong et al., 2024) | MIT | https://github.com/wkvong/multimodal-baby | No weights |
+
+- Share-alike: wordfreq frequencies are not shipped (computed at runtime); files containing the `d_c10h` column (`pairs_c10.csv`, `tiers_c10.csv`, `h6_pairs_c10.csv`) are distributed under CC BY-NC-SA 4.0. The MIT license covers only the code.
+- `data/h4_first_session.csv` (a per-participant XTMEM derivative) was included in earlier commits and has been removed from the tree; it remains in the git history.

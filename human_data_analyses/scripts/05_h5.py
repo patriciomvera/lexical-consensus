@@ -40,7 +40,8 @@ cw10 = {c: word(c) for c in c10}; cw10 = {k: v for k, v in cw10.items() if v}; d
 for tag, d, cmap in (("C100_glasgow", d100, {names[i]: w for i, w in cw.items()}), ("C10_glasgow", d10, cw10)):
     t = pd.DataFrame([dict(word=w, classes="|".join(sorted(k for k, v in cmap.items() if v == w)), dispersion=d[w], aoa_glasgow=G[w],
                            zipf=zipf_frequency(w.split(" (")[0], "en")) for w in d]).sort_values("word")
-    t.to_csv(B / f"data/h5_{tag}.csv", index=False); res[tag] = pspear(t.dispersion.values, t.aoa_glasgow.values, t.zipf.values)
+    # zipf is computed at runtime with the wordfreq library and NOT written to the shipped CSV (wordfreq data: CC BY-SA 4.0; DESVIACIONES §36)
+    t.drop(columns="zipf").to_csv(B / f"data/h5_{tag}.csv", index=False); res[tag] = pspear(t.dispersion.values, t.aoa_glasgow.values, t.zipf.values)
 ps = [res[k]["p"] for k in res]; for_bh = bh(ps)
 for k, q in zip(res, for_bh): res[k]["p_BH"] = float(q)
 res["wordbank"] = "not run: Wordbank item-level data now served only via Redivis (login/API token required); no account created (plan §5)"

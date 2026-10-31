@@ -81,7 +81,7 @@ This directly validates Test 1 of a prior theoretical framework [citation omitte
 |---|---|---|
 | **Shannon (1948)** | Information is entropy reduction | Consensus is error correction; grounding is mutual information between perception and label |
 | **Carroll (1872)** | Semantically empty but syntactically valid words | The experimental vocabulary — meaning must be built, not inherited |
-| **Steels (1996–2015)** | Lexical consensus emerges in robotic agents | Same dynamics, different substrate — LLMs instead of custom robots, DINOv2 instead of cameras |
+| **Steels (1996–2015)** | Shared vocabularies emerge in robotic agents | Same dynamics, different substrate — LLMs instead of custom robots, DINOv2 instead of cameras |
 | **[citation omitted for review]** | Language acquisition as AI benchmark | This experiment is the empirical validation of that theoretical claim |
 
 ---

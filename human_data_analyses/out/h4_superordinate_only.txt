@@ -1,0 +1,31 @@
+N obs=28800 personas=520 imagenes=12 SD_dist=0.1048
+   one    sub    bas    sup 
+0.0257 0.0106 0.0183 0.7749 
+   one    sub    bas    sup 
+0.8796 0.8921 0.8612 0.8446 
+== PRIMARY | warn md/mc/mdc:  |  |  | singular: FALSE FALSE FALSE 
+PRIMARY LR_cond_given_dist chi2(3)=18907.206 p=0
+PRIMARY LR_dist_given_cond chi2(1)=15.139 p=9.986e-05
+             Estimate Std. Error  z value Pr(>|z|)
+(Intercept)   -5.2494     0.1992 -26.3584    0e+00
+zd            -0.2757     0.0729  -3.7827    2e-04
+conditionsub  -1.0537     0.1635  -6.4427    0e+00
+conditionbas  -0.4889     0.1384  -3.5324    4e-04
+conditionsup   7.1136     0.1260  56.4412    0e+00
+PRIMARY COEF zd=-0.2757 CI[-0.4185, -0.1328] p=0.0001551
+PRIMARY COEF conditionsub=-1.0537 CI[-1.3742, -0.7331] p=1.174e-10
+PRIMARY COEF conditionbas=-0.4889 CI[-0.7602, -0.2176] p=0.0004117
+PRIMARY COEF conditionsup=7.1136 CI[6.8665, 7.3606] p=0
+== SENS_SLOPE | warn md/mc/mdc:  |  |  | singular: TRUE FALSE FALSE 
+SENS_SLOPE LR_cond_given_dist chi2(3)=18907.344 p=0
+SENS_SLOPE LR_dist_given_cond chi2(1)=15.293 p=9.208e-05
+             Estimate Std. Error  z value Pr(>|z|)
+(Intercept)   -5.2602     0.1997 -26.3441    0e+00
+zd            -0.2786     0.0733  -3.8001    1e-04
+conditionsub  -1.0523     0.1639  -6.4214    0e+00
+conditionbas  -0.4884     0.1387  -3.5220    4e-04
+conditionsup   7.1284     0.1265  56.3574    0e+00
+SENS_SLOPE COEF zd=-0.2786 CI[-0.4222, -0.1349] p=0.0001446
+SENS_SLOPE COEF conditionsub=-1.0523 CI[-1.3734, -0.7311] p=1.351e-10
+SENS_SLOPE COEF conditionbas=-0.4884 CI[-0.7602, -0.2166] p=0.0004283
+SENS_SLOPE COEF conditionsup=7.1284 CI[6.8805, 7.3763] p=0
