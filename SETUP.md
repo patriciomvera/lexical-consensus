@@ -1,6 +1,6 @@
 # SETUP.md — Getting Started on Windows
 
-Quick guide to set up the lexical-consensus repository on your machine.
+Quick guide to set up the nwl-openmind repository on your machine.
 
 ---
 
@@ -34,7 +34,7 @@ Run the setup script (after copying `setup.ps1` from this session):
 
 ```powershell
 .\setup.ps1
-cd lexical-consensus
+cd nwl-openmind
 ```
 
 If PowerShell blocks the script, run this first (one-time only):
@@ -98,7 +98,7 @@ git commit -m "Initial structure — three-layer architecture with Carroll vocab
 ## Step 6 — Create GitHub Repository
 
 1. Go to https://github.com/new
-2. Repository name: `lexical-consensus`
+2. Repository name: `nwl-openmind`
 3. Description: "Empirical validation of language acquisition as a measure of machine intelligence"
 4. Keep it Public if you want it citable, Private if you want time first
 5. Do NOT initialize with README, .gitignore, or license (we have these)
@@ -107,7 +107,7 @@ git commit -m "Initial structure — three-layer architecture with Carroll vocab
 GitHub will show you the commands to connect:
 
 ```powershell
-git remote add origin https://github.com/YOUR_USERNAME/lexical-consensus.git
+git remote add origin https://github.com/YOUR_USERNAME/nwl-openmind.git
 git branch -M main
 git push -u origin main
 ```

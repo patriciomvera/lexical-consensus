@@ -12,7 +12,7 @@ Esta capa es:
   - CONGELADA durante el experimento (no aprende nada nuevo)
   - CIEGA a etiquetas (su espacio de embeddings es puramente visual)
 
-Es el equivalente computacional de la corteza visual en el paper de Vera et al.:
+Es el equivalente computacional de la corteza visual en el paper de [citation omitted for review]:
 todos los agentes perciben el mundo de la misma forma, pero las etiquetas
 emergen por consenso social — no están precargadas.
 

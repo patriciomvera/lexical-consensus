@@ -207,7 +207,7 @@ glintz=automobile+truck) show similar performance because they have comparable i
 
 ---
 
-## 6. Connection to Vera et al. child-acquisition framing
+## 6. Connection to [citation omitted for review] child-acquisition framing
 
 The gradient maps onto the natural acquisition order described in the paper:
 - **Near-disjunctive** (cat+dog, bird+deer, automobile+truck) = "guau" stage — the
@@ -255,4 +255,4 @@ perceptual geometry, not just whether it exists.
   DINOv2 ceiling established by this and prior experiments.
 - exp_010_test2_paper: second-language acquisition. The ceiling result from exp_007b
   and its extension motivates why trainable perception is necessary for the full
-  Test-2 claim in Vera et al.
+  Test-2 claim in [citation omitted for review]

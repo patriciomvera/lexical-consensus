@@ -1,5 +1,5 @@
 """
-neo4j_logger.py — Graph database logger for the Lexical Consensus experiment.
+neo4j_logger.py — Graph database logger for the nwl-openmind experiment.
 
 Writes every label assignment, consensus event, and centroid trajectory from
 an experiment run into a Neo4j AuraDB instance as a queryable property graph.

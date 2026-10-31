@@ -1,5 +1,5 @@
 # PROTOCOL.md — Formal Experiment Protocol
-## Lexical Consensus: Test 1 Implementation
+## nwl-openmind: Test 1 Implementation
 
 **Version:** 0.1.0  
 **Status:** Draft  
@@ -12,7 +12,7 @@
 
 To test whether a network of LLM-based agents can acquire and stabilize a shared artificial lexicon for novel visual concepts, using only progressive verbal instruction from a human tutor — without access to pre-existing label knowledge.
 
-This constitutes a minimal, reproducible instantiation of **Test 1** from Vera et al. (2023):
+This constitutes a minimal, reproducible instantiation of **Test 1** from [citation omitted for review]:
 
 > *"The first proposed test for machine intelligence should assess whether a machine, through direct verbal instruction from a human teacher, can describe its surroundings without any preloaded data sets or algorithms."*
 
@@ -110,7 +110,7 @@ All metrics are defined formally in `docs/metrics.md`. Summary:
 | **Label Stability Index** | Variance of dominant label across last 10 rounds | 0–1 |
 | **Generalization Accuracy** | Agreement with tutor intent on test set | 0–100% |
 | **Drift Score** | Net label change from round 1 to round 25 | 0–N |
-| **Efficiency Index** | Composite score (per Vera et al. framework) | 0–1 |
+| **Efficiency Index** | Composite score (per the prior framework [citation omitted for review]) | 0–1 |
 
 All results are reported as mean ± 95% confidence interval over N independent runs.
 
@@ -132,7 +132,7 @@ Following VVUQ guidelines (Adams, 2012):
 
 > *H₀: A network of LLM agents exposed to artificial label instruction will not achieve stable lexical convergence above chance level (defined as > 1/N where N = vocabulary size).*
 
-A result that rejects H₀ constitutes empirical support for Test 1 of the Vera et al. framework.
+A result that rejects H₀ constitutes empirical support for Test 1 of a prior theoretical framework [citation omitted for review].
 
 ---
 
@@ -164,7 +164,7 @@ A result that rejects H₀ constitutes empirical support for Test 1 of the Vera 
 
 3. **Consensus threshold is operationally chosen.** The 70% convergence threshold is not derived from language acquisition theory or biological data. It is a starting parameter. Sensitivity analysis across thresholds (50%, 60%, 70%, 80%) will be reported in the full results.
 
-4. **Single modality.** This experiment uses visual input only. The full theoretical framework (Vera et al.) envisions multimodal grounding including embodiment, affect, and social context. Visual-only grounding is an acknowledged simplification and a starting point, not a final claim.
+4. **Single modality.** This experiment uses visual input only. The full theoretical framework [citation omitted for review] envisions multimodal grounding including embodiment, affect, and social context. Visual-only grounding is an acknowledged simplification and a starting point, not a final claim.
 
 5. **No survival pressure.** Unlike Steels' embodied agents, our agents have no ecological incentive to communicate accurately. The consensus mechanism provides social pressure as a proxy, but the biological motivation for communication accuracy is absent. This gap between experiment and theory is acknowledged and will be addressed in the discussion section of the empirical paper.
 

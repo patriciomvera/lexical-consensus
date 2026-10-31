@@ -17,7 +17,7 @@ Output: results/exp_007b_extension_clean/ledger_c2_homogeneous.jsonl
         (one row per episode x learner x pool_type)
 
 Usage:
-    cd C:\\Lexical-Consensus
+    cd C:\\nwl-openmind
     python experiments/exp_007b_extension_clean/run_clean.py
 """
 

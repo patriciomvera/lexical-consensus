@@ -3,7 +3,7 @@ learner_agent.py  (v2 — arquitectura de tres capas)
 ----------------------------------------------------
 El agente aprendiz rediseñado.
 
-Arquitectura inspirada directamente en el proceso descrito en Vera et al.:
+Arquitectura inspirada directamente en el proceso descrito en [citation omitted for review]:
 
   "El niño reconoce el objeto y los adultos lo ayudan asignando la etiqueta,
   y esa etiqueta tiene un consenso en una comunidad determinada y ahí se

@@ -1,0 +1,36 @@
+SD_dist_raw=0.2192 mean_dist=0.8475 n=172800
+(arriba: escala de z(d) en el modelo de 24 items)
+SD_dist_raw=0.2963 mean_dist=0.6618 n=57600
+(arriba: escala de z(d) en el modelo de 8 items objetivo)
+warn m0/m1/m2:  |  |  | singular: FALSE FALSE FALSE 
+Data: p
+Models:
+m0: selected ~ level + condition + (1 | person) + (1 | image)
+m1: selected ~ zd + level + condition + (1 | person) + (1 | image)
+m2: selected ~ zd + level + condition + (1 + zd | person) + (1 | image)
+   npar   AIC   BIC logLik -2*log(L)   Chisq Df Pr(>Chisq)    
+m0    8 31325 31396 -15654     31309                          
+m1    9 28310 28390 -14146     28292 3016.96  1  < 2.2e-16 ***
+m2   11 27635 27734 -13807     27613  678.43  2  < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+LR_M1vsM0 chi2(1)=3016.96 dAIC=3014.96
+LR_M2vsM0 chi2(3)=3695.39 dAIC=3689.39
+M1 zd=-3.0543 SE=0.0623
+R2m M0=0.7354 M1=0.6838 M2=0.6857
+warn m3:  singular: FALSE 
+             Estimate Std. Error  z value Pr(>|z|)
+levelbas      -1.3488     0.6492  -2.0775   0.0378
+levelsub      -1.6367     0.6625  -2.4706   0.0135
+levelsup      -3.7630     0.4759  -7.9067   0.0000
+conditionsub  -1.4283     0.0534 -26.7563   0.0000
+conditionbas   1.0711     0.0530  20.2215   0.0000
+conditionsup   5.4686     0.0595  91.9198   0.0000
+levelbas:zd   -3.2133     0.0941 -34.1613   0.0000
+levelsub:zd   -4.2184     0.1225 -34.4485   0.0000
+levelsup:zd   -0.9351     0.1594  -5.8679   0.0000
+SLOPE level=bas zd=-3.2133 CI[-3.3977, -3.0289] p=9.1e-256
+SLOPE level=sub zd=-4.2184 CI[-4.4585, -3.9784] p=4.74e-260
+SLOPE level=sup zd=-0.9351 CI[-1.2475, -0.6228] p=4.41e-09
+      bas       sub       sup 
+0.3105766 0.1760334 0.1047527 

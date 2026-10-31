@@ -29,7 +29,7 @@ concept?**
 
 ## Honesty constraint (write into the paper)
 
-This experiment does **not** rescue the grand Vera et al. thesis (acquisition >
+This experiment does **not** rescue the broader thesis of prior work [citation omitted for review] (acquisition >
 imitation as a fundamental intelligence measure). It defeats the "pointer, not
 acquisition" objection and maps the prototype/episodic boundary. State this in
 Limitations.

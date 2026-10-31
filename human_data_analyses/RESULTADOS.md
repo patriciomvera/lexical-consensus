@@ -68,7 +68,9 @@ Versión anterior de C3/C7 ("primera" = experimento de menor número; sustituida
 
 Versión anterior (agrupada por exp_subid; sustituida): primaria −3.23 [−3.29, −3.17]; sin no prerregistrados −3.17 [−3.24, −3.11]; ítems objetivo −3.19 [−3.33, −3.05].
 
-Interacción dist × condición (exploratoria; sigue agrupada por exp_subid, no se re-estimó, Wald; LR falló, DESVIACIONES §19): zd = −2.93 (ref.); zd×sub +0.10 (z=3.47); zd×bas −0.87 (z=−22.05); zd×sup −1.30 (z=−36.24).
+**Interacción dist × condición (exploratoria; vigente, RE por persona, 31-oct-2026, DESV §32):** ref. "1 ejemplo": pendiente zd −2.92 [−3.00, −2.85]; ×3 sub +0.10 [0.04, 0.16]; ×3 básicos −0.86 [−0.94, −0.79]; ×3 superordinados −1.29 [−1.36, −1.22]; LR χ²(3) = 2134.16, p < .001 (`out/h4_interaction_person.txt`; detalle al final de este archivo). **Nota:** esta interacción se estimó sobre los 24 ítems de cada ensayo; las curvas humanas de la figura exploratoria x1 muestran solo los 8 ítems objetivo.
+
+*Registro histórico (sustituido 31-oct, DESV §32):* interacción dist × condición agrupada por exp_subid, en su momento no re-estimada por persona (Wald; LR falló, DESVIACIONES §19): zd = −2.93 (ref.); zd×sub +0.10 (z=3.47); zd×bas −0.87 (z=−22.05); zd×sup −1.30 (z=−36.24).
 
 ## §4. Desviación entre fuentes
 - Acuerdo: c100 THINGS–HSJ ρ = .597 [.553, .636] (1.042 pares; 20 muestreados); c10 THINGS–HSJ .734, THINGS–C10H .779, HSJ–C10H .734 (Mantel p ≤ .001).

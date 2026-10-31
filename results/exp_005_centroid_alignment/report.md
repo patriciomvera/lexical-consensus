@@ -259,7 +259,7 @@ Feedback cannot reduce seed-driven divergence because seeds are fixed after
 injection.
 
 **vorpal:** Distance drops from 0.01533 to 0.01453 at round 4 — exactly when
-vorpal achieves lexical consensus (Section 6: round_lexical_consensus = 4). The
+vorpal achieves lexical agreement (Section 6: round_lexical_consensus = 4). The
 gain is small (+0.00080) and occurs one step after representational geometry is
 already stable in the interaction-only reconstruction.
 

@@ -3,7 +3,7 @@ lexical_adapter.py
 ------------------
 LexicalAdapter — agent-specific trainable projection over frozen DINOv2 embeddings.
 
-This is the first gradient-trained component introduced in the Lexical Consensus
+This is the first gradient-trained component introduced in the nwl-openmind
 project. Until exp_005b the architecture was deliberately gradient-free: DINOv2
 was frozen, centroids were updated by simple averaging, and consensus feedback
 only changed which images contributed to a centroid — never how an agent
@@ -64,7 +64,7 @@ class LexicalAdapter(nn.Module):
     is updated by gradient descent.
 
     This component enables a proper operational test of weak Sapir-Whorf in
-    the Lexical Consensus system: shared lexical feedback can pull W toward
+    the nwl-openmind system: shared lexical feedback can pull W toward
     the geometry implied by the Carroll labels, while raw DINOv2 distances
     remain invariant.
     """

@@ -12,7 +12,7 @@ Loads ledger_c2_homogeneous.jsonl and produces:
     paper_paragraph.md
 
 Usage:
-    cd C:\\Lexical-Consensus
+    cd C:\\nwl-openmind
     python experiments/exp_007b_extension_clean/analyze_clean.py
 """
 

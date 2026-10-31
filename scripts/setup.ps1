@@ -1,6 +1,6 @@
 # setup.ps1
 # ----------------------------------------------------------------------------
-# Lexical Consensus — Initial Repository Setup for Windows
+# nwl-openmind — Initial Repository Setup for Windows
 # ----------------------------------------------------------------------------
 # Run this script in PowerShell from the directory where you want the
 # repository to live. It will create the full directory structure and
@@ -8,18 +8,18 @@
 #
 # Usage:
 #   1. Open PowerShell
-#   2. Navigate to your projects folder (e.g. cd C:\Users\Patricio\dev)
+#   2. Navigate to your projects folder (e.g. cd C:\Users\<user>\dev)
 #   3. Run: .\setup.ps1
 #
 # Note: If you get a script execution error, run this first:
 #   Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 # ----------------------------------------------------------------------------
 
-$ProjectName = "lexical-consensus"
+$ProjectName = "nwl-openmind"
 $Root = Join-Path (Get-Location) $ProjectName
 
 Write-Host ""
-Write-Host "Creating lexical-consensus repository structure..." -ForegroundColor Cyan
+Write-Host "Creating nwl-openmind repository structure..." -ForegroundColor Cyan
 Write-Host "Location: $Root" -ForegroundColor Gray
 Write-Host ""
 

@@ -205,7 +205,7 @@ lejos al nivel nativo.
   *carving* genuino (extensión que no coincide con un cluster nativo), la
   percepción congelada **no** lo logra con NINGÚN mecanismo léxico —
   prototipo, episódico, multi-ancla o lineal.
-- **Honestidad obligatoria (plan §0):** esto NO rescata la tesis mayor de Vera
+- **Honestidad obligatoria (plan §0):** esto NO rescata la tesis mayor del trabajo previo [cita omitida]
   et al. Mapea la frontera del grounding sobre percepción congelada y, de paso,
   falsa la predicción prototipo→episódico EN ESTE substrato. Va en Limitaciones.
 

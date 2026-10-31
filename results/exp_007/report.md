@@ -32,7 +32,7 @@ El experimento es una grilla 2-D (plan §2):
   revisor) + random (piso de azar).
 
 **Honestidad obligatoria (va al paper):** este experimento NO rescata la tesis
-mayor de Vera et al. (adquisición > imitación como métrica fundamental de
+mayor de [citation omitted for review] (adquisición > imitación como métrica fundamental de
 inteligencia). Derrota la objeción "puntero, no adquisición" y mapea la frontera
 prototipo/episódico. Se declara explícitamente en Limitaciones.
 

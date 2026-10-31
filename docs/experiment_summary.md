@@ -1,4 +1,4 @@
-# Experiment Summary — Lexical Consensus
+# Experiment Summary — nwl-openmind
 *One-page overview for evaluation and comparison*
 
 ---
@@ -36,7 +36,7 @@ Can a network of AI agents build a shared vocabulary for visual concepts from sc
 
 **Condition 2 — Inverse grounding:** given only the string "vorpal", an agent can identify which image in a set corresponds to that concept — the label activates the internal visual representation
 
-Both conditions must pass for the experiment to validate Test 1 of Vera et al.
+Both conditions must pass for the experiment to validate Test 1 of the prior framework [citation omitted for review]
 
 ---
 
@@ -71,7 +71,7 @@ If the experiment succeeds, it provides empirical evidence that:
 2. Shared meaning can emerge from perception and social consensus alone, without pre-defined ontologies
 3. The Turing Test measures the wrong thing — a system can pass it without this capacity, and fail it while having it
 
-This directly validates Test 1 of the Vera et al. theoretical framework and challenges the Turing Test as the primary benchmark for machine intelligence.
+This directly validates Test 1 of a prior theoretical framework [citation omitted for review] and challenges the Turing Test as the primary benchmark for machine intelligence.
 
 ---
 
@@ -82,7 +82,7 @@ This directly validates Test 1 of the Vera et al. theoretical framework and chal
 | **Shannon (1948)** | Information is entropy reduction | Consensus is error correction; grounding is mutual information between perception and label |
 | **Carroll (1872)** | Semantically empty but syntactically valid words | The experimental vocabulary — meaning must be built, not inherited |
 | **Steels (1996–2015)** | Lexical consensus emerges in robotic agents | Same dynamics, different substrate — LLMs instead of custom robots, DINOv2 instead of cameras |
-| **Vera et al. (20xx)** | Language acquisition as AI benchmark | This experiment is the empirical validation of that theoretical claim |
+| **[citation omitted for review]** | Language acquisition as AI benchmark | This experiment is the empirical validation of that theoretical claim |
 
 ---
 
@@ -110,4 +110,4 @@ Phase 1 and 2 are sufficient for a first publishable result.
 ---
 
 *Full documentation: README.md, PROTOCOL.md*
-*Repository: github.com/[username]/lexical-consensus*
+*Repository: github.com/[username]/nwl-openmind*
