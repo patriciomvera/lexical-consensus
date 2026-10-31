@@ -16,7 +16,7 @@
 | H2 | THINGS (n=61) | β_hum = −.0079, p Holm = .374; r parcial −.100 [−.345, .158] | IC incluye 0 y −.20 | **Inconcluso** |
 | H2 | HSJ (n=32) | β_hum = −.0344, p = .039, p Holm = .079; r parcial −.413 [−.670, −.069]; β_sem p = .362 | ninguna regla se cumple | **Inconcluso (fuera de reglas; ver DESVIACIONES §7)** |
 | H3 | tiers CIFAR-10 (descriptivo) | ver tabla H3 | sin inferencia | Descriptivo |
-| H4 | Lewis & Frank 2018 (600 sujetos, 172.800 obs.) | log OR por DE de dist = −3.23 [−3.29, −3.17], p Holm < .001 | β<0 y p Holm<.05 | **Apoyo** |
+| H4 | Lewis & Frank 2018 (520 personas, 600 participaciones, 172.800 obs.) | log OR por DE de dist = −3.23 [−3.29, −3.16], p Holm < .001 (corregido 31-oct: RE por persona, DESV §26) | β<0 y p Holm<.05 | **Apoyo** |
 | H5 | Glasgow AoA vs coherencia de clase (exploratorio) | C100 n=85: ρ parcial −.110 [−.317, .107], p=.320, p BH=.320; C10 n=10: ρ parcial −.891 [−.977, −.555], p=.0013, p BH=.0026 | BH; sin regla de veredicto en el plan | Exploratorio (sin veredicto) |
 | H6 | CVCL (no humano), CIFAR-10 y CIFAR-100 | (a) OLS c100 n=100: β_perc_CVCL = +.0047 [−.018, .028], p=.688, p BH=.688; β_sem = −.0059 [−.029, .017], p=.617; (b) ρ CVCL–DINOv2 c100 = .618 [.599, .636], c10 = .751; (c) c100 vs THINGS .683, HSJ .429; c10 vs THINGS .859, HSJ .637, C10H .786 (todas p BH ≤ .0042) | Consistente exige β_perc<0 con IC sin 0 tras BH | **Inconsistente** (IC de β_perc_CVCL incluye 0) |
 
@@ -48,16 +48,25 @@ H2b (descriptivo, d_perc + d_hum + d_sem en el mismo subconjunto): THINGS β_per
 
 Complemento por imagen (10.000 imágenes de test CIFAR-10H): ρ(entropía humana, margen del aprendiz) = .391 [.374, .409]; margen = d(centroide propio) − d(rival más cercano), es decir, mayor margen = más ambiguo para el aprendiz. Precisión centroide 94,6 %; mayoría humana 99,2 %.
 
-## H4. GLMM selección ~ z(dist) + level + condition + (1+z(dist)|sujeto) + (1|imagen)
-Pendiente aleatoria convergió sin advertencias.
+## H4. GLMM selección ~ z(dist) + level + condition + (1+z(dist)|persona) + (1|imagen)
+**Corrección (31-oct-2026, DESVIACIONES §26):** el subid de XTMEM identifica a la persona en los 12 experimentos (600 participaciones, 520 personas). La versión anterior agrupaba por exp_subid (600 "sujetos"); se conserva abajo como registro. La pendiente aleatoria convergió sin advertencias en todos los ajustes (`scripts/04c_h4_person_re.R`, `out/h4_person_re.txt`).
 
-| Especificación | n | log OR z(dist) [IC95 Wald] |
-|---|---|---|
-| Primaria (24 ítems) | 172.800 | −3.23 [−3.29, −3.17] |
-| Sin exp. no prerregistrados (8, 12) | 144.000 | −3.17 [−3.24, −3.11] |
-| Solo ítems de la categoría objetivo | 57.600 | −3.19 [−3.33, −3.05] |
+| Especificación (RE por persona) | n | personas | log OR z(dist) [IC95 Wald] |
+|---|---|---|---|
+| **Primaria (24 ítems)** | 172.800 | 520 | **−3.23 [−3.29, −3.16]** |
+| + (1\|participación) | 172.800 | 520 | −3.23 [−3.30, −3.17] |
+| Solo la primera participación (experimento de menor número) | 149.760 | 520 | −3.18 [−3.25, −3.12] |
+| Excluye a quienes repiten | 133.632 | 464 | −3.12 [−3.19, −3.05] |
+| Sin exp. no prerregistrados (8, 12) | 144.000 | 444 | −3.17 [−3.24, −3.10] |
+| 8 ítems objetivo (con nivel y condición) | 57.600 | 520 | −3.16 [−3.30, −3.02] |
+| 8 objetivo, primera participación | 49.920 | 520 | −3.11 [−3.26, −2.97] |
+| 8 objetivo, excluye a quienes repiten | 44.544 | 464 | −3.11 [−3.26, −2.96] |
 
-Interacción dist × condición (exploratoria, Wald; LR falló, DESVIACIONES §19): zd = −2.93 (ref.); zd×sub +0.10 (z=3.47); zd×bas −0.87 (z=−22.05); zd×sup −1.30 (z=−36.24).
+En todos, p < 10⁻¹⁰⁰. La regla de apoyo se mantiene: **Apoyo**.
+
+Versión anterior (agrupada por exp_subid; sustituida): primaria −3.23 [−3.29, −3.17]; sin no prerregistrados −3.17 [−3.24, −3.11]; ítems objetivo −3.19 [−3.33, −3.05].
+
+Interacción dist × condición (exploratoria; sigue agrupada por exp_subid, no se re-estimó, Wald; LR falló, DESVIACIONES §19): zd = −2.93 (ref.); zd×sub +0.10 (z=3.47); zd×bas −0.87 (z=−22.05); zd×sup −1.30 (z=−36.24).
 
 ## §4. Desviación entre fuentes
 - Acuerdo: c100 THINGS–HSJ ρ = .597 [.553, .636] (1.042 pares; 20 muestreados); c10 THINGS–HSJ .734, THINGS–C10H .779, HSJ–C10H .734 (Mantel p ≤ .001).

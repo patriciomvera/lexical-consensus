@@ -25,12 +25,25 @@ Script: `scripts/10_exploratorio_categorias_amplias.py`. Resultados: `out/explor
 **C1. Gradiente por amplitud**
 | Sistema | Unidades | Perfil (y en la distancia media) | Pendiente de logit(y) por unidad de distancia [IC95] | ρ de unidad |
 |---|---|---|---|---|
-| Humanos, Lewis & Frank, ítems objetivo | 168 imagen×condición | sub .943 (.33) → bas .583 (.58) → sup .207 (.87) | −6.81 [−7.19, −6.48] | −.72 |
+| Humanos, Lewis & Frank, ítems objetivo | 96 imagen×condición (corregido; antes 168) | sub .943 (.33) → bas .583 (.58) → sup .207 (.87) | −6.93 [−7.29, −6.56] (antes −6.81 [−7.19, −6.48]) | −.72 |
 | Aprendiz centroide, tiers CIFAR-10 | 10 palabras | native .943* → near .847 (.36) → mid .654 (.56) → far .530 (.69) | −5.73 [−11.13, −2.73] | −.77 |
 
 *La cifra native de .943 sale del paper (centroide; no hay distancia entre miembros). Coincide numéricamente con la de sub (.943), pero es una coincidencia: son tareas distintas.
 - Los IC de las pendientes se solapan.
 - La forma descendente es similar, pero el aprendiz no baja de su piso (azar ≈ .33), mientras que los humanos llegan a .21 en sup.
+
+**Corrección (31-oct-2026, DESVIACIONES §27).** La versión anterior contaba por separado nombres equivalentes de condición (`3sub` y `three_subordinate`, etc.). Al unificarlos hay 96 unidades imagen×condición, no 168. La pendiente sigue negativa y casi igual. En la figura x1 los ejes verticales ahora están separados: (a) es la proporción seleccionada (extensión de la palabra) y (b) la precisión de nombrado, que no son la misma cantidad. Además, las 4 condiciones humanas se muestran por separado.
+
+**Ítems superordinados según la condición de enseñanza** (verificado; coincide con la revisión externa):
+
+| Condición | Proporción seleccionada | Distancia DINOv2 media |
+|---|---|---|
+| 1 ejemplo sub | 2,6 % | .880 |
+| 3 ejemplos sub | 1,1 % | .892 |
+| 3 ejemplos básicos | 1,8 % | .861 |
+| 3 ejemplos superordinados | 77,5 % | .845 |
+
+La media superordinada global de ≈21 % oculta este efecto de la condición. Con ejemplos superordinados, los humanos extienden la palabra aunque la distancia sea grande. Que la extensión baje con la distancia en las otras condiciones puede ser una inferencia adecuada y no una dificultad para aprender. Las pendientes humana y del aprendiz no son comparables como mecanismo.
 
 **C2. Dentro frente a entre superclase de CIFAR-100** (d de Cohen = entre − dentro)
 - d_things: 1.70 [1.61, 1.78], con 150 pares dentro y 3.250 entre.

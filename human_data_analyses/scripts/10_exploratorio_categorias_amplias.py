@@ -9,7 +9,10 @@ lg=lambda p: np.log(np.clip(p,.01,.99)/(1-np.clip(p,.01,.99)))
 ci=lambda a:[float(np.nanpercentile(a,2.5)),float(np.nanpercentile(a,97.5))]
 out={}
 # C1 human
-h=pd.read_csv('data/h4_long.csv'); h=h[h.in_target==1]
+h=pd.read_csv('data/h4_long.csv'); h=h[h.in_target==1].copy()
+# FIX (DESV §27): unify equivalent condition labels (exps use '3sub' or 'three_subordinate', etc.)
+COND={'one':'one','three_subordinate':'sub','3sub':'sub','three_basic':'bas','3bas':'bas','three_superordinate':'sup','3sup':'sup'}
+h['condition']=h.condition.map(COND); assert h.condition.notna().all()
 def hum_units(df):
     g=df.groupby(['image','condition']).agg(y=('selected','mean'),d=('dist','mean')).reset_index(); return g
 g=hum_units(h); sl=lambda g: np.polyfit(g.d,lg(g.y),1)[0]
@@ -17,7 +20,8 @@ subs=h.subid.unique(); bys={s:x for s,x in h.groupby('subid')}
 bs=[sl(hum_units(pd.concat([bys[s] for s in rng.choice(subs,len(subs))]))) for _ in range(B)]
 lev=h.groupby('level').agg(y=('selected','mean'),d=('dist','mean'))
 rho=spearmanr(g.d,g.y)[0]
-out['C1_human']=dict(slope_logit=float(sl(g)),ci=ci(bs),spearman_unit=float(rho),n_units=len(g),by_level=lev.round(3).to_dict())
+cl=h.groupby(['condition','level']).agg(y=('selected','mean'),d=('dist','mean')).reset_index()
+out['C1_human']=dict(slope_logit=float(sl(g)),ci=ci(bs),spearman_unit=float(rho),n_units=len(g),by_level=lev.round(3).to_dict(),by_condition_level={f'{r.condition}|{r.level}':dict(y=round(r.y,3),d=round(r.d,3)) for r in cl.itertuples()})
 # C1 learner
 t=pd.read_csv('data/tiers_c10.csv'); t['d']=t.d_perc; t['y']=t.acc_tier
 idx=[rng.choice(len(t),len(t)) for _ in range(B)]
@@ -44,18 +48,22 @@ json.dump(out,open('out/exploratorio_categorias_amplias.json','w'),indent=1)
 print(json.dumps(out,indent=1))
 # Figures
 plt.rcParams.update({'font.size':8,'font.family':'DejaVu Sans','axes.spines.top':False,'axes.spines.right':False})
-f,ax=plt.subplots(1,2,figsize=(7,3),sharey=True)
-ax[0].scatter(g.d,g.y,s=10,c='0.6',label='image × condition')
-ax[0].plot(lev.loc[['sub','bas','sup']].d,lev.loc[['sub','bas','sup']].y,'o-',c='k',label='level mean')
-for l,r in lev.iterrows(): ax[0].annotate(l,(r.d,r.y),xytext=(4,4),textcoords='offset points')
-ax[0].set(title='(a) Humans (Lewis & Frank 2018), target items',xlabel='DINOv2 distance to training exemplars',ylabel='Proportion selected / naming accuracy')
+f,ax=plt.subplots(1,2,figsize=(7.6,3.1))
+CN={'one':'1 sub example','sub':'3 sub examples','bas':'3 basic examples','sup':'3 superord. examples'}; MK={'sub':'o','bas':'s','sup':'^'}
+ax[0].scatter(g.d,g.y,s=8,c='0.75',label='image × condition (n=%d)'%len(g))
+for c,col in zip(['one','sub','bas','sup'],['#1b9e77','#d95f02','#7570b3','#e7298a']):
+    q=cl[cl.condition==c].set_index('level').loc[['sub','bas','sup']]; ax[0].plot(q.d,q.y,'-',c=col,lw=1.2,label=CN[c])
+    for l,r in q.iterrows(): ax[0].plot(r.d,r.y,MK[l],c=col,ms=4)
+ax[0].text(0.02,0.98,'markers: ○ sub  □ basic  △ superord. test item',transform=ax[0].transAxes,fontsize=6,va='top')
+ax[0].set(title='(a) Humans (Lewis & Frank 2018), target items',xlabel='DINOv2 distance to training exemplars',ylabel='Proportion of test items selected',ylim=(-0.02,1.02))
 ax[1].scatter(t.d,t.y,s=14,c='0.6',label='disjunctive word')
 tt=tier.loc[['near','mid','far']]; ax[1].plot(tt.d,tt.y,'o-',c='k',label='tier mean')
 for l,r in tt.iterrows(): ax[1].annotate(l,(r.d,r.y),xytext=(4,4),textcoords='offset points')
 ax[1].axhline(1/3,ls=':',c='0.5'); ax[1].text(0.72,0.35,'chance',fontsize=7,color='0.4')
-ax[1].set(title='(b) Learner (centroid), CIFAR-10 tiers',xlabel='DINOv2 distance between member categories ($d_{member}$)')
-for a in ax: a.set_xlim(0.2,1.0); a.legend(frameon=False,fontsize=7,loc='lower left')
-f.text(0.99,-0.03,'EXPLORATORY (post hoc). Distances are not the same quantity in (a) and (b).',ha='right',fontsize=7,style='italic')
+ax[1].set(title='(b) Learner (centroid), CIFAR-10 tiers',xlabel='DINOv2 distance between member categories ($d_{member}$)',ylabel='Naming accuracy (3-way)')
+ax[0].set_xlim(0.1,1.0); ax[1].set_xlim(0.2,1.0)
+for a in ax: a.legend(frameon=False,fontsize=6,loc='center left')
+f.text(0.99,-0.03,'EXPLORATORY (post hoc). Different y quantities: (a) extension of a word (selection), (b) naming accuracy; distances also differ.',ha='right',fontsize=7,style='italic')
 f.tight_layout(); [f.savefig(f'figs/comparativos/exploratorio/x1_breadth_gradient_humans_vs_learner.{e}',dpi=300,bbox_inches='tight') for e in ['png','pdf']]
 f,ax=plt.subplots(1,4,figsize=(8,2.6))
 for a,v,lab in zip(ax,['d_things','d_hsj','d_perc','acc_pair'],['Human dist. THINGS','Human dist. HSJ','DINOv2 distance','Learner accuracy (exp. 008)']):

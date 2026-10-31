@@ -46,3 +46,32 @@ Cada entrada: qué cambió, por qué, y efecto conocido. Fechas en hora de Santi
 23. **Etiqueta imprecisa en RESULTADOS.md (H2)**: "con el mapeo original THINGS β_hum p = .045" corresponde a `H2_rob.THINGS_origmap_dsem`, que cambia d_sem al mapeo WordNet original (d_sem_orig) y mantiene el mapeo THINGS primario. Con el mapeo THINGS del scouting, p = .542 (n=59); estricto, p = .372 (n=55). **Corregido en RESULTADOS.md el 2026-10-31 (~10:40 hora de Santiago).**
 24. **H4, composición de ítems (descriptivo, ya señalado en §9)**: los ítems de otras categorías se eligen en el 0,46 % de los casos (115.200 obs.) y los de la categoría objetivo en el 48,5 % (57.600); el 98,1 % de las selecciones son de la categoría objetivo. Dentro de la categoría objetivo, el nivel y la distancia van juntos (distancia media sub .33, bas .58, sup .87). La sensibilidad con solo los ítems objetivo da log OR = −3.19 [−3.33, −3.05] (vs −3.23 primaria).
 25. **Re-ejecución**: 02_h1_h2, 05_h5, 07_dispersion, 08_holm y 06_h6 se re-corrieron y dieron JSON idénticos byte a byte. La corrección BH de H6 (9 pruebas) se reprodujo de forma independiente con statsmodels (fdr_bh), con los mismos valores. No se re-corrieron los GLMM de H4 (R, largos).
+
+## Correcciones tras revisión externa (2026-10-31, ~12:40 hora de Santiago)
+26. **CORRECCIÓN DE ERROR, H4: identidad de los participantes (corrige §8; §8 se mantiene como registro)**
+   - **El error.** En §8 se supuso que un subid repetido entre experimentos correspondía a personas distintas, y el GLMM se agrupó por exp_subid (600 "sujetos"). Eso es incorrecto.
+   - **Verificación.** Leí `analysis/munge_anonymize_data.R` de XTMEM (commit 220ed17). Primero une con `bind_rows` los datos crudos de los 12 experimentos y después aplica `anonymize.sids(d_raw, "WorkerId")`, que asigna un subid por WorkerId único sobre el conjunto ya unido. Por lo tanto, un mismo subid es el mismo WorkerId: la misma persona.
+   - **Datos.** Hay 600 participaciones de 520 personas. De ellas, 464 participan una vez; 42 participan en 2 experimentos, 10 en 3, y 1 persona en cada caso de 4, 5, 6 y 7.
+   - **Re-estimación** (`scripts/04c_h4_person_re.R`, `out/h4_person_re.txt`). Mismo modelo del plan, con efectos aleatorios por persona. Todos los ajustes usan la pendiente aleatoria y convergieron sin advertencias.
+     - C1, primaria, (1+zd|persona): −3.226 [−3.288, −3.164].
+     - C2, añadiendo (1|participación): −3.233 [−3.295, −3.171].
+     - C3, solo la primera participación: −3.183 [−3.247, −3.119]. "Primera" es el experimento de menor número, porque los datos no traen el orden temporal.
+     - C4, excluyendo a quienes repiten (464 personas): −3.120 [−3.188, −3.052].
+     - C5, sin los experimentos no prerregistrados: −3.168 [−3.236, −3.100].
+     - C6, 8 ítems objetivo con nivel y condición: −3.157 [−3.296, −3.017].
+     - C7, C6 restringido a la primera participación: −3.115 [−3.261, −2.968].
+     - C8, C6 excluyendo a quienes repiten: −3.111 [−3.264, −2.958].
+     - En todos los casos p < 10⁻¹⁰⁰: R devuelve 0 por underflow.
+   - **Consecuencia.** La regla de apoyo de H4 (β < 0, p Holm < .05) se mantiene. Desde ahora la estimación primaria es C1. La p de H4 en la familia Holm sigue siendo < .001, así que el resultado de Holm no cambia; `08_holm.py` no se re-corrió.
+   - **Pendiente.** La interacción exploratoria dist × condición (§19, `04b`) sigue agrupada por exp_subid y no se re-estimó.
+27. **CORRECCIÓN DE ERROR, exploratorio C1/x1: etiquetas de condición duplicadas**
+   - **El error.** `10_exploratorio_categorias_amplias.py` agrupaba por la etiqueta cruda de condición. Algunos experimentos usan `3sub`/`3bas`/`3sup` y otros `three_subordinate`/`three_basic`/`three_superordinate`, así que la misma condición contaba como dos.
+   - **Corrección.** Al unificar las etiquetas, las unidades imagen×condición pasan de 168 a 96 (verificado).
+     - Pendiente: de −6.81 [−7.19, −6.48] a −6.93 [−7.29, −6.56].
+     - ρ por unidad: de −.716 a −.721.
+     - Los perfiles por nivel no cambian, porque no dependen de la condición.
+   - **Figura x1.** Se rehízo con ejes verticales separados (proporción seleccionada frente a precisión de nombrado) y con las 4 condiciones de enseñanza humanas por separado.
+28. **Alcance del error de condición.** Revisé todos los scripts que usan `condition`:
+   - `04_h4_glmm.R` y `04b_h4_interaction.R` ya mapeaban las 7 etiquetas a 4 niveles (one/sub/bas/sup), así que H4 no se ve afectada por este error.
+   - `h4_prep.py` solo copia la etiqueta.
+   - Ningún otro análisis (H1–H3, H5, H6, §4, figuras 09) usa la condición de Lewis & Frank.
