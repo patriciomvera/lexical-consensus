@@ -1,0 +1,25 @@
+
+== PRIMARY all 24 items, level from file name | n=172800 subj=600 | RE=slope | warnings=
+             Estimate Std. Error   z value Pr(>|z|)
+(Intercept)   -4.5254     0.6651   -6.8038   0.0000
+zd            -3.2325     0.0301 -107.2955   0.0000
+levelsub       0.0621     0.9391    0.0661   0.9473
+levelsup       0.9519     0.8132    1.1706   0.2418
+conditionsub  -1.4855     0.0517  -28.7432   0.0000
+conditionbas   0.5892     0.0396   14.8732   0.0000
+conditionsup   2.6867     0.0351   76.4524   0.0000
+
+== EXPLORATORY zd x condition (all items) | n=172800 subj=600 | RE=slope | warnings=
+                Estimate Std. Error  z value Pr(>|z|)
+(Intercept)      -4.3521     0.7254  -5.9998   0.0000
+zd               -2.9315     0.0349 -83.9758   0.0000
+levelsub          0.1239     1.0245   0.1209   0.9038
+levelsup          1.0358     0.8871   1.1677   0.2429
+conditionsub     -1.0242     0.0536 -19.1127   0.0000
+conditionbas      0.1026     0.0418   2.4528   0.0142
+conditionsup      2.4232     0.0338  71.6621   0.0000
+zd:conditionsub   0.1016     0.0292   3.4746   0.0005
+zd:conditionbas  -0.8687     0.0394 -22.0537   0.0000
+zd:conditionsup  -1.3033     0.0360 -36.2360   0.0000
+Error: bad 'data': object 'dd' not found
+Execution halted

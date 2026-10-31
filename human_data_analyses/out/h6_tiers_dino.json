@@ -1,0 +1,28 @@
+{
+ "native|jubjub": 0.9836363636363636,
+ "native|slithy": 0.982,
+ "native|manxome": 0.951111111111111,
+ "native|tulgey": 0.942857142857143,
+ "native|galumphing": 0.95,
+ "native|frumious": 0.8054545454545454,
+ "native|vorpal": 0.9844444444444443,
+ "native|mimsy": 0.9666666666666668,
+ "native|uffish": 0.915,
+ "native|borogove": 0.9654545454545456,
+ "near|glintz": 0.9733333333333334,
+ "near|tromble": 0.8753333333333334,
+ "near|varble": 0.6913333333333332,
+ "mid|worblix": 0.4826666666666667,
+ "mid|brumble": 0.6379999999999999,
+ "mid|strenk": 0.8420000000000001,
+ "far|quax": 0.488,
+ "far|gleth": 0.5718181818181818,
+ "far|plonk": 0.5504347826086957,
+ "far|mivor": 0.5109999999999999,
+ "c1_by_tier": {
+  "native": 0.9428888333333334,
+  "near": 0.8466666999999999,
+  "mid": 0.6542222,
+  "far": 0.5295555666666667
+ }
+}

@@ -1,0 +1,19 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+CVCL vision encoder loaded (strict)
+  64/50000
+  3264/50000
+  6464/50000
+  9664/50000
+  12864/50000
+  16064/50000
+  19264/50000
+  22464/50000
+  25664/50000
+  28864/50000
+  32064/50000
+  35264/50000
+  38464/50000
+  41664/50000
+  44864/50000
+  48064/50000
+saved cvcl_cifar100_train.npz

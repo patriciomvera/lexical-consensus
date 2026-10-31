@@ -1,0 +1,22 @@
+{
+ "C100_glasgow": {
+  "n": 85,
+  "rho_partial": -0.10987083793580757,
+  "ci_lo": -0.31680706902627775,
+  "ci_hi": 0.10704985063728058,
+  "p": 0.319779841310782,
+  "rho_raw": 0.022191712574772506,
+  "p_BH": 0.319779841310782
+ },
+ "C10_glasgow": {
+  "n": 10,
+  "rho_partial": -0.890667439486331,
+  "ci_lo": -0.9769267363650593,
+  "ci_hi": -0.5545850562070881,
+  "p": 0.0012766451620060096,
+  "rho_raw": -0.5957474328064633,
+  "p_BH": 0.002553290324012019
+ },
+ "wordbank": "not run: Wordbank item-level data now served only via Redivis (login/API token required); no account created (plan \u00a75)",
+ "overextensions": "not run: license unresolved (plan H5)"
+}

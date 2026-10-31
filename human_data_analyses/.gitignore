@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+data/xtmem/
+data/h4_long.csv
+data/h3_c10test_margin.csv
+*.npz
+*.npy

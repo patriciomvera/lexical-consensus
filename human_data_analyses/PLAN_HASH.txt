@@ -1,0 +1,7 @@
+Plan congelado original: plan_analisis_datos_humanos_FROZEN_2026-10-30.md
+sha256 9b50995eb5e8d2d30e8a9e5e13b56f7a3e8596ecea0a01fd2d833eeb67baac6c
+congelado: 2026-10-30 10:13:07 -03 (UTC-03:00). Re-verificado el 2026-10-31; no se modificó.
+
+Copia publicada aquí: plan_analisis_datos_humanos_FROZEN_2026-10-30_ANON.md
+sha256 b1a70c010fa5116092ae5b583cb76c97dea11c4dadc4a38a0d093bd54bad437f
+Única diferencia con el original: 7 líneas donde un nombre personal se reemplazó por "el autor" (anonimización para revisión doble ciego). El original, con su hash, se entregará al quitar el anonimato.

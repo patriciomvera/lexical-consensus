@@ -1,0 +1,3380 @@
+{
+ "rule": "Versioned class mappings CIFAR -> THINGS / ImageNet-HSJ, written BEFORE any human distance is computed.\nRule (plan, Decisiones fijadas #2): ambiguous classes take the sense shown by CIFAR images; every mapping documented.\nTHINGS (0-based rows of concepts-metadata_things.tsv == rows of spose_embedding_66d_sorted.txt):\n  PRIMARY  = scouting mapping used to write the plan (cifar100_things_match.json, 79 classes)\n             + sense resolution (mouse->mouse1 rodent, tank->tank1 military, sweet_pepper->bell pepper)\n             + 4 THINGS concepts whose WordNet synset IS the CIFAR synset but were missed by the string search\n               (bicycle->bike, telephone->phone, wardrobe->closet, streetcar->trolley).\n             Classes sharing one THINGS concept (maple/oak/willow -> tree) keep the mapping but the pairs among them are excluded.\n  SENS_SCOUT  = scouting 79 only (pepper -> pepper2 = pepper.n.04 Capsicum).\n  SENS_STRICT = drop hypernym-only maps (aquarium_fish->fish, maple/oak/willow->tree, pickup_truck->truck)\n                and keyboard (THINGS keyboard is a musical instrument per THINGS category); add hyponym maps\n                cattle->{cow,bull} (mean of the two), ray->stingray.\nHSJ: ILSVRC-2012 wnids in the hyponym closure of the corrected CIFAR synset; a wnid claimed by >1 class goes to the most\n     specific class (deepest synset); exact ties are dropped. CIFAR-10 uses C10 synsets in cifar_wn.py.\n",
+ "maps": {
+  "PRIMARY": {
+   "apple": [
+    30
+   ],
+   "aquarium_fish": [
+    600
+   ],
+   "baby": [
+    46
+   ],
+   "bear": [
+    105
+   ],
+   "beaver": [
+    107
+   ],
+   "bed": [
+    108
+   ],
+   "bee": [
+    111
+   ],
+   "beetle": [
+    115
+   ],
+   "bottle": [
+    170
+   ],
+   "bowl": [
+    177
+   ],
+   "boy": [
+    184
+   ],
+   "bus": [
+    226
+   ],
+   "butterfly": [
+    229
+   ],
+   "camel": [
+    245
+   ],
+   "can": [
+    250
+   ],
+   "caterpillar": [
+    286
+   ],
+   "chair": [
+    300
+   ],
+   "clock": [
+    359
+   ],
+   "cloud": [
+    364
+   ],
+   "cockroach": [
+    373
+   ],
+   "couch": [
+    422
+   ],
+   "crab": [
+    428
+   ],
+   "cup": [
+    460
+   ],
+   "dolphin": [
+    502
+   ],
+   "elephant": [
+    554
+   ],
+   "fox": [
+    638
+   ],
+   "girl": [
+    676
+   ],
+   "hamster": [
+    743
+   ],
+   "kangaroo": [
+    862
+   ],
+   "keyboard": [
+    870
+   ],
+   "lamp": [
+    891
+   ],
+   "lawn_mower": [
+    905
+   ],
+   "leopard": [
+    917
+   ],
+   "lion": [
+    933
+   ],
+   "lizard": [
+    937
+   ],
+   "lobster": [
+    939
+   ],
+   "man": [
+    963
+   ],
+   "maple_tree": [
+    1708
+   ],
+   "motorcycle": [
+    1025
+   ],
+   "mushroom": [
+    1040
+   ],
+   "oak_tree": [
+    1708
+   ],
+   "orange": [
+    1078
+   ],
+   "orchid": [
+    1081
+   ],
+   "otter": [
+    1085
+   ],
+   "palm_tree": [
+    1102
+   ],
+   "pear": [
+    1133
+   ],
+   "pickup_truck": [
+    1720
+   ],
+   "pine_tree": [
+    1181
+   ],
+   "plate": [
+    1197
+   ],
+   "poppy": [
+    1224
+   ],
+   "porcupine": [
+    1226
+   ],
+   "possum": [
+    1228
+   ],
+   "rabbit": [
+    1265
+   ],
+   "raccoon": [
+    1266
+   ],
+   "rocket": [
+    1320
+   ],
+   "rose": [
+    1334
+   ],
+   "seal": [
+    1397
+   ],
+   "shark": [
+    1409
+   ],
+   "skunk": [
+    1459
+   ],
+   "snail": [
+    1476
+   ],
+   "snake": [
+    1477
+   ],
+   "spider": [
+    1513
+   ],
+   "squirrel": [
+    1529
+   ],
+   "sunflower": [
+    1584
+   ],
+   "table": [
+    1608
+   ],
+   "television": [
+    1641
+   ],
+   "tiger": [
+    1659
+   ],
+   "tractor": [
+    1695
+   ],
+   "train": [
+    1698
+   ],
+   "tulip": [
+    1726
+   ],
+   "turtle": [
+    1736
+   ],
+   "whale": [
+    1804
+   ],
+   "willow_tree": [
+    1708
+   ],
+   "wolf": [
+    1831
+   ],
+   "woman": [
+    1832
+   ],
+   "worm": [
+    1836
+   ],
+   "mouse": [
+    1026
+   ],
+   "tank": [
+    1620
+   ],
+   "sweet_pepper": [
+    117
+   ],
+   "bicycle": [
+    123
+   ],
+   "telephone": [
+    1161
+   ],
+   "wardrobe": [
+    360
+   ],
+   "streetcar": [
+    1715
+   ]
+  },
+  "SENS_SCOUT": {
+   "apple": [
+    30
+   ],
+   "aquarium_fish": [
+    600
+   ],
+   "baby": [
+    46
+   ],
+   "bear": [
+    105
+   ],
+   "beaver": [
+    107
+   ],
+   "bed": [
+    108
+   ],
+   "bee": [
+    111
+   ],
+   "beetle": [
+    115
+   ],
+   "bottle": [
+    170
+   ],
+   "bowl": [
+    177
+   ],
+   "boy": [
+    184
+   ],
+   "bus": [
+    226
+   ],
+   "butterfly": [
+    229
+   ],
+   "camel": [
+    245
+   ],
+   "can": [
+    250
+   ],
+   "caterpillar": [
+    286
+   ],
+   "chair": [
+    300
+   ],
+   "clock": [
+    359
+   ],
+   "cloud": [
+    364
+   ],
+   "cockroach": [
+    373
+   ],
+   "couch": [
+    422
+   ],
+   "crab": [
+    428
+   ],
+   "cup": [
+    460
+   ],
+   "dolphin": [
+    502
+   ],
+   "elephant": [
+    554
+   ],
+   "fox": [
+    638
+   ],
+   "girl": [
+    676
+   ],
+   "hamster": [
+    743
+   ],
+   "kangaroo": [
+    862
+   ],
+   "keyboard": [
+    870
+   ],
+   "lamp": [
+    891
+   ],
+   "lawn_mower": [
+    905
+   ],
+   "leopard": [
+    917
+   ],
+   "lion": [
+    933
+   ],
+   "lizard": [
+    937
+   ],
+   "lobster": [
+    939
+   ],
+   "man": [
+    963
+   ],
+   "maple_tree": [
+    1708
+   ],
+   "motorcycle": [
+    1025
+   ],
+   "mushroom": [
+    1040
+   ],
+   "oak_tree": [
+    1708
+   ],
+   "orange": [
+    1078
+   ],
+   "orchid": [
+    1081
+   ],
+   "otter": [
+    1085
+   ],
+   "palm_tree": [
+    1102
+   ],
+   "pear": [
+    1133
+   ],
+   "pickup_truck": [
+    1720
+   ],
+   "pine_tree": [
+    1181
+   ],
+   "plate": [
+    1197
+   ],
+   "poppy": [
+    1224
+   ],
+   "porcupine": [
+    1226
+   ],
+   "possum": [
+    1228
+   ],
+   "rabbit": [
+    1265
+   ],
+   "raccoon": [
+    1266
+   ],
+   "rocket": [
+    1320
+   ],
+   "rose": [
+    1334
+   ],
+   "seal": [
+    1397
+   ],
+   "shark": [
+    1409
+   ],
+   "skunk": [
+    1459
+   ],
+   "snail": [
+    1476
+   ],
+   "snake": [
+    1477
+   ],
+   "spider": [
+    1513
+   ],
+   "squirrel": [
+    1529
+   ],
+   "sunflower": [
+    1584
+   ],
+   "table": [
+    1608
+   ],
+   "television": [
+    1641
+   ],
+   "tiger": [
+    1659
+   ],
+   "tractor": [
+    1695
+   ],
+   "train": [
+    1698
+   ],
+   "tulip": [
+    1726
+   ],
+   "turtle": [
+    1736
+   ],
+   "whale": [
+    1804
+   ],
+   "willow_tree": [
+    1708
+   ],
+   "wolf": [
+    1831
+   ],
+   "woman": [
+    1832
+   ],
+   "worm": [
+    1836
+   ],
+   "mouse": [
+    1026
+   ],
+   "tank": [
+    1620
+   ],
+   "sweet_pepper": [
+    1151
+   ]
+  },
+  "SENS_STRICT": {
+   "apple": [
+    30
+   ],
+   "baby": [
+    46
+   ],
+   "bear": [
+    105
+   ],
+   "beaver": [
+    107
+   ],
+   "bed": [
+    108
+   ],
+   "bee": [
+    111
+   ],
+   "beetle": [
+    115
+   ],
+   "bottle": [
+    170
+   ],
+   "bowl": [
+    177
+   ],
+   "boy": [
+    184
+   ],
+   "bus": [
+    226
+   ],
+   "butterfly": [
+    229
+   ],
+   "camel": [
+    245
+   ],
+   "can": [
+    250
+   ],
+   "caterpillar": [
+    286
+   ],
+   "chair": [
+    300
+   ],
+   "clock": [
+    359
+   ],
+   "cloud": [
+    364
+   ],
+   "cockroach": [
+    373
+   ],
+   "couch": [
+    422
+   ],
+   "crab": [
+    428
+   ],
+   "cup": [
+    460
+   ],
+   "dolphin": [
+    502
+   ],
+   "elephant": [
+    554
+   ],
+   "fox": [
+    638
+   ],
+   "girl": [
+    676
+   ],
+   "hamster": [
+    743
+   ],
+   "kangaroo": [
+    862
+   ],
+   "lamp": [
+    891
+   ],
+   "lawn_mower": [
+    905
+   ],
+   "leopard": [
+    917
+   ],
+   "lion": [
+    933
+   ],
+   "lizard": [
+    937
+   ],
+   "lobster": [
+    939
+   ],
+   "man": [
+    963
+   ],
+   "motorcycle": [
+    1025
+   ],
+   "mushroom": [
+    1040
+   ],
+   "orange": [
+    1078
+   ],
+   "orchid": [
+    1081
+   ],
+   "otter": [
+    1085
+   ],
+   "palm_tree": [
+    1102
+   ],
+   "pear": [
+    1133
+   ],
+   "pine_tree": [
+    1181
+   ],
+   "plate": [
+    1197
+   ],
+   "poppy": [
+    1224
+   ],
+   "porcupine": [
+    1226
+   ],
+   "possum": [
+    1228
+   ],
+   "rabbit": [
+    1265
+   ],
+   "raccoon": [
+    1266
+   ],
+   "rocket": [
+    1320
+   ],
+   "rose": [
+    1334
+   ],
+   "seal": [
+    1397
+   ],
+   "shark": [
+    1409
+   ],
+   "skunk": [
+    1459
+   ],
+   "snail": [
+    1476
+   ],
+   "snake": [
+    1477
+   ],
+   "spider": [
+    1513
+   ],
+   "squirrel": [
+    1529
+   ],
+   "sunflower": [
+    1584
+   ],
+   "table": [
+    1608
+   ],
+   "television": [
+    1641
+   ],
+   "tiger": [
+    1659
+   ],
+   "tractor": [
+    1695
+   ],
+   "train": [
+    1698
+   ],
+   "tulip": [
+    1726
+   ],
+   "turtle": [
+    1736
+   ],
+   "whale": [
+    1804
+   ],
+   "wolf": [
+    1831
+   ],
+   "woman": [
+    1832
+   ],
+   "worm": [
+    1836
+   ],
+   "mouse": [
+    1026
+   ],
+   "tank": [
+    1620
+   ],
+   "sweet_pepper": [
+    117
+   ],
+   "bicycle": [
+    123
+   ],
+   "telephone": [
+    1161
+   ],
+   "wardrobe": [
+    360
+   ],
+   "streetcar": [
+    1715
+   ],
+   "cattle": [
+    426,
+    214
+   ],
+   "ray": [
+    1556
+   ]
+  },
+  "C10": {
+   "airplane": [
+    10
+   ],
+   "automobile": [
+    267
+   ],
+   "bird": [
+    128
+   ],
+   "cat": [
+    284
+   ],
+   "deer": [
+    476
+   ],
+   "dog": [
+    495
+   ],
+   "frog": [
+    644
+   ],
+   "horse": [
+    798
+   ],
+   "ship": [
+    1421
+   ],
+   "truck": [
+    1720
+   ]
+  }
+ },
+ "notes": {
+  "apple": "scouting",
+  "aquarium_fish": "scouting (hiperónimo; excluido en SENS_STRICT)",
+  "baby": "scouting",
+  "bear": "scouting",
+  "beaver": "scouting",
+  "bed": "scouting",
+  "bee": "scouting",
+  "beetle": "scouting",
+  "bottle": "scouting",
+  "bowl": "scouting",
+  "boy": "scouting",
+  "bus": "scouting",
+  "butterfly": "scouting",
+  "camel": "scouting",
+  "can": "scouting",
+  "caterpillar": "scouting",
+  "chair": "scouting",
+  "clock": "scouting",
+  "cloud": "scouting",
+  "cockroach": "scouting",
+  "couch": "scouting",
+  "crab": "scouting",
+  "cup": "scouting",
+  "dolphin": "scouting",
+  "elephant": "scouting",
+  "fox": "scouting",
+  "girl": "scouting",
+  "hamster": "scouting",
+  "kangaroo": "scouting",
+  "keyboard": "scouting",
+  "lamp": "scouting",
+  "lawn_mower": "scouting",
+  "leopard": "scouting",
+  "lion": "scouting",
+  "lizard": "scouting",
+  "lobster": "scouting",
+  "man": "scouting",
+  "maple_tree": "scouting (hiperónimo; excluido en SENS_STRICT)",
+  "motorcycle": "scouting",
+  "mushroom": "scouting",
+  "oak_tree": "scouting (hiperónimo; excluido en SENS_STRICT)",
+  "orange": "scouting",
+  "orchid": "scouting",
+  "otter": "scouting",
+  "palm_tree": "scouting",
+  "pear": "scouting",
+  "pickup_truck": "scouting (hiperónimo; excluido en SENS_STRICT)",
+  "pine_tree": "scouting",
+  "plate": "scouting",
+  "poppy": "scouting",
+  "porcupine": "scouting",
+  "possum": "scouting",
+  "rabbit": "scouting",
+  "raccoon": "scouting",
+  "rocket": "scouting",
+  "rose": "scouting",
+  "seal": "scouting",
+  "shark": "scouting",
+  "skunk": "scouting",
+  "snail": "scouting",
+  "snake": "scouting",
+  "spider": "scouting",
+  "squirrel": "scouting",
+  "sunflower": "scouting",
+  "table": "scouting",
+  "television": "scouting",
+  "tiger": "scouting",
+  "tractor": "scouting",
+  "train": "scouting",
+  "tulip": "scouting",
+  "turtle": "scouting",
+  "whale": "scouting",
+  "willow_tree": "scouting (hiperónimo; excluido en SENS_STRICT)",
+  "wolf": "scouting",
+  "woman": "scouting",
+  "worm": "scouting",
+  "mouse": "ambigua: mouse1 (roedor, mouse.n.01) por imágenes CIFAR; se descarta mouse2 (dispositivo)",
+  "tank": "ambigua: tank1 (vehículo militar, tank.n.01) por imágenes CIFAR; se descarta tank2 (depósito)",
+  "sweet_pepper": "ambigua: bell pepper (bell_pepper.n.02 = pimiento dulce) por imágenes CIFAR; pepper1 (especia) descartado; pepper2 (Capsicum) = sensibilidad",
+  "bicycle": "mismo synset WordNet (bicycle.n.01); omitido por la búsqueda de texto del scouting",
+  "telephone": "mismo synset WordNet (telephone.n.01); omitido por la búsqueda de texto del scouting",
+  "wardrobe": "mismo synset WordNet (wardrobe.n.01); omitido por la búsqueda de texto del scouting",
+  "streetcar": "mismo synset WordNet (streetcar.n.01); omitido por la búsqueda de texto del scouting"
+ },
+ "details": {
+  "PRIMARY": {
+   "apple": [
+    {
+     "row": 30,
+     "word": "apple",
+     "uniqueID": "apple",
+     "synset": "apple.n.01",
+     "things_def": "fruit with red or yellow or green skin and sweet to tart crisp whitish flesh",
+     "things_category": "fruit"
+    }
+   ],
+   "aquarium_fish": [
+    {
+     "row": 600,
+     "word": "fish",
+     "uniqueID": "fish",
+     "synset": "fish.n.01",
+     "things_def": "any of various mostly cold-blooded aquatic vertebrates usually having scales and breathing through gills",
+     "things_category": ""
+    }
+   ],
+   "baby": [
+    {
+     "row": 46,
+     "word": "baby",
+     "uniqueID": "baby",
+     "synset": "baby.n.01",
+     "things_def": "a very young child (birth to 1 year) who has not yet begun to walk or talk",
+     "things_category": ""
+    }
+   ],
+   "bear": [
+    {
+     "row": 105,
+     "word": "bear",
+     "uniqueID": "bear",
+     "synset": "bear.n.01",
+     "things_def": "massive plantigrade carnivorous or omnivorous mammals with long shaggy coats and strong claws",
+     "things_category": "animal"
+    }
+   ],
+   "beaver": [
+    {
+     "row": 107,
+     "word": "beaver",
+     "uniqueID": "beaver",
+     "synset": "beaver.n.06",
+     "things_def": "large semiaquatic rodent with webbed hind feet and a broad flat tail; construct complex dams and underwater lodges",
+     "things_category": "animal"
+    }
+   ],
+   "bed": [
+    {
+     "row": 108,
+     "word": "bed",
+     "uniqueID": "bed",
+     "synset": "bed.n.01",
+     "things_def": "a piece of furniture that provides a place to sleep",
+     "things_category": "furniture"
+    }
+   ],
+   "bee": [
+    {
+     "row": 111,
+     "word": "bee",
+     "uniqueID": "bee",
+     "synset": "bee.n.01",
+     "things_def": "any of numerous hairy-bodied insects including social and solitary species",
+     "things_category": "insect"
+    }
+   ],
+   "beetle": [
+    {
+     "row": 115,
+     "word": "beetle",
+     "uniqueID": "beetle",
+     "synset": "beetle.n.01",
+     "things_def": "insect having biting mouthparts and front wings modified to form horny covers overlying the membranous rear wings",
+     "things_category": "insect"
+    }
+   ],
+   "bottle": [
+    {
+     "row": 170,
+     "word": "bottle",
+     "uniqueID": "bottle",
+     "synset": "bottle.n.01",
+     "things_def": "a glass or plastic vessel used for storing drinks or other liquids; typically cylindrical without handles and with a nar",
+     "things_category": "container"
+    }
+   ],
+   "bowl": [
+    {
+     "row": 177,
+     "word": "bowl",
+     "uniqueID": "bowl",
+     "synset": "bowl.n.01",
+     "things_def": "a round vessel that is open at the top; used chiefly for holding food or liquids;",
+     "things_category": ""
+    }
+   ],
+   "boy": [
+    {
+     "row": 184,
+     "word": "boy",
+     "uniqueID": "boy",
+     "synset": "boy.n.01",
+     "things_def": "a youthful male person",
+     "things_category": ""
+    }
+   ],
+   "bus": [
+    {
+     "row": 226,
+     "word": "bus",
+     "uniqueID": "bus",
+     "synset": "bus.n.01",
+     "things_def": "a vehicle carrying many passengers; used for public transport",
+     "things_category": "vehicle"
+    }
+   ],
+   "butterfly": [
+    {
+     "row": 229,
+     "word": "butterfly",
+     "uniqueID": "butterfly",
+     "synset": "butterfly.n.01",
+     "things_def": "diurnal insect typically having a slender body with knobbed antennae and broad colorful wings",
+     "things_category": "insect"
+    }
+   ],
+   "camel": [
+    {
+     "row": 245,
+     "word": "camel",
+     "uniqueID": "camel",
+     "synset": "camel.n.01",
+     "things_def": "cud-chewing mammal used as a draft or saddle animal in desert regions",
+     "things_category": "animal"
+    }
+   ],
+   "can": [
+    {
+     "row": 250,
+     "word": "can",
+     "uniqueID": "can",
+     "synset": "can.n.01",
+     "things_def": "airtight sealed metal container for food or drink or paint etc.",
+     "things_category": "container"
+    }
+   ],
+   "caterpillar": [
+    {
+     "row": 286,
+     "word": "caterpillar",
+     "uniqueID": "caterpillar",
+     "synset": "caterpillar.n.01",
+     "things_def": "a wormlike and often brightly colored and hairy or spiny larva of a butterfly or moth",
+     "things_category": "insect"
+    }
+   ],
+   "chair": [
+    {
+     "row": 300,
+     "word": "chair",
+     "uniqueID": "chair",
+     "synset": "chair.n.01",
+     "things_def": "a seat for one person, with a support for the back",
+     "things_category": "furniture"
+    }
+   ],
+   "clock": [
+    {
+     "row": 359,
+     "word": "clock",
+     "uniqueID": "clock",
+     "synset": "clock.n.01",
+     "things_def": "a timepiece that shows the time of day",
+     "things_category": ""
+    }
+   ],
+   "cloud": [
+    {
+     "row": 364,
+     "word": "cloud",
+     "uniqueID": "cloud",
+     "synset": "cloud.n.02",
+     "things_def": "a visible mass of water or ice particles suspended at a considerable altitude",
+     "things_category": ""
+    }
+   ],
+   "cockroach": [
+    {
+     "row": 373,
+     "word": "cockroach",
+     "uniqueID": "cockroach",
+     "synset": "cockroach.n.01",
+     "things_def": "any of numerous chiefly nocturnal insects; some are domestic pests",
+     "things_category": "insect"
+    }
+   ],
+   "couch": [
+    {
+     "row": 422,
+     "word": "couch",
+     "uniqueID": "couch",
+     "synset": "couch.n.01",
+     "things_def": "an upholstered seat for more than one person",
+     "things_category": "furniture"
+    }
+   ],
+   "crab": [
+    {
+     "row": 428,
+     "word": "crab",
+     "uniqueID": "crab",
+     "synset": "crab.n.01",
+     "things_def": "decapod having eyes on short stalks and a broad flattened carapace with a small abdomen folded under the thorax and pinc",
+     "things_category": ""
+    }
+   ],
+   "cup": [
+    {
+     "row": 460,
+     "word": "cup",
+     "uniqueID": "cup",
+     "synset": "cup.n.01",
+     "things_def": "a small open container usually used for drinking; usually has a handle",
+     "things_category": "container"
+    }
+   ],
+   "dolphin": [
+    {
+     "row": 502,
+     "word": "dolphin",
+     "uniqueID": "dolphin",
+     "synset": "dolphin.n.02",
+     "things_def": "any of various small toothed whales with a beaklike snout; larger than porpoises",
+     "things_category": ""
+    }
+   ],
+   "elephant": [
+    {
+     "row": 554,
+     "word": "elephant",
+     "uniqueID": "elephant",
+     "synset": "elephant.n.01",
+     "things_def": "five-toed pachyderm",
+     "things_category": "animal"
+    }
+   ],
+   "fox": [
+    {
+     "row": 638,
+     "word": "fox",
+     "uniqueID": "fox",
+     "synset": "fox.n.01",
+     "things_def": "alert carnivorous mammal with pointed muzzle and ears and a bushy tail; most are predators that do not hunt in packs",
+     "things_category": "animal"
+    }
+   ],
+   "girl": [
+    {
+     "row": 676,
+     "word": "girl",
+     "uniqueID": "girl",
+     "synset": "girl.n.02",
+     "things_def": "a youthful female person",
+     "things_category": ""
+    }
+   ],
+   "hamster": [
+    {
+     "row": 743,
+     "word": "hamster",
+     "uniqueID": "hamster",
+     "synset": "hamster.n.01",
+     "things_def": "short-tailed Old World burrowing rodent with large cheek pouches",
+     "things_category": "animal"
+    }
+   ],
+   "kangaroo": [
+    {
+     "row": 862,
+     "word": "kangaroo",
+     "uniqueID": "kangaroo",
+     "synset": "kangaroo.n.01",
+     "things_def": "any of several herbivorous leaping marsupials of Australia and New Guinea having large powerful hind legs and a long thi",
+     "things_category": "animal"
+    }
+   ],
+   "keyboard": [
+    {
+     "row": 870,
+     "word": "keyboard",
+     "uniqueID": "keyboard",
+     "synset": "keyboard.n.01",
+     "things_def": "device consisting of a set of keys on a piano or organ or typewriter or typesetting machine or computer or the like",
+     "things_category": "musical instrument"
+    }
+   ],
+   "lamp": [
+    {
+     "row": 891,
+     "word": "lamp",
+     "uniqueID": "lamp",
+     "synset": "lamp.n.02",
+     "things_def": "a piece of furniture holding one or more electric light bulbs",
+     "things_category": ""
+    }
+   ],
+   "lawn_mower": [
+    {
+     "row": 905,
+     "word": "lawnmower",
+     "uniqueID": "lawnmower",
+     "synset": "lawn_mower.n.01",
+     "things_def": "garden tool for mowing grass on lawns",
+     "things_category": ""
+    }
+   ],
+   "leopard": [
+    {
+     "row": 917,
+     "word": "leopard",
+     "uniqueID": "leopard",
+     "synset": "leopard.n.02",
+     "things_def": "large feline of African and Asian forests usually having a tawny coat with black spots",
+     "things_category": "animal"
+    }
+   ],
+   "lion": [
+    {
+     "row": 933,
+     "word": "lion",
+     "uniqueID": "lion",
+     "synset": "lion.n.01",
+     "things_def": "large gregarious predatory feline of Africa and India having a tawny coat with a shaggy mane in the male",
+     "things_category": "animal"
+    }
+   ],
+   "lizard": [
+    {
+     "row": 937,
+     "word": "lizard",
+     "uniqueID": "lizard",
+     "synset": "lizard.n.01",
+     "things_def": "relatively long-bodied reptile with usually two pairs of legs and a tapering tail",
+     "things_category": ""
+    }
+   ],
+   "lobster": [
+    {
+     "row": 939,
+     "word": "lobster",
+     "uniqueID": "lobster",
+     "synset": "lobster.n.02",
+     "things_def": "any of several edible marine crustaceans of the families Homaridae and Nephropsidae and Palinuridae",
+     "things_category": ""
+    }
+   ],
+   "man": [
+    {
+     "row": 963,
+     "word": "man",
+     "uniqueID": "man",
+     "synset": "man.n.01",
+     "things_def": "an adult person who is male (as opposed to a woman)",
+     "things_category": ""
+    }
+   ],
+   "maple_tree": [
+    {
+     "row": 1708,
+     "word": "tree",
+     "uniqueID": "tree",
+     "synset": "tree.n.01",
+     "things_def": "a tall perennial woody plant having a main trunk and branches forming a distinct elevated crown; includes both gymnosper",
+     "things_category": "plant"
+    }
+   ],
+   "motorcycle": [
+    {
+     "row": 1025,
+     "word": "motorcycle",
+     "uniqueID": "motorcycle",
+     "synset": "motorcycle.n.01",
+     "things_def": "a motor vehicle with two wheels and a strong frame",
+     "things_category": "vehicle"
+    }
+   ],
+   "mushroom": [
+    {
+     "row": 1040,
+     "word": "mushroom",
+     "uniqueID": "mushroom",
+     "synset": "mushroom.n.03",
+     "things_def": "any of various fleshy fungi of the subdivision Basidiomycota consisting of a cap at the end of a stem arising from an un",
+     "things_category": ""
+    }
+   ],
+   "oak_tree": [
+    {
+     "row": 1708,
+     "word": "tree",
+     "uniqueID": "tree",
+     "synset": "tree.n.01",
+     "things_def": "a tall perennial woody plant having a main trunk and branches forming a distinct elevated crown; includes both gymnosper",
+     "things_category": "plant"
+    }
+   ],
+   "orange": [
+    {
+     "row": 1078,
+     "word": "orange",
+     "uniqueID": "orange",
+     "synset": "orange.n.01",
+     "things_def": "round yellow to orange fruit of any of several citrus trees",
+     "things_category": "fruit"
+    }
+   ],
+   "orchid": [
+    {
+     "row": 1081,
+     "word": "orchid",
+     "uniqueID": "orchid",
+     "synset": "orchid.n.01",
+     "things_def": "any of numerous plants of the orchid family usually having flowers of unusual shapes and beautiful colors",
+     "things_category": ""
+    }
+   ],
+   "otter": [
+    {
+     "row": 1085,
+     "word": "otter",
+     "uniqueID": "otter",
+     "synset": "otter.n.02",
+     "things_def": "freshwater carnivorous mammal having webbed and clawed feet and dark brown fur",
+     "things_category": "animal"
+    }
+   ],
+   "palm_tree": [
+    {
+     "row": 1102,
+     "word": "palm tree",
+     "uniqueID": "palm_tree",
+     "synset": "palm.n.03",
+     "things_def": "any plant of the family Palmae having an unbranched trunk crowned by large pinnate or palmate leaves",
+     "things_category": ""
+    }
+   ],
+   "pear": [
+    {
+     "row": 1133,
+     "word": "pear",
+     "uniqueID": "pear",
+     "synset": "pear.n.01",
+     "things_def": "sweet juicy gritty-textured fruit available in many varieties",
+     "things_category": "fruit"
+    }
+   ],
+   "pickup_truck": [
+    {
+     "row": 1720,
+     "word": "truck",
+     "uniqueID": "truck",
+     "synset": "truck.n.01",
+     "things_def": "an automotive vehicle suitable for hauling",
+     "things_category": "vehicle"
+    }
+   ],
+   "pine_tree": [
+    {
+     "row": 1181,
+     "word": "pine tree",
+     "uniqueID": "pine_tree",
+     "synset": "pine.n.01",
+     "things_def": "a coniferous tree",
+     "things_category": ""
+    }
+   ],
+   "plate": [
+    {
+     "row": 1197,
+     "word": "plate",
+     "uniqueID": "plate",
+     "synset": "plate.n.04",
+     "things_def": "dish on which food is served or from which food is eaten",
+     "things_category": ""
+    }
+   ],
+   "poppy": [
+    {
+     "row": 1224,
+     "word": "poppy",
+     "uniqueID": "poppy",
+     "synset": "poppy.n.01",
+     "things_def": "annual or biennial or perennial herbs having showy flowers",
+     "things_category": ""
+    }
+   ],
+   "porcupine": [
+    {
+     "row": 1226,
+     "word": "porcupine",
+     "uniqueID": "porcupine",
+     "synset": "porcupine.n.01",
+     "things_def": "relatively large rodents with sharp erectile bristles mingled with the fur",
+     "things_category": "animal"
+    }
+   ],
+   "possum": [
+    {
+     "row": 1228,
+     "word": "possum",
+     "uniqueID": "possum",
+     "synset": "possum.n.01",
+     "things_def": "nocturnal arboreal marsupial having a naked prehensile tail found from southern North America to northern South America",
+     "things_category": "animal"
+    }
+   ],
+   "rabbit": [
+    {
+     "row": 1265,
+     "word": "rabbit",
+     "uniqueID": "rabbit",
+     "synset": "rabbit.n.01",
+     "things_def": "any of various burrowing animals of the family Leporidae having long ears and short tails; some domesticated and raised ",
+     "things_category": "animal"
+    }
+   ],
+   "raccoon": [
+    {
+     "row": 1266,
+     "word": "raccoon",
+     "uniqueID": "raccoon",
+     "synset": "raccoon.n.02",
+     "things_def": "an omnivorous nocturnal mammal native to North America and Central America",
+     "things_category": "animal"
+    }
+   ],
+   "rocket": [
+    {
+     "row": 1320,
+     "word": "rocket",
+     "uniqueID": "rocket",
+     "synset": "rocket.n.02",
+     "things_def": "a jet engine containing its own propellant and driven by reaction propulsion",
+     "things_category": ""
+    }
+   ],
+   "rose": [
+    {
+     "row": 1334,
+     "word": "rose",
+     "uniqueID": "rose",
+     "synset": "rose.n.01",
+     "things_def": "any of many shrubs of the genus Rosa that bear roses",
+     "things_category": ""
+    }
+   ],
+   "seal": [
+    {
+     "row": 1397,
+     "word": "seal",
+     "uniqueID": "seal",
+     "synset": "seal.n.08",
+     "things_def": "any of numerous marine mammals that come on shore to breed; chiefly of cold regions",
+     "things_category": "animal"
+    }
+   ],
+   "shark": [
+    {
+     "row": 1409,
+     "word": "shark",
+     "uniqueID": "shark",
+     "synset": "shark.n.01",
+     "things_def": "any of numerous elongate mostly marine carnivorous fishes with heterocercal caudal fins and tough skin covered with smal",
+     "things_category": "animal"
+    }
+   ],
+   "skunk": [
+    {
+     "row": 1459,
+     "word": "skunk",
+     "uniqueID": "skunk",
+     "synset": "skunk.n.04",
+     "things_def": "American musteline mammal typically ejecting an intensely malodorous fluid when startled; in some classifications put in",
+     "things_category": "animal"
+    }
+   ],
+   "snail": [
+    {
+     "row": 1476,
+     "word": "snail",
+     "uniqueID": "snail",
+     "synset": "snail.n.01",
+     "things_def": "freshwater or marine or terrestrial gastropod mollusk usually having an external enclosing spiral shell",
+     "things_category": "animal"
+    }
+   ],
+   "snake": [
+    {
+     "row": 1477,
+     "word": "snake",
+     "uniqueID": "snake",
+     "synset": "snake.n.01",
+     "things_def": "limbless scaly elongate reptile; some are venomous",
+     "things_category": ""
+    }
+   ],
+   "spider": [
+    {
+     "row": 1513,
+     "word": "spider",
+     "uniqueID": "spider",
+     "synset": "spider.n.01",
+     "things_def": "predatory arachnid with eight legs, two poison fangs, two feelers, and usually two silk-spinning organs at the back end ",
+     "things_category": "insect"
+    }
+   ],
+   "squirrel": [
+    {
+     "row": 1529,
+     "word": "squirrel",
+     "uniqueID": "squirrel",
+     "synset": "squirrel.n.01",
+     "things_def": "a kind of arboreal rodent having a long bushy tail",
+     "things_category": "animal"
+    }
+   ],
+   "sunflower": [
+    {
+     "row": 1584,
+     "word": "sunflower",
+     "uniqueID": "sunflower",
+     "synset": "sunflower.n.01",
+     "things_def": "any plant of the genus Helianthus having large flower heads with dark disk florets and showy yellow rays",
+     "things_category": ""
+    }
+   ],
+   "table": [
+    {
+     "row": 1608,
+     "word": "table",
+     "uniqueID": "table",
+     "synset": "table.n.02",
+     "things_def": "a piece of furniture having a smooth flat top that is usually supported by one or more vertical legs",
+     "things_category": "furniture"
+    }
+   ],
+   "television": [
+    {
+     "row": 1641,
+     "word": "television",
+     "uniqueID": "television",
+     "synset": "television.n.01",
+     "things_def": "broadcasting visual images of stationary or moving objects",
+     "things_category": "electronic device"
+    }
+   ],
+   "tiger": [
+    {
+     "row": 1659,
+     "word": "tiger",
+     "uniqueID": "tiger",
+     "synset": "tiger.n.02",
+     "things_def": "large feline of forests in most of Asia having a tawny coat with black stripes; endangered",
+     "things_category": "animal"
+    }
+   ],
+   "tractor": [
+    {
+     "row": 1695,
+     "word": "tractor",
+     "uniqueID": "tractor",
+     "synset": "tractor.n.01",
+     "things_def": "a wheeled vehicle with large wheels; used in farming and other applications",
+     "things_category": ""
+    }
+   ],
+   "train": [
+    {
+     "row": 1698,
+     "word": "train",
+     "uniqueID": "train",
+     "synset": "train.n.01",
+     "things_def": "public transport provided by a line of railway cars coupled together and drawn by a locomotive",
+     "things_category": "vehicle"
+    }
+   ],
+   "tulip": [
+    {
+     "row": 1726,
+     "word": "tulip",
+     "uniqueID": "tulip",
+     "synset": "tulip.n.01",
+     "things_def": "any of numerous perennial bulbous herbs having linear or broadly lanceolate leaves and usually a single showy flower",
+     "things_category": ""
+    }
+   ],
+   "turtle": [
+    {
+     "row": 1736,
+     "word": "turtle",
+     "uniqueID": "turtle",
+     "synset": "turtle.n.02",
+     "things_def": "any of various aquatic and land reptiles having a bony shell and flipper-like limbs for swimming",
+     "things_category": "animal"
+    }
+   ],
+   "whale": [
+    {
+     "row": 1804,
+     "word": "whale",
+     "uniqueID": "whale",
+     "synset": "whale.n.02",
+     "things_def": "any of the larger cetacean mammals having a streamlined body and breathing through a blowhole on the head",
+     "things_category": ""
+    }
+   ],
+   "willow_tree": [
+    {
+     "row": 1708,
+     "word": "tree",
+     "uniqueID": "tree",
+     "synset": "tree.n.01",
+     "things_def": "a tall perennial woody plant having a main trunk and branches forming a distinct elevated crown; includes both gymnosper",
+     "things_category": "plant"
+    }
+   ],
+   "wolf": [
+    {
+     "row": 1831,
+     "word": "wolf",
+     "uniqueID": "wolf",
+     "synset": "wolf.n.01",
+     "things_def": "any of various predatory carnivorous canine mammals of North America and Eurasia that usually hunt in packs",
+     "things_category": "animal"
+    }
+   ],
+   "woman": [
+    {
+     "row": 1832,
+     "word": "woman",
+     "uniqueID": "woman",
+     "synset": "woman.n.01",
+     "things_def": "an adult female person (as opposed to a man)",
+     "things_category": ""
+    }
+   ],
+   "worm": [
+    {
+     "row": 1836,
+     "word": "worm",
+     "uniqueID": "worm",
+     "synset": "worm.n.01",
+     "things_def": "any of numerous relatively small elongated soft-bodied animals especially of the phyla Annelida and Chaetognatha and Nem",
+     "things_category": ""
+    }
+   ],
+   "mouse": [
+    {
+     "row": 1026,
+     "word": "mouse",
+     "uniqueID": "mouse1",
+     "synset": "mouse.n.01",
+     "things_def": "any of numerous small rodents typically resembling diminutive rats having pointed snouts and small ears on elongated bod",
+     "things_category": "animal"
+    }
+   ],
+   "tank": [
+    {
+     "row": 1620,
+     "word": "tank",
+     "uniqueID": "tank1",
+     "synset": "tank.n.01",
+     "things_def": "an enclosed armored military vehicle; has a cannon and moves on caterpillar treads",
+     "things_category": ""
+    }
+   ],
+   "sweet_pepper": [
+    {
+     "row": 117,
+     "word": "bell pepper",
+     "uniqueID": "bell_pepper",
+     "synset": "bell_pepper.n.02",
+     "things_def": "large bell-shaped sweet pepper in green or red or yellow or orange or black varieties",
+     "things_category": "vegetable"
+    }
+   ],
+   "bicycle": [
+    {
+     "row": 123,
+     "word": "bike",
+     "uniqueID": "bike",
+     "synset": "bike.n.02",
+     "things_def": "a wheeled vehicle that has two wheels and is moved by foot pedals",
+     "things_category": "vehicle"
+    }
+   ],
+   "telephone": [
+    {
+     "row": 1161,
+     "word": "phone",
+     "uniqueID": "phone",
+     "synset": "phone.n.01",
+     "things_def": "electronic equipment that converts sound into electrical signals that can be transmitted over distances and then convert",
+     "things_category": ""
+    }
+   ],
+   "wardrobe": [
+    {
+     "row": 360,
+     "word": "closet",
+     "uniqueID": "closet",
+     "synset": "closet.n.03",
+     "things_def": "a tall piece of furniture that provides storage space for clothes; has a door and rails or hooks for hanging clothes",
+     "things_category": ""
+    }
+   ],
+   "streetcar": [
+    {
+     "row": 1715,
+     "word": "trolley",
+     "uniqueID": "trolley",
+     "synset": "trolley.n.01",
+     "things_def": "a wheeled vehicle that runs on rails and is propelled by electricity",
+     "things_category": "vehicle"
+    }
+   ]
+  },
+  "SENS_SCOUT": {
+   "apple": [
+    {
+     "row": 30,
+     "word": "apple",
+     "uniqueID": "apple",
+     "synset": "apple.n.01",
+     "things_def": "fruit with red or yellow or green skin and sweet to tart crisp whitish flesh",
+     "things_category": "fruit"
+    }
+   ],
+   "aquarium_fish": [
+    {
+     "row": 600,
+     "word": "fish",
+     "uniqueID": "fish",
+     "synset": "fish.n.01",
+     "things_def": "any of various mostly cold-blooded aquatic vertebrates usually having scales and breathing through gills",
+     "things_category": ""
+    }
+   ],
+   "baby": [
+    {
+     "row": 46,
+     "word": "baby",
+     "uniqueID": "baby",
+     "synset": "baby.n.01",
+     "things_def": "a very young child (birth to 1 year) who has not yet begun to walk or talk",
+     "things_category": ""
+    }
+   ],
+   "bear": [
+    {
+     "row": 105,
+     "word": "bear",
+     "uniqueID": "bear",
+     "synset": "bear.n.01",
+     "things_def": "massive plantigrade carnivorous or omnivorous mammals with long shaggy coats and strong claws",
+     "things_category": "animal"
+    }
+   ],
+   "beaver": [
+    {
+     "row": 107,
+     "word": "beaver",
+     "uniqueID": "beaver",
+     "synset": "beaver.n.06",
+     "things_def": "large semiaquatic rodent with webbed hind feet and a broad flat tail; construct complex dams and underwater lodges",
+     "things_category": "animal"
+    }
+   ],
+   "bed": [
+    {
+     "row": 108,
+     "word": "bed",
+     "uniqueID": "bed",
+     "synset": "bed.n.01",
+     "things_def": "a piece of furniture that provides a place to sleep",
+     "things_category": "furniture"
+    }
+   ],
+   "bee": [
+    {
+     "row": 111,
+     "word": "bee",
+     "uniqueID": "bee",
+     "synset": "bee.n.01",
+     "things_def": "any of numerous hairy-bodied insects including social and solitary species",
+     "things_category": "insect"
+    }
+   ],
+   "beetle": [
+    {
+     "row": 115,
+     "word": "beetle",
+     "uniqueID": "beetle",
+     "synset": "beetle.n.01",
+     "things_def": "insect having biting mouthparts and front wings modified to form horny covers overlying the membranous rear wings",
+     "things_category": "insect"
+    }
+   ],
+   "bottle": [
+    {
+     "row": 170,
+     "word": "bottle",
+     "uniqueID": "bottle",
+     "synset": "bottle.n.01",
+     "things_def": "a glass or plastic vessel used for storing drinks or other liquids; typically cylindrical without handles and with a nar",
+     "things_category": "container"
+    }
+   ],
+   "bowl": [
+    {
+     "row": 177,
+     "word": "bowl",
+     "uniqueID": "bowl",
+     "synset": "bowl.n.01",
+     "things_def": "a round vessel that is open at the top; used chiefly for holding food or liquids;",
+     "things_category": ""
+    }
+   ],
+   "boy": [
+    {
+     "row": 184,
+     "word": "boy",
+     "uniqueID": "boy",
+     "synset": "boy.n.01",
+     "things_def": "a youthful male person",
+     "things_category": ""
+    }
+   ],
+   "bus": [
+    {
+     "row": 226,
+     "word": "bus",
+     "uniqueID": "bus",
+     "synset": "bus.n.01",
+     "things_def": "a vehicle carrying many passengers; used for public transport",
+     "things_category": "vehicle"
+    }
+   ],
+   "butterfly": [
+    {
+     "row": 229,
+     "word": "butterfly",
+     "uniqueID": "butterfly",
+     "synset": "butterfly.n.01",
+     "things_def": "diurnal insect typically having a slender body with knobbed antennae and broad colorful wings",
+     "things_category": "insect"
+    }
+   ],
+   "camel": [
+    {
+     "row": 245,
+     "word": "camel",
+     "uniqueID": "camel",
+     "synset": "camel.n.01",
+     "things_def": "cud-chewing mammal used as a draft or saddle animal in desert regions",
+     "things_category": "animal"
+    }
+   ],
+   "can": [
+    {
+     "row": 250,
+     "word": "can",
+     "uniqueID": "can",
+     "synset": "can.n.01",
+     "things_def": "airtight sealed metal container for food or drink or paint etc.",
+     "things_category": "container"
+    }
+   ],
+   "caterpillar": [
+    {
+     "row": 286,
+     "word": "caterpillar",
+     "uniqueID": "caterpillar",
+     "synset": "caterpillar.n.01",
+     "things_def": "a wormlike and often brightly colored and hairy or spiny larva of a butterfly or moth",
+     "things_category": "insect"
+    }
+   ],
+   "chair": [
+    {
+     "row": 300,
+     "word": "chair",
+     "uniqueID": "chair",
+     "synset": "chair.n.01",
+     "things_def": "a seat for one person, with a support for the back",
+     "things_category": "furniture"
+    }
+   ],
+   "clock": [
+    {
+     "row": 359,
+     "word": "clock",
+     "uniqueID": "clock",
+     "synset": "clock.n.01",
+     "things_def": "a timepiece that shows the time of day",
+     "things_category": ""
+    }
+   ],
+   "cloud": [
+    {
+     "row": 364,
+     "word": "cloud",
+     "uniqueID": "cloud",
+     "synset": "cloud.n.02",
+     "things_def": "a visible mass of water or ice particles suspended at a considerable altitude",
+     "things_category": ""
+    }
+   ],
+   "cockroach": [
+    {
+     "row": 373,
+     "word": "cockroach",
+     "uniqueID": "cockroach",
+     "synset": "cockroach.n.01",
+     "things_def": "any of numerous chiefly nocturnal insects; some are domestic pests",
+     "things_category": "insect"
+    }
+   ],
+   "couch": [
+    {
+     "row": 422,
+     "word": "couch",
+     "uniqueID": "couch",
+     "synset": "couch.n.01",
+     "things_def": "an upholstered seat for more than one person",
+     "things_category": "furniture"
+    }
+   ],
+   "crab": [
+    {
+     "row": 428,
+     "word": "crab",
+     "uniqueID": "crab",
+     "synset": "crab.n.01",
+     "things_def": "decapod having eyes on short stalks and a broad flattened carapace with a small abdomen folded under the thorax and pinc",
+     "things_category": ""
+    }
+   ],
+   "cup": [
+    {
+     "row": 460,
+     "word": "cup",
+     "uniqueID": "cup",
+     "synset": "cup.n.01",
+     "things_def": "a small open container usually used for drinking; usually has a handle",
+     "things_category": "container"
+    }
+   ],
+   "dolphin": [
+    {
+     "row": 502,
+     "word": "dolphin",
+     "uniqueID": "dolphin",
+     "synset": "dolphin.n.02",
+     "things_def": "any of various small toothed whales with a beaklike snout; larger than porpoises",
+     "things_category": ""
+    }
+   ],
+   "elephant": [
+    {
+     "row": 554,
+     "word": "elephant",
+     "uniqueID": "elephant",
+     "synset": "elephant.n.01",
+     "things_def": "five-toed pachyderm",
+     "things_category": "animal"
+    }
+   ],
+   "fox": [
+    {
+     "row": 638,
+     "word": "fox",
+     "uniqueID": "fox",
+     "synset": "fox.n.01",
+     "things_def": "alert carnivorous mammal with pointed muzzle and ears and a bushy tail; most are predators that do not hunt in packs",
+     "things_category": "animal"
+    }
+   ],
+   "girl": [
+    {
+     "row": 676,
+     "word": "girl",
+     "uniqueID": "girl",
+     "synset": "girl.n.02",
+     "things_def": "a youthful female person",
+     "things_category": ""
+    }
+   ],
+   "hamster": [
+    {
+     "row": 743,
+     "word": "hamster",
+     "uniqueID": "hamster",
+     "synset": "hamster.n.01",
+     "things_def": "short-tailed Old World burrowing rodent with large cheek pouches",
+     "things_category": "animal"
+    }
+   ],
+   "kangaroo": [
+    {
+     "row": 862,
+     "word": "kangaroo",
+     "uniqueID": "kangaroo",
+     "synset": "kangaroo.n.01",
+     "things_def": "any of several herbivorous leaping marsupials of Australia and New Guinea having large powerful hind legs and a long thi",
+     "things_category": "animal"
+    }
+   ],
+   "keyboard": [
+    {
+     "row": 870,
+     "word": "keyboard",
+     "uniqueID": "keyboard",
+     "synset": "keyboard.n.01",
+     "things_def": "device consisting of a set of keys on a piano or organ or typewriter or typesetting machine or computer or the like",
+     "things_category": "musical instrument"
+    }
+   ],
+   "lamp": [
+    {
+     "row": 891,
+     "word": "lamp",
+     "uniqueID": "lamp",
+     "synset": "lamp.n.02",
+     "things_def": "a piece of furniture holding one or more electric light bulbs",
+     "things_category": ""
+    }
+   ],
+   "lawn_mower": [
+    {
+     "row": 905,
+     "word": "lawnmower",
+     "uniqueID": "lawnmower",
+     "synset": "lawn_mower.n.01",
+     "things_def": "garden tool for mowing grass on lawns",
+     "things_category": ""
+    }
+   ],
+   "leopard": [
+    {
+     "row": 917,
+     "word": "leopard",
+     "uniqueID": "leopard",
+     "synset": "leopard.n.02",
+     "things_def": "large feline of African and Asian forests usually having a tawny coat with black spots",
+     "things_category": "animal"
+    }
+   ],
+   "lion": [
+    {
+     "row": 933,
+     "word": "lion",
+     "uniqueID": "lion",
+     "synset": "lion.n.01",
+     "things_def": "large gregarious predatory feline of Africa and India having a tawny coat with a shaggy mane in the male",
+     "things_category": "animal"
+    }
+   ],
+   "lizard": [
+    {
+     "row": 937,
+     "word": "lizard",
+     "uniqueID": "lizard",
+     "synset": "lizard.n.01",
+     "things_def": "relatively long-bodied reptile with usually two pairs of legs and a tapering tail",
+     "things_category": ""
+    }
+   ],
+   "lobster": [
+    {
+     "row": 939,
+     "word": "lobster",
+     "uniqueID": "lobster",
+     "synset": "lobster.n.02",
+     "things_def": "any of several edible marine crustaceans of the families Homaridae and Nephropsidae and Palinuridae",
+     "things_category": ""
+    }
+   ],
+   "man": [
+    {
+     "row": 963,
+     "word": "man",
+     "uniqueID": "man",
+     "synset": "man.n.01",
+     "things_def": "an adult person who is male (as opposed to a woman)",
+     "things_category": ""
+    }
+   ],
+   "maple_tree": [
+    {
+     "row": 1708,
+     "word": "tree",
+     "uniqueID": "tree",
+     "synset": "tree.n.01",
+     "things_def": "a tall perennial woody plant having a main trunk and branches forming a distinct elevated crown; includes both gymnosper",
+     "things_category": "plant"
+    }
+   ],
+   "motorcycle": [
+    {
+     "row": 1025,
+     "word": "motorcycle",
+     "uniqueID": "motorcycle",
+     "synset": "motorcycle.n.01",
+     "things_def": "a motor vehicle with two wheels and a strong frame",
+     "things_category": "vehicle"
+    }
+   ],
+   "mushroom": [
+    {
+     "row": 1040,
+     "word": "mushroom",
+     "uniqueID": "mushroom",
+     "synset": "mushroom.n.03",
+     "things_def": "any of various fleshy fungi of the subdivision Basidiomycota consisting of a cap at the end of a stem arising from an un",
+     "things_category": ""
+    }
+   ],
+   "oak_tree": [
+    {
+     "row": 1708,
+     "word": "tree",
+     "uniqueID": "tree",
+     "synset": "tree.n.01",
+     "things_def": "a tall perennial woody plant having a main trunk and branches forming a distinct elevated crown; includes both gymnosper",
+     "things_category": "plant"
+    }
+   ],
+   "orange": [
+    {
+     "row": 1078,
+     "word": "orange",
+     "uniqueID": "orange",
+     "synset": "orange.n.01",
+     "things_def": "round yellow to orange fruit of any of several citrus trees",
+     "things_category": "fruit"
+    }
+   ],
+   "orchid": [
+    {
+     "row": 1081,
+     "word": "orchid",
+     "uniqueID": "orchid",
+     "synset": "orchid.n.01",
+     "things_def": "any of numerous plants of the orchid family usually having flowers of unusual shapes and beautiful colors",
+     "things_category": ""
+    }
+   ],
+   "otter": [
+    {
+     "row": 1085,
+     "word": "otter",
+     "uniqueID": "otter",
+     "synset": "otter.n.02",
+     "things_def": "freshwater carnivorous mammal having webbed and clawed feet and dark brown fur",
+     "things_category": "animal"
+    }
+   ],
+   "palm_tree": [
+    {
+     "row": 1102,
+     "word": "palm tree",
+     "uniqueID": "palm_tree",
+     "synset": "palm.n.03",
+     "things_def": "any plant of the family Palmae having an unbranched trunk crowned by large pinnate or palmate leaves",
+     "things_category": ""
+    }
+   ],
+   "pear": [
+    {
+     "row": 1133,
+     "word": "pear",
+     "uniqueID": "pear",
+     "synset": "pear.n.01",
+     "things_def": "sweet juicy gritty-textured fruit available in many varieties",
+     "things_category": "fruit"
+    }
+   ],
+   "pickup_truck": [
+    {
+     "row": 1720,
+     "word": "truck",
+     "uniqueID": "truck",
+     "synset": "truck.n.01",
+     "things_def": "an automotive vehicle suitable for hauling",
+     "things_category": "vehicle"
+    }
+   ],
+   "pine_tree": [
+    {
+     "row": 1181,
+     "word": "pine tree",
+     "uniqueID": "pine_tree",
+     "synset": "pine.n.01",
+     "things_def": "a coniferous tree",
+     "things_category": ""
+    }
+   ],
+   "plate": [
+    {
+     "row": 1197,
+     "word": "plate",
+     "uniqueID": "plate",
+     "synset": "plate.n.04",
+     "things_def": "dish on which food is served or from which food is eaten",
+     "things_category": ""
+    }
+   ],
+   "poppy": [
+    {
+     "row": 1224,
+     "word": "poppy",
+     "uniqueID": "poppy",
+     "synset": "poppy.n.01",
+     "things_def": "annual or biennial or perennial herbs having showy flowers",
+     "things_category": ""
+    }
+   ],
+   "porcupine": [
+    {
+     "row": 1226,
+     "word": "porcupine",
+     "uniqueID": "porcupine",
+     "synset": "porcupine.n.01",
+     "things_def": "relatively large rodents with sharp erectile bristles mingled with the fur",
+     "things_category": "animal"
+    }
+   ],
+   "possum": [
+    {
+     "row": 1228,
+     "word": "possum",
+     "uniqueID": "possum",
+     "synset": "possum.n.01",
+     "things_def": "nocturnal arboreal marsupial having a naked prehensile tail found from southern North America to northern South America",
+     "things_category": "animal"
+    }
+   ],
+   "rabbit": [
+    {
+     "row": 1265,
+     "word": "rabbit",
+     "uniqueID": "rabbit",
+     "synset": "rabbit.n.01",
+     "things_def": "any of various burrowing animals of the family Leporidae having long ears and short tails; some domesticated and raised ",
+     "things_category": "animal"
+    }
+   ],
+   "raccoon": [
+    {
+     "row": 1266,
+     "word": "raccoon",
+     "uniqueID": "raccoon",
+     "synset": "raccoon.n.02",
+     "things_def": "an omnivorous nocturnal mammal native to North America and Central America",
+     "things_category": "animal"
+    }
+   ],
+   "rocket": [
+    {
+     "row": 1320,
+     "word": "rocket",
+     "uniqueID": "rocket",
+     "synset": "rocket.n.02",
+     "things_def": "a jet engine containing its own propellant and driven by reaction propulsion",
+     "things_category": ""
+    }
+   ],
+   "rose": [
+    {
+     "row": 1334,
+     "word": "rose",
+     "uniqueID": "rose",
+     "synset": "rose.n.01",
+     "things_def": "any of many shrubs of the genus Rosa that bear roses",
+     "things_category": ""
+    }
+   ],
+   "seal": [
+    {
+     "row": 1397,
+     "word": "seal",
+     "uniqueID": "seal",
+     "synset": "seal.n.08",
+     "things_def": "any of numerous marine mammals that come on shore to breed; chiefly of cold regions",
+     "things_category": "animal"
+    }
+   ],
+   "shark": [
+    {
+     "row": 1409,
+     "word": "shark",
+     "uniqueID": "shark",
+     "synset": "shark.n.01",
+     "things_def": "any of numerous elongate mostly marine carnivorous fishes with heterocercal caudal fins and tough skin covered with smal",
+     "things_category": "animal"
+    }
+   ],
+   "skunk": [
+    {
+     "row": 1459,
+     "word": "skunk",
+     "uniqueID": "skunk",
+     "synset": "skunk.n.04",
+     "things_def": "American musteline mammal typically ejecting an intensely malodorous fluid when startled; in some classifications put in",
+     "things_category": "animal"
+    }
+   ],
+   "snail": [
+    {
+     "row": 1476,
+     "word": "snail",
+     "uniqueID": "snail",
+     "synset": "snail.n.01",
+     "things_def": "freshwater or marine or terrestrial gastropod mollusk usually having an external enclosing spiral shell",
+     "things_category": "animal"
+    }
+   ],
+   "snake": [
+    {
+     "row": 1477,
+     "word": "snake",
+     "uniqueID": "snake",
+     "synset": "snake.n.01",
+     "things_def": "limbless scaly elongate reptile; some are venomous",
+     "things_category": ""
+    }
+   ],
+   "spider": [
+    {
+     "row": 1513,
+     "word": "spider",
+     "uniqueID": "spider",
+     "synset": "spider.n.01",
+     "things_def": "predatory arachnid with eight legs, two poison fangs, two feelers, and usually two silk-spinning organs at the back end ",
+     "things_category": "insect"
+    }
+   ],
+   "squirrel": [
+    {
+     "row": 1529,
+     "word": "squirrel",
+     "uniqueID": "squirrel",
+     "synset": "squirrel.n.01",
+     "things_def": "a kind of arboreal rodent having a long bushy tail",
+     "things_category": "animal"
+    }
+   ],
+   "sunflower": [
+    {
+     "row": 1584,
+     "word": "sunflower",
+     "uniqueID": "sunflower",
+     "synset": "sunflower.n.01",
+     "things_def": "any plant of the genus Helianthus having large flower heads with dark disk florets and showy yellow rays",
+     "things_category": ""
+    }
+   ],
+   "table": [
+    {
+     "row": 1608,
+     "word": "table",
+     "uniqueID": "table",
+     "synset": "table.n.02",
+     "things_def": "a piece of furniture having a smooth flat top that is usually supported by one or more vertical legs",
+     "things_category": "furniture"
+    }
+   ],
+   "television": [
+    {
+     "row": 1641,
+     "word": "television",
+     "uniqueID": "television",
+     "synset": "television.n.01",
+     "things_def": "broadcasting visual images of stationary or moving objects",
+     "things_category": "electronic device"
+    }
+   ],
+   "tiger": [
+    {
+     "row": 1659,
+     "word": "tiger",
+     "uniqueID": "tiger",
+     "synset": "tiger.n.02",
+     "things_def": "large feline of forests in most of Asia having a tawny coat with black stripes; endangered",
+     "things_category": "animal"
+    }
+   ],
+   "tractor": [
+    {
+     "row": 1695,
+     "word": "tractor",
+     "uniqueID": "tractor",
+     "synset": "tractor.n.01",
+     "things_def": "a wheeled vehicle with large wheels; used in farming and other applications",
+     "things_category": ""
+    }
+   ],
+   "train": [
+    {
+     "row": 1698,
+     "word": "train",
+     "uniqueID": "train",
+     "synset": "train.n.01",
+     "things_def": "public transport provided by a line of railway cars coupled together and drawn by a locomotive",
+     "things_category": "vehicle"
+    }
+   ],
+   "tulip": [
+    {
+     "row": 1726,
+     "word": "tulip",
+     "uniqueID": "tulip",
+     "synset": "tulip.n.01",
+     "things_def": "any of numerous perennial bulbous herbs having linear or broadly lanceolate leaves and usually a single showy flower",
+     "things_category": ""
+    }
+   ],
+   "turtle": [
+    {
+     "row": 1736,
+     "word": "turtle",
+     "uniqueID": "turtle",
+     "synset": "turtle.n.02",
+     "things_def": "any of various aquatic and land reptiles having a bony shell and flipper-like limbs for swimming",
+     "things_category": "animal"
+    }
+   ],
+   "whale": [
+    {
+     "row": 1804,
+     "word": "whale",
+     "uniqueID": "whale",
+     "synset": "whale.n.02",
+     "things_def": "any of the larger cetacean mammals having a streamlined body and breathing through a blowhole on the head",
+     "things_category": ""
+    }
+   ],
+   "willow_tree": [
+    {
+     "row": 1708,
+     "word": "tree",
+     "uniqueID": "tree",
+     "synset": "tree.n.01",
+     "things_def": "a tall perennial woody plant having a main trunk and branches forming a distinct elevated crown; includes both gymnosper",
+     "things_category": "plant"
+    }
+   ],
+   "wolf": [
+    {
+     "row": 1831,
+     "word": "wolf",
+     "uniqueID": "wolf",
+     "synset": "wolf.n.01",
+     "things_def": "any of various predatory carnivorous canine mammals of North America and Eurasia that usually hunt in packs",
+     "things_category": "animal"
+    }
+   ],
+   "woman": [
+    {
+     "row": 1832,
+     "word": "woman",
+     "uniqueID": "woman",
+     "synset": "woman.n.01",
+     "things_def": "an adult female person (as opposed to a man)",
+     "things_category": ""
+    }
+   ],
+   "worm": [
+    {
+     "row": 1836,
+     "word": "worm",
+     "uniqueID": "worm",
+     "synset": "worm.n.01",
+     "things_def": "any of numerous relatively small elongated soft-bodied animals especially of the phyla Annelida and Chaetognatha and Nem",
+     "things_category": ""
+    }
+   ],
+   "mouse": [
+    {
+     "row": 1026,
+     "word": "mouse",
+     "uniqueID": "mouse1",
+     "synset": "mouse.n.01",
+     "things_def": "any of numerous small rodents typically resembling diminutive rats having pointed snouts and small ears on elongated bod",
+     "things_category": "animal"
+    }
+   ],
+   "tank": [
+    {
+     "row": 1620,
+     "word": "tank",
+     "uniqueID": "tank1",
+     "synset": "tank.n.01",
+     "things_def": "an enclosed armored military vehicle; has a cannon and moves on caterpillar treads",
+     "things_category": ""
+    }
+   ],
+   "sweet_pepper": [
+    {
+     "row": 1151,
+     "word": "pepper",
+     "uniqueID": "pepper2",
+     "synset": "pepper.n.04",
+     "things_def": "sweet and hot varieties of fruits of plants of the genus Capsicum",
+     "things_category": "kitchen tool"
+    }
+   ]
+  },
+  "SENS_STRICT": {
+   "apple": [
+    {
+     "row": 30,
+     "word": "apple",
+     "uniqueID": "apple",
+     "synset": "apple.n.01",
+     "things_def": "fruit with red or yellow or green skin and sweet to tart crisp whitish flesh",
+     "things_category": "fruit"
+    }
+   ],
+   "baby": [
+    {
+     "row": 46,
+     "word": "baby",
+     "uniqueID": "baby",
+     "synset": "baby.n.01",
+     "things_def": "a very young child (birth to 1 year) who has not yet begun to walk or talk",
+     "things_category": ""
+    }
+   ],
+   "bear": [
+    {
+     "row": 105,
+     "word": "bear",
+     "uniqueID": "bear",
+     "synset": "bear.n.01",
+     "things_def": "massive plantigrade carnivorous or omnivorous mammals with long shaggy coats and strong claws",
+     "things_category": "animal"
+    }
+   ],
+   "beaver": [
+    {
+     "row": 107,
+     "word": "beaver",
+     "uniqueID": "beaver",
+     "synset": "beaver.n.06",
+     "things_def": "large semiaquatic rodent with webbed hind feet and a broad flat tail; construct complex dams and underwater lodges",
+     "things_category": "animal"
+    }
+   ],
+   "bed": [
+    {
+     "row": 108,
+     "word": "bed",
+     "uniqueID": "bed",
+     "synset": "bed.n.01",
+     "things_def": "a piece of furniture that provides a place to sleep",
+     "things_category": "furniture"
+    }
+   ],
+   "bee": [
+    {
+     "row": 111,
+     "word": "bee",
+     "uniqueID": "bee",
+     "synset": "bee.n.01",
+     "things_def": "any of numerous hairy-bodied insects including social and solitary species",
+     "things_category": "insect"
+    }
+   ],
+   "beetle": [
+    {
+     "row": 115,
+     "word": "beetle",
+     "uniqueID": "beetle",
+     "synset": "beetle.n.01",
+     "things_def": "insect having biting mouthparts and front wings modified to form horny covers overlying the membranous rear wings",
+     "things_category": "insect"
+    }
+   ],
+   "bottle": [
+    {
+     "row": 170,
+     "word": "bottle",
+     "uniqueID": "bottle",
+     "synset": "bottle.n.01",
+     "things_def": "a glass or plastic vessel used for storing drinks or other liquids; typically cylindrical without handles and with a nar",
+     "things_category": "container"
+    }
+   ],
+   "bowl": [
+    {
+     "row": 177,
+     "word": "bowl",
+     "uniqueID": "bowl",
+     "synset": "bowl.n.01",
+     "things_def": "a round vessel that is open at the top; used chiefly for holding food or liquids;",
+     "things_category": ""
+    }
+   ],
+   "boy": [
+    {
+     "row": 184,
+     "word": "boy",
+     "uniqueID": "boy",
+     "synset": "boy.n.01",
+     "things_def": "a youthful male person",
+     "things_category": ""
+    }
+   ],
+   "bus": [
+    {
+     "row": 226,
+     "word": "bus",
+     "uniqueID": "bus",
+     "synset": "bus.n.01",
+     "things_def": "a vehicle carrying many passengers; used for public transport",
+     "things_category": "vehicle"
+    }
+   ],
+   "butterfly": [
+    {
+     "row": 229,
+     "word": "butterfly",
+     "uniqueID": "butterfly",
+     "synset": "butterfly.n.01",
+     "things_def": "diurnal insect typically having a slender body with knobbed antennae and broad colorful wings",
+     "things_category": "insect"
+    }
+   ],
+   "camel": [
+    {
+     "row": 245,
+     "word": "camel",
+     "uniqueID": "camel",
+     "synset": "camel.n.01",
+     "things_def": "cud-chewing mammal used as a draft or saddle animal in desert regions",
+     "things_category": "animal"
+    }
+   ],
+   "can": [
+    {
+     "row": 250,
+     "word": "can",
+     "uniqueID": "can",
+     "synset": "can.n.01",
+     "things_def": "airtight sealed metal container for food or drink or paint etc.",
+     "things_category": "container"
+    }
+   ],
+   "caterpillar": [
+    {
+     "row": 286,
+     "word": "caterpillar",
+     "uniqueID": "caterpillar",
+     "synset": "caterpillar.n.01",
+     "things_def": "a wormlike and often brightly colored and hairy or spiny larva of a butterfly or moth",
+     "things_category": "insect"
+    }
+   ],
+   "chair": [
+    {
+     "row": 300,
+     "word": "chair",
+     "uniqueID": "chair",
+     "synset": "chair.n.01",
+     "things_def": "a seat for one person, with a support for the back",
+     "things_category": "furniture"
+    }
+   ],
+   "clock": [
+    {
+     "row": 359,
+     "word": "clock",
+     "uniqueID": "clock",
+     "synset": "clock.n.01",
+     "things_def": "a timepiece that shows the time of day",
+     "things_category": ""
+    }
+   ],
+   "cloud": [
+    {
+     "row": 364,
+     "word": "cloud",
+     "uniqueID": "cloud",
+     "synset": "cloud.n.02",
+     "things_def": "a visible mass of water or ice particles suspended at a considerable altitude",
+     "things_category": ""
+    }
+   ],
+   "cockroach": [
+    {
+     "row": 373,
+     "word": "cockroach",
+     "uniqueID": "cockroach",
+     "synset": "cockroach.n.01",
+     "things_def": "any of numerous chiefly nocturnal insects; some are domestic pests",
+     "things_category": "insect"
+    }
+   ],
+   "couch": [
+    {
+     "row": 422,
+     "word": "couch",
+     "uniqueID": "couch",
+     "synset": "couch.n.01",
+     "things_def": "an upholstered seat for more than one person",
+     "things_category": "furniture"
+    }
+   ],
+   "crab": [
+    {
+     "row": 428,
+     "word": "crab",
+     "uniqueID": "crab",
+     "synset": "crab.n.01",
+     "things_def": "decapod having eyes on short stalks and a broad flattened carapace with a small abdomen folded under the thorax and pinc",
+     "things_category": ""
+    }
+   ],
+   "cup": [
+    {
+     "row": 460,
+     "word": "cup",
+     "uniqueID": "cup",
+     "synset": "cup.n.01",
+     "things_def": "a small open container usually used for drinking; usually has a handle",
+     "things_category": "container"
+    }
+   ],
+   "dolphin": [
+    {
+     "row": 502,
+     "word": "dolphin",
+     "uniqueID": "dolphin",
+     "synset": "dolphin.n.02",
+     "things_def": "any of various small toothed whales with a beaklike snout; larger than porpoises",
+     "things_category": ""
+    }
+   ],
+   "elephant": [
+    {
+     "row": 554,
+     "word": "elephant",
+     "uniqueID": "elephant",
+     "synset": "elephant.n.01",
+     "things_def": "five-toed pachyderm",
+     "things_category": "animal"
+    }
+   ],
+   "fox": [
+    {
+     "row": 638,
+     "word": "fox",
+     "uniqueID": "fox",
+     "synset": "fox.n.01",
+     "things_def": "alert carnivorous mammal with pointed muzzle and ears and a bushy tail; most are predators that do not hunt in packs",
+     "things_category": "animal"
+    }
+   ],
+   "girl": [
+    {
+     "row": 676,
+     "word": "girl",
+     "uniqueID": "girl",
+     "synset": "girl.n.02",
+     "things_def": "a youthful female person",
+     "things_category": ""
+    }
+   ],
+   "hamster": [
+    {
+     "row": 743,
+     "word": "hamster",
+     "uniqueID": "hamster",
+     "synset": "hamster.n.01",
+     "things_def": "short-tailed Old World burrowing rodent with large cheek pouches",
+     "things_category": "animal"
+    }
+   ],
+   "kangaroo": [
+    {
+     "row": 862,
+     "word": "kangaroo",
+     "uniqueID": "kangaroo",
+     "synset": "kangaroo.n.01",
+     "things_def": "any of several herbivorous leaping marsupials of Australia and New Guinea having large powerful hind legs and a long thi",
+     "things_category": "animal"
+    }
+   ],
+   "lamp": [
+    {
+     "row": 891,
+     "word": "lamp",
+     "uniqueID": "lamp",
+     "synset": "lamp.n.02",
+     "things_def": "a piece of furniture holding one or more electric light bulbs",
+     "things_category": ""
+    }
+   ],
+   "lawn_mower": [
+    {
+     "row": 905,
+     "word": "lawnmower",
+     "uniqueID": "lawnmower",
+     "synset": "lawn_mower.n.01",
+     "things_def": "garden tool for mowing grass on lawns",
+     "things_category": ""
+    }
+   ],
+   "leopard": [
+    {
+     "row": 917,
+     "word": "leopard",
+     "uniqueID": "leopard",
+     "synset": "leopard.n.02",
+     "things_def": "large feline of African and Asian forests usually having a tawny coat with black spots",
+     "things_category": "animal"
+    }
+   ],
+   "lion": [
+    {
+     "row": 933,
+     "word": "lion",
+     "uniqueID": "lion",
+     "synset": "lion.n.01",
+     "things_def": "large gregarious predatory feline of Africa and India having a tawny coat with a shaggy mane in the male",
+     "things_category": "animal"
+    }
+   ],
+   "lizard": [
+    {
+     "row": 937,
+     "word": "lizard",
+     "uniqueID": "lizard",
+     "synset": "lizard.n.01",
+     "things_def": "relatively long-bodied reptile with usually two pairs of legs and a tapering tail",
+     "things_category": ""
+    }
+   ],
+   "lobster": [
+    {
+     "row": 939,
+     "word": "lobster",
+     "uniqueID": "lobster",
+     "synset": "lobster.n.02",
+     "things_def": "any of several edible marine crustaceans of the families Homaridae and Nephropsidae and Palinuridae",
+     "things_category": ""
+    }
+   ],
+   "man": [
+    {
+     "row": 963,
+     "word": "man",
+     "uniqueID": "man",
+     "synset": "man.n.01",
+     "things_def": "an adult person who is male (as opposed to a woman)",
+     "things_category": ""
+    }
+   ],
+   "motorcycle": [
+    {
+     "row": 1025,
+     "word": "motorcycle",
+     "uniqueID": "motorcycle",
+     "synset": "motorcycle.n.01",
+     "things_def": "a motor vehicle with two wheels and a strong frame",
+     "things_category": "vehicle"
+    }
+   ],
+   "mushroom": [
+    {
+     "row": 1040,
+     "word": "mushroom",
+     "uniqueID": "mushroom",
+     "synset": "mushroom.n.03",
+     "things_def": "any of various fleshy fungi of the subdivision Basidiomycota consisting of a cap at the end of a stem arising from an un",
+     "things_category": ""
+    }
+   ],
+   "orange": [
+    {
+     "row": 1078,
+     "word": "orange",
+     "uniqueID": "orange",
+     "synset": "orange.n.01",
+     "things_def": "round yellow to orange fruit of any of several citrus trees",
+     "things_category": "fruit"
+    }
+   ],
+   "orchid": [
+    {
+     "row": 1081,
+     "word": "orchid",
+     "uniqueID": "orchid",
+     "synset": "orchid.n.01",
+     "things_def": "any of numerous plants of the orchid family usually having flowers of unusual shapes and beautiful colors",
+     "things_category": ""
+    }
+   ],
+   "otter": [
+    {
+     "row": 1085,
+     "word": "otter",
+     "uniqueID": "otter",
+     "synset": "otter.n.02",
+     "things_def": "freshwater carnivorous mammal having webbed and clawed feet and dark brown fur",
+     "things_category": "animal"
+    }
+   ],
+   "palm_tree": [
+    {
+     "row": 1102,
+     "word": "palm tree",
+     "uniqueID": "palm_tree",
+     "synset": "palm.n.03",
+     "things_def": "any plant of the family Palmae having an unbranched trunk crowned by large pinnate or palmate leaves",
+     "things_category": ""
+    }
+   ],
+   "pear": [
+    {
+     "row": 1133,
+     "word": "pear",
+     "uniqueID": "pear",
+     "synset": "pear.n.01",
+     "things_def": "sweet juicy gritty-textured fruit available in many varieties",
+     "things_category": "fruit"
+    }
+   ],
+   "pine_tree": [
+    {
+     "row": 1181,
+     "word": "pine tree",
+     "uniqueID": "pine_tree",
+     "synset": "pine.n.01",
+     "things_def": "a coniferous tree",
+     "things_category": ""
+    }
+   ],
+   "plate": [
+    {
+     "row": 1197,
+     "word": "plate",
+     "uniqueID": "plate",
+     "synset": "plate.n.04",
+     "things_def": "dish on which food is served or from which food is eaten",
+     "things_category": ""
+    }
+   ],
+   "poppy": [
+    {
+     "row": 1224,
+     "word": "poppy",
+     "uniqueID": "poppy",
+     "synset": "poppy.n.01",
+     "things_def": "annual or biennial or perennial herbs having showy flowers",
+     "things_category": ""
+    }
+   ],
+   "porcupine": [
+    {
+     "row": 1226,
+     "word": "porcupine",
+     "uniqueID": "porcupine",
+     "synset": "porcupine.n.01",
+     "things_def": "relatively large rodents with sharp erectile bristles mingled with the fur",
+     "things_category": "animal"
+    }
+   ],
+   "possum": [
+    {
+     "row": 1228,
+     "word": "possum",
+     "uniqueID": "possum",
+     "synset": "possum.n.01",
+     "things_def": "nocturnal arboreal marsupial having a naked prehensile tail found from southern North America to northern South America",
+     "things_category": "animal"
+    }
+   ],
+   "rabbit": [
+    {
+     "row": 1265,
+     "word": "rabbit",
+     "uniqueID": "rabbit",
+     "synset": "rabbit.n.01",
+     "things_def": "any of various burrowing animals of the family Leporidae having long ears and short tails; some domesticated and raised ",
+     "things_category": "animal"
+    }
+   ],
+   "raccoon": [
+    {
+     "row": 1266,
+     "word": "raccoon",
+     "uniqueID": "raccoon",
+     "synset": "raccoon.n.02",
+     "things_def": "an omnivorous nocturnal mammal native to North America and Central America",
+     "things_category": "animal"
+    }
+   ],
+   "rocket": [
+    {
+     "row": 1320,
+     "word": "rocket",
+     "uniqueID": "rocket",
+     "synset": "rocket.n.02",
+     "things_def": "a jet engine containing its own propellant and driven by reaction propulsion",
+     "things_category": ""
+    }
+   ],
+   "rose": [
+    {
+     "row": 1334,
+     "word": "rose",
+     "uniqueID": "rose",
+     "synset": "rose.n.01",
+     "things_def": "any of many shrubs of the genus Rosa that bear roses",
+     "things_category": ""
+    }
+   ],
+   "seal": [
+    {
+     "row": 1397,
+     "word": "seal",
+     "uniqueID": "seal",
+     "synset": "seal.n.08",
+     "things_def": "any of numerous marine mammals that come on shore to breed; chiefly of cold regions",
+     "things_category": "animal"
+    }
+   ],
+   "shark": [
+    {
+     "row": 1409,
+     "word": "shark",
+     "uniqueID": "shark",
+     "synset": "shark.n.01",
+     "things_def": "any of numerous elongate mostly marine carnivorous fishes with heterocercal caudal fins and tough skin covered with smal",
+     "things_category": "animal"
+    }
+   ],
+   "skunk": [
+    {
+     "row": 1459,
+     "word": "skunk",
+     "uniqueID": "skunk",
+     "synset": "skunk.n.04",
+     "things_def": "American musteline mammal typically ejecting an intensely malodorous fluid when startled; in some classifications put in",
+     "things_category": "animal"
+    }
+   ],
+   "snail": [
+    {
+     "row": 1476,
+     "word": "snail",
+     "uniqueID": "snail",
+     "synset": "snail.n.01",
+     "things_def": "freshwater or marine or terrestrial gastropod mollusk usually having an external enclosing spiral shell",
+     "things_category": "animal"
+    }
+   ],
+   "snake": [
+    {
+     "row": 1477,
+     "word": "snake",
+     "uniqueID": "snake",
+     "synset": "snake.n.01",
+     "things_def": "limbless scaly elongate reptile; some are venomous",
+     "things_category": ""
+    }
+   ],
+   "spider": [
+    {
+     "row": 1513,
+     "word": "spider",
+     "uniqueID": "spider",
+     "synset": "spider.n.01",
+     "things_def": "predatory arachnid with eight legs, two poison fangs, two feelers, and usually two silk-spinning organs at the back end ",
+     "things_category": "insect"
+    }
+   ],
+   "squirrel": [
+    {
+     "row": 1529,
+     "word": "squirrel",
+     "uniqueID": "squirrel",
+     "synset": "squirrel.n.01",
+     "things_def": "a kind of arboreal rodent having a long bushy tail",
+     "things_category": "animal"
+    }
+   ],
+   "sunflower": [
+    {
+     "row": 1584,
+     "word": "sunflower",
+     "uniqueID": "sunflower",
+     "synset": "sunflower.n.01",
+     "things_def": "any plant of the genus Helianthus having large flower heads with dark disk florets and showy yellow rays",
+     "things_category": ""
+    }
+   ],
+   "table": [
+    {
+     "row": 1608,
+     "word": "table",
+     "uniqueID": "table",
+     "synset": "table.n.02",
+     "things_def": "a piece of furniture having a smooth flat top that is usually supported by one or more vertical legs",
+     "things_category": "furniture"
+    }
+   ],
+   "television": [
+    {
+     "row": 1641,
+     "word": "television",
+     "uniqueID": "television",
+     "synset": "television.n.01",
+     "things_def": "broadcasting visual images of stationary or moving objects",
+     "things_category": "electronic device"
+    }
+   ],
+   "tiger": [
+    {
+     "row": 1659,
+     "word": "tiger",
+     "uniqueID": "tiger",
+     "synset": "tiger.n.02",
+     "things_def": "large feline of forests in most of Asia having a tawny coat with black stripes; endangered",
+     "things_category": "animal"
+    }
+   ],
+   "tractor": [
+    {
+     "row": 1695,
+     "word": "tractor",
+     "uniqueID": "tractor",
+     "synset": "tractor.n.01",
+     "things_def": "a wheeled vehicle with large wheels; used in farming and other applications",
+     "things_category": ""
+    }
+   ],
+   "train": [
+    {
+     "row": 1698,
+     "word": "train",
+     "uniqueID": "train",
+     "synset": "train.n.01",
+     "things_def": "public transport provided by a line of railway cars coupled together and drawn by a locomotive",
+     "things_category": "vehicle"
+    }
+   ],
+   "tulip": [
+    {
+     "row": 1726,
+     "word": "tulip",
+     "uniqueID": "tulip",
+     "synset": "tulip.n.01",
+     "things_def": "any of numerous perennial bulbous herbs having linear or broadly lanceolate leaves and usually a single showy flower",
+     "things_category": ""
+    }
+   ],
+   "turtle": [
+    {
+     "row": 1736,
+     "word": "turtle",
+     "uniqueID": "turtle",
+     "synset": "turtle.n.02",
+     "things_def": "any of various aquatic and land reptiles having a bony shell and flipper-like limbs for swimming",
+     "things_category": "animal"
+    }
+   ],
+   "whale": [
+    {
+     "row": 1804,
+     "word": "whale",
+     "uniqueID": "whale",
+     "synset": "whale.n.02",
+     "things_def": "any of the larger cetacean mammals having a streamlined body and breathing through a blowhole on the head",
+     "things_category": ""
+    }
+   ],
+   "wolf": [
+    {
+     "row": 1831,
+     "word": "wolf",
+     "uniqueID": "wolf",
+     "synset": "wolf.n.01",
+     "things_def": "any of various predatory carnivorous canine mammals of North America and Eurasia that usually hunt in packs",
+     "things_category": "animal"
+    }
+   ],
+   "woman": [
+    {
+     "row": 1832,
+     "word": "woman",
+     "uniqueID": "woman",
+     "synset": "woman.n.01",
+     "things_def": "an adult female person (as opposed to a man)",
+     "things_category": ""
+    }
+   ],
+   "worm": [
+    {
+     "row": 1836,
+     "word": "worm",
+     "uniqueID": "worm",
+     "synset": "worm.n.01",
+     "things_def": "any of numerous relatively small elongated soft-bodied animals especially of the phyla Annelida and Chaetognatha and Nem",
+     "things_category": ""
+    }
+   ],
+   "mouse": [
+    {
+     "row": 1026,
+     "word": "mouse",
+     "uniqueID": "mouse1",
+     "synset": "mouse.n.01",
+     "things_def": "any of numerous small rodents typically resembling diminutive rats having pointed snouts and small ears on elongated bod",
+     "things_category": "animal"
+    }
+   ],
+   "tank": [
+    {
+     "row": 1620,
+     "word": "tank",
+     "uniqueID": "tank1",
+     "synset": "tank.n.01",
+     "things_def": "an enclosed armored military vehicle; has a cannon and moves on caterpillar treads",
+     "things_category": ""
+    }
+   ],
+   "sweet_pepper": [
+    {
+     "row": 117,
+     "word": "bell pepper",
+     "uniqueID": "bell_pepper",
+     "synset": "bell_pepper.n.02",
+     "things_def": "large bell-shaped sweet pepper in green or red or yellow or orange or black varieties",
+     "things_category": "vegetable"
+    }
+   ],
+   "bicycle": [
+    {
+     "row": 123,
+     "word": "bike",
+     "uniqueID": "bike",
+     "synset": "bike.n.02",
+     "things_def": "a wheeled vehicle that has two wheels and is moved by foot pedals",
+     "things_category": "vehicle"
+    }
+   ],
+   "telephone": [
+    {
+     "row": 1161,
+     "word": "phone",
+     "uniqueID": "phone",
+     "synset": "phone.n.01",
+     "things_def": "electronic equipment that converts sound into electrical signals that can be transmitted over distances and then convert",
+     "things_category": ""
+    }
+   ],
+   "wardrobe": [
+    {
+     "row": 360,
+     "word": "closet",
+     "uniqueID": "closet",
+     "synset": "closet.n.03",
+     "things_def": "a tall piece of furniture that provides storage space for clothes; has a door and rails or hooks for hanging clothes",
+     "things_category": ""
+    }
+   ],
+   "streetcar": [
+    {
+     "row": 1715,
+     "word": "trolley",
+     "uniqueID": "trolley",
+     "synset": "trolley.n.01",
+     "things_def": "a wheeled vehicle that runs on rails and is propelled by electricity",
+     "things_category": "vehicle"
+    }
+   ],
+   "cattle": [
+    {
+     "row": 426,
+     "word": "cow",
+     "uniqueID": "cow",
+     "synset": "cow.n.01",
+     "things_def": "female of domestic cattle: \"`moo-cow' is a child's term\"",
+     "things_category": "animal"
+    },
+    {
+     "row": 214,
+     "word": "bull",
+     "uniqueID": "bull",
+     "synset": "bull.n.01",
+     "things_def": "uncastrated adult male of domestic cattle",
+     "things_category": "animal"
+    }
+   ],
+   "ray": [
+    {
+     "row": 1556,
+     "word": "stingray",
+     "uniqueID": "stingray",
+     "synset": "stingray.n.01",
+     "things_def": "large venomous ray with large barbed spines near the base of a thin whiplike tail capable of inflicting severe wounds",
+     "things_category": ""
+    }
+   ]
+  },
+  "C10": {
+   "airplane": [
+    {
+     "row": 10,
+     "word": "airplane",
+     "uniqueID": "airplane",
+     "synset": "airplane.n.01",
+     "things_def": "an aircraft that has a fixed wing and is powered by propellers or jets",
+     "things_category": "vehicle"
+    }
+   ],
+   "automobile": [
+    {
+     "row": 267,
+     "word": "car",
+     "uniqueID": "car",
+     "synset": "car.n.01",
+     "things_def": "a motor vehicle with four wheels; usually propelled by an internal combustion engine",
+     "things_category": "vehicle"
+    }
+   ],
+   "bird": [
+    {
+     "row": 128,
+     "word": "bird",
+     "uniqueID": "bird",
+     "synset": "bird.n.01",
+     "things_def": "warm-blooded egg-laying vertebrates characterized by feathers and forelimbs modified as wings",
+     "things_category": "animal"
+    }
+   ],
+   "cat": [
+    {
+     "row": 284,
+     "word": "cat",
+     "uniqueID": "cat",
+     "synset": "cat.n.01",
+     "things_def": "feline mammal usually having thick soft fur and no ability to roar: domestic cats; wildcats",
+     "things_category": "animal"
+    }
+   ],
+   "deer": [
+    {
+     "row": 476,
+     "word": "deer",
+     "uniqueID": "deer",
+     "synset": "deer.n.01",
+     "things_def": "distinguished from Bovidae by the male's having solid deciduous antlers",
+     "things_category": "animal"
+    }
+   ],
+   "dog": [
+    {
+     "row": 495,
+     "word": "dog",
+     "uniqueID": "dog",
+     "synset": "dog.n.01",
+     "things_def": "a member of the genus Canis (probably descended from the common wolf) that has been domesticated by man since prehistori",
+     "things_category": "animal"
+    }
+   ],
+   "frog": [
+    {
+     "row": 644,
+     "word": "frog",
+     "uniqueID": "frog",
+     "synset": "frog.n.01",
+     "things_def": "any of various tailless stout-bodied amphibians with long hind limbs for leaping; semiaquatic and terrestrial species",
+     "things_category": ""
+    }
+   ],
+   "horse": [
+    {
+     "row": 798,
+     "word": "horse",
+     "uniqueID": "horse",
+     "synset": "horse.n.01",
+     "things_def": "solid-hoofed herbivorous quadruped domesticated since prehistoric times",
+     "things_category": "animal"
+    }
+   ],
+   "ship": [
+    {
+     "row": 1421,
+     "word": "ship",
+     "uniqueID": "ship",
+     "synset": "ship.n.01",
+     "things_def": "a vessel that carries passengers or freight",
+     "things_category": ""
+    }
+   ],
+   "truck": [
+    {
+     "row": 1720,
+     "word": "truck",
+     "uniqueID": "truck",
+     "synset": "truck.n.01",
+     "things_def": "an automotive vehicle suitable for hauling",
+     "things_category": "vehicle"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,30 @@
+# Human-data analyses (secondary data)
+
+Pre-specified analyses that compare a few-shot learner's word-learning results with **secondary human data collected by other teams**: THINGS odd-one-out, ImageNet-HSJ, CIFAR-10H, Lewis & Frank (2018), and Glasgow Norms. We collected no new human data. All third-party data remain the work of their original authors (see `data/README.md`).
+
+## Contents
+- `plan_analisis_datos_humanos_FROZEN_2026-10-30_ANON.md`, `PLAN_HASH.txt`: the analysis plan, frozen before any analysis was run (H1–H6), with its SHA-256.
+- `DESVIACIONES.md`: registered deviations from the plan.
+- `RESULTADOS.md`: results per hypothesis.
+- `REVISION_DETALLADA.md`: audit.
+- `COMPARACION_CONCLUSIONES.md`: comparison with the source papers' conclusions.
+- `EXPLORATORIO_categorias_amplias.md`: **exploratory, post hoc**.
+- `scripts/`: Python and R. Run in numeric order, with `_paths.py` for local paths.
+- `out/`: aggregated results (JSON and logs).
+- `figs/`, including `figs/comparativos/` and `figs/comparativos/exploratorio/`.
+- `data/`: processed, redistributable inputs, plus `README.md` and `download_data.sh` for the rest.
+
+The documentation is in Spanish. Code comments and figures are in English.
+
+## Reproduce
+1. Python 3.10+ with numpy, pandas, scipy, statsmodels, matplotlib, torch, torchvision. R with lme4 (for H4).
+2. `bash data/download_data.sh`
+3. Set the environment variables `LC_ROOT`, `MAIN_REPO` (the main project repository, needed for the DINOv2 PerceptionLayer and the exp_007/exp_008 results) and `HDA_CACHE`.
+4. Embedding steps: `scripts/h3_embed_c10test.py`, `h5_embed_c100_dino.py`, `h6_embed_cvcl.py`. These take hours on CPU.
+5. Analyses: `00_mappings.py` … `10_exploratorio_categorias_amplias.py`, `h4_prep.py`, then `04_h4_glmm.R`. `out/` already contains our outputs.
+
+Bootstrap seeds are fixed in each script.
+
+## Licenses
+- Code: MIT (`LICENSE`).
+- Third-party data keep their own licenses (CC BY 4.0, CC BY-SA 4.0 or CC BY-NC-SA 4.0; see `data/README.md`). The CIFAR-10H aggregates are non-commercial.
