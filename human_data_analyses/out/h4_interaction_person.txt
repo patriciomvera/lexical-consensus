@@ -1,0 +1,18 @@
+# H4 EXPLORATORIO: zd x condition, RE por persona (scripts/04d_h4_firstsession_interaction.R, 2026-10-31). Referencia: condition=one, level=bas. Todos los items (n=172800, 520 personas).
+== EXPLORATORIO zd x condition | RE=slope | warn= | warn0=
+                Estimate Std. Error  z value Pr(>|z|)
+(Intercept)      -4.3299     0.7212  -6.0035   0.0000
+zd               -2.9244     0.0364 -80.4409   0.0000
+conditionsub     -1.0213     0.0535 -19.0920   0.0000
+conditionbas      0.1047     0.0418   2.5075   0.0122
+conditionsup      2.4171     0.0338  71.5901   0.0000
+levelsub          0.1015     1.0185   0.0997   0.9206
+levelsup          1.0238     0.8819   1.1609   0.2457
+zd:conditionsub   0.1003     0.0291   3.4409   0.0006
+zd:conditionbas  -0.8622     0.0394 -21.8839   0.0000
+zd:conditionsup  -1.2937     0.0358 -36.1134   0.0000
+zd: -2.9244 CI[-2.9956, -2.8531] z=-80.44 p=0
+zd:conditionsub: 0.1003 CI[0.0432, 0.1574] z=3.44 p=0.00058
+zd:conditionbas: -0.8622 CI[-0.9394, -0.7850] z=-21.88 p=3.7e-106
+zd:conditionsup: -1.2937 CI[-1.3639, -1.2235] z=-36.11 p=1.4e-285
+LR (zd:condition, 3 gl) = 2134.16, p = 0 | logLik0=-30655.83 logLik1=-29588.75 | AIC0=61333.7 AIC1=59205.5

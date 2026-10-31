@@ -55,14 +55,16 @@ Complemento por imagen (10.000 imágenes de test CIFAR-10H): ρ(entropía humana
 |---|---|---|---|
 | **Primaria (24 ítems)** | 172.800 | 520 | **−3.23 [−3.29, −3.16]** |
 | + (1\|participación) | 172.800 | 520 | −3.23 [−3.30, −3.17] |
-| Solo la primera participación (experimento de menor número) | 149.760 | 520 | −3.18 [−3.25, −3.12] |
+| Solo la primera participación (primera sesión real por AcceptTime; DESV §29) | 149.760 | 520 | −3.17 [−3.23, −3.10] |
 | Excluye a quienes repiten | 133.632 | 464 | −3.12 [−3.19, −3.05] |
 | Sin exp. no prerregistrados (8, 12) | 144.000 | 444 | −3.17 [−3.24, −3.10] |
 | 8 ítems objetivo (con nivel y condición) | 57.600 | 520 | −3.16 [−3.30, −3.02] |
-| 8 objetivo, primera participación | 49.920 | 520 | −3.11 [−3.26, −2.97] |
+| 8 objetivo, primera participación (primera sesión real; DESV §29) | 49.920 | 520 | −3.12 [−3.26, −2.97] |
 | 8 objetivo, excluye a quienes repiten | 44.544 | 464 | −3.11 [−3.26, −2.96] |
 
 En todos, p < 10⁻¹⁰⁰. La regla de apoyo se mantiene: **Apoyo**.
+
+Versión anterior de C3/C7 ("primera" = experimento de menor número; sustituida 31-oct, DESV §29): −3.18 [−3.25, −3.12] y −3.11 [−3.26, −2.97]. `scripts/04d_h4_firstsession_interaction.R`, `out/h4_firstsession_interaction.txt`.
 
 Versión anterior (agrupada por exp_subid; sustituida): primaria −3.23 [−3.29, −3.17]; sin no prerregistrados −3.17 [−3.24, −3.11]; ítems objetivo −3.19 [−3.33, −3.05].
 
@@ -88,3 +90,6 @@ Completo el 2026-10-30 ~18:05 hora de Santiago (`out/h6_results.json`, complete=
 - **(c) CVCL vs distancias humanas**: CIFAR-100 THINGS (3.400 pares) ρ = .683 [.663, .700], p BH = .0002; HSJ (1.390 pares) ρ = .429 [.384, .471], p BH = .0002. CIFAR-10: THINGS .859 [.756, .914], HSJ .637 [.404, .782], C10H .786 [.593, .892] (p BH ≤ .0042; DINOv2 ref.: .696, .723, .795).
 - **(d) Tiers CIFAR-10** (descriptivo): precisión c1 CVCL native .675 / near .647 / mid .511 / far .428 (DINOv2 .943/.847/.654/.530); ρ(acc, d_perc CVCL) = −.842 [−.963, −.425].
 - **Veredicto según la regla del plan: Inconsistente**, porque el IC 95 % de β_perc_CVCL incluye 0. Según el plan, ningún resultado de H6 sustituye ni corrige los análisis confirmatorios.
+
+### H4 exploratorio: distancia × condición, RE por persona (31-oct-2026, DESV §32)
+Ref. condición "1 ejemplo": pendiente zd −2.92 [−3.00, −2.85]. Interacciones: ×3 sub +0.10 [0.04, 0.16] (z = 3.44); ×3 básicos −0.86 [−0.94, −0.79] (z = −21.9); ×3 superordinados −1.29 [−1.36, −1.22] (z = −36.1). LR χ²(3) = 2134, p < .001. La pendiente de distancia cambia según la condición de enseñanza; exploratorio. `out/h4_interaction_person.txt`.

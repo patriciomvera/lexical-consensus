@@ -23,9 +23,10 @@
   "p": 0.0,
   "p_holm": 0.0
  },
+ "H4_source": "out/h4_person_re.txt: C1 todas 24, RE persona",
  "H4_est": {
-  "logOR": -3.2325,
-  "lo": -3.2916,
-  "hi": -3.1735
+  "logOR": -3.2261,
+  "lo": -3.288,
+  "hi": -3.1642
  }
 }

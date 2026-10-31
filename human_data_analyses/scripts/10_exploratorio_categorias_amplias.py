@@ -61,7 +61,7 @@ tt=tier.loc[['near','mid','far']]; ax[1].plot(tt.d,tt.y,'o-',c='k',label='tier m
 for l,r in tt.iterrows(): ax[1].annotate(l,(r.d,r.y),xytext=(4,4),textcoords='offset points')
 ax[1].axhline(1/3,ls=':',c='0.5'); ax[1].text(0.72,0.35,'chance',fontsize=7,color='0.4')
 ax[1].set(title='(b) Learner (centroid), CIFAR-10 tiers',xlabel='DINOv2 distance between member categories ($d_{member}$)',ylabel='Naming accuracy (3-way)')
-ax[0].set_xlim(0.1,1.0); ax[1].set_xlim(0.2,1.0)
+ax[0].set_xlim(0.05,1.15); ax[1].set_xlim(0.2,1.0)
 for a in ax: a.legend(frameon=False,fontsize=6,loc='center left')
 f.text(0.99,-0.03,'EXPLORATORY (post hoc). Different y quantities: (a) extension of a word (selection), (b) naming accuracy; distances also differ.',ha='right',fontsize=7,style='italic')
 f.tight_layout(); [f.savefig(f'figs/comparativos/exploratorio/x1_breadth_gradient_humans_vs_learner.{e}',dpi=300,bbox_inches='tight') for e in ['png','pdf']]

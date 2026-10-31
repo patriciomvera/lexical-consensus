@@ -51,7 +51,9 @@ for yy, (g, l, e, lo, hi, v) in zip(y, items):
 a1.set_yticks(y); a1.set_yticklabels([i[1] for i in items], fontsize=6.5); a1.axvline(0, c="0.5", lw=.6)
 for s in (-.2, .2): a1.axvline(s, c="0.7", lw=.6, ls=":")
 a1.set_xlabel("Estimate [95% CI]  (circles: Spearman ρ; squares: partial r)  — dotted: SESOI ±0.20"); a1.set_xlim(-1.05, 1.05)
-h4 = HO["H4_est"]; S4 = {"Primary (24 items)": (-3.2325, -3.2916, -3.1735), "Excl. non-prereg. exp.": (-3.1731, -3.2381, -3.1082), "Target-category items only": (-3.1865, -3.3262, -3.0469)}
+h4 = HO["H4_est"]; H4J = {r["model"].split()[0]: r for r in (json.loads(l) for l in open(O/"h4_person_re.txt") if l.startswith('{"model"'))}  # RE by person (DESV §26)
+S4 = {lab: (H4J[k]["logOR"], H4J[k]["lo"], H4J[k]["hi"]) for lab, k in [("Primary (24 items)", "C1"), ("Excl. non-prereg. exp.", "C5"), ("Target-category items only", "C6")]}
+assert abs(S4["Primary (24 items)"][0] - h4["logOR"]) < 1e-9
 for i, (k, (e, lo, hi)) in enumerate(S4.items()): a2.errorbar(e, 2-i, xerr=[[e-lo], [hi-e]], fmt="D", ms=3.5, c="0.15", capsize=1.5)
 a2.set_yticks([2, 1, 0]); a2.set_yticklabels(list(S4), fontsize=6.5); a2.set_xlabel("H4 log OR per SD distance"); a2.set_title("H4 (Support)", fontsize=7.5); a2.axvline(0, c="0.5", lw=.6); a2.set_xlim(-3.6, .3)
 a2.yaxis.tick_right(); a2.set_ylim(-4, 6); fig.subplots_adjust(wspace=.9); tag(a2, "verdicts per frozen plan rules"); save(fig, "c_forest_all_H1_H6")
