@@ -16,6 +16,8 @@ Pre-specified analyses that compare a few-shot learner's word-learning results w
 
 The documentation is in Spanish. Code comments and figures are in English.
 
+These analyses are reported in Vera (2026), *Visual Similarity in Adult Word Extension and Artificial Word Learning*, [arXiv:2611.14116](https://arxiv.org/abs/2611.14116).
+
 ## Reproduce
 1. Python 3.10+ with numpy, pandas, scipy, statsmodels, matplotlib, torch, torchvision. R with lme4 (for H4).
 2. `bash data/download_data.sh`
