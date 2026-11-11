@@ -1,0 +1,48 @@
+cff-version: 1.2.0
+message: If you use this software or the companion datasets, please cite the papers below.
+title: lexical-consensus
+type: software
+authors:
+  - family-names: Vera
+    given-names: Patricio M.
+    orcid: "https://orcid.org/0009-0004-5384-5952"
+repository-code: "https://github.com/patriciomvera/lexical-consensus"
+url: "https://github.com/patriciomvera/lexical-consensus"
+abstract: >-
+  Experimental code for grounded novel-word learning over a frozen perceptual
+  encoder (DINOv2), including the original Lexical Consensus experiments and
+  the secondary human-data analyses reported in the 2026 follow-up preprint.
+preferred-citation:
+  type: generic
+  title: Visual Similarity in Adult Word Extension and Artificial Word Learning
+  authors:
+    - family-names: Vera
+      given-names: Patricio M.
+      orcid: "https://orcid.org/0009-0004-5384-5952"
+  year: 2026
+  month: 11
+  doi: 10.48550/arXiv.2611.14116
+  url: "https://arxiv.org/abs/2611.14116"
+  identifiers:
+    - type: doi
+      value: 10.48550/arXiv.2611.14116
+    - type: other
+      value: "arXiv:2611.14116"
+      description: arXiv identifier
+references:
+  - type: generic
+    title: "Lexical Consensus: Grounded Word Learning and Shared Meaning in Artificial Agents"
+    authors:
+      - family-names: Vera
+        given-names: Patricio M.
+        orcid: "https://orcid.org/0009-0004-5384-5952"
+    year: 2026
+    month: 6
+    doi: 10.48550/arXiv.2606.22207
+    url: "https://arxiv.org/abs/2606.22207"
+    identifiers:
+      - type: doi
+        value: 10.48550/arXiv.2606.22207
+      - type: other
+        value: "arXiv:2606.22207"
+        description: arXiv identifier

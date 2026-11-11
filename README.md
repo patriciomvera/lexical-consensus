@@ -10,6 +10,13 @@
 
 This repository contains an experimental framework that tests whether artificial agents can acquire, stabilize, and bidirectionally use a novel grounded lexicon over a frozen perceptual substrate. Agents receive opaque invented labels for visual categories and must construct shared meaning from minimal instruction and mutual agreement — without access to any pre-existing semantic knowledge about those labels. The framework treats language acquisition, rather than behavioral imitation, as the object of evaluation. The full experimental program spans nine families of experiments (exp_000 through exp_008); additional robustness analyses run on the released code and data are in [`revision_analyses/`](revision_analyses/).
 
+## Papers
+
+This repository accompanies two preprints by Patricio M. Vera:
+
+1. **Lexical Consensus: Grounded Word Learning and Shared Meaning in Artificial Agents** (2026). [arXiv:2606.22207](https://arxiv.org/abs/2606.22207). The artificial-learner experiments in this repository (`exp_000`–`exp_008` and `revision_analyses/`) are reported there.
+2. **Visual Similarity in Adult Word Extension and Artificial Word Learning** (2026). [arXiv:2611.14116](https://arxiv.org/abs/2611.14116). A continuation of that program: a reanalysis of public human word-extension data together with further learner analyses. Scripts and notes are in [`human_data_analyses/`](human_data_analyses/). Companion datasets: [`MrPatoVera/lexical-consensus-data`](https://huggingface.co/datasets/MrPatoVera/lexical-consensus-data) (CC BY 4.0) and [`MrPatoVera/lexical-consensus-data-cifar10h`](https://huggingface.co/datasets/MrPatoVera/lexical-consensus-data-cifar10h) (CC BY-NC-SA 4.0). Collection: [Lexical Consensus](https://huggingface.co/collections/MrPatoVera/lexical-consensus-6af31e7f9870b8e83e668c49).
+
 ---
 
 ## The Carroll Framework — Following the White Rabbit
@@ -291,6 +298,38 @@ The folder [`revision_analyses/`](revision_analyses/) contains additional analys
 
 ---
 
+
+## Citation
+
+If you use this code or the companion datasets, please cite the relevant paper(s). A machine-readable [`CITATION.cff`](CITATION.cff) is included at the repository root. The preferred citation in that file is the 2026 follow-up paper; the original Lexical Consensus preprint is listed under `references`.
+
+```bibtex
+@misc{vera2026visualsimilarity,
+  title         = {Visual Similarity in Adult Word Extension and Artificial Word Learning},
+  author        = {Vera, Patricio M.},
+  year          = {2026},
+  eprint        = {2611.14116},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  doi           = {10.48550/arXiv.2611.14116},
+  url           = {https://arxiv.org/abs/2611.14116}
+}
+```
+
+```bibtex
+@misc{vera2026lexical,
+  title         = {Lexical Consensus: Grounded Word Learning and Shared Meaning in Artificial Agents},
+  author        = {Vera, Patricio M.},
+  year          = {2026},
+  eprint        = {2606.22207},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  doi           = {10.48550/arXiv.2606.22207},
+  url           = {https://arxiv.org/abs/2606.22207}
+}
+```
+
+---
 ## License
 
 **No LICENSE file is present at the repository root.** The prior README referenced an MIT license, but the file is absent. A license file will be added in a later release.
