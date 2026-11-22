@@ -1,0 +1,9 @@
+15dacce6610eed99d79faaee69642d5238d65cfbe41f9bdbdd07c190d9e8f2cd  scripts/02_equivalence.py
+2026-11-18 10:16:22 -03
+9679c0079df4fac6b6b357a66d4d581c8e2f81f89939a99faabfa26f4508fe74  scripts/02_equivalence.py
+2026-11-18 10:19:14 -03 (amended rules, before first run)
+NOTE 2026-11-18 10:28:00 -03: the two hashes above belong to the superseded script (now 02_equivalence_SUPERSEDED_never_run.py, never executed). Current 02_equivalence.py sha256 b815be4d418cae3cdd21f144f04dbc74256dfbb7d3ce6af459bee7a998ad8ab2; it is re-sealed at the internal freeze and runs only after it.
+NOTE 2026-11-18 12:11:22 -0300 (REVISION3, point 6): the 10:28 note above is STALE. It lists 02_equivalence.py as b815be4d..., but 02 changed at 10:44 (three cuts + test parameters) and this file never recorded 01_embed.py. Current hashes:
+3ed060c125fa2f7ac33523a12760d62778378f8fe08792d5a42659a0aa9af325  01_embed.py
+f9d1de51fe5ff3783be7a099af0c77a8e3e18c3012d62c79e734371978bf02c8  02_equivalence.py
+01_embed.py changed only to keep crop_pct in encoder_specs.json; it was re-run 12:05-12:08 (images only): all 13 npz byte-identical to the previous ones (old copies in out/npz_before_rerun/). 02_equivalence.py has still NEVER been run on real data; it runs only after the internal freeze, which re-seals every hash in FREEZE_encoders_v2.txt.

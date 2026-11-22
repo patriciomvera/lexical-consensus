@@ -1,0 +1,13 @@
+E4_mae items=24 primary exp=1 order=1-3 L4 converged=TRUE beta=-5.8406 (12.1s)
+E4_mae items=24 primary exp=2 order=1-3 L4 converged=TRUE beta=-6.7517 (7.6s)
+E4_mae items=24 primary exp=3 order=3-1 L4 converged=TRUE beta=-6.3185 (9.7s)
+E4_mae items=24 primary exp=4 order=3-1 L4 converged=TRUE beta=-6.9541 (10.1s)
+E4_mae items=24 primary exp=5 order=1-3 L4 converged=TRUE beta=-5.5140 (5.5s)
+E4_mae items=24 primary exp=6 order=3-1 L4 converged=TRUE beta=-4.4863 (8.8s)
+E4_mae items=24 primary exp=7 order=1-3 L4 converged=TRUE beta=-5.0348 (9.2s)
+E4_mae items=24 primary exp=8 order=3-1 L4 converged=TRUE beta=-5.8716 (9.0s)
+E4_mae items=24 primary exp=9 order=3-1 L4 converged=TRUE beta=-5.8860 (12.4s)
+E4_mae items=24 primary exp=10 order=1-3 L4 converged=TRUE beta=-8.9824 (14.5s)
+E4_mae items=24 primary exp=11 order=3-1 L4 converged=TRUE beta=-6.7985 (11.1s)
+E4_mae items=24 primary exp=12 order=1-3 L4 converged=TRUE beta=-6.9108 (8.9s)
+wrote /workspace/lexical-consensus-openmind/encoder_equivalence/results/stage1_pass2_24_L4_i2_g0.csv 12 rows

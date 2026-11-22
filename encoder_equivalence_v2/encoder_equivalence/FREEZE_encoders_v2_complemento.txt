@@ -1,0 +1,6 @@
+Complemento al FREEZE_encoders_v2.txt (sha256 975aab4cc922a73b3b531fb22f26ce87145143c89a8b8ea6d44430a00894b606), escrito 2026-11-20 09:15:09 America/Santiago.
+Archivos de revisión que 09_freeze.py no lista; el manifiesto no se modifica.
+
+0559acda690faaf92dbaa80b518aef5e1095107d87dafcde431866d95f74eea0  REVISION3b_ariadna_diff_2026-11-18.md
+2ce17f301e84b5609aa31c11a72f154dab8c64d0ce4ab7e16bab34706e541bba  encoder_equivalence/DIFF_REVISION3b.patch
+7b0315cc94c32e7f129aec96650ffea91d3154c8e72b1d93f60942a59eb21dd7  REVISION4_ariadna_agentes_multi_encoder_2026-11-18.md

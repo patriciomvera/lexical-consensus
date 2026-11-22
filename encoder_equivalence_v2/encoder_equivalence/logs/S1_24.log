@@ -1,0 +1,11 @@
+R0_dinov2s S1 items=24 done in 2409.0 s
+O1_dinov2b S1 items=24 done in 2289.0 s
+R1_cvcl S1 items=24 done in 2036.4 s
+E1_siglip S1 items=24 done in 3280.2 s
+O2_openclip S1 items=24 done in 2086.9 s
+E2_vitsup S1 items=24 done in 1554.4 s
+E3_rn50sup S1 items=24 done in 2163.5 s
+E4_mae S1 items=24 done in 2869.5 s
+F1_rn50rand0 S1 items=24 done in 1395.8 s
+F2_pixels S1 items=24 done in 1303.9 s
+wrote /workspace/lexical-consensus-openmind/encoder_equivalence/results/S1_24.csv 350 rows

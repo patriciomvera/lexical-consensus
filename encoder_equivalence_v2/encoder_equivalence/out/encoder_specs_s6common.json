@@ -1,0 +1,228 @@
+{
+ "R0_dinov2s": {
+  "checkpoint": "facebook/dinov2-small",
+  "revision": "ed25f3a31f01632728cabb09d1542f84ab7b0056",
+  "model_class": "AutoModel",
+  "dim": 384,
+  "processor": {
+   "resize": "shorter side 256 bicubic",
+   "center_crop": 224,
+   "image_mean": [
+    0.485,
+    0.456,
+    0.406
+   ],
+   "image_std": [
+    0.229,
+    0.224,
+    0.225
+   ],
+   "note": "S6 common preprocessing"
+  },
+  "pooling": "CLS token of last_hidden_state (post-layernorm), last layer",
+  "metric": "cosine distance 1 - cos on L2-normalised vectors"
+ },
+ "O1_dinov2b": {
+  "checkpoint": "facebook/dinov2-base",
+  "revision": "f9e44c814b77203eaa57a6bdbbd535f21ede1415",
+  "model_class": "AutoModel",
+  "dim": 768,
+  "processor": {
+   "resize": "shorter side 256 bicubic",
+   "center_crop": 224,
+   "image_mean": [
+    0.485,
+    0.456,
+    0.406
+   ],
+   "image_std": [
+    0.229,
+    0.224,
+    0.225
+   ],
+   "note": "S6 common preprocessing"
+  },
+  "pooling": "CLS token of last_hidden_state (post-layernorm), last layer",
+  "metric": "cosine distance 1 - cos on L2-normalised vectors"
+ },
+ "R1_cvcl": {
+  "checkpoint": "wkvong/cvcl_s_dino_resnext50_embedding",
+  "processor": {
+   "resize": "shorter side 256 bicubic",
+   "center_crop": 224,
+   "image_mean": [
+    0.485,
+    0.456,
+    0.406
+   ],
+   "image_std": [
+    0.229,
+    0.224,
+    0.225
+   ],
+   "note": "S6 common preprocessing"
+  },
+  "pooling": "as 01_embed",
+  "dim": 512
+ },
+ "E1_siglip": {
+  "checkpoint": "google/siglip-base-patch16-224",
+  "revision": "7fd15f0689c79d79e38b1c2e2e2370a7bf2761ed",
+  "model_class": "SiglipVisionModel",
+  "dim": 768,
+  "processor": {
+   "resize": "shorter side 256 bicubic",
+   "center_crop": 224,
+   "image_mean": [
+    0.5,
+    0.5,
+    0.5
+   ],
+   "image_std": [
+    0.5,
+    0.5,
+    0.5
+   ],
+   "note": "S6 common preprocessing"
+  },
+  "pooling": "pooler_output of SiglipVisionModel (MAP attention-pooling head), last layer = image features used by get_image_features",
+  "metric": "cosine distance 1 - cos on L2-normalised vectors"
+ },
+ "O2_openclip": {
+  "checkpoint": "laion/CLIP-ViT-B-32-laion2B-s34B-b79K",
+  "revision": "1a25a446712ba5ee05982a381eed697ef9b435cf",
+  "model_class": "CLIPVisionModelWithProjection",
+  "dim": 512,
+  "processor": {
+   "resize": "shorter side 256 bicubic",
+   "center_crop": 224,
+   "image_mean": [
+    0.48145466,
+    0.4578275,
+    0.40821073
+   ],
+   "image_std": [
+    0.26862954,
+    0.26130258,
+    0.27577711
+   ],
+   "note": "S6 common preprocessing"
+  },
+  "pooling": "image_embeds (CLS -> post-layernorm -> visual projection), last layer",
+  "metric": "cosine distance 1 - cos on L2-normalised vectors"
+ },
+ "E2_vitsup": {
+  "checkpoint": "google/vit-base-patch16-224",
+  "revision": "3f49326eb077187dfe1c2a2bb15fbd74e6ab91e3",
+  "model_class": "ViTModel",
+  "dim": 768,
+  "processor": {
+   "resize": "shorter side 256 bicubic",
+   "center_crop": 224,
+   "image_mean": [
+    0.5,
+    0.5,
+    0.5
+   ],
+   "image_std": [
+    0.5,
+    0.5,
+    0.5
+   ],
+   "note": "S6 common preprocessing"
+  },
+  "pooling": "CLS token of last_hidden_state (post-layernorm), last layer; classifier head not used",
+  "metric": "cosine distance 1 - cos on L2-normalised vectors"
+ },
+ "E3_rn50sup": {
+  "checkpoint": "microsoft/resnet-50",
+  "revision": "34c2154c194f829b11125337b98c8f5f9965ff19",
+  "model_class": "ResNetModel",
+  "dim": 2048,
+  "processor": {
+   "resize": "shorter side 256 bicubic",
+   "center_crop": 224,
+   "image_mean": [
+    0.485,
+    0.456,
+    0.406
+   ],
+   "image_std": [
+    0.229,
+    0.224,
+    0.225
+   ],
+   "note": "S6 common preprocessing"
+  },
+  "pooling": "pooler_output = global average pool of last stage (2048); fc not used",
+  "metric": "cosine distance 1 - cos on L2-normalised vectors"
+ },
+ "E4_mae": {
+  "checkpoint": "facebook/vit-mae-base",
+  "revision": "25b184bea5538bf5c4c852c79d221195fdd2778d",
+  "model_class": "ViTMAEModel",
+  "dim": 768,
+  "processor": {
+   "resize": "shorter side 256 bicubic",
+   "center_crop": 224,
+   "image_mean": [
+    0.485,
+    0.456,
+    0.406
+   ],
+   "image_std": [
+    0.229,
+    0.224,
+    0.225
+   ],
+   "note": "S6 common preprocessing"
+  },
+  "pooling": "mean of patch tokens of last_hidden_state (post-layernorm), mask_ratio=0.0 (config default 0.75); fixed identity noise so patch order is deterministic",
+  "metric": "cosine distance 1 - cos on L2-normalised vectors"
+ },
+ "F1_rn50rand0": {
+  "checkpoint": "torchvision resnet50(weights=None), torch.manual_seed(0)",
+  "revision": "torchvision 0.29.1+cpu",
+  "model_class": "ResNet-50 random init (eval mode)",
+  "processor": {
+   "resize": "shorter side 256 bicubic",
+   "center_crop": 224,
+   "image_mean": [
+    0.485,
+    0.456,
+    0.406
+   ],
+   "image_std": [
+    0.229,
+    0.224,
+    0.225
+   ]
+  },
+  "pooling": "global average pool (2048), fc removed",
+  "dim": 2048,
+  "metric": "cosine distance 1 - cos on L2-normalised vectors"
+ },
+ "F2_pixels": {
+  "checkpoint": "none (pixels)",
+  "revision": "-",
+  "model_class": "identity",
+  "processor": {
+   "resize": "shorter side 256 bicubic",
+   "center_crop": 224,
+   "image_mean": [
+    0.485,
+    0.456,
+    0.406
+   ],
+   "image_std": [
+    0.229,
+    0.224,
+    0.225
+   ],
+   "then": "area downsample to 32x32"
+  },
+  "pooling": "flattened RGB 3x32x32 = 3072",
+  "dim": 3072,
+  "metric": "cosine distance 1 - cos on L2-normalised vectors"
+ }
+}

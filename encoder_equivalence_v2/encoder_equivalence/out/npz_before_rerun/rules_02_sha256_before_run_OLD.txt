@@ -1,0 +1,5 @@
+15dacce6610eed99d79faaee69642d5238d65cfbe41f9bdbdd07c190d9e8f2cd  scripts/02_equivalence.py
+2026-11-18 10:16:22 -03
+9679c0079df4fac6b6b357a66d4d581c8e2f81f89939a99faabfa26f4508fe74  scripts/02_equivalence.py
+2026-11-18 10:19:14 -03 (amended rules, before first run)
+NOTE 2026-11-18 10:28:00 -03: the two hashes above belong to the superseded script (now 02_equivalence_SUPERSEDED_never_run.py, never executed). Current 02_equivalence.py sha256 b815be4d418cae3cdd21f144f04dbc74256dfbb7d3ce6af459bee7a998ad8ab2; it is re-sealed at the internal freeze and runs only after it.

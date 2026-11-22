@@ -1,0 +1,18 @@
+{
+ "vision_params": {
+  "R0_dinov2s": 22056576,
+  "O1_dinov2b": 86580480,
+  "E1_siglip": 92884224,
+  "O2_openclip": 87849216,
+  "E2_vitsup": 85798656,
+  "E3_rn50sup": 23508032,
+  "E4_mae": 85798656,
+  "R1_cvcl": 24028992,
+  "F1_rn50rand": 23508032,
+  "F2_pixels": 0
+ },
+ "R0_vs_v1_PerceptionLayer": {
+  "max_abs_emb": 1.4901161193847656e-08,
+  "max_abs_pairwise_d": 3.5762786865234375e-07
+ }
+}

@@ -1,0 +1,1 @@
+PIPELINE_CONTROL rows_identical=True max_abs_diff=0 tol=1e-05 same_rank_order(near-ties<1e-06 merged)=True near_tie_group_max_width=5.96e-08 (<1e-06: True) -> PASS

@@ -1,0 +1,110 @@
+[2026-11-21 08:25:17 -03] 0. checks
+VERIFY 47 files: OK; files not in manifest: none
+lme4 2.0.6 
+MemAvailable:    2517948 kB
+[2026-11-21 08:25:19 -03] 1. h4_prep_encoders + pipeline control (G0)
+PIPELINE_CONTROL rows_identical=True max_abs_diff=0 tol=1e-05 same_rank_order(near-ties<1e-06 merged)=True near_tie_group_max_width=5.96e-08 (<1e-06: True) -> PASS
+[2026-11-21 08:25:47 -03] 2. 02_equivalence (descriptive table + geometry rule at cuts 0.3/0.5/0.7 + calibration per cut)
+[2026-11-21 13:26:16 -03] 3. timing: R0, 8 items, ladder pass 1 (secs column) -> update budget only
+[2026-11-21 13:27:28 -03] 4. stage 1, 8 items, ladder pass 1
+[2026-11-21 13:31:05 -03] 5. stage 1, 24 items, ladder pass 1
+[2026-11-21 13:57:47 -03] 5b. common structure (05b, convergence only; pass 2 fits where needed)
+[2026-11-21 13:57:48 -03]    pass 2 (iter 1): items=8 rung=L2: E3_rn50sup O1_dinov2b R0_dinov2s R1_cvcl
+[2026-11-21 13:59:28 -03]    pass 2 (iter 1): items=8 rung=L3: F1_rn50rand0
+[2026-11-21 13:59:57 -03]    pass 2 (iter 1): items=8 rung=L4: E4_mae F2_pixels
+[2026-11-21 14:00:21 -03]    pass 2 (iter 1): items=24 rung=L3: E3_rn50sup E4_mae F1_rn50rand0 F2_pixels O1_dinov2b R1_cvcl
+[2026-11-21 14:08:23 -03]    pass 2 (iter 2): items=8 rung=L4: E1_siglip E2_vitsup E3_rn50sup F1_rn50rand0 O1_dinov2b O2_openclip R0_dinov2s R1_cvcl
+[2026-11-21 14:09:19 -03]    pass 2 (iter 2): items=24 rung=L4: E4_mae
+[2026-11-21 14:11:20 -03]    pass 2 (iter 3): items=24 rung=L4: E1_siglip E2_vitsup E3_rn50sup F1_rn50rand0 F2_pixels O1_dinov2b O2_openclip R0_dinov2s R1_cvcl
+{
+ "8": {
+  "scope": "common",
+  "common_rung": "L4",
+  "excluded_from_selection": [],
+  "own_rung": {
+   "R0_dinov2s": "L2",
+   "O1_dinov2b": "L2",
+   "R1_cvcl": "L2",
+   "E1_siglip": "L1",
+   "O2_openclip": "L1",
+   "E2_vitsup": "L1",
+   "E3_rn50sup": "L2",
+   "E4_mae": "L4",
+   "F1_rn50rand0": "L3",
+   "F2_pixels": "L4"
+  }
+ },
+ "24": {
+  "scope": "common",
+  "common_rung": "L4",
+  "excluded_from_selection": [],
+  "own_rung": {
+   "R0_dinov2s": "L1",
+   "O1_dinov2b": "L3",
+   "R1_cvcl": "L3",
+   "E1_siglip": "L1",
+   "O2_openclip": "L1",
+   "E2_vitsup": "L1",
+   "E3_rn50sup": "L3",
+   "E4_mae": "L4",
+   "F1_rn50rand0": "L3",
+   "F2_pixels": "L3"
+  }
+ }
+}[2026-11-21 14:16:03 -03] 6. positive control (before regions: 08 uses it)
+[2026-11-21 14:24:59 -03] 7. stage 2 (primary = common rung; per_encoder_rung and S9_mixed descriptive) + regions (primary only)
+/workspace/lexical-consensus-openmind/encoder_equivalence/scripts/06_stage2_permutation.py:36: Pandas4Warning: 'str' is not supported as a fill value for float64 dtype. In a future version, calling fillna with an incompatible value will raise. Explicitly cast to a common dtype before filling.
+  s1 = pd.concat([pd.read_csv(f, keep_default_na=True) for f in sys.argv[2:]]); s1["suffix"] = s1["suffix"].fillna("")
+wrote /workspace/lexical-consensus-openmind/encoder_equivalence/results/stage2_primary.csv 60 rows
+/workspace/lexical-consensus-openmind/encoder_equivalence/scripts/08_regions.py:145: Pandas4Warning: 'str' is not supported as a fill value for float64 dtype. In a future version, calling fillna with an incompatible value will raise. Explicitly cast to a common dtype before filling.
+  s2 = pd.read_csv(a.stage2); s2 = s2[(s2.variant == "primary") & (s2.suffix.fillna("") == "")]
+# Regiones y conclusión global (plan §7; generado por 08_regions.py)
+
+- Control de tubería: PASA. Perfil del agrupamiento de geometría: depende del corte.
+- Referencia descriptiva, no confirmatoria (I-b): Δ en dos etapas de R0 con 8 ítems = 0.019709506140741517 [IC 95 % -0.204779; 0.274221].
+- Lectura de R0 con 24 ítems (REVISION3b): inconcluso.
+
+## Tabla única (§7.2): región con δ = 0,05 / 0,10 / 0,20 y con 24 ítems
+
+| encoder | control_positivo | familia_holm | region_d0.05 | region_d0.10 | region_d0.20 | region_24 | perfil |
+|---|---|---|---|---|---|---|---|
+| R0_dinov2s | pasa | R0: referencia (no entra en Holm; G1) | inconcluso | inconcluso | inconcluso | inconcluso | robusto: inconcluso |
+| O1_dinov2b | pasa | familia entrenados | inconcluso | inconcluso | inconcluso | inconcluso | robusto: inconcluso |
+| R1_cvcl | pasa | familia entrenados | inconcluso | inconcluso | menor que δ (equivalente con margen δ) | inconcluso | dependiente del margen: inconcluso (δ = 0.05, 0.10); menor que δ (equivalente con margen δ) (δ = 0.20) |
+| E1_siglip | pasa | familia entrenados | inconcluso | inconcluso | inconcluso | inconcluso | robusto: inconcluso |
+| O2_openclip | pasa | familia entrenados | inconcluso | inconcluso | inconcluso | inconcluso | robusto: inconcluso |
+| E2_vitsup | pasa | familia entrenados | inconcluso | inconcluso | inconcluso | inconcluso | robusto: inconcluso |
+| E3_rn50sup | pasa | familia entrenados | inconcluso | inconcluso | menor que δ (equivalente con margen δ) | inconcluso | dependiente del margen: inconcluso (δ = 0.05, 0.10); menor que δ (equivalente con margen δ) (δ = 0.20) |
+| E4_mae | pasa | familia entrenados | inconcluso | inconcluso | inconcluso | inconcluso | robusto: inconcluso |
+| F1_rn50rand0 | no es puerta (piso) | familia pisos | inconcluso | inconcluso | inconcluso | inconcluso | robusto: inconcluso |
+| F2_pixels | no es puerta (piso) | familia pisos | inconcluso | menor que δ (equivalente con margen δ) | menor que δ (equivalente con margen δ) | inconcluso | dependiente del margen: inconcluso (δ = 0.05); menor que δ (equivalente con margen δ) (δ = 0.10, 0.20) |
+
+## Familias Holm (§7.3; iguales con los tres δ)
+
+- **entrenados:** k = 7 encoders, 14 pruebas por δ; incluidos: O1_dinov2b, R1_cvcl, E1_siglip, O2_openclip, E2_vitsup, E3_rn50sup, E4_mae; excluidos: ninguno.
+- **pisos:** k = 2 encoders, 4 pruebas por δ; incluidos: F1_rn50rand0, F2_pixels; excluidos: ninguno.
+
+## Conclusión global por (δ, corte)
+
+| delta | cut | conclusion | detalle | trained_family_size |
+|---|---|---|---|---|
+| 0.05 | 0.3 | G1 | R0 en 'inconcluso' | 14 |
+| 0.05 | 0.5 | G1 | R0 en 'inconcluso' | 14 |
+| 0.05 | 0.7 | G1 | R0 en 'inconcluso' | 14 |
+| 0.1 | 0.3 | G1 | R0 en 'inconcluso' | 14 |
+| 0.1 | 0.5 | G1 | R0 en 'inconcluso' | 14 |
+| 0.1 | 0.7 | G1 | R0 en 'inconcluso' | 14 |
+| 0.2 | 0.3 | G1 | R0 en 'inconcluso' | 14 |
+| 0.2 | 0.5 | G1 | R0 en 'inconcluso' | 14 |
+| 0.2 | 0.7 | G1 | R0 en 'inconcluso' | 14 |
+
+**Perfil global:** robusta: G1
+
+## Pisos
+
+| delta | family_size | lectura |
+|---|---|---|
+| 0.05 | 4 | inconcluso |
+| 0.1 | 4 | inconcluso |
+| 0.2 | 4 | inconcluso |
+[2026-11-21 14:25:06 -03] Saturday done

@@ -1,0 +1,53 @@
+"encoder","items","variant","suffix","exp","order","n","persons","rung","converged","beta","se","warn","singular","opt_code","secs"
+"E1_siglip",8,"primary","",1,"1-3",4800,50,"L1",TRUE,-2.82036424179199,0.3041405853792,"",FALSE,0,5.6
+"E1_siglip",8,"primary","",2,"1-3",4800,50,"L1",TRUE,-3.19083781696802,0.440274916938281,"",FALSE,0,6.2
+"E1_siglip",8,"primary","",3,"3-1",4800,50,"L1",TRUE,-3.80123640617579,0.378449417298411,"",FALSE,0,6
+"E1_siglip",8,"primary","",4,"3-1",4800,50,"L1",TRUE,-3.31004619259785,0.294136576752495,"",FALSE,0,5.8
+"E1_siglip",8,"primary","",5,"1-3",4800,50,"L1",TRUE,-3.05380180416863,0.348720992063752,"",FALSE,0,5.5
+"E1_siglip",8,"primary","",6,"3-1",4800,50,"L1",TRUE,-3.1410332059397,0.34879075274605,"",FALSE,0,6.1
+"E1_siglip",8,"primary","",7,"1-3",4800,50,"L1",TRUE,-1.95161838148889,0.292732771536808,"",FALSE,0,4.7
+"E1_siglip",8,"primary","",8,"3-1",4800,50,"L1",TRUE,-2.95927734913388,0.384681378631948,"",FALSE,0,6
+"E1_siglip",8,"primary","",9,"3-1",4800,50,"L1",TRUE,-2.65969861449186,0.329361547284043,"",FALSE,0,4.8
+"E1_siglip",8,"primary","",10,"1-3",4800,50,"L1",TRUE,-3.18939240248332,0.379440774703007,"",FALSE,0,6.1
+"E1_siglip",8,"primary","",11,"3-1",4800,50,"L1",TRUE,-3.57284033179589,0.343149038185003,"",FALSE,0,5.4
+"E1_siglip",8,"primary","",12,"1-3",4800,50,"L1",TRUE,-3.73528279321787,0.460225420433165,"",FALSE,0,5.2
+"E3_rn50sup",8,"primary","",1,"1-3",4800,50,"L1",TRUE,-1.64263421984326,0.240838872264469,"",FALSE,0,4
+"E3_rn50sup",8,"primary","",2,"1-3",4800,50,"L1",FALSE,-1.69890831346169,0.239729283709781,"boundary (singular) fit: see help('isSingular')",TRUE,0,3.4
+"E3_rn50sup",8,"primary","",2,"1-3",4800,50,"L2",TRUE,-2.08639494547311,0.293516391184208,"",FALSE,0,4.2
+"E3_rn50sup",8,"primary","",3,"3-1",4800,50,"L1",TRUE,-2.07049915211704,0.272046654006809,"",FALSE,0,4.4
+"E3_rn50sup",8,"primary","",4,"3-1",4800,50,"L1",TRUE,-1.77828870895473,0.189306772031189,"",FALSE,0,6.1
+"E3_rn50sup",8,"primary","",5,"1-3",4800,50,"L1",TRUE,-1.52775466421293,0.210516254801177,"",FALSE,0,4.4
+"E3_rn50sup",8,"primary","",6,"3-1",4800,50,"L1",TRUE,-1.83600941595194,0.232731810923097,"",FALSE,0,3.8
+"E3_rn50sup",8,"primary","",7,"1-3",4800,50,"L1",TRUE,-1.41736224540572,0.220046190363735,"",FALSE,0,3.3
+"E3_rn50sup",8,"primary","",8,"3-1",4800,50,"L1",TRUE,-2.6349283710856,0.337916216188542,"",FALSE,0,4.6
+"E3_rn50sup",8,"primary","",9,"3-1",4800,50,"L1",TRUE,-1.8749872882487,0.249457088033921,"",FALSE,0,4.4
+"E3_rn50sup",8,"primary","",10,"1-3",4800,50,"L1",FALSE,-1.88515011276589,0.304637051854391,"boundary (singular) fit: see help('isSingular')",TRUE,0,5.3
+"E3_rn50sup",8,"primary","",10,"1-3",4800,50,"L2",TRUE,-2.23040643436487,0.299825092539658,"",FALSE,0,4
+"E3_rn50sup",8,"primary","",11,"3-1",4800,50,"L1",TRUE,-2.16240358843658,0.232533632762154,"",FALSE,0,5.2
+"E3_rn50sup",8,"primary","",12,"1-3",4800,50,"L1",TRUE,-2.47917572661301,0.341687382639636,"",FALSE,0,14.6
+"F2_pixels",8,"primary","",1,"1-3",4800,50,"L1",TRUE,-0.23995920120161,0.123376996406039,"",FALSE,0,4.4
+"F2_pixels",8,"primary","",2,"1-3",4800,50,"L1",FALSE,-0.041327080948352,0.126178712456993,"boundary (singular) fit: see help('isSingular')",TRUE,0,2.4
+"F2_pixels",8,"primary","",2,"1-3",4800,50,"L2",TRUE,-0.00778606536666725,0.127827704692064,"",FALSE,0,4.7
+"F2_pixels",8,"primary","",3,"3-1",4800,50,"L1",FALSE,-0.192595382809582,0.0868790218985001,"boundary (singular) fit: see help('isSingular')",TRUE,0,2.1
+"F2_pixels",8,"primary","",3,"3-1",4800,50,"L2",FALSE,-0.154555929584437,0.0785228479206449,"boundary (singular) fit: see help('isSingular')",TRUE,0,2
+"F2_pixels",8,"primary","",3,"3-1",4800,50,"L3",FALSE,-0.154555728451645,0.0785228461743183,"boundary (singular) fit: see help('isSingular')",TRUE,0,1.3
+"F2_pixels",8,"primary","",3,"3-1",4800,50,"L4",TRUE,-0.154556214672432,0.0780594093688638,"",FALSE,0,1.6
+"F2_pixels",8,"primary","",4,"3-1",4800,50,"L1",FALSE,-0.229666935381537,0.101132277030547,"boundary (singular) fit: see help('isSingular')",TRUE,0,2.5
+"F2_pixels",8,"primary","",4,"3-1",4800,50,"L2",FALSE,-0.2117375367048,0.09479630227269,"boundary (singular) fit: see help('isSingular')",TRUE,0,2.1
+"F2_pixels",8,"primary","",4,"3-1",4800,50,"L3",TRUE,-0.211737496666278,0.0949468139879052,"",FALSE,0,2.1
+"F2_pixels",8,"primary","",5,"1-3",4800,50,"L1",FALSE,-0.174852638797842,0.00152634479689868,"Model failed to converge with max|grad| = 0.0478013 (tol = 0.002, component 1)
+  See ?lme4::convergence and ?lme4::troubleshooting.;Model is nearly unidentifiable: very large eigenvalue
+ - Rescale variables?",FALSE,0,2.9
+"F2_pixels",8,"primary","",5,"1-3",4800,50,"L2",TRUE,-0.144257228764781,0.110491796158661,"",FALSE,0,3.1
+"F2_pixels",8,"primary","",6,"3-1",4800,50,"L1",TRUE,-0.0261515130149786,0.0933432476020633,"",FALSE,0,3.7
+"F2_pixels",8,"primary","",7,"1-3",4800,50,"L1",TRUE,-0.0843628677583504,0.101889698241785,"",FALSE,0,5.9
+"F2_pixels",8,"primary","",8,"3-1",4800,50,"L1",TRUE,-0.0607792105507426,0.123855388520994,"",FALSE,0,6.3
+"F2_pixels",8,"primary","",9,"3-1",4800,50,"L1",FALSE,-0.196103587113343,0.0900547115772889,"boundary (singular) fit: see help('isSingular')",TRUE,0,2.2
+"F2_pixels",8,"primary","",9,"3-1",4800,50,"L2",FALSE,-0.187361557734023,0.0879397075313615,"boundary (singular) fit: see help('isSingular')",TRUE,0,2.2
+"F2_pixels",8,"primary","",9,"3-1",4800,50,"L3",TRUE,-0.18736257216711,0.0879713870087528,"",FALSE,0,1.9
+"F2_pixels",8,"primary","",10,"1-3",4800,50,"L1",FALSE,-0.157902897962033,0.158395209490513,"boundary (singular) fit: see help('isSingular')",TRUE,0,5.1
+"F2_pixels",8,"primary","",10,"1-3",4800,50,"L2",FALSE,-0.142473403633442,0.12937651644035,"boundary (singular) fit: see help('isSingular')",TRUE,0,1.8
+"F2_pixels",8,"primary","",10,"1-3",4800,50,"L3",TRUE,-0.142467896721721,0.134082963187627,"",FALSE,0,2.1
+"F2_pixels",8,"primary","",11,"3-1",4800,50,"L1",TRUE,-0.104580837848545,0.152197266071359,"",FALSE,0,4.9
+"F2_pixels",8,"primary","",12,"1-3",4800,50,"L1",FALSE,-0.170753444968637,0.121472352684131,"boundary (singular) fit: see help('isSingular')",TRUE,0,2.4
+"F2_pixels",8,"primary","",12,"1-3",4800,50,"L2",TRUE,-0.140408987041456,0.107354063181395,"",FALSE,0,2.6

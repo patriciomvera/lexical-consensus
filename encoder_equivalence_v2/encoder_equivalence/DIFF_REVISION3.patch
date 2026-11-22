@@ -1,0 +1,899 @@
+--- propuesta 75678c79 (snapshot)
++++ propuesta_comparacion_encoders_v2_2026-11-18.md (actual)
+@@ -1,6 +1,6 @@
+ # Propuesta de diseño: comparación de encoders para el efecto de orden (v2 de arXiv 2611.14116)
+ 
+-- **Estado:** PLAN FINAL CON LA RESPUESTA A LA SEGUNDA REVISIÓN DE ARIADNA (REVISION2). INCLUYE EL RANGO DE CORTES DE GEOMETRÍA (PATRICIO, 10:44). FALTA LA REVISIÓN DE ARIADNA DE ESTOS CAMBIOS Y DE LOS SCRIPTS DE ANÁLISIS. NO SE CONGELA ANTES DEL VIERNES 20-11. **No está congelado** (no tiene hash de congelamiento). No se ha ajustado ningún GLMM ni se ha leído ninguna respuesta de participantes para esta v2.
++- **Estado:** PLAN FINAL CON LA RESPUESTA A LA SEGUNDA REVISIÓN DE ARIADNA (REVISION2). INCLUYE EL RANGO DE CORTES DE GEOMETRÍA (PATRICIO, 10:44) Y LA RESPUESTA A REVISION3. FALTA QUE ARIADNA REVISE EL DIFF (`encoder_equivalence/DIFF_REVISION3.patch`). NO SE CONGELA ANTES DEL VIERNES 20-11. **No está congelado** (no tiene hash de congelamiento). No se ha ajustado ningún GLMM ni se ha leído ninguna respuesta de participantes para esta v2.
+ - **Origen:** pedido de Patricio (18-11, 09:57, vía Evaristo), a partir de la sugerencia de @1shareShare1 en X: cambiar el backbone y ver si el efecto del orden se mantiene.
+ - **Alcance:** solo diseño. No se propone título ni encuadre del paper.
+ - **Fuentes de las cifras:** todas salen de archivos, con archivo y sección indicados: `human_data_analyses/` (commit 1e7a904 del repo `patriciomvera/lexical-consensus`), `paper_arxiv_v_concl/main.tex` y `encoder_equivalence/out/`.
+@@ -27,6 +27,21 @@
+   - **m1–m3:** horas del registro, "márgenes de geometría", G2 "sin grupos" si falla la calibración, e intercambiabilidad con las 56 personas que repiten (§5.2).
+   - **Aclaraciones al escribir los scripts (no cambian decisiones):** nombres reales de los scripts (§10.2); un encoder "inconcluso (técnico)" tampoco entra en su familia Holm (no tiene p); en G2, el p que debe pasar Holm es el de la prueba que define la región (signo opuesto para la región 1, p_TOST(δ) para la región 2); "no interpretable" se aplica también a la región con 24 ítems; S6 necesita embeddings con preprocesamiento común, que genera `01b_embed_common.py`; en la etapa 1, el ajuste de fallback se acepta si converge aunque sea singular (queda registrado), porque §5.2 solo excluye el que "tampoco converge" (en lme4 2.0.6 la singularidad aparece entre los mensajes de convergencia y se separa explícitamente); si el control positivo de un encoder no se pudo ajustar, cuenta como "no pasa"; en §10.3, el control positivo pasa antes de `08_regions.py`.
+ - **2026-11-18 10:44.** Decisión de Patricio, vía Evaristo: el corte del agrupamiento de geometría es un **rango, 1 − r = 0,3, 0,5 y 0,7**, con la misma lógica que los δ (coincide en los tres = "robusto"; si no, "depende del corte"; ningún corte se reporta sin los otros dos; ninguno es preferido). La autocalibración se evalúa en cada corte por separado; un corte que falla la calibración da "sin grupos" en ese corte. Las lecturas por grupos se reportan en una grilla δ × corte con una regla de perfil declarada. Razón registrada: los encoders son distintos y no se esperan equivalencias exactas. El congelamiento no ocurre antes del viernes 20-11. Aplicado a las 10:53 en §6.1, §7.2, §7.4, §10 y §11.3, y en `02_equivalence.py` y `08_regions.py`.
++- **2026-11-18 ~12:20** (encabezado; el archivo llegó antes de las 12:04). Tercera revisión de Ariadna (`REVISION3_ariadna_comparacion_encoders_v2_2026-11-18.md`) sobre `75678c79…`: congelable tras BC3, I1, I2 y el punto (6).
++- **2026-11-18 12:04–12:11. Respuesta a REVISION3.** Copias previas: `encoder_equivalence/propuesta_75678c79_snapshot.md` y `encoder_equivalence/scripts_snapshot_75678c79/`; diff en `encoder_equivalence/DIFF_REVISION3.patch`.
++  - **BC3:** el control de rangos de G0 ya no es estricto: los valores de d de la v1 que distan < 1e−6 se tratan como un mismo casi-empate (§3.2, §5.1). Se mantiene |Δ| ≤ 1e−5. **Desviación respecto del arreglo literal de Ariadna** (redondear a 6 decimales): el redondeo separa un casi-empate que cae justo en un borde de redondeo (p. ej. 0,3000004999 frente a 0,3000005001) y detendría G0 sin motivo; la regla por grupos de casi-empates hace lo que ella pide sin ese caso borde. Pruebas: ruido 1e−8 PASA, casi-empate invertido a 3e−7 PASA, borde de redondeo PASA (con el redondeo fallaría), intercambio real con brecha 5e−6 FALLA. §1.3: "495 valores únicos" son unos 290 a 1e−6 (medición de Ariadna en REVISION3; no la repetí, porque no abro `h4_long.csv`).
++  - **I1:** nueva sensibilidad **S9** (§5.4): etapa 1 con `(1 | person) + (1 | image)` en los 12 experimentos, etapa 2 igual, más la tabla tipo de ajuste × orden por encoder. Si S9 cambia la región de un encoder con algún δ (las regiones no dependen del corte), ese encoder se rotula "sensible al tipo de ajuste" (descriptivo; no cambia regiones ni G). **No se cambia el primario a un modelo único: esa decisión es de Patricio y queda pendiente (§10.4).** *(Superado: Patricio decidió a las 12:12 y 12:14; ver abajo.)* El generador sintético ahora tiene varianza de pendiente por persona.
++  - **I2:** prueba de humo de `01b_embed_common.py` (S6) hecha (§9.3). S6 pasa al final del domingo y su falla no detiene lo demás (§10.3).
++  - **(2)/(3):** la tabla de regiones muestra k y los encoders excluidos de cada familia Holm (§7.3).
++  - **(6):** se volvió a correr `01_embed.py`: los 13 npz salen idénticos byte a byte (§9.3). `rules_02_sha256_before_run.txt` listaba un hash viejo de `02` (`b815be4d…`) y ningún hash de `01_embed.py`; ahora tiene los actuales. `01_embed.py` cambió solo para registrar `crop_pct` en `encoder_specs.json` (la versión anterior lo omitía al reescribir; el campo se había agregado a mano), sin efecto en los embeddings.
++  - **Menores:** expectativa del corte 0,7 en §8; el tope de 32 h se vigila a mano (§9.2); G0 se lee de un JSON y no buscando texto en un log.
++- **2026-11-18 12:12.** Decisión de Patricio, vía Evaristo (opción B de REVISION3, I1): el primario de la etapa 1 usa el mismo modelo en los 12 experimentos, el más rico que converja en los 12; el ajuste mixto con fallback queda como sensibilidad secundaria (S9), solo para reportar. Después, Ariadna pidió (a) la escalera fijada en el plan, de más rica a más simple, con el criterio de convergencia (avisos de lme4, singularidad y tolerancias) y una elección que dependa solo de la convergencia, y (b) dejar explícito si la estructura se elige una vez para todos o por encoder.
++- **2026-11-18 12:14.** Patricio confirma, vía Evaristo, la opción (1): **una sola estructura común para todos los encoders**, elegida solo por convergencia; la variante por encoder es descriptiva. La constante `STRUCTURE_SCOPE` queda fija en `"common"` (confirmado por Patricio 18-11 12:14).
++- **2026-11-18 12:15–12:40. Implementación de las decisiones de 12:12 y 12:14** (incluida en `encoder_equivalence/DIFF_REVISION3.patch`; detalle en §11.4):
++  - §5.2: escalera L1 `(1 + zd | person) + (1 | image)` → L2 `(1 + zd || person) + (1 | image)` → L3 `(1 | person) + (1 | image)` → L4 `(1 | person)`; criterio de convergencia con tolerancias explícitas; **un ajuste singular cuenta como no convergido**; peldaño común para los 10 primarios (pisos incluidos), por separado con 8 y 24 ítems; encoder sin ningún peldaño: fuera de la elección y evaluado con el común.
++  - §5.4: S9 pasa a ser el ajuste mixto (primer peldaño que converge en cada experimento) y no cuesta ajustes; S4–S8 usan el peldaño común de 8 ítems.
++  - §8.11, §9.2 (peor caso del costo; el primario no se corta), §10.2, §10.3 (paso 5b) y §10.4 (sin puntos pendientes).
++  - **Más allá de la decisión (para Evaristo):** que la singularidad cuente como no convergencia; los peldaños intermedios L2 y L4; que los pisos entren en la elección; que el peldaño se elija por separado con 24 ítems; que S4–S8 hereden el peldaño de 8 ítems; la redefinición de S9; y el peor caso del costo.
+ 
+ ---
+ 
+@@ -47,7 +62,7 @@
+ - **Encoder:** `facebook/dinov2-small`, congelado, con el `AutoImageProcessor` por defecto. Según `main.tex` l.168, ese procesador redimensiona en bicúbico el lado corto a 256, hace un recorte central de 224 y normaliza con los valores de ImageNet.
+ - **Representación:** el token CLS de `last_hidden_state[:, 0, :]` (384 dimensiones), normalizado a norma L2.
+ - **Distancia por ensayo e ítem:** `d = 1 − cos(e_item, m)`, donde `m` es la media de los embeddings de las `trainPics` del ensayo, renormalizada a L2 (centroide).
+-- **Resultado:** hay 495 valores únicos de d (calculado hoy sobre `h4_long.csv`). La DE cruda de d es 0,2192 con los 24 ítems y 0,2963 con los 8 ítems objetivo (`DESVIACIONES.md` §33).
++- **Resultado:** hay 495 valores únicos de d (calculado hoy sobre `h4_long.csv`), que a una resolución de 1e−6 son unos 290 (medición de Ariadna, REVISION3; muchos son el mismo centroide calculado con otro orden de imágenes). La DE cruda de d es 0,2192 con los 24 ítems y 0,2963 con los 8 ítems objetivo (`DESVIACIONES.md` §33).
+ - **CVCL no se usó en H4.** Solo entró en H6, con CIFAR (`scripts/h6_embed_cvcl.py`). Su preprocesamiento fue Resize 224×224 bicúbico, sin recorte, con normalización ImageNet. La salida es la `fc` de 2048 a 512, normalizada a L2. Para la v2 habría que calcular las distancias de H4 con CVCL por primera vez.
+ 
+ ### 1.4 Análisis del orden (exploratorio post hoc)
+@@ -144,7 +159,7 @@
+ 
+ **Nota M1 (MAE).** `ViTMAEModel` baraja los parches al azar incluso con `mask_ratio = 0`. El CLS falló el chequeo de doble pasada en la corrida de ~10:16–10:17 (`out/log_embed.txt`). Diagnóstico: la diferencia máxima entre pasadas era de 4,8e−6 en el CLS y 3,8e−6 en la media; el coseno mínimo entre CLS con orden fijo y con orden aleatorio fue 0,9999995. Se corrigió pasando `noise = arange(196)`, y E4 y E4s se recalcularon a las 10:18 (mtime de los .npz) con dos pasadas idénticas (diferencia 0,0).
+ 
+-**Control de tubería (M3).** El embedding por lotes de `01_embed.py` frente a `PerceptionLayer.encode` de la v1, en las 45 imágenes: diferencia máxima de 1,5e−8 en el embedding y de 3,6e−7 en las distancias por pares (`vision_params_and_checks.json`). La tolerancia del control sobre d queda fijada en **1e−5**, y además se exige el mismo orden de rangos.
++**Control de tubería (M3).** El embedding por lotes de `01_embed.py` frente a `PerceptionLayer.encode` de la v1, en las 45 imágenes: diferencia máxima de 1,5e−8 en el embedding y de 3,6e−7 en las distancias por pares (`vision_params_and_checks.json`). La tolerancia del control sobre d queda fijada en **1e−5**, y además se exige el mismo orden de rangos, **tratando como empate los valores de la v1 que distan < 1e−6** (BC3 de REVISION3: en la v1 hay casi-empates de ~1e−9 que son el mismo centroide calculado con otro orden de imágenes; la brecha real más chica es 4,6e−6, según Ariadna). Formalmente: se agrupan los valores de d de la v1 cuya brecha consecutiva es < 1e−6, y en el archivo nuevo cada grupo debe quedar estrictamente por debajo del siguiente.
+ 
+ ---
+ 
+@@ -160,7 +175,7 @@
+ 
+ ### 5.1 Datos de entrada
+ `h4_prep_encoders.py`, por escribir antes del congelamiento, es idéntico a `h4_prep.py` salvo por la función `encode`, que lee `encoder_equivalence/out/emb_<ID>.npz`. Genera `data/h4_long_<ID>.csv` con las mismas filas y el mismo orden que `h4_long.csv`.
+-- **Control de tubería:** con R0, `dist` debe coincidir con la de `h4_long.csv` (sha256 `d9d30f9d…394dd1`) con |Δ| ≤ 1e−5 y el mismo orden de rangos. Si no coincide, se detiene todo.
++- **Control de tubería:** con R0, `dist` debe coincidir con la de `h4_long.csv` (sha256 `d9d30f9d…394dd1`) con |Δ| ≤ 1e−5 y el mismo orden de rangos con los casi-empates (< 1e−6) agrupados (§3.2, BC3). Si no coincide, se detiene todo. El resultado se escribe en `pipeline_control.json`, que es lo que lee `08_regions.py`.
+ 
+ ### 5.2 Análisis primario de la familia B: dos etapas a nivel experimento (B1)
+ Ariadna propuso dos remedios: (a) pendiente aleatoria por experimento o (b) 12 pendientes más permutación exacta. **Elijo (b)** por tres razones:
+@@ -171,11 +186,22 @@
+ (a) queda como sensibilidad S2.
+ 
+ - **Etapa 1**, por encoder e, conjunto de ítems s ∈ {8, 24} y experimento x = 1…12:
+-  - Modelo glmer binomial (bobyqa, `maxfun = 2e5`, `set.seed(42)`): `selected ~ zd*condition + level + (1 + zd | person) + (1 | image)`.
++  - Modelo glmer binomial (Laplace, bobyqa, `maxfun = 2e5`, `set.seed(42)`) con efectos fijos `selected ~ zd*condition + level`, iguales en todos los peldaños de la escalera de abajo.
+   - `condition` se codifica con suma a cero (`contr.sum`), así que el coeficiente de `zd` es la pendiente promedio de las 4 condiciones. Es el análogo del desplazamiento uniforme `zd:order` de Mb.
+   - Con 24 ítems, `level` se usa igual que en la v1 (sub/bas/sup asignado a los 24 ítems).
+   - zd es el de §4.1.
+-  - **Fallback pre-especificado:** si el ajuste es singular o no converge, se usa `(1 | person) + (1 | image)`, y queda registrado. Si tampoco converge, la pendiente de ese experimento falta, y el encoder queda **"inconcluso (técnico)"** en ese conjunto de ítems. No se imputa nada.
++  - **Estructura de efectos aleatorios: una sola, común a todos los encoders (decisión de Patricio, 18-11 12:12, opción B de REVISION3; alcance "común" confirmado por Patricio 18-11 12:14).** Reemplaza al fallback por experimento de las versiones anteriores, que pasa a ser S9 (§5.4, solo descriptivo).
++    - **Escalera fija, de más rica a más simple** (`LADDER` en `lib_glmm.R`):
++      - L1 `(1 + zd | person) + (1 | image)`;
++      - L2 `(1 + zd || person) + (1 | image)` (pendiente sin correlación con el intercepto);
++      - L3 `(1 | person) + (1 | image)`;
++      - L4 `(1 | person)`.
++    - **Criterio de convergencia (fijo; tolerancias escritas explícitamente en `LADDER_CTL`, iguales a las de lme4 2.0.6 por defecto):** un ajuste converge si y solo si (i) no da error; (ii) el optimizador termina con código 0; (iii) lme4 no emite ningún aviso de convergencia (chequeo de gradiente con tol 2e−3 y `relTol` nulo; chequeo de Hessiana con tol 1e−6; p. ej. "failed to converge", "nearly unidentifiable", "unable to evaluate scaled gradient"); y (iv) **no es singular** (`isSingular`, tol 1e−4): **un ajuste singular cuenta como no convergido.** Otros avisos de R (p. ej. de `glm.fit`) se registran, pero no cuentan.
++    - **Regla de elección (constante `STRUCTURE_SCOPE = "common"` en `05b_select_structure.py`; sin opción en tiempo de ejecución):** el peldaño común es el más rico que converge en los 12 experimentos **para cada uno** de los 10 encoders primarios (R0, O1, R1, E1, O2, E2, E3, E4, F1 semilla 0 y F2; **los pisos F1 y F2 entran en la elección**; F0 no tiene zd y no entra). Se elige por separado para 8 y para 24 ítems. La elección depende **solo** de la convergencia; nunca de β̂, Δ ni p (`05b` no lee esas columnas para elegir; hay una prueba que lo verifica).
++    - **Cómo se busca:** pasada 1, en cada experimento se ajusta L1 → L4 hasta el primer peldaño que converge; pasada 2, se ajustan los peldaños que falten para decidir (p. ej., si un encoder necesita L2 en un experimento, se ajusta L2 en los 12 experimentos de todos).
++    - **Encoder sin ningún peldaño que converja en sus 12 experimentos:** sale de la elección (para no bajar a todos a nada) y se ajusta igual con el peldaño común. Si ahí falta alguna pendiente, queda **"inconcluso (técnico)"** en ese conjunto de ítems, igual que cualquier encoder al que le falte una pendiente con el peldaño común. No se imputa nada.
++    - **Descriptivo (no entra en las regiones):** el peldaño que habría alcanzado cada encoder por separado (variante `per_encoder_rung`) y la tabla `structure.csv` con el primer peldaño que convergió en cada experimento.
++    - **Costo que se acepta:** un encoder difícil (por ejemplo, un piso) puede bajar el peldaño de todos. Se prefiere así por comparabilidad entre encoders.
+   - **Salida:** β̂(e, s, x) con su EE.
+ - **Etapa 2:** Δ(e, s) = media de β̂ en los experimentos "3-1" menos media en los "1-3". El signo es el mismo que `zd:order3-1` en la v1.
+   - **Prueba exacta:** las 924 asignaciones 6/6 de las etiquetas de orden. p bilateral = proporción de |T*| ≥ |T_obs|; también se calculan los p unilaterales.
+@@ -204,6 +230,8 @@
+ - **S6.** Las dos etapas, con 8 ítems, con preprocesamiento común: lado corto 256 bicúbico, recorte central 224 y la normalización propia de cada modelo.
+ - **S7.** F1 con las semillas 1 y 2.
+ - **S8.** MAE con CLS (E4s).
++- **S4–S8 usan el peldaño común de 8 ítems** que se eligió el sábado para el primario (§5.2); no se vuelve a elegir. Un experimento que no converge con ese peldaño deja la sensibilidad "inconclusa (técnico)" para ese encoder.
++- **S9 (I1 de REVISION3; redefinida por la decisión de Patricio de las 12:12).** El ajuste mixto: en cada experimento, el primer peldaño de la escalera que converge (pasada 1), con lo que se mezclan estructuras entre experimentos. Las dos etapas, con 8 ítems. No requiere ajustes extra. Se reporta la tabla tipo de ajuste (L1–L4 / falló) × orden por encoder. Si S9 cambia la región de un encoder con algún δ, ese encoder se califica **"sensible al tipo de ajuste"** (descriptivo: no cambia regiones ni conclusiones G). *Nota:* la S9 de REVISION3 (`(1 | person) + (1 | image)` en los 12) coincide con el primario cuando el peldaño común es L3; ya no se corre aparte.
+ - **Familia A.** Los coeficientes `condition:order3-1` de Mb por encoder, frente a F0 (`selected ~ condition*order + level + (1 | person) + (1 | image)`). Es descriptiva, sin margen fijo, conforme a la decisión de Patricio.
+ 
+ ---
+@@ -276,6 +304,7 @@
+   - **Familia de pisos (M4):** F1 y F2, con las mismas 2 pruebas cada uno. Son 4 pruebas por δ (menos si uno es "inconcluso (técnico)"), con Holm aparte. El control positivo no los saca de la familia.
+ - **No se corrige entre δ.** Los tres márgenes no son tres afirmaciones independientes que se puedan elegir. Son un mismo análisis leído a tres resoluciones, y la regla de §7.2 exige mostrar los tres. La protección frente a elegir el margen viene de esa regla, no de un ajuste.
+   - **Consecuencia:** una afirmación "robusta" es más exigente que cualquier δ aislado.
++- **Tamaño de cada familia en la salida (REVISION3):** la tabla de regiones indica, por encoder, a qué familia pertenece o por qué queda excluido, y el informe da k y la lista de excluidos de cada familia.
+ - **Sensibilidades y descriptivos:** no entran en ninguna familia.
+ 
+ ### 7.4 Conclusión global (8 ítems; se evalúa con cada δ y se aplica la primera que se cumpla)
+@@ -300,7 +329,7 @@
+   - si F1 y F2 están en "se mantiene", la moderación no requiere una geometría aprendida;
+   - si ambos caen en la región 1 o 2 con Holm de pisos, la moderación requiere alguna geometría aprendida;
+   - si no, es inconcluso.
+-- **S1–S8 y la familia A** no cambian la región. Si contradicen la conclusión, se informa.
++- **S1–S9 y la familia A** no cambian la región. Si contradicen la conclusión, se informa.
+ - **Lo que nunca se afirma:** que el orden *causa* el efecto, ni que el efecto "viene de los ejemplos" en sentido causal.
+ 
+ ---
+@@ -316,11 +345,12 @@
+ 8. **Pooling:** una sola representación primaria por encoder; solo el CLS de MAE como sensibilidad.
+ 9. **Determinismo de MAE:** resuelto con `noise` fijo (M1).
+ 10. **Conocimiento categórico de los encoders supervisados e imagen-lenguaje** (las categorías están en ImageNet y probablemente en WebLI y LAION; M7): no es filtración de respuestas humanas.
+-11. **Convergencia en la etapa 1** (experimentos de 50 personas): hay un fallback fijo y no se imputa nada.
++11. **Convergencia en la etapa 1** (experimentos de 50 personas): una escalera fija y una estructura común elegida solo por convergencia (§5.2); no se imputa nada. El ajuste mixto queda como S9, descriptivo.
+ 12. **Licencias:** MAE se trata como no comercial. No se redistribuyen pesos ni derivados por ensayo de XTMEM (§36).
+ 13. **RAM (M6):** al revisar a las ~10:00 había 2,7 GB disponibles. Durante los embeddings (10:15–10:19) el log muestra entre 6,5 y 12,1 GB. En la ejecución se usan como máximo 3 procesos de R y se vigila `MemAvailable`.
+ 14. **Ventaja de casa (I4):** la tubería se calibró con DINOv2 (los δ los fijó Patricio y no se refieren al 0,2041 de la v1, que está en otra escala; I-b).
+ 15. **Bifurcaciones:** todo lo que decide está en §5.2, §6.1 y §7. Cualquier otro análisis es descriptivo y se rotula así.
++16. **Expectativa con el corte 0,7 (REVISION3, menor):** con 0,7 se unen grupos con r promedio ≥ .30, así que es probable que algún piso quede con un entrenado. Entonces la calibración falla en ese corte y un "se mantiene en todos" saldría como "depende solo del corte" casi por construcción. Se declara de antemano para no leerlo como hallazgo.
+ 
+ **Fuera de alcance (trabajo futuro):**
+ - separar el orden de `blocking` y `timing` (haría falta un diseño factorial con participantes nuevos);
+@@ -342,18 +372,20 @@
+ | Bloque | Ajustes | CPU estimada |
+ |---|---|---|
+ | Distancias (`h4_prep_encoders`, 13 fuentes) + `02` | — | < 15 min |
+-| **Dos etapas, 8 ítems** (10 fuentes × 12 experimentos) | 120 | 1–2 h |
+-| **Dos etapas, 24 ítems** (10 × 12) | 120 | 2–6 h |
++| **Dos etapas, 8 ítems** (10 fuentes × 12 experimentos; escalera, §5.2) | 120 si todo converge en L1; peor caso ~600 | 1–2 h; peor caso ~5–10 h |
++| **Dos etapas, 24 ítems** (10 × 12; escalera) | 120; peor caso ~600 | 2–6 h; peor caso ~10–30 h |
+ | Control positivo, intra-dominio (9 fuentes nuevas, ~10 min) | 9 | ~1,5 h |
+ | S1: Mb y Mc con 24 ítems (9 × ~36 min) y con 8 ítems (10 × ~12 min) | 19 | ~7,5 h |
+ | S2: `(1 | exp) + (0 + zd | exp)`, 8 ítems (10 × ~15 min) | 10 | ~2,5 h |
+ | S3: `level:order`, 8 ítems (10 × ~12 min) | 10 | ~2 h |
+ | S4–S8: dos etapas con 8 ítems (4 × 10 fuentes y 3 fuentes extra) × 12 | ~520 | 4–8 h |
++| S9: ajuste mixto (sale de la pasada 1 del primario) | 0 | segundos |
+ | Familia A: F0 | 2 | ~0,3 h |
+-| **Total** | | **~21–30 h de CPU**; con 3 procesos de R en paralelo, **~8–11 h de reloj** |
++| **Total** | | **~22–31 h de CPU**; con 3 procesos de R en paralelo, **~8–11 h de reloj** |
+ 
+ - **Impacto de los tres δ (10:37):** ninguno en los ajustes. Son los mismos 120 + 120 ajustes de la etapa 1; solo cambian la etapa 2 (pruebas de permutación desplazadas a ±δ, segundos) y `08_regions.py`.
+-- **Tope de presupuesto:** 32 h de CPU. Si se supera, las sensibilidades se cortan en orden inverso de prioridad (S8 → S1), y queda registrado. No hay re-corridas selectivas.
++- **Escalera (12:12/12:14):** si todo converge en L1, el costo es el de antes. El peor caso (cuatro peldaños por experimento más la pasada 2) multiplica la etapa 1 por ~5; con 24 ítems eso solo ya pasaría el tope. El primario no se corta: si el tope se supera por la etapa 1, se cortan las sensibilidades y se registra como desviación. S9 ya no cuesta ajustes.
++- **Tope de presupuesto:** 32 h de CPU. Si se supera, las sensibilidades se cortan en orden inverso de ejecución (S6 → S8 → … → S1), y queda registrado. No hay re-corridas selectivas. `run_weekend.sh` no aplica el tope solo: se vigila a mano con las horas del log (REVISION3, menor).
+ - **Costo monetario:** ninguno.
+ - **Tiempo humano:** escribir y probar los scripts antes del congelamiento, ~3–4 h. Revisión breve de Ariadna de los cambios, ~1 h. Supervisión el fin de semana, ~1 jornada. Resultados y desviaciones, ~½ jornada.
+ 
+@@ -361,6 +393,8 @@
+ - **18-11 ~10:00:** prueba de tiempos con DINOv2-S y una ResNet-50 aleatoria sobre las 45 imágenes. Como dato colateral salió una RSA completa de ρ = .158, con una sola semilla y sin IC. No decide nada.
+ - **18-11 10:15–10:19:** `01_embed.py` generó los embeddings de las 13 fuentes. E4s falló el chequeo de determinismo (~10:16–10:17) y se recalculó a las 10:18, junto con E4, tras el arreglo M1.
+ - **18-11 ~10:24:** `00_vision_params_and_checks.py` contó los parámetros de visión y comprobó la tubería de R0 contra la v1 (§3.2).
++- **18-11 12:05–12:08 (REVISION3, punto 6):** se volvió a correr `01_embed.py` con las 13 fuentes (solo las 45 imágenes). Los 13 npz salen idénticos byte a byte a los anteriores (diferencia máxima 0), incluidos E4 y E4s con `noise` fijo. Copias previas en `out/npz_before_rerun/`.
++- **18-11 12:06 (REVISION3, I2):** prueba de humo de `01b_embed_common.py` en `/tmp/s6smoke` con R0, F1 y F2 (solo imágenes): R0 da coseno mínimo 0,9999953 por imagen frente a su npz actual; F1 y F2 salen idénticos (diferencia 0).
+ - **Ninguno de estos pasos usó** `h4_long.csv`, `all_raw_A.csv` ni respuestas de participantes. No se calculó ninguna d de ensayo ni ninguna RSA o CKA entre los encoders nuevos.
+ 
+ ---
+@@ -378,8 +412,8 @@
+ - **Presupuesto y parada:** §9.2.
+ 
+ ### 10.2 Lista antes del congelamiento (jueves 19 a viernes 20)
+-1. Aprobación de Patricio: hecha (10:17, 10:37, 10:38 y 10:44; ver §10.4). No queda ningún punto pendiente de Patricio.
+-2. Escribir los scripts que faltan: `h4_prep_encoders.py`, `01b_embed_common.py` (S6), `lib_glmm.R`, `05_twostage_stage1.R`, `06_stage2_permutation.py`, `07_pooled_glmm.R` (control positivo, S1–S3 y F0), `08_regions.py`, `09_freeze.py`, `run_weekend.sh` y `README_weekend.md`, con las pruebas en `scripts/tests/`. Hecho el 18-11 (ver registro de cambios).
++1. Aprobación de Patricio: hecha (10:17, 10:37, 10:38, 10:44, 12:12 y 12:14; ver §10.4). No queda ningún punto pendiente de Patricio.
++2. Escribir los scripts que faltan: `h4_prep_encoders.py`, `01b_embed_common.py` (S6), `lib_glmm.R`, `05_twostage_stage1.R`, `05b_select_structure.py`, `06_stage2_permutation.py`, `07_pooled_glmm.R` (control positivo, S1–S3 y F0), `08_regions.py`, `09_freeze.py`, `run_weekend.sh` y `README_weekend.md`, con las pruebas en `scripts/tests/`. Hecho el 18-11 (ver registro de cambios).
+    - `08_regions.py` implementa §7 literalmente, con los tres δ y la tabla única de §7.2.
+    - Se prueban **solo con datos sintéticos**.
+ 3. Segunda revisión de Ariadna: el plan final (hecha, REVISION2; respondida, §11.2) y los scripts (pendiente). Si encuentra algo de fondo, se avisa a Evaristo antes de correr.
+@@ -395,15 +429,17 @@
+ - 1. `h4_prep_encoders.py` con todas las fuentes, más el control de tubería (G0).
+ - 2. `02_equivalence.py`: tabla descriptiva, regla de geometría y calibración.
+ - 3. Cronometrar un ajuste de la etapa 1 y actualizar el presupuesto (sin cambiar el análisis).
+-- 4. Dos etapas con 8 ítems, todas las fuentes.
+-- 5. Dos etapas con 24 ítems.
++- 4. Etapa 1 con 8 ítems, pasada 1 de la escalera, todas las fuentes.
++- 5. Etapa 1 con 24 ítems, pasada 1.
++- 5b. `05b_select_structure.py`: peldaño común por conjunto de ítems, solo por convergencia, con las pasadas 2 que pida (§5.2).
+ - 6. Control positivo (`07_pooled_glmm.R poscontrol`).
+ - 7. Etapa 2 y `08_regions.py`.
+ - *Aclaración al escribir los scripts:* el control positivo va antes de `08_regions.py`, porque las regiones lo usan (BC1). El orden anterior (6 = etapa 2 y regiones, 7 = control) no podía ejecutarse así. No cambia ningún análisis.
+ 
+ **Domingo:**
+-- 8. S1 → S8 en ese orden, dentro del presupuesto.
++- 8. S1 → S5, S7 y S8 en ese orden, dentro del presupuesto (S4, S5, S7 y S8 con el peldaño común de 8 ítems), y `08_regions.py` otra vez con S9 (ajuste mixto, ya calculado el sábado; rótulo descriptivo).
+ - 9. Familia A.
++- 9b. **S6 al final** (REVISION3, I2): si falla, no detiene nada y se registra como desviación.
+ - 10. `RESULTADOS_encoders.md`, nuevas entradas de `DESVIACIONES` y aviso a Evaristo.
+ - No se publica nada sin Patricio.
+ 
+@@ -417,9 +453,12 @@
+ 
+ - **10:44:** el **corte del agrupamiento de geometría es un rango (0,3, 0,5 y 0,7)**, con la misma lógica de espectro que los δ y la calibración por corte (§6.1, §7.4). El congelamiento no ocurre antes del viernes 20-11.
+ 
+-**Puntos pendientes de Patricio:** ninguno.
++- **12:12 (REVISION3, I1, opción B):** el primario de la etapa 1 usa el mismo modelo en los 12 experimentos, la estructura más rica que converja en los 12; el ajuste mixto con fallback pasa a S9, secundario y solo para reportar (§5.2, §5.4).
++- **12:14:** **una sola estructura común para todos los encoders**, elegida solo por convergencia (`STRUCTURE_SCOPE = "common"`: **confirmado por Patricio 18-11 12:14**); la variante por encoder queda como descriptiva (§5.2).
+ 
+-**Siguiente paso antes de congelar:** Ariadna ya hizo la segunda revisión del plan (REVISION2, respondida en §11.2). Falta que revise estos cambios (BC1, I-a, I-b, m1–m3 y los cortes de las 10:44) y los scripts de análisis.
++No queda ningún punto pendiente de Patricio.
++
++**Siguiente paso antes de congelar:** Ariadna ya hizo la segunda revisión del plan (REVISION2, respondida en §11.2). Revisó los scripts y el plan en REVISION3 (respondida en §11.4). Falta que revise solo el diff `encoder_equivalence/DIFF_REVISION3.patch` (REVISION3 y decisiones de Patricio de las 12:12 y 12:14) y dé el visto bueno para `09_freeze.py`.
+ - Si no encuentra nada de fondo, se congela con hash (§10.2, paso 4) y se ejecuta el sábado 21 y el domingo 22.
+ - Si encuentra algo de fondo, se avisa a Evaristo antes de correr.
+ 
+@@ -453,3 +492,12 @@
+ ### 11.3 Decisión de Patricio sobre los cortes (18-11 10:44)
+ - §6.1 (tres cortes, calibración por corte, perfil del agrupamiento), §7.2.5 y §7.4 (grilla δ × corte y regla de perfil global), §10.1, §10.2, §10.4.
+ - Implementado en `02_equivalence.py` (`CUTS = (0.3, 0.5, 0.7)`, función `group_all`) y `08_regions.py` (`grid_profile`), con pruebas unitarias donde la calibración pasa en un corte y falla en otro.
++
++### 11.4 Respuesta a la tercera revisión (REVISION3)
++- **BC3:** §3.2 y §5.1 (casi-empates < 1e−6 agrupados; desviación justificada frente al redondeo a 6 decimales); §1.3 (≈290 valores a 1e−6). Implementado en `h4_prep_encoders.py::rank_order_ok`, con pruebas en `tests/test_prep.py`.
++- **I1:** §5.4 (S9), §9.2 (costo), §10.3 (domingo), §10.4. Implementado en `06_stage2_permutation.py` (tipo de ajuste × orden) y `08_regions.py` (`--stage2-s9`, rótulo "sensible al tipo de ajuste").
++- **I1 tras las decisiones de Patricio (12:12 y 12:14) y las precisiones (a) y (b) de Ariadna:** §5.2 (escalera L1–L4, criterio de convergencia con tolerancias, regla común, pisos en la elección, encoder sin peldaño), §5.4 (S4–S8 con el peldaño común; S9 = ajuste mixto), §8.11, §9.2 (costo y peor caso), §10.2, §10.3 (paso 5b), §10.4. Implementado en `lib_glmm.R` (`LADDER`, `LADDER_CTL`, `ladder_converged`), `05_twostage_stage1.R` (argumento `fit` = `ladder` o un peldaño), `05b_select_structure.py` (nuevo; `STRUCTURE_SCOPE = "common"`), `06` (filas sin convergencia = pendiente faltante) y `run_weekend.sh` (`select_structure`), con pruebas en `tests/test_select_structure.py`.
++- **I2:** §9.3 (prueba de humo) y §10.3 (S6 al final, sin bloquear).
++- **(2)/(3):** §7.3 y columna `familia_holm` más la sección "Familias Holm" de `regions_report.md`.
++- **(6):** §9.3 y `out/rules_02_sha256_before_run.txt`.
++- **Menores:** §8.16, §9.2 y G0 en JSON.
+diff -ruN -x __pycache__ scripts_snapshot_75678c79/01_embed.py scripts/01_embed.py
+--- scripts_snapshot_75678c79/01_embed.py	2026-11-18 10:18:30.651778558 -0300
++++ scripts/01_embed.py	2026-11-18 12:07:00.002346930 -0300
+@@ -23,7 +23,7 @@
+     return snapshot_download(repo, revision=REV[repo], allow_patterns=["*.json", "model.safetensors", "*.ckpt"])
+ def proc_spec(p):
+     d = p.to_dict(); keep = ["image_processor_type", "do_resize", "size", "resample", "do_center_crop", "crop_size", "do_rescale",
+-                             "rescale_factor", "do_normalize", "image_mean", "image_std", "do_convert_rgb"]
++                             "rescale_factor", "do_normalize", "image_mean", "image_std", "do_convert_rgb", "crop_pct"]
+     return {k: d.get(k) for k in keep if k in d}
+ def l2(x): return F.normalize(x.float(), dim=-1).numpy().astype(np.float32)
+ SPECS = {}
+diff -ruN -x __pycache__ scripts_snapshot_75678c79/05_twostage_stage1.R scripts/05_twostage_stage1.R
+--- scripts_snapshot_75678c79/05_twostage_stage1.R	2026-11-18 10:55:26.052972383 -0300
++++ scripts/05_twostage_stage1.R	2026-11-18 12:15:13.143973860 -0300
+@@ -1,15 +1,16 @@
+-# STAGE 1 (plan §5.2, B1): per encoder x item set x experiment, the average zd slope across the 4 conditions.
+-# glmer binomial, bobyqa: selected ~ zd*condition + level + (1 + zd | person) + (1 | image), condition coded contr.sum,
+-# so coef "zd" = mean slope over conditions (analogue of the uniform zd:order shift of Mb).
++# STAGE 1 (plan §5.2, B1; ladder by decision of Patricio 18-11 12:12/12:14): per encoder x item set x experiment, the zd slope
++# (contr.sum on condition, so coef "zd" = mean slope over the 4 conditions) for the rungs of LADDER (lib_glmm.R).
+ # zd standardised over the POOLED item set (all 12 experiments, or the pooled first-session subset for S4) before splitting.
+-# Fallback (pre-specified): if singular or convergence warning -> (1 | person) + (1 | image); if that fails too -> slope missing
+-# (encoder becomes "inconcluso (tecnico)" in stage 2; no imputation).
+-# Usage: Rscript 05_stage1.R <long_dir> <key.csv> <out.csv> <items:8|24> <variant:primary|first_session|rank> <suffix|-> [first_session.csv|-] ID [ID ...]
++# fit = "ladder": per experiment, rungs L1 -> L4 until the first converged one (every attempted rung is written: pass 1).
++# fit = "L1".."L4": that rung only, in all 12 experiments (pass 2 of the selection, and the sensitivities at the common rung).
++# The structure is SELECTED by 05b_select_structure.py from convergence only (never from Delta or p).
++# Usage: Rscript 05_twostage_stage1.R <long_dir> <key.csv> <out.csv> <items:8|24> <variant:primary|first_session|rank> <suffix|-> <first_session.csv|-> <fit:ladder|L1|L2|L3|L4> ID [ID ...]
+ args <- commandArgs(trailingOnly = TRUE)
+ src <- file.path(dirname(sub("--file=", "", grep("--file=", commandArgs(FALSE), value = TRUE))), "lib_glmm.R"); source(src)
+ long_dir <- args[1]; key <- args[2]; out <- args[3]; items <- as.integer(args[4]); variant <- args[5]
+-suffix <- if (args[6] == "-") "" else args[6]; fs_path <- args[7]; ids <- args[-(1:7)]
+-stopifnot(items %in% c(8, 24), variant %in% c("primary", "first_session", "rank"))
++suffix <- if (args[6] == "-") "" else args[6]; fs_path <- args[7]; fit <- args[8]; ids <- args[-(1:8)]
++stopifnot(items %in% c(8, 24), variant %in% c("primary", "first_session", "rank"), fit %in% c("ladder", names(LADDER)))
++rungs <- if (fit == "ladder") names(LADDER) else fit
+ set.seed(42); res <- list()
+ for (id in ids) {
+   d <- item_subset(read_long(file.path(long_dir, paste0("h4_long_", id, suffix, ".csv")), key), items)
+@@ -18,16 +19,17 @@
+   for (x in sort(unique(d$exp))) {
+     dd <- droplevels(subset(d, exp == x)); stopifnot(nlevels(dd$condition) == 4, length(unique(dd$order)) == 1)  # all 4 conditions present
+     contrasts(dd$condition) <- contr.sum(4)
+-    t0 <- Sys.time()
+-    m <- safe_glmer(selected ~ zd * condition + level + (1 + zd | person) + (1 | image), dd); used <- "slope"
+-    if (!fit_ok(m)) { m <- safe_glmer(selected ~ zd * condition + level + (1 | person) + (1 | image), dd); used <- "noslope"
+-      if (!fit_converged(m)) { m <- NULL; used <- "failed" } }
+-    b <- se <- NA; w <- ""; sg <- NA
+-    if (!is.null(m)) { co <- summary(m)$coefficients; b <- co["zd", 1]; se <- co["zd", 2]; w <- warn_msg(m); sg <- isSingular(m) }
+-    res[[length(res) + 1]] <- data.frame(encoder = id, items = items, variant = variant, suffix = suffix, exp = x, order = as.character(dd$order[1]),
+-      n = nrow(dd), persons = nlevels(dd$person), beta = b, se = se, re_used = used, warn = w, singular = sg,
+-      secs = round(as.numeric(difftime(Sys.time(), t0, units = "secs")), 1))
+-    cat(sprintf("%s items=%d %s exp=%d order=%s beta=%.4f se=%.4f RE=%s (%.1fs)\n", id, items, variant, x, dd$order[1], b, se, used, res[[length(res)]]$secs)); flush.console()
++    for (r in rungs) {
++      t0 <- Sys.time(); m <- fit_rung(r, dd); ok <- ladder_converged(m)
++      b <- se <- NA; w <- if (is.null(m)) "fit error" else warn_msg(m); sg <- if (is.null(m)) NA else isSingular(m, tol = 1e-4)
++      oc <- if (is.null(m)) NA else as.integer(m@optinfo$conv$opt)
++      if (!is.null(m)) { co <- summary(m)$coefficients; b <- co["zd", 1]; se <- co["zd", 2] }
++      res[[length(res) + 1]] <- data.frame(encoder = id, items = items, variant = variant, suffix = suffix, exp = x, order = as.character(dd$order[1]),
++        n = nrow(dd), persons = nlevels(dd$person), rung = r, converged = ok, beta = b, se = se, warn = w, singular = sg, opt_code = oc,
++        secs = round(as.numeric(difftime(Sys.time(), t0, units = "secs")), 1))
++      cat(sprintf("%s items=%d %s exp=%d order=%s %s converged=%s beta=%.4f (%.1fs)\n", id, items, variant, x, dd$order[1], r, ok, b, res[[length(res)]]$secs)); flush.console()
++      if (ok) break
++    }
+   }
+ }
+ r <- do.call(rbind, res); write.csv(r, out, row.names = FALSE); cat("wrote", out, nrow(r), "rows\n")
+diff -ruN -x __pycache__ scripts_snapshot_75678c79/05b_select_structure.py scripts/05b_select_structure.py
+--- scripts_snapshot_75678c79/05b_select_structure.py	1969-12-31 21:00:00.000000000 -0300
++++ scripts/05b_select_structure.py	2026-11-18 12:15:36.172797007 -0300
+@@ -0,0 +1,73 @@
++"""Selection of the stage-1 random-effects structure (plan §5.2; Patricio 18-11 12:12 option B, 12:14 option (1) = ONE common structure).
++Depends ONLY on convergence (column `converged` of 05_twostage_stage1.R; criterion in lib_glmm.R / plan §5.2), never on beta, Delta or p.
++STRUCTURE_SCOPE is the single pre-declared constant of the plan: "common" (confirmed by Patricio 18-11 12:14). There is no runtime option.
++  common     : the richest rung of LADDER that converges in all 12 experiments for EVERY encoder of SELECTION_SET (the 10 primary
++               encoders, floors included; F0 has no zd and is NOT included), chosen separately for 8 and for 24 items. Encoders with no
++               fully converging rung at all are left out of the selection and are evaluated at the common rung anyway (missing -> inconcluso tecnico).
++  per_encoder: descriptive only (each encoder's own richest fully converging rung).
++Descriptive outputs (never enter the regions): per-encoder rung, and S9 = the "mixed" fit (per experiment, the first converged rung of pass 1).
++Usage: python 05b_select_structure.py <out_prefix> <stage1_ladder.csv> [more stage-1 csv ...]
++Exit 0 = selection complete (writes <out_prefix>_primary.csv, _per_encoder.csv, _S9_mixed.csv, _structure.csv, _status.json)
++Exit 3 = fits missing (writes <out_prefix>_needs.csv with encoder, items, rung): run 05 with fit=<rung> for those and call again."""
++import sys, json, pandas as pd
++STRUCTURE_SCOPE = "common"          # pre-declared constant (plan §5.2 and §10.4). "per_encoder" would be the only alternative.
++RUNGS = ["L1", "L2", "L3", "L4"]
++SELECTION_SET = ["R0_dinov2s", "O1_dinov2b", "R1_cvcl", "E1_siglip", "O2_openclip", "E2_vitsup", "E3_rn50sup", "E4_mae", "F1_rn50rand0", "F2_pixels"]
++EXPS = list(range(1, 13))
++def status(T, enc, exp, rung):
++    r = T.get((enc, exp, rung)); return None if r is None else bool(r["converged"])
++def richest(T, encs):
++    """('ok', rung) | ('need', [(enc, rung)]) | ('none', None)"""
++    for rg in RUNGS:
++        st = [status(T, e, x, rg) for e in encs for x in EXPS]
++        if any(s is False for s in st): continue
++        if any(s is None for s in st): return "need", sorted({(e, rg) for e in encs for x in EXPS if status(T, e, x, rg) is None})
++        return "ok", rg
++    return "none", None
++def select(df):
++    df = df[df.variant == "primary"]; out = {}; needs = []
++    for items, g in df.groupby("items"):
++        T = {}
++        for r in g.to_dict("records"): T.setdefault((r["encoder"], int(r["exp"]), r["rung"]), r)
++        encs = [e for e in SELECTION_SET if e in set(g.encoder)]
++        own = {}
++        for e in encs:
++            k, v = richest(T, [e]); own[e] = v if k == "ok" else (None if k == "none" else "?")
++            if k == "need": needs += [(e, items, rg) for _, rg in v]
++        if needs and any(n[1] == items for n in needs): out[items] = dict(T=T, own=own, common=None); continue
++        elig = [e for e in encs if own[e] is not None]
++        k, v = richest(T, elig)
++        if k == "need": needs += [(e, items, rg) for e, rg in v]; out[items] = dict(T=T, own=own, common=None); continue
++        common = v if k == "ok" else None
++        if common:   # encoders left out of the selection are still evaluated at the common rung
++            for e in encs:
++                if e not in elig and any(status(T, e, x, common) is None for x in EXPS): needs.append((e, items, common))
++        out[items] = dict(T=T, own=own, common=common, eligible=elig, excluded=[e for e in encs if e not in elig])
++    return out, sorted(set(needs))
++def stage1_rows(T, enc, items, rung_of_exp, variant):
++    rows = []
++    for x in EXPS:
++        rg = rung_of_exp(x); r = T.get((enc, x, rg)) if rg else None; ok = r is not None and bool(r["converged"])
++        any_r = next((T[k] for k in T if k[0] == enc and k[1] == x), None)
++        rows.append(dict(encoder=enc, items=items, variant=variant, suffix="", exp=x, order=any_r["order"] if any_r else None,
++                         beta=r["beta"] if ok else float("nan"), se=r["se"] if ok else float("nan"), re_used=rg if ok else "failed"))
++    return rows
++if __name__ == "__main__":
++    pre = sys.argv[1]; df = pd.concat([pd.read_csv(f) for f in sys.argv[2:]]); df["suffix"] = df["suffix"].fillna("")
++    out, needs = select(df)
++    if needs:
++        pd.DataFrame(needs, columns=["encoder", "items", "rung"]).to_csv(f"{pre}_needs.csv", index=False); print("NEEDS", needs); sys.exit(3)
++    prim, per, mix, struct, st = [], [], [], [], {}
++    for items, o in out.items():
++        T, own, common = o["T"], o["own"], o["common"]
++        for e in own:
++            first = {x: next((rg for rg in RUNGS if status(T, e, x, rg)), None) for x in EXPS}
++            prim += stage1_rows(T, e, items, (lambda x, c=(common if STRUCTURE_SCOPE == "common" else own[e]): c), "primary")
++            per += stage1_rows(T, e, items, (lambda x, c=own[e]: c), "per_encoder_rung")
++            mix += stage1_rows(T, e, items, (lambda x, f=first: f[x]), "S9_mixed")
++            struct.append(dict(encoder=e, items=items, scope=STRUCTURE_SCOPE, common_rung=common, own_rung=own[e],
++                               in_selection=e in o["eligible"], **{f"first_rung_exp{x}": first[x] for x in EXPS}))
++        st[str(items)] = dict(scope=STRUCTURE_SCOPE, common_rung=common, excluded_from_selection=o["excluded"], own_rung=own)
++    pd.DataFrame(prim).to_csv(f"{pre}_primary.csv", index=False); pd.DataFrame(per).to_csv(f"{pre}_per_encoder.csv", index=False)
++    pd.DataFrame(mix).to_csv(f"{pre}_S9_mixed.csv", index=False); pd.DataFrame(struct).to_csv(f"{pre}_structure.csv", index=False)
++    open(f"{pre}_status.json", "w").write(json.dumps(st, indent=1)); print(json.dumps(st, indent=1))
+diff -ruN -x __pycache__ scripts_snapshot_75678c79/06_stage2_permutation.py scripts/06_stage2_permutation.py
+--- scripts_snapshot_75678c79/06_stage2_permutation.py	2026-11-18 10:42:03.012268430 -0300
++++ scripts/06_stage2_permutation.py	2026-11-18 12:16:07.845929139 -0300
+@@ -4,7 +4,8 @@
+ One-sided permutation p-values: p_opposite = P(T* <= T_obs) at delta0 = 0 (H1: Delta < 0);
+ TOST at each delta in DELTAS: p_TOST = max(P(T* >= T_obs | shift -delta), P(T* <= T_obs | shift +delta)).
+ Secondary: Welch t-test and Welch 95% CI. If any of the 12 slopes is missing -> status "inconcluso_tecnico" (no imputation).
+-Usage: python 06_stage2.py <out.csv> <stage1.csv> [stage1.csv ...]"""
++Input: stage-1 tables from 05b_select_structure.py (primary = common rung; per_encoder_rung and S9_mixed descriptive) or from 05 at a fixed rung.
++Usage: python 06_stage2_permutation.py <out.csv> <stage1.csv> [stage1.csv ...]"""
+ import sys, itertools, numpy as np, pandas as pd
+ from scipy import stats
+ DELTAS = (0.05, 0.10, 0.20); EPS = 1e-12; STEP = 0.001
+@@ -33,10 +34,20 @@
+     out.update(welch_p=w.pvalue, welch_df=df, welch_ci95_lo=D - h, welch_ci95_hi=D + h, mean_31=a.mean(), mean_13=b.mean()); return out
+ if __name__ == "__main__":
+     s1 = pd.concat([pd.read_csv(f, keep_default_na=True) for f in sys.argv[2:]]); s1["suffix"] = s1["suffix"].fillna("")
++    if "converged" in s1.columns:   # rows straight from 05 at a fixed rung (sensitivities): a non-converged fit is a missing slope
++        conv = s1.converged.fillna(True).astype(str).str.upper().isin(["TRUE", "1"])
++        if "re_used" not in s1.columns: s1["re_used"] = np.nan
++        used = s1["rung"].fillna(s1["re_used"]) if "rung" in s1.columns else s1["re_used"]
++        s1.loc[~conv, "beta"] = np.nan; s1["re_used"] = np.where(conv, used, "failed")
++    assert not s1.duplicated(["encoder", "items", "variant", "suffix", "exp"]).any(), "one stage-1 row per experiment expected (ladder files go through 05b)"
+     rows = []
+     for k, g in s1.groupby(["encoder", "items", "variant", "suffix"], dropna=False):
+-        g = g.sort_values("exp"); base = dict(zip(["encoder", "items", "variant", "suffix"], k), n_exp=len(g), n_fallback=int((g.re_used == "noslope").sum()))
++        g = g.sort_values("exp"); base = dict(zip(["encoder", "items", "variant", "suffix"], k), n_exp=len(g))
++        for t in ("L1", "L2", "L3", "L4", "failed"):      # REVISION3 I1: fit type (ladder rung) x order, per encoder
++            for o in ("1-3", "3-1"): base[f"n_{t}_{o}"] = int(((g.re_used == t) & (g.order == o)).sum())
+         if len(g) != 12 or g.beta.isna().any() or set(g.order) != {"1-3", "3-1"} or (g.order == "3-1").sum() != 6:
+             rows.append(dict(base, status="inconcluso_tecnico")); continue
+         rows.append(dict(base, status="ok", **analyse(g.beta.to_numpy(), (g.order == "3-1").to_numpy())))
+-    pd.DataFrame(rows).to_csv(sys.argv[1], index=False); print("wrote", sys.argv[1], len(rows), "rows")
++    out = pd.DataFrame(rows); out.to_csv(sys.argv[1], index=False); print("wrote", sys.argv[1], len(rows), "rows")
++    ft = [c for c in out.columns if c.startswith(("n_L1_", "n_L2_", "n_L3_", "n_L4_", "n_failed_"))]
++    out[["encoder", "items", "variant", "suffix"] + ft].to_csv(sys.argv[1].replace(".csv", "_fit_type_by_order.csv"), index=False)
+diff -ruN -x __pycache__ scripts_snapshot_75678c79/08_regions.py scripts/08_regions.py
+--- scripts_snapshot_75678c79/08_regions.py	2026-11-18 10:46:54.078672288 -0300
++++ scripts/08_regions.py	2026-11-18 12:15:48.557239679 -0300
+@@ -2,7 +2,7 @@
+ Implements the plan literally. There is NO option to choose a delta, a cut or an encoder: DELTAS and CUTS are constants and all are
+ always computed and reported together.
+ Inputs : --stage2 stage2_primary.csv (06, variant=primary, items 8 and 24, suffix "") ; --poscontrol poscontrol.csv (07 poscontrol)
+-         --grouping equivalence_grouping.json (02) ; --pipeline pipeline_control.log (h4_prep_encoders.py --check output) ; --out-dir DIR
++         --grouping equivalence_grouping.json (02) ; --pipeline pipeline_control.json (written by h4_prep_encoders.py --check) ; --out-dir DIR
+ Outputs: regions_table.csv, global_grid.csv, floors.csv, regions_report.md (in --out-dir)."""
+ import argparse, json, pathlib, numpy as np, pandas as pd
+ DELTAS = (0.05, 0.10, 0.20)
+@@ -81,7 +81,13 @@
+     if all(f in adjf and ((regs[f][dl] == R1_ and adjf[f]["holm_opposite"] < .05) or (regs[f][dl] == R2_ and adjf[f]["holm_tost"] < .05)) for f in FLOORS):
+         return "la moderación requiere alguna geometría aprendida"
+     return "inconcluso"
+-def analyse(s2, pc, pipeline_ok, grouping):
++SENS_FIT = "sensible al tipo de ajuste"
++def s9_labels(s9, pc):
++    """REVISION3 I1 + Patricio 12:12 (S9, descriptive): regions with the MIXED stage 1 (per experiment, first converged rung); an encoder whose region changes at
++    any delta is labelled 'sensible al tipo de ajuste'. Regions do not depend on the cut, so 'any delta/cut' = 'any delta'."""
++    s8 = {r["encoder"]: r for r in s9[s9["items"] == 8].to_dict("records")}
++    return {e: {dl: region8(s8.get(e), dl, pc.get(e, False), e in FLOORS) for dl in DELTAS} for e in PRIMARY}
++def analyse(s2, pc, pipeline_ok, grouping, s9=None):
+     s8 = {r["encoder"]: r for r in s2[s2["items"] == 8].to_dict("records")}; s24 = {r["encoder"]: r for r in s2[s2["items"] == 24].to_dict("records")}
+     regs = {e: {dl: region8(s8.get(e), dl, pc.get(e, False), e in FLOORS) for dl in DELTAS} for e in PRIMARY}
+     rows, G, floors = [], {}, []
+@@ -99,7 +105,29 @@
+         for c in CUTS: G[(dl, c)] = conclude(dl, c, regs, adjs[dl][0], pc, pipeline_ok, grouping)
+         floors.append(dict(delta=dl, family_size=adjf[dl][1], lectura=floors_reading(dl, regs, adjf[dl][0])))
+     grid = pd.DataFrame([dict(delta=d, cut=c, conclusion=G[(d, c)][0], detalle=G[(d, c)][1], trained_family_size=adjs[d][1]) for d in DELTAS for c in CUTS])
+-    return pd.DataFrame(rows), grid, pd.DataFrame(floors), grid_profile({k: v[0] for k, v in G.items()})
++    if s9 is not None:
++        r9 = s9_labels(s9, pc)
++        for row in rows:
++            e = row["encoder"]
++            for dl in DELTAS: row[f"region_S9_d{dl:.2f}"] = r9[e][dl]
++            row["tipo_de_ajuste"] = SENS_FIT if any(r9[e][dl] != regs[e][dl] for dl in DELTAS) else "estable"
++            if row["tipo_de_ajuste"] == SENS_FIT: row["perfil"] += f"; {SENS_FIT} (S9, descriptivo)"
++    fam = family_summary(s8, pc)
++    for row in rows: row["familia_holm"] = fam["membership"][row["encoder"]]
++    out = (pd.DataFrame(rows), grid, pd.DataFrame(floors), grid_profile({k: v[0] for k, v in G.items()}))
++    analyse.families = fam; return out
++def family_summary(s8, pc):
++    """REVISION3 (2)/(3): k and excluded encoders of each Holm family (membership does not depend on delta)."""
++    mem, fams = {}, {}
++    for name, members in (("entrenados", TRAINED[1:]), ("pisos", FLOORS)):
++        inc, exc = [], []
++        for e in members:
++            if e not in FLOORS and not pc.get(e, False): mem[e] = f"excluido de {name}: {NI}"; exc.append(e)
++            elif s8.get(e) is None or s8[e].get("status") != "ok": mem[e] = f"excluido de {name}: {R5T}"; exc.append(e)
++            else: mem[e] = f"familia {name}"; inc.append(e)
++        fams[name] = dict(k=len(inc), n_tests=2 * len(inc), incluidos=inc, excluidos=exc)
++    mem[R0] = "R0: referencia (no entra en Holm; G1)"
++    return dict(membership=mem, families=fams)
+ def md_table(df):
+     h = "| " + " | ".join(map(str, df.columns)) + " |"; sep = "|" + "---|" * len(df.columns)
+     return "\n".join([h, sep] + ["| " + " | ".join(map(str, r)) + " |" for r in df.itertuples(index=False)])
+@@ -107,16 +135,22 @@
+     t = pd.read_csv(path); t = t[t.term == "zd"]
+     return {r.encoder: bool(r.gate_pass) if pd.notna(r.gate_pass) else False for r in t.itertuples()}  # missing/failed fit = not passed
+ if __name__ == "__main__":
+-    ap = argparse.ArgumentParser(); [ap.add_argument(a, required=True) for a in ("--stage2", "--poscontrol", "--grouping", "--pipeline", "--out-dir")]; a = ap.parse_args()
++    ap = argparse.ArgumentParser(); [ap.add_argument(a, required=True) for a in ("--stage2", "--poscontrol", "--grouping", "--pipeline", "--out-dir")]
++    ap.add_argument("--stage2-s9", default=None, help="stage-2 file containing variant S9_mixed; adds the descriptive 'sensible al tipo de ajuste' label"); a = ap.parse_args()
+     s2 = pd.read_csv(a.stage2); s2 = s2[(s2.variant == "primary") & (s2.suffix.fillna("") == "")]
+-    pipeline_ok = "-> PASS" in pathlib.Path(a.pipeline).read_text(); grouping = json.loads(pathlib.Path(a.grouping).read_text())["grouping"]
+-    pc = load_pc(a.poscontrol); tab, grid, fl, gp = analyse(s2, pc, pipeline_ok, grouping)
++    pipeline_ok = bool(json.loads(pathlib.Path(a.pipeline).read_text())["ok"])  # JSON written by h4_prep_encoders.py --check (REVISION3 minor)
++    grouping = json.loads(pathlib.Path(a.grouping).read_text())["grouping"]
++    s9 = None
++    if a.stage2_s9: s9 = pd.read_csv(a.stage2_s9); s9 = s9[(s9.variant == "S9_mixed") & (s9.suffix.fillna("") == "")]
++    pc = load_pc(a.poscontrol); tab, grid, fl, gp = analyse(s2, pc, pipeline_ok, grouping, s9)
+     o = pathlib.Path(a.out_dir); o.mkdir(parents=True, exist_ok=True)
+     tab.to_csv(o / "regions_table.csv", index=False); grid.to_csv(o / "global_grid.csv", index=False); fl.to_csv(o / "floors.csv", index=False)
+     r0 = tab[tab.encoder == R0].iloc[0]
+     md = ["# Regiones y conclusión global (plan §7; generado por 08_regions.py)", "",
+           f"- Control de tubería: {'PASA' if pipeline_ok else 'FALLA'}. Perfil del agrupamiento de geometría: {grouping['profile']}.",
+           f"- Referencia descriptiva, no confirmatoria (I-b): Δ en dos etapas de R0 con 8 ítems = {r0.delta_hat} [IC 95 % {r0.ci95_lo}; {r0.ci95_hi}].", "",
+-          "## Tabla única (§7.2): región con δ = 0,05 / 0,10 / 0,20 y con 24 ítems", "", md_table(tab[["encoder", "control_positivo", "region_d0.05", "region_d0.10", "region_d0.20", "region_24", "perfil"]]), "",
++          "## Tabla única (§7.2): región con δ = 0,05 / 0,10 / 0,20 y con 24 ítems", "", md_table(tab[[c for c in ["encoder", "control_positivo", "familia_holm", "region_d0.05", "region_d0.10", "region_d0.20", "region_24", "tipo_de_ajuste", "perfil"] if c in tab.columns]]), "",
++          "## Familias Holm (§7.3; iguales con los tres δ)", "",
++          *[f"- **{n}:** k = {f['k']} encoders, {f['n_tests']} pruebas por δ; incluidos: {', '.join(f['incluidos']) or 'ninguno'}; excluidos: {', '.join(f['excluidos']) or 'ninguno'}." for n, f in analyse.families["families"].items()], "",
+           "## Conclusión global por (δ, corte)", "", md_table(grid), "", f"**Perfil global:** {gp}", "", "## Pisos", "", md_table(fl)]
+     (o / "regions_report.md").write_text("\n".join(md)); print("\n".join(md))
+diff -ruN -x __pycache__ scripts_snapshot_75678c79/09_freeze.py scripts/09_freeze.py
+--- scripts_snapshot_75678c79/09_freeze.py	2026-11-18 10:52:51.635452851 -0300
++++ scripts/09_freeze.py	2026-11-18 12:11:27.347902958 -0300
+@@ -8,7 +8,8 @@
+ B = pathlib.Path(__file__).resolve().parents[1]; ROOT = B.parent; MAN = B / "FREEZE_encoders_v2.txt"
+ PLAN = ROOT / "propuesta_comparacion_encoders_v2_2026-11-18.md"
+ def files():
+-    f = [PLAN, ROOT / "REVISION_ariadna_comparacion_encoders_v2_2026-11-18.md", ROOT / "REVISION2_ariadna_comparacion_encoders_v2_2026-11-18.md"]
++    f = [PLAN, ROOT / "REVISION_ariadna_comparacion_encoders_v2_2026-11-18.md", ROOT / "REVISION2_ariadna_comparacion_encoders_v2_2026-11-18.md",
++         ROOT / "REVISION3_ariadna_comparacion_encoders_v2_2026-11-18.md"]
+     f += sorted(p for p in (B / "scripts").rglob("*") if p.is_file() and "__pycache__" not in p.parts)
+     f += sorted(B.glob("propuesta_*snapshot*.md"))
+     f += [B / "out/encoder_specs.json", B / "out/vision_params_and_checks.json", B / "out/rules_02_sha256_before_run.txt"] + sorted((B / "out").glob("emb_*.npz"))
+diff -ruN -x __pycache__ scripts_snapshot_75678c79/README_weekend.md scripts/README_weekend.md
+--- scripts_snapshot_75678c79/README_weekend.md	2026-11-18 10:55:20.600777498 -0300
++++ scripts/README_weekend.md	2026-11-18 12:19:33.365275269 -0300
+@@ -9,22 +9,23 @@
+ |---|---|---|
+ | `01_embed.py` | embeddings de los 45 estímulos (ya corrido 18-11 10:15–10:19) | §3 |
+ | `00_vision_params_and_checks.py` | parámetros y control R0 frente a la v1 (ya corrido) | §3.2 |
+-| `01b_embed_common.py` | embeddings con preprocesamiento común para S6 (**no probado**: solo compila; usa imágenes reales y modelos, no datos sintéticos) | §5.4 S6 |
+-| `h4_prep_encoders.py` | `h4_long_<ID>.csv` con la misma lógica, filas y orden que `h4_prep.py`; `--check` = control de tubería G0 | §5.1 |
++| `01b_embed_common.py` | embeddings con preprocesamiento común para S6; prueba de humo 18-11 12:06 en `/tmp/s6smoke` (R0 coseno mín. 0,9999953; F1 y F2 idénticos) | §5.4 S6 |
++| `h4_prep_encoders.py` | `h4_long_<ID>.csv` con la misma lógica, filas y orden que `h4_prep.py`; `--check` = control de tubería G0 (casi-empates < 1e−6 agrupados, BC3; escribe `pipeline_control.json`) | §5.1 |
+ | `02_equivalence.py` | parte A descriptiva; parte B: r de zd (8 ítems, parcializando nivel), UPGMA con cortes 0,3/0,5/0,7, calibración por corte, perfil | §6 |
+ | `lib_glmm.R` | lectura, mapeo de condiciones, z por encoder y conjunto de ítems, control de convergencia | §4, §5 |
+-| `05_twostage_stage1.R` | etapa 1: pendiente de zd por experimento (contr.sum, fallback registrado) | §5.2 |
+-| `06_stage2_permutation.py` | etapa 2: Δ, permutación exacta 924, IC por inversión, TOST, Welch | §5.2 |
++| `05_twostage_stage1.R` | etapa 1: pendiente de zd por experimento (contr.sum); `fit` = `ladder` (pasada 1: L1 → L4 hasta el primero que converge) o un peldaño fijo | §5.2 |
++| `05b_select_structure.py` | peldaño **común** a todos los encoders (`STRUCTURE_SCOPE = "common"`, confirmado por Patricio 18-11 12:14), solo por convergencia; pide las pasadas 2; escribe primario, `per_encoder_rung` y `S9_mixed` (descriptivos) y `structure.csv` | §5.2, S9 |
++| `06_stage2_permutation.py` | etapa 2: Δ, permutación exacta 924, IC por inversión, TOST, Welch; tabla tipo de ajuste × orden (`*_fit_type_by_order.csv`) | §5.2 |
+ | `07_pooled_glmm.R` | control positivo, S1 (04f), S2, S3, F0 | §5.3, §5.4 |
+-| `08_regions.py` | regiones (con BC1), Holm por δ, G0–G4 en la grilla δ × corte, perfiles, pisos | §7 |
++| `08_regions.py` | regiones (con BC1), Holm por δ con k y excluidos de cada familia, G0–G4 en la grilla δ × corte, perfiles, pisos; `--stage2-s9` añade el rótulo descriptivo "sensible al tipo de ajuste" | §7, S9 |
+ | `09_freeze.py` | manifiesto `FREEZE_encoders_v2.txt` (`--freeze`) y verificación (`--verify`) | §10.2 |
+ | `run_weekend.sh` | orden del sábado y domingo (§10.3); `WEEKEND_SYNTH_DIR=/tmp/synth…` solo para el ensayo sintético | §10.3 |
+ 
+ ## Lista de verificación de Ariadna (REVISION2, "Scripts de análisis") y dónde se cumple
+-1. **Prep.** `tests/test_prep.py` ejecuta el bucle de `h4_prep.py` **desde su propio texto fuente** sobre datos sintéticos y compara: columnas, filas y orden idénticos, d idéntica (diferencia 0). Los npz se leen por nombre de imagen (`names`). G0: `--check` exige filas idénticas, |Δd| ≤ 1e−5 y el mismo orden de rangos (falla con +2e−5 y con filas reordenadas). z: `lib_glmm.R::add_zd`, por encoder y conjunto de ítems, sobre todos los experimentos; `02` lee con `usecols` sin `selected`.
+-2. **Etapa 1.** `contrasts(dd$condition) <- contr.sum(4)` dentro de cada experimento; `read_long` falla si una condición no se mapea (`stopifnot`), y la salida guarda n, personas y el tipo de efectos aleatorios (`re_used` = slope / noslope / failed), advertencias y singularidad. Se guarda el β̂ de `zd`.
++1. **Prep.** (BC3 de REVISION3: el orden de rangos agrupa casi-empates < 1e−6; ruido 1e−8, casi-empate invertido y borde de redondeo PASAN; intercambio real con brecha 5e−6 FALLA.) `tests/test_prep.py` ejecuta el bucle de `h4_prep.py` **desde su propio texto fuente** sobre datos sintéticos y compara: columnas, filas y orden idénticos, d idéntica (diferencia 0). Los npz se leen por nombre de imagen (`names`). G0: `--check` exige filas idénticas, |Δd| ≤ 1e−5 y el mismo orden de rangos (falla con +2e−5 y con filas reordenadas). z: `lib_glmm.R::add_zd`, por encoder y conjunto de ítems, sobre todos los experimentos; `02` lee con `usecols` sin `selected`.
++2. **Etapa 1.** `contrasts(dd$condition) <- contr.sum(4)` dentro de cada experimento; `read_long` falla si una condición no se mapea (`stopifnot`), y la salida guarda n, personas, el peldaño (`rung` L1–L4), `converged` (criterio de `lib_glmm.R::ladder_converged`: sin error, código 0, sin avisos de convergencia de lme4, no singular con tol 1e−4), advertencias, singularidad y código del optimizador. Se guarda el β̂ de `zd`. La elección del peldaño (`05b`) usa solo `converged` (`tests/test_select_structure.py`, 5 pruebas: todo L1; un piso difícil baja a todos a L2 con dos pasadas; encoder sin peldaño fuera de la elección y evaluado con el común; la elección no cambia si cambian los β̂; constante fija sin opción).
+ 3. **Etapa 2.** `COMBOS` = las 924 asignaciones (prueba: 924 filas únicas con 6 "3-1"); Δ = 3-1 menos 1-3; p con ≥ (tolerancia 1e−12); IC por inversión en grilla de paso 0,001 que cubre Δ ± 3·(rango + 1), con banderas `ci*_at_grid_edge` y `ci*_contiguous`; TOST = máx. de los dos p desplazados. `tests/test_stage2.py` contrasta todo contra fuerza bruta con Δ conocido.
+-4. **Regiones.** Precedencia [no interpretable] → 1 → 2 → 3 → 4 → 5 por δ; familias Holm de 2·k; G0–G4 en orden; perfiles por encoder, por agrupamiento y global (grilla δ × corte); sin opciones para elegir δ, corte ni encoders (`tests/test_regions.py`, 16 pruebas, incluidos los dos ejemplos de §7.1, un encoder que falla el control, R0 que falla y calibración que pasa en un corte y falla en otro).
++4. **Regiones.** Precedencia [no interpretable] → 1 → 2 → 3 → 4 → 5 por δ; familias Holm de 2·k; G0–G4 en orden; perfiles por encoder, por agrupamiento y global (grilla δ × corte); sin opciones para elegir δ, corte ni encoders (`tests/test_regions.py`, 18 pruebas, incluidos los dos ejemplos de §7.1, un encoder que falla el control, R0 que falla y calibración que pasa en un corte y falla en otro).
+ 5. **`07`.** Fórmulas copiadas de §5.3 (= C6 de 04c, con su fallback), §5.4 y 04f (Mbase, Mb, Mc con contrastes de tratamiento, como en 04f).
+ 6. **Congelamiento.** `09_freeze.py --freeze --scripts-review <archivo>` escribe el sha256 del plan, de las revisiones, de todo `scripts/` (incluidas las pruebas y este README), de los snapshots del plan, de `encoder_specs.json` y de los 13 npz.
+ 
+@@ -33,13 +34,15 @@
+ /workspace/rv_venv/bin/python tests/test_stage2.py
+ /workspace/rv_venv/bin/python tests/test_regions.py
+ /workspace/rv_venv/bin/python tests/test_freeze.py
++/workspace/rv_venv/bin/python tests/test_select_structure.py
+ bash tests/run_e2e_synthetic.sh /tmp/synth_enc_test                 # genera datos sintéticos y corre todo de punta a punta
+ WEEKEND_SYNTH_DIR=/tmp/synth_enc_test bash run_weekend.sh saturday   # ensayo del orquestador con datos sintéticos
+-WEEKEND_SYNTH_DIR=/tmp/synth_enc_test bash run_weekend.sh sunday
++WEEKEND_SYNTH_DIR=/tmp/synth_enc_test WEEKEND_SYNTH_P10="R0_dinov2s O1_dinov2b F2_pixels" WEEKEND_SYNTH_S6_FAIL=1 bash run_weekend.sh sunday   # S6 falla a propósito: el resto sigue
++WEEKEND_SYNTH_DIR=/tmp/synth_enc_test WEEKEND_SYNTH_P10="R0_dinov2s O1_dinov2b F2_pixels" bash run_weekend.sh s6
+ ```
+ 
+ ## Fin de semana (solo después del congelamiento; plan §10.3)
+ Antes de empezar: `/tmp/renv` (R 4.5.3 + lme4 2.0.6) y `/tmp/XTMEM` están en `/tmp` y pueden haberse borrado. `run_weekend.sh` lo comprueba
+ (paso 0) y se detiene si falta R; las imágenes solo hacen falta para S6. `09_freeze.py --verify` debe dar OK; `h4_long.csv` debe tener el sha256 `d9d30f9d…394dd1`.
+-- **Sábado** (`bash run_weekend.sh saturday`): 0 verificación → 1 prep + G0 (si falla, se detiene todo) → 2 `02` → 3 tiempo de un encoder (columna `secs`; solo actualiza el presupuesto) → 4 etapa 1 con 8 ítems → 5 etapa 1 con 24 ítems → 6 control positivo → 7 etapa 2 y `08_regions.py`.
+-- **Domingo** (`bash run_weekend.sh sunday`): S1 → S8 (tope de 32 h de CPU; si se supera, se corta de S8 hacia S1 y se registra), familia A (F0), y a mano `RESULTADOS_encoders.md`, entradas de `DESVIACIONES` y aviso a Evaristo. No se publica nada sin Patricio.
++- **Sábado** (`bash run_weekend.sh saturday`): 0 verificación → 1 prep + G0 (si falla, se detiene todo) → 2 `02` → 3 tiempo de un encoder (columna `secs`; solo actualiza el presupuesto) → 4 etapa 1 con 8 ítems (pasada 1) → 5 etapa 1 con 24 ítems (pasada 1) → 5b `05b` + pasadas 2 (peldaño común) → 6 control positivo → 7 etapa 2 y `08_regions.py`.
++- **Domingo** (`bash run_weekend.sh sunday`): S1 → S5, S7, S8 (S4, S5, S7, S8 con el peldaño común de 8 ítems), regiones con S9 (ajuste mixto, sin ajustes extra), familia A (F0) y **S6 al final** (si falla, no detiene nada y se registra). Tope de 32 h de CPU **vigilado a mano** (el script no lo aplica); si se supera, se corta en orden inverso de ejecución y se registra. Después, a mano: `RESULTADOS_encoders.md`, entradas de `DESVIACIONES` y aviso a Evaristo. No se publica nada sin Patricio.
+diff -ruN -x __pycache__ scripts_snapshot_75678c79/h4_prep_encoders.py scripts/h4_prep_encoders.py
+--- scripts_snapshot_75678c79/h4_prep_encoders.py	2026-11-18 10:48:17.557656165 -0300
++++ scripts/h4_prep_encoders.py	2026-11-18 12:08:27.761483810 -0300
+@@ -3,7 +3,7 @@
+ Same 24-item TEST list, same centroid (mean of L2 train embeddings, renormalised), d = 1 - cos. Same row order as h4_prep.py.
+ Usage:
+   python h4_prep_encoders.py --raw <all_raw_A.csv> --key <experiment_key.csv> --emb-dir <dir with emb_*.npz> --out-dir <dir> [--suffix ""] ID [ID ...]
+-  python h4_prep_encoders.py --check <h4_long_R0_dinov2s.csv> <v1 h4_long.csv>   # pipeline control (G0): |d diff| <= 1e-5 and same rank order
++  python h4_prep_encoders.py --check <h4_long_R0_dinov2s.csv> <v1 h4_long.csv> [pipeline_control.json]   # G0: |d diff| <= 1e-5 and same rank order with near-ties (< 1e-6) merged (BC3)
+ The weekend run writes data to <out-dir>/h4_long_<ID><suffix>.csv. Participant data are read ONLY in the weekend run, after the freeze."""
+ import argparse, re, sys, pathlib, numpy as np, pandas as pd
+ TEST = [f"c{c}_{l}{i}" for c in (1, 2, 3) for l, k in (("sub", 2), ("bas", 2), ("sup", 4)) for i in range(1, k + 1)]
+@@ -24,17 +24,30 @@
+ def load_emb(path):
+     z = np.load(path)  # read BY IMAGE NAME (names array), float32 as v1 PerceptionLayer; per-vector normalisation exactly as h4_prep.py
+     return {str(n): v / np.linalg.norm(v) for n, v in zip(z["names"], z["emb"].astype(np.float32))}
+-def check(new_csv, v1_csv, tol=1e-5):
++NEAR_TIE = 1e-6  # BC3 (REVISION3): in v1, 207 of 494 gaps between consecutive d values are < 1e-6 (same centroid computed with another
++                 # image order); the smallest real gap is 4.6e-6 (Ariadna's measurement). Values closer than 1e-6 are one near-tie cluster.
++def rank_order_ok(new, v1, near_tie=NEAR_TIE):
++    """Same rank order up to near-ties: cluster the v1 values (single linkage, consecutive gaps < near_tie); the new values must keep
++    the clusters strictly ordered (max of cluster k < min of cluster k+1). Equivalent to Ariadna's 'round to 6 decimals' rule except at
++    rounding boundaries, where round(6) would split a near-tie (e.g. ...4999 vs ...5001) and stop G0 for nothing."""
++    o = np.argsort(v1, kind="stable"); vs = v1[o]; ns = new[o]
++    cl = np.concatenate([[0], np.cumsum(np.diff(vs) >= near_tie)])
++    k = cl.max() + 1; mx = np.full(k, -np.inf); mn = np.full(k, np.inf)
++    np.maximum.at(mx, cl, ns); np.minimum.at(mn, cl, ns)
++    return bool((mx[:-1] < mn[1:]).all())
++def check(new_csv, v1_csv, tol=1e-5, json_out=None):
+     a = pd.read_csv(new_csv, usecols=["exp", "subid", "trial", "image", "dist"]); b = pd.read_csv(v1_csv, usecols=["exp", "subid", "trial", "image", "dist"])
+     same_rows = a[["exp", "subid", "trial", "image"]].equals(b[["exp", "subid", "trial", "image"]])
+     diff = float(np.abs(a.dist.to_numpy() - b.dist.to_numpy()).max()) if same_rows else float("nan")
+-    same_rank = same_rows and bool((a.dist.rank(method="min").to_numpy() == b.dist.rank(method="min").to_numpy()).all())
++    same_rank = same_rows and rank_order_ok(a.dist.to_numpy(float), b.dist.to_numpy(float))
+     ok = bool(same_rows and diff <= tol and same_rank)
+-    print(f"PIPELINE_CONTROL rows_identical={same_rows} max_abs_diff={diff:.3g} tol={tol} same_rank_order={same_rank} -> {'PASS' if ok else 'FAIL (G0: stop)'}")
++    print(f"PIPELINE_CONTROL rows_identical={same_rows} max_abs_diff={diff:.3g} tol={tol} same_rank_order(near-ties<{NEAR_TIE:g} merged)={same_rank} -> {'PASS' if ok else 'FAIL (G0: stop)'}")
++    if json_out:
++        import json; pathlib.Path(json_out).write_text(json.dumps(dict(ok=ok, rows_identical=bool(same_rows), max_abs_diff=diff, tol=tol, near_tie=NEAR_TIE, same_rank_order=bool(same_rank))))
+     return ok
+ if __name__ == "__main__":
+     if len(sys.argv) > 1 and sys.argv[1] == "--check":
+-        sys.exit(0 if check(sys.argv[2], sys.argv[3]) else 1)
++        sys.exit(0 if check(sys.argv[2], sys.argv[3], json_out=sys.argv[4] if len(sys.argv) > 4 else None) else 1)
+     ap = argparse.ArgumentParser(); ap.add_argument("--raw", required=True); ap.add_argument("--key", required=True)
+     ap.add_argument("--emb-dir", required=True); ap.add_argument("--out-dir", required=True); ap.add_argument("--suffix", default=""); ap.add_argument("ids", nargs="+")
+     a = ap.parse_args()
+diff -ruN -x __pycache__ scripts_snapshot_75678c79/lib_glmm.R scripts/lib_glmm.R
+--- scripts_snapshot_75678c79/lib_glmm.R	2026-11-18 10:49:38.452547680 -0300
++++ scripts/lib_glmm.R	2026-11-18 12:15:13.131973431 -0300
+@@ -21,4 +21,20 @@
+ conv_msgs <- function(m) { x <- m@optinfo$conv$lme4$messages; x[!grepl("singular", x)] }
+ fit_ok <- function(m) !is.null(m) && length(conv_msgs(m)) == 0 && !isSingular(m)          # primary: converged AND not singular
+ fit_converged <- function(m) !is.null(m) && length(conv_msgs(m)) == 0                       # fallback: converged (singular allowed, logged)
+-safe_glmer <- function(f, d) tryCatch(suppressWarnings(glmer(f, d, binomial, control = CTL)), error = function(e) NULL)
++safe_glmer <- function(f, d, ctl = CTL) tryCatch(suppressWarnings(glmer(f, d, binomial, control = ctl)), error = function(e) NULL)
++# ---- STAGE-1 LADDER (plan §5.2; Patricio 18-11 12:12 and 12:14; REVISION3 I1 + Ariadna's (a)/(b)) ----
++# Fixed effects identical on every rung: selected ~ zd * condition + level (condition contr.sum). Rungs, richest -> simplest:
++LADDER <- c(L1 = "(1 + zd | person) + (1 | image)",   # correlated random slope
++            L2 = "(1 + zd || person) + (1 | image)",  # uncorrelated random slope
++            L3 = "(1 | person) + (1 | image)",
++            L4 = "(1 | person)")
++# Convergence criterion (frozen; tolerances written explicitly = lme4 2.0.6 defaults): Laplace (nAGQ = 1), bobyqa, maxfun 2e5;
++# converged <=> (i) no error, (ii) optimizer return code 0, (iii) no lme4 convergence message (gradient check tol 2e-3 with relTol NULL,
++# Hessian check tol 1e-6; e.g. "failed to converge", "nearly unidentifiable", "unable to evaluate scaled gradient"), and
++# (iv) NOT singular (isSingular, tol 1e-4): a singular fit counts as NOT converged. Other R warnings (e.g. glm.fit) are logged, not counted.
++LADDER_CTL <- glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun = 2e5),
++                           check.conv.grad = .makeCC("warning", tol = 2e-3, relTol = NULL),
++                           check.conv.singular = .makeCC(action = "message", tol = 1e-4),
++                           check.conv.hess = .makeCC("warning", tol = 1e-6))
++ladder_converged <- function(m) !is.null(m) && identical(as.integer(m@optinfo$conv$opt), 0L) && length(conv_msgs(m)) == 0 && !isSingular(m, tol = 1e-4)
++fit_rung <- function(rung, dd) safe_glmer(as.formula(paste("selected ~ zd * condition + level +", LADDER[[rung]])), dd, LADDER_CTL)
+diff -ruN -x __pycache__ scripts_snapshot_75678c79/run_weekend.sh scripts/run_weekend.sh
+--- scripts_snapshot_75678c79/run_weekend.sh	2026-11-18 11:24:21.048380821 -0300
++++ scripts/run_weekend.sh	2026-11-18 12:17:46.557457508 -0300
+@@ -1,6 +1,7 @@
+ #!/usr/bin/env bash
+ # WEEKEND RUN (Sat 21 / Sun 22-Nov-2026), ONLY after FREEZE_encoders_v2.txt exists and verifies. Order = plan §10.3.
+-# Usage: bash run_weekend.sh saturday | sunday     (each step logs to encoder_equivalence/logs/; stops at the first error)
++# Usage: bash run_weekend.sh saturday | sunday     (each step logs to encoder_equivalence/logs/; stops at the first error, except S6)
++# The 32 h CPU cap of plan §9.2 is NOT enforced here: watch it by hand (log timestamps) and cut S1 if exceeded (S9 now costs no extra fits) (REVISION3 minor).
+ set -euo pipefail
+ S=$(cd "$(dirname "$0")" && pwd); B=$(dirname "$S"); H=/workspace/lexical-consensus-openmind/human_data_analyses
+ PY=/workspace/rv_venv/bin/python; R=/tmp/renv/bin/Rscript; DATA=$B/data; RES=$B/results; L=$B/logs
+@@ -14,10 +15,10 @@
+ [ -n "${WEEKEND_SYNTH_DIR:-}" ] && [ -n "${WEEKEND_SYNTH_P10:-}" ] && P10=$WEEKEND_SYNTH_P10   # synthetic rehearsal only: fewer encoders to save time
+ mkdir -p $DATA $RES $L
+ log() { echo "[$(date '+%F %T %Z')] $*" | tee -a $L/run_weekend.log; }
+-par3() { # par3 <out_prefix> <items> <variant> <suffix|-> <first_session|-> <ids...>: <=3 R processes in parallel (plan §8.13)
+-  local pre=$1 it=$2 va=$3 su=$4 fs=$5; shift 5; local ids=($@) n=$# pids=()
++par3() { # par3 <out_prefix> <items> <variant> <suffix|-> <first_session|-> <fit:ladder|L1..L4> <ids...>: <=3 R processes in parallel (§8.13)
++  local pre=$1 it=$2 va=$3 su=$4 fs=$5 fi=$6; shift 6; local ids=($@) n=$# pids=()
+   for g in 0 1 2; do local sel=(); for ((i=g; i<n; i+=3)); do sel+=(${ids[$i]}); done; [ ${#sel[@]} -gt 0 ] || continue
+-    $R $S/05_twostage_stage1.R $DATA $KEY ${pre}_g$g.csv $it $va $su $fs "${sel[@]}" > $L/$(basename $pre)_g$g.log 2>&1 & pids+=($!); done
++    $R $S/05_twostage_stage1.R $DATA $KEY ${pre}_g$g.csv $it $va $su $fs $fi "${sel[@]}" > $L/$(basename $pre)_g$g.log 2>&1 & pids+=($!); done
+   for p in "${pids[@]}"; do wait $p || { log "stage-1 process failed ($pre)"; exit 1; }; done; }
+ step0() {
+   if [ -n "${WEEKEND_SYNTH_DIR:-}" ]; then log "0. SYNTHETIC rehearsal: freeze/sha checks skipped"; return; fi
+@@ -28,34 +29,57 @@
+   [ -f $RAW ] && [ -f $V1LONG ] || { log "v1 data missing: run $H/data/download_data.sh and scripts/h4_prep.py"; exit 1; }
+   sha256sum $V1LONG | tee -a $L/run_weekend.log | grep -q '^d9d30f9d.*394dd1 ' || { log "h4_long.csv sha256 != d9d30f9d…394dd1: stop"; exit 1; }
+   grep MemAvailable /proc/meminfo | tee -a $L/run_weekend.log; }
++select_structure() {  # plan §5.2: ONE common rung for all encoders (STRUCTURE_SCOPE=common, Patricio 18-11 12:14), chosen by convergence only
++  local files=($RES/stage1_8_R0.csv $RES/stage1_8_rest_g*.csv $RES/stage1_24_g*.csv) k rc
++  for k in 1 2 3 4 5 6 7 8; do
++    rc=0; $PY $S/05b_select_structure.py $RES/structure "${files[@]}" > $L/05b_select_iter$k.log 2>&1 || rc=$?
++    [ $rc -eq 0 ] && { cat $RES/structure_status.json | tee -a $L/run_weekend.log; return 0; }
++    [ $rc -eq 3 ] || { cat $L/05b_select_iter$k.log; log "05b failed"; exit 1; }
++    local lines=(); mapfile -t lines < <($PY -c "import pandas as p; d=p.read_csv('$RES/structure_needs.csv')
++for (i, r), g in d.groupby(['items', 'rung']): print(i, r, ' '.join(sorted(set(g.encoder))))")
++    for ln in "${lines[@]}"; do set -- $ln; local it=$1 rg=$2; shift 2; log "   pass 2 (iter $k): items=$it rung=$rg: $*"
++      par3 $RES/stage1_pass2_${it}_${rg}_i$k $it primary - - $rg "$@"; files+=($RES/stage1_pass2_${it}_${rg}_i${k}_g*.csv); done
++  done; log "05b: selection did not finish after 8 iterations: stop"; exit 1; }
++rung8() { $PY -c "import json; print(json.load(open('$RES/structure_status.json'))['8']['common_rung'] or 'L4')"; }
+ saturday() {
+   step0
+   log "1. h4_prep_encoders + pipeline control (G0)"
+   $PY $S/h4_prep_encoders.py --raw $RAW --key $KEY --emb-dir $EMB --out-dir $DATA $P10 $EXTRA > $L/01_prep.log 2>&1
+-  $PY $S/h4_prep_encoders.py --check $DATA/h4_long_R0_dinov2s.csv $V1LONG > $RES/pipeline_control.log || { cat $RES/pipeline_control.log; log "G0: pipeline control FAILED: stop everything"; exit 1; }
++  $PY $S/h4_prep_encoders.py --check $DATA/h4_long_R0_dinov2s.csv $V1LONG $RES/pipeline_control.json > $RES/pipeline_control.log || { cat $RES/pipeline_control.log; log "G0: pipeline control FAILED: stop everything"; exit 1; }
+   cat $RES/pipeline_control.log | tee -a $L/run_weekend.log
+   log "2. 02_equivalence (descriptive table + geometry rule at cuts 0.3/0.5/0.7 + calibration per cut)"; if [ -n "${WEEKEND_SYNTH_DIR:-}" ]; then $PY $S/02_equivalence.py $DATA $GRP $EMB > $L/02.log 2>&1; else $PY $S/02_equivalence.py $DATA > $L/02.log 2>&1; fi
+-  log "3. timing: R0, 8 items (secs column) -> update budget only"; $R $S/05_twostage_stage1.R $DATA $KEY $RES/stage1_8_R0.csv 8 primary - - R0_dinov2s > $L/stage1_8_R0.log 2>&1
+-  log "4. stage 1, 8 items"; par3 $RES/stage1_8_rest 8 primary - - ${P10#R0_dinov2s }
+-  log "5. stage 1, 24 items"; par3 $RES/stage1_24 24 primary - - $P10
++  log "3. timing: R0, 8 items, ladder pass 1 (secs column) -> update budget only"; $R $S/05_twostage_stage1.R $DATA $KEY $RES/stage1_8_R0.csv 8 primary - - ladder R0_dinov2s > $L/stage1_8_R0.log 2>&1
++  log "4. stage 1, 8 items, ladder pass 1"; par3 $RES/stage1_8_rest 8 primary - - ladder ${P10#R0_dinov2s }
++  log "5. stage 1, 24 items, ladder pass 1"; par3 $RES/stage1_24 24 primary - - ladder $P10
++  log "5b. common structure (05b, convergence only; pass 2 fits where needed)"; select_structure
+   log "6. positive control (before regions: 08 uses it)"; $R $S/07_pooled_glmm.R $DATA $KEY $RES/poscontrol.csv poscontrol 8 - $P10 > $L/poscontrol.log 2>&1
+-  log "7. stage 2 + regions"; $PY $S/06_stage2_permutation.py $RES/stage2_primary.csv $RES/stage1_8_R0.csv $RES/stage1_8_rest_g*.csv $RES/stage1_24_g*.csv
+-  $PY $S/08_regions.py --stage2 $RES/stage2_primary.csv --poscontrol $RES/poscontrol.csv --grouping $GRP/equivalence_grouping.json --pipeline $RES/pipeline_control.log --out-dir $RES/regions
++  log "7. stage 2 (primary = common rung; per_encoder_rung and S9_mixed descriptive) + regions (primary only)"
++  $PY $S/06_stage2_permutation.py $RES/stage2_primary.csv $RES/structure_primary.csv $RES/structure_per_encoder.csv $RES/structure_S9_mixed.csv
++  $PY $S/08_regions.py --stage2 $RES/stage2_primary.csv --poscontrol $RES/poscontrol.csv --grouping $GRP/equivalence_grouping.json --pipeline $RES/pipeline_control.json --out-dir $RES/regions
+   log "Saturday done"; }
++s6() {  # S6, common preprocessing; run in a subshell at the very end of Sunday. errexit is off inside "( s6 ) || ...", hence the && chain.
++  [ -n "${WEEKEND_SYNTH_DIR:-}" ] && [ -n "${WEEKEND_SYNTH_S6_FAIL:-}" ] && return 1   # rehearsal of the non-blocking failure
++  if [ -n "${WEEKEND_SYNTH_DIR:-}" ]; then for i in $P10; do cp $EMB/emb_$i.npz $EMB/emb_${i}_s6common.npz || return 1; done
++  else $PY $S/01b_embed_common.py > $L/01b.log 2>&1 || return 1; fi
++  $PY $S/h4_prep_encoders.py --raw $RAW --key $KEY --emb-dir $EMB --out-dir $DATA --suffix _s6common $P10 >> $L/01_prep.log 2>&1 &&
++  par3 $RES/stage1_S6 8 primary _s6common - $(rung8) $P10 &&
++  $PY $S/06_stage2_permutation.py $RES/stage2_S6.csv $RES/stage1_S6_g*.csv; }
+ sunday() {
+   step0
+   log "8. S1"; $R $S/07_pooled_glmm.R $DATA $KEY $RES/S1_24.csv S1 24 - $P10 > $L/S1_24.log 2>&1; $R $S/07_pooled_glmm.R $DATA $KEY $RES/S1_8.csv S1 8 - $P10 > $L/S1_8.log 2>&1
+   log "S2"; $R $S/07_pooled_glmm.R $DATA $KEY $RES/S2.csv S2 8 - $P10 > $L/S2.log 2>&1
+   log "S3"; $R $S/07_pooled_glmm.R $DATA $KEY $RES/S3.csv S3 8 - $P10 > $L/S3.log 2>&1
+-  log "S4"; par3 $RES/stage1_S4 8 first_session - $FS $P10
+-  log "S5"; par3 $RES/stage1_S5 8 rank - - $P10
+-  log "S6"; if [ -n "${WEEKEND_SYNTH_DIR:-}" ]; then for i in $P10; do cp $EMB/emb_$i.npz $EMB/emb_${i}_s6common.npz; done; else $PY $S/01b_embed_common.py > $L/01b.log 2>&1; fi
+-  $PY $S/h4_prep_encoders.py --raw $RAW --key $KEY --emb-dir $EMB --out-dir $DATA --suffix _s6common $P10 >> $L/01_prep.log 2>&1
+-  par3 $RES/stage1_S6 8 primary _s6common - $P10
+-  log "S7"; $R $S/05_twostage_stage1.R $DATA $KEY $RES/stage1_S7.csv 8 primary - - F1_rn50rand1 F1_rn50rand2 > $L/S7.log 2>&1
+-  log "S8"; $R $S/05_twostage_stage1.R $DATA $KEY $RES/stage1_S8.csv 8 primary - - E4s_mae_cls > $L/S8.log 2>&1
+-  $PY $S/06_stage2_permutation.py $RES/stage2_sensitivities.csv $RES/stage1_S4_g*.csv $RES/stage1_S5_g*.csv $RES/stage1_S6_g*.csv $RES/stage1_S7.csv $RES/stage1_S8.csv
++  local RG; RG=$(rung8); log "S4/S5/S7/S8 at the common 8-item rung $RG (fixed on Saturday by 05b; not re-selected)"
++  log "S4"; par3 $RES/stage1_S4 8 first_session - $FS $RG $P10
++  log "S5"; par3 $RES/stage1_S5 8 rank - - $RG $P10
++  log "S7"; $R $S/05_twostage_stage1.R $DATA $KEY $RES/stage1_S7.csv 8 primary - - $RG F1_rn50rand1 F1_rn50rand2 > $L/S7.log 2>&1
++  log "S8"; $R $S/05_twostage_stage1.R $DATA $KEY $RES/stage1_S8.csv 8 primary - - $RG E4s_mae_cls > $L/S8.log 2>&1
++  $PY $S/06_stage2_permutation.py $RES/stage2_sensitivities.csv $RES/stage1_S4_g*.csv $RES/stage1_S5_g*.csv $RES/stage1_S7.csv $RES/stage1_S8.csv
++  log "S9 (descriptive; Patricio 12:12): mixed fit = first converged rung per experiment, already in stage2_primary.csv (variant S9_mixed); no extra fits"
++  $PY $S/08_regions.py --stage2 $RES/stage2_primary.csv --poscontrol $RES/poscontrol.csv --grouping $GRP/equivalence_grouping.json \
++      --pipeline $RES/pipeline_control.json --out-dir $RES/regions_with_S9 --stage2-s9 $RES/stage2_primary.csv
+   log "9. Family A: F0 (Mb condition:order coefficients are in S1_*.csv)"
+   $R $S/07_pooled_glmm.R $DATA $KEY $RES/F0_24.csv F0 24 - R0_dinov2s > $L/F0_24.log 2>&1; $R $S/07_pooled_glmm.R $DATA $KEY $RES/F0_8.csv F0 8 - R0_dinov2s > $L/F0_8.log 2>&1
++  log "S6 (last; REVISION3 I2: its failure does not stop anything else)"; ( s6 ) || log "S6 FAILED (non-blocking): see $L/01b.log; reported as a deviation"
+   log "10. write RESULTADOS_encoders.md + DESVIACIONES entries by hand from results/; notify Evaristo. Nothing is published."; }
+ "${1:?saturday|sunday}"
+diff -ruN -x __pycache__ scripts_snapshot_75678c79/tests/make_synthetic.py scripts/tests/make_synthetic.py
+--- scripts_snapshot_75678c79/tests/make_synthetic.py	2026-11-18 10:47:37.400220786 -0300
++++ scripts/tests/make_synthetic.py	2026-11-18 12:07:43.935917296 -0300
+@@ -3,9 +3,10 @@
+   raw/experiment_key_SYNTH.csv (exp, exp_recoded, preregistered, order; 14 rows, only the first 12 are used, as in v1)
+   emb/emb_<ID>.npz for the 13 sources (45 fake stimuli, L2, float32)
+   raw/h4_first_session_SYNTH.csv (subid, first_exp)
+-Ground truth: selection is generated from R0's distance; true zd slope -1.0 in "1-3" experiments and -0.6 in "3-1" (Delta > 0)."""
++Ground truth: selection is generated from R0's distance; true zd slope -1.0 in "1-3" experiments and -0.6 in "3-1" (Delta > 0),
++plus a per-person random slope (SD SLOPE_SD, REVISION3 I1) and a per-person random intercept (SD 0.8)."""
+ import sys, re, pathlib, numpy as np, pandas as pd
+-D = pathlib.Path(sys.argv[1]); N_PER_EXP = int(sys.argv[2]) if len(sys.argv) > 2 else 15
++D = pathlib.Path(sys.argv[1]); N_PER_EXP = int(sys.argv[2]) if len(sys.argv) > 2 else 15; SLOPE_SD = float(sys.argv[3]) if len(sys.argv) > 3 else 0.5
+ rng = np.random.default_rng(2026)
+ (D / "raw").mkdir(parents=True, exist_ok=True); (D / "emb").mkdir(parents=True, exist_ok=True)
+ NAMES = [f"c{c}_{l}{i}" for c in (1, 2, 3) for l, k in (("sub", 5), ("bas", 4), ("sup", 6)) for i in range(1, k + 1)]
+@@ -29,14 +30,14 @@
+     for p in range(N_PER_EXP):
+         if prev and rng.random() < .1: s = int(rng.choice(prev))
+         else: sid += 1; s = sid; prev.append(s)
+-        r = dict(exp=e, subids=s, AcceptTime=f"2016-0{1 + e % 9}-1{p % 10}T10:{p:02d}:00Z"); u = rng.normal(0, .8)
++        r = dict(exp=e, subids=s, AcceptTime=f"2016-0{1 + e % 9}-1{p % 10}T10:{p:02d}:00Z"); u = rng.normal(0, .8); us = rng.normal(0, SLOPE_SD)
+         trials = [(c, k) for c in CONDS for k in (1, 2, 3)]; rng.shuffle(trials)
+         for t, (cond, c) in enumerate(trials, 1):
+             tp = [f"c{c}_{x}" for x in TRAIN[cond]]; m = np.mean([E[x] for x in tp], 0); m /= np.linalg.norm(m)
+             beta = -1.0 if ORDER[e] == "1-3" else -0.6; sel = []
+             for it in TEST:
+                 d = 1 - float(E[it] @ m); tgt = int(it[1]) == c
+-                logit = (1.0 + beta * (d - .5) / .15 + u) if tgt else -4 + u
++                logit = (1.0 + (beta + us) * (d - .5) / .15 + u) if tgt else -4 + u
+                 if rng.random() < 1 / (1 + np.exp(-logit)): sel.append(it)
+             r[f"trainPics_T{t}"] = SEPS[t % 5].join(tp); r[f"selected_T{t}"] = SEPS[(t + 1) % 5].join(sel) if sel else np.nan
+             r[f"category_T{t}"] = CAT[c]; r[f"condition_T{t}"] = cond
+diff -ruN -x __pycache__ scripts_snapshot_75678c79/tests/run_e2e_synthetic.sh scripts/tests/run_e2e_synthetic.sh
+--- scripts_snapshot_75678c79/tests/run_e2e_synthetic.sh	2026-11-18 10:52:51.635452851 -0300
++++ scripts/tests/run_e2e_synthetic.sh	2026-11-18 12:19:40.417527346 -0300
+@@ -1,25 +1,14 @@
+ #!/usr/bin/env bash
+-# END-TO-END on SYNTHETIC data only (tests/make_synthetic.py). Mirrors run_weekend.sh step by step with small data.
+-# Usage: bash tests/run_e2e_synthetic.sh /tmp/synth_enc_test      (never point it at real data)
++# END-TO-END on SYNTHETIC data only (tests/make_synthetic.py): unit tests + run_weekend.sh itself in synthetic mode (saturday, sunday with
++# a forced S6 failure that must not stop anything). Usage: bash tests/run_e2e_synthetic.sh /tmp/synth_enc_test   (never point it at real data)
+ set -euo pipefail
+-T=${1:?synthetic dir}; S=$(cd "$(dirname "$0")/.." && pwd); PY=/workspace/rv_venv/bin/python; R=/tmp/renv/bin/Rscript
+-K=raw/experiment_key_SYNTH.csv; IDS="R0_dinov2s O1_dinov2b R1_cvcl E1_siglip O2_openclip E2_vitsup E3_rn50sup E4_mae F1_rn50rand0 F2_pixels"
++T=${1:?synthetic dir}; S=$(cd "$(dirname "$0")/.." && pwd); PY=/workspace/rv_venv/bin/python
+ case "$T" in /tmp/synth*) ;; *) echo "refusing: synthetic dir must be /tmp/synth*"; exit 2;; esac
+-$PY $S/tests/make_synthetic.py $T 15
+-cd $T && mkdir -p res
+-$PY $S/tests/test_prep.py $T                                    # prep + G0 pipeline control (writes pipeline_control_SYNTH.log)
+-$PY $S/02_equivalence.py $T/long $T/res $T/emb > res/log_02.txt  # part A (descriptive) + part B (3 cuts)
+-[ -f res/stage1_8.csv ] || $R $S/05_twostage_stage1.R long $K res/stage1_8.csv 8 primary - - $IDS > res/log_stage1_8.txt 2>&1
+-$R $S/05_twostage_stage1.R long $K res/stage1_24.csv 24 primary - - R0_dinov2s O1_dinov2b F2_pixels > res/log_stage1_24.txt 2>&1
+-$R $S/05_twostage_stage1.R long $K res/stage1_8_S4.csv 8 first_session - raw/h4_first_session_SYNTH.csv R0_dinov2s > res/log_S4.txt 2>&1
+-$R $S/05_twostage_stage1.R long $K res/stage1_8_S5.csv 8 rank - - R0_dinov2s > res/log_S5.txt 2>&1
+-$PY $S/06_stage2_permutation.py res/stage2_primary.csv res/stage1_8.csv res/stage1_24.csv
+-$PY $S/06_stage2_permutation.py res/stage2_sens.csv res/stage1_8_S4.csv res/stage1_8_S5.csv
+-$R $S/07_pooled_glmm.R long $K res/poscontrol.csv poscontrol 8 - $IDS > res/log_pc.txt 2>&1
+-$R $S/07_pooled_glmm.R long $K res/S1_8.csv S1 8 - R0_dinov2s > res/log_S1.txt 2>&1
+-$R $S/07_pooled_glmm.R long $K res/S2_8.csv S2 8 - R0_dinov2s > res/log_S2.txt 2>&1
+-$R $S/07_pooled_glmm.R long $K res/S3_8.csv S3 8 - R0_dinov2s > res/log_S3.txt 2>&1
+-$R $S/07_pooled_glmm.R long $K res/F0_24.csv F0 24 - R0_dinov2s > res/log_F0.txt 2>&1
+-$PY $S/08_regions.py --stage2 res/stage2_primary.csv --poscontrol res/poscontrol.csv --grouping res/equivalence_grouping.json \
+-    --pipeline pipeline_control_SYNTH.log --out-dir res/regions > res/log_08.txt
++rm -rf "$T"; $PY $S/tests/make_synthetic.py $T 15
++$PY $S/tests/test_prep.py $T
++for t in test_stage2 test_regions test_freeze test_select_structure; do $PY $S/tests/$t.py; done
++P3="${WEEKEND_SYNTH_P10:-R0_dinov2s O1_dinov2b F2_pixels}"
++WEEKEND_SYNTH_DIR=$T WEEKEND_SYNTH_P10="$P3" bash $S/run_weekend.sh saturday
++WEEKEND_SYNTH_DIR=$T WEEKEND_SYNTH_P10="$P3" WEEKEND_SYNTH_S6_FAIL=1 bash $S/run_weekend.sh sunday
++WEEKEND_SYNTH_DIR=$T WEEKEND_SYNTH_P10="$P3" bash $S/run_weekend.sh s6
+ echo "E2E SYNTHETIC OK"
+diff -ruN -x __pycache__ scripts_snapshot_75678c79/tests/test_prep.py scripts/tests/test_prep.py
+--- scripts_snapshot_75678c79/tests/test_prep.py	2026-11-18 10:47:57.240929962 -0300
++++ scripts/tests/test_prep.py	2026-11-18 12:10:18.697449101 -0300
+@@ -26,3 +26,30 @@
+ r = chk(D / "long/h4_long_R0_dinov2s.csv", D / "v1like/bad_order.csv"); print("[G0 reordered]", r.stdout.strip()); assert r.returncode == 1
+ for ID in IDS: assert pd.read_csv(D / f"long/h4_long_{ID}.csv", usecols=["exp", "subid", "trial", "image"]).equals(new[["exp", "subid", "trial", "image"]])
+ print("[prep] all 13 sources have identical keys/order. OK")
++# BC3 (REVISION3): near-ties. Inject numerical noise of 1e-8 (well below 1e-6 rounding of the rank check): must PASS.
++rng = np.random.default_rng(0); noisy = old.copy(); noisy["dist"] = noisy.dist + rng.uniform(-1e-8, 1e-8, len(noisy)); noisy.to_csv(D / "v1like/noise_1e-8.csv", index=False)
++r = chk(D / "long/h4_long_R0_dinov2s.csv", D / "v1like/noise_1e-8.csv"); print("[G0 noise 1e-8]", r.stdout.strip()); assert r.returncode == 0
++# near-ties of the v1 kind (same centroid, other image order: |gap| < 1e-6) broken in opposite directions: must PASS
++u = np.sort(old.dist.unique()); a_, b_ = u[10], u[11]; nt = old.copy(); nt2 = new.copy()
++nt.loc[nt.dist == b_, "dist"] = a_ + 3e-7; nt2.loc[nt2.dist == b_, "dist"] = a_ - 3e-7   # gap 3e-7 above in one file, below in the other
++nt.to_csv(D / "v1like/neartie_v1.csv", index=False); nt2.to_csv(D / "v1like/neartie_new.csv", index=False)
++r = chk(D / "v1like/neartie_new.csv", D / "v1like/neartie_v1.csv"); print("[G0 near-tie flipped at 3e-7]", r.stdout.strip()); assert r.returncode == 0
++# rounding-boundary near-tie: two v1 values that are one near-tie (A = 0.3000004999, B = 0.3000004990; gap 9e-10) and, in the new file,
++# A moves by 2e-10 to 0.3000005001. round(6) splits A from B in the new file only (0.300001 vs 0.300000) and would FAIL; clustered rule: PASS
++bd = old.copy(); bd2 = new.copy(); vA, vB = u[50], u[51]
++bd.loc[bd.dist == vA, "dist"] = 0.3000004999; bd.loc[bd.dist == vB, "dist"] = 0.3000004990
++bd2.loc[bd2.dist == vA, "dist"] = 0.3000005001; bd2.loc[bd2.dist == vB, "dist"] = 0.3000004990
++bd.to_csv(D / "v1like/boundary_v1.csv", index=False); bd2.to_csv(D / "v1like/boundary_new.csv", index=False)
++rr = bool((bd.dist.round(6).rank(method="min").to_numpy() == bd2.dist.round(6).rank(method="min").to_numpy()).all()); assert rr is False
++r = chk(D / "v1like/boundary_new.csv", D / "v1like/boundary_v1.csv")
++print(f"[G0 rounding-boundary near-tie] round(6) rule: same_rank={rr} (would FAIL); clustered rule:", r.stdout.strip()); assert r.returncode == 0
++# a REAL swap: two rows whose d differ by a real gap of 5e-6 (> 1e-6 rounding, < 1e-5 value tolerance) exchange their order between
++# the files, so only the rank check can catch it: must FAIL
++x = u[40]; i = old.index[old.dist == x][0]; j = old.index[old.dist == u[41]][0]
++sv1 = old.copy(); sv1.loc[i, "dist"] = x; sv1.loc[j, "dist"] = x + 5e-6
++snew = new.copy(); snew.loc[i, "dist"] = x + 5e-6; snew.loc[j, "dist"] = x
++sv1.to_csv(D / "v1like/real_swap_v1.csv", index=False); snew.to_csv(D / "v1like/real_swap_new.csv", index=False)
++r = chk(D / "v1like/real_swap_new.csv", D / "v1like/real_swap_v1.csv"); print("[G0 real swap, gap 5e-6, values within 1e-5]", r.stdout.strip()); assert r.returncode == 1 and "max_abs_diff=5e-06" in r.stdout
++r = subprocess.run([PY, S / "h4_prep_encoders.py", "--check", D / "long/h4_long_R0_dinov2s.csv", D / "v1like/h4_long_SYNTH_v1code.csv", D / "pipeline_control_SYNTH.json"], capture_output=True, text=True)
++import json; assert json.loads((D / "pipeline_control_SYNTH.json").read_text())["ok"] is True; print("[G0 json] ok=True written")
++print("[prep] BC3 tests OK")
+diff -ruN -x __pycache__ scripts_snapshot_75678c79/tests/test_regions.py scripts/tests/test_regions.py
+--- scripts_snapshot_75678c79/tests/test_regions.py	2026-11-18 10:51:07.407727312 -0300
++++ scripts/tests/test_regions.py	2026-11-18 12:17:08.664103035 -0300
+@@ -58,6 +58,19 @@
+         self.assertEqual(set(grid.conclusion), {"G2"})                                                # O1 "menor que delta" survives Holm
+         rows[R.PRIMARY.index("O1_dinov2b")] = row(**HOLDS, enc="O1_dinov2b"); tab, grid, fl, gp = self.run_(rows, pc)
+         self.assertEqual(gp, "robusta: G4"); self.assertTrue(all("no interpretable" in d for d in grid.detalle))   # G3 impossible -> G4
++    def test_holm_family_counts(self):   # REVISION3 (2)/(3): k and excluded encoders shown
++        rows, pc = self.base(); pc["E2_vitsup"] = False; rows[R.PRIMARY.index("E3_rn50sup")] = dict(encoder="E3_rn50sup", items=8, variant="primary", suffix="", status="inconcluso_tecnico")
++        tab, grid, fl, gp = self.run_(rows, pc); f = R.analyse.families["families"]; t = tab.set_index("encoder")
++        self.assertEqual((f["entrenados"]["k"], f["entrenados"]["n_tests"]), (5, 10)); self.assertEqual(sorted(f["entrenados"]["excluidos"]), ["E2_vitsup", "E3_rn50sup"])
++        self.assertEqual(f["pisos"]["k"], 2); self.assertIn("no interpretable", t.loc["E2_vitsup", "familia_holm"]); self.assertIn("técnico", t.loc["E3_rn50sup", "familia_holm"])
++        self.assertEqual(set(grid.trained_family_size), {10})
++    def test_S9_fit_type_label(self):    # REVISION3 I1: S9 changes a region at some delta -> 'sensible al tipo de ajuste' (descriptive)
++        rows, pc = self.base(); s9 = [dict(r, variant="S9_mixed") for r in rows]
++        s9[R.PRIMARY.index("E1_siglip")] = dict(row(.15, (.02, .28), (.04, .26), enc="E1_siglip"), variant="S9_mixed")   # atenuado at 0.20
++        tab, grid, fl, gp = R.analyse(s2(rows), pc, True, GOOD, s9=s2(s9)); t = tab.set_index("encoder")
++        self.assertEqual(t.loc["E1_siglip", "tipo_de_ajuste"], R.SENS_FIT); self.assertIn(R.SENS_FIT, t.loc["E1_siglip", "perfil"])
++        self.assertEqual(t.loc["O1_dinov2b", "tipo_de_ajuste"], "estable"); self.assertEqual(t.loc["E1_siglip", "region_d0.20"], R.R3_)   # primary unchanged
++        self.assertEqual(gp, "robusta: G3")                                                                                            # G not affected by S9
+     def test_G2_needs_holm(self):
+         rows, pc = self.base(); rows[R.PRIMARY.index("E1_siglip")] = row(-.3, (-.5, -.1), (-.45, -.15), popp=.03, enc="E1_siglip")
+         tab, grid, fl, gp = self.run_(rows, pc); self.assertEqual(gp, "robusta: G4")                    # region 1 but Holm(.03*14) > .05
+diff -ruN -x __pycache__ scripts_snapshot_75678c79/tests/test_select_structure.py scripts/tests/test_select_structure.py
+--- scripts_snapshot_75678c79/tests/test_select_structure.py	1969-12-31 21:00:00.000000000 -0300
++++ scripts/tests/test_select_structure.py	2026-11-18 12:16:40.867109454 -0300
+@@ -0,0 +1,45 @@
++"""SYNTHETIC unit tests of 05b_select_structure.py (stage-1 structure chosen ONCE for all encoders, by convergence only)."""
++import importlib.util, pathlib, unittest, numpy as np, pandas as pd
++S = pathlib.Path(__file__).resolve().parents[1]
++sp = importlib.util.spec_from_file_location("sel", S / "05b_select_structure.py"); SEL = importlib.util.module_from_spec(sp); sp.loader.exec_module(SEL)
++ORD = {e: ("1-3" if e in (1, 2, 5, 7, 10, 12) else "3-1") for e in range(1, 13)}
++def pass1(first, beta_seed=0):
++    """first[(enc, exp)] = first converging rung (None = none); pass-1 rows: failed rungs before it, converged at it."""
++    rng = np.random.default_rng(beta_seed); rows = []
++    for e in SEL.SELECTION_SET:
++        for x in range(1, 13):
++            f = first.get((e, x), "L1")
++            for rg in SEL.RUNGS:
++                ok = rg == f; rows.append(dict(encoder=e, items=8, variant="primary", suffix="", exp=x, order=ORD[x], rung=rg, converged=ok, beta=rng.normal(), se=.1))
++                if ok: break
++    return pd.DataFrame(rows)
++def fixed(df, enc, rung, conv_fail=()):
++    rows = [dict(encoder=enc, items=8, variant="primary", suffix="", exp=x, order=ORD[x], rung=rung, converged=x not in conv_fail, beta=0.0, se=.1) for x in range(1, 13)]
++    return pd.concat([df, pd.DataFrame(rows)])
++class T(unittest.TestCase):
++    def test_all_L1(self):
++        out, needs = SEL.select(pass1({})); self.assertEqual(needs, []); self.assertEqual(out[8]["common"], "L1")
++    def test_one_hard_encoder_moves_everyone(self):
++        """F2 converges only from L2 in exp 3: pass 1 asks for F2 at L2, pass 2 for every other encoder at L2; common = L2 for all,
++        own rung stays L1 for the others (descriptive), S9 mixed = L1 everywhere except F2 exp 3."""
++        df = pass1({("F2_pixels", 3): "L2"}); asked = []
++        for it in range(5):
++            out, needs = SEL.select(df)
++            if not needs: break
++            asked.append(needs)
++            for e, _, rg in needs: df = fixed(df, e, rg)
++        self.assertEqual(asked[0], [("F2_pixels", 8, "L2")]); self.assertEqual({n[0] for n in asked[1]}, set(SEL.SELECTION_SET) - {"F2_pixels"})
++        self.assertEqual(out[8]["common"], "L2"); self.assertEqual(out[8]["own"]["R0_dinov2s"], "L1"); self.assertEqual(out[8]["own"]["F2_pixels"], "L2")
++    def test_encoder_without_any_rung_is_left_out_and_still_evaluated(self):
++        df = pass1({("E3_rn50sup", 7): "none"}); out, needs = SEL.select(df)
++        self.assertEqual(out[8]["common"], "L1"); self.assertIn("E3_rn50sup", out[8]["excluded"]); self.assertIsNone(out[8]["own"]["E3_rn50sup"])
++        rows = SEL.stage1_rows(out[8]["T"], "E3_rn50sup", 8, lambda x: "L1", "primary")
++        self.assertEqual(sum(np.isnan(r["beta"]) for r in rows), 1)    # exp 7 missing -> inconcluso tecnico in stage 2
++    def test_selection_ignores_beta(self):
++        a, _ = SEL.select(pass1({("O2_openclip", 5): "L3"}, beta_seed=1)); b, _ = SEL.select(pass1({("O2_openclip", 5): "L3"}, beta_seed=99))
++        self.assertEqual(a[8]["own"], b[8]["own"])
++    def test_constant_and_no_option(self):
++        self.assertEqual(SEL.STRUCTURE_SCOPE, "common"); src = (S / "05b_select_structure.py").read_text()
++        self.assertNotIn("argparse", src); self.assertNotIn("--scope", src)
++        self.assertNotIn("F0", SEL.SELECTION_SET); self.assertEqual(len(SEL.SELECTION_SET), 10)
++if __name__ == "__main__": unittest.main(verbosity=2)
