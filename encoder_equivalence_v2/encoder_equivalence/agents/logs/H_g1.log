@@ -1,0 +1,3 @@
+O1_dinov2b H1/H2/H3 written; statuses: {'H1': {'THINGS': 'ok', 'HSJ': 'ok', 'CIFAR10H': 'ok'}, 'H2': {'THINGS': 'ok', 'HSJ': 'ok'}}
+O2_openclip H1/H2/H3 written; statuses: {'H1': {'THINGS': 'ok', 'HSJ': 'ok', 'CIFAR10H': 'ok'}, 'H2': {'THINGS': 'ok', 'HSJ': 'ok'}}
+E4_mae H1/H2/H3 written; statuses: {'H1': {'THINGS': 'ok', 'HSJ': 'ok', 'CIFAR10H': 'ok'}, 'H2': {'THINGS': 'ok', 'HSJ': 'ok'}}

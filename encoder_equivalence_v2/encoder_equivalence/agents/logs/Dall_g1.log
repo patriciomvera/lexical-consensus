@@ -1,0 +1,6 @@
+[pool] built episode pool: 20000 images (200/class × 100 classes)
+O1_dinov2b Dall ok 570.2
+[pool] built episode pool: 20000 images (200/class × 100 classes)
+O2_openclip Dall ok 571.4
+[pool] built episode pool: 20000 images (200/class × 100 classes)
+E4_mae Dall ok 549.3

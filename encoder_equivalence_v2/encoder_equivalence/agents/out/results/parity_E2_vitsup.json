@@ -1,0 +1,12 @@
+{
+ "encoder": "E2_vitsup",
+ "ok": true,
+ "detail": {
+  "E2_vitsup": {
+   "max_abs_diff": 0.0,
+   "tol": 1e-05,
+   "ok": true,
+   "frozen_sha256": "f3cb539282613a192dda3874447380e94f9a18439d9551ecd21e4ee2326b88e6"
+  }
+ }
+}

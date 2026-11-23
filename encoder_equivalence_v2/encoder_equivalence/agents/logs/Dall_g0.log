@@ -1,0 +1,8 @@
+[pool] built episode pool: 20000 images (200/class × 100 classes)
+R0_dinov2s Dall ok 561.2
+[pool] built episode pool: 20000 images (200/class × 100 classes)
+E1_siglip Dall ok 591.8
+[pool] built episode pool: 20000 images (200/class × 100 classes)
+E3_rn50sup Dall ok 626.6
+[pool] built episode pool: 20000 images (200/class × 100 classes)
+F2_pixels Dall ok 757.2

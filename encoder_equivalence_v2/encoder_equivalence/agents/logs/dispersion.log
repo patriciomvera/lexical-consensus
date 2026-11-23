@@ -1,0 +1,229 @@
+{
+ "_rule": "100 v1 pairs (phase2/sampled_pairs.csv); d_sem = exp_008 d_sem; quadrants (quadrant_counts): d_perc median of the encoder over the 4,950 pairs and d_sem median over the 4,950 (v1 rule, REVISION5 b3); quadrant_counts_100: d_perc median over the 100 pairs (descriptive). Descriptive; changes no rule.",
+ "R0_dinov2s": {
+  "n": 100,
+  "sd": 0.13613767209690872,
+  "min": 0.1414257287979126,
+  "max": 0.8853307366371155,
+  "range": 0.7439050078392029,
+  "spearman_dperc_dsem": 0.01295110698443623,
+  "quadrant_counts": {
+   "Q1": 25,
+   "Q2": 25,
+   "Q3": 25,
+   "Q4": 25
+  },
+  "quadrant_counts_100": {
+   "Q1": 25,
+   "Q2": 25,
+   "Q3": 25,
+   "Q4": 25
+  }
+ },
+ "O1_dinov2b": {
+  "n": 100,
+  "sd": 0.1162828286086192,
+  "min": 0.15615785121917725,
+  "max": 0.9425162076950073,
+  "range": 0.7863583564758301,
+  "spearman_dperc_dsem": -0.006388492272341284,
+  "quadrant_counts": {
+   "Q1": 21,
+   "Q2": 26,
+   "Q3": 29,
+   "Q4": 24
+  },
+  "quadrant_counts_100": {
+   "Q1": 22,
+   "Q2": 22,
+   "Q3": 28,
+   "Q4": 28
+  }
+ },
+ "R1_cvcl": {
+  "n": 100,
+  "sd": 0.14632199426941384,
+  "min": 0.03745764493942261,
+  "max": 0.6267770528793335,
+  "range": 0.5893194079399109,
+  "spearman_dperc_dsem": 0.11970617521961292,
+  "quadrant_counts": {
+   "Q1": 29,
+   "Q2": 31,
+   "Q3": 21,
+   "Q4": 19
+  },
+  "quadrant_counts_100": {
+   "Q1": 29,
+   "Q2": 29,
+   "Q3": 21,
+   "Q4": 21
+  }
+ },
+ "E1_siglip": {
+  "n": 100,
+  "sd": 0.042696184192094026,
+  "min": 0.015215158462524414,
+  "max": 0.20334410667419434,
+  "range": 0.18812894821166992,
+  "spearman_dperc_dsem": 0.08024042361613619,
+  "quadrant_counts": {
+   "Q1": 28,
+   "Q2": 26,
+   "Q3": 22,
+   "Q4": 24
+  },
+  "quadrant_counts_100": {
+   "Q1": 28,
+   "Q2": 28,
+   "Q3": 22,
+   "Q4": 22
+  }
+ },
+ "O2_openclip": {
+  "n": 100,
+  "sd": 0.0888672826840226,
+  "min": 0.03589349985122681,
+  "max": 0.4585176110267639,
+  "range": 0.4226241111755371,
+  "spearman_dperc_dsem": 0.12873652519856152,
+  "quadrant_counts": {
+   "Q1": 32,
+   "Q2": 30,
+   "Q3": 18,
+   "Q4": 20
+  },
+  "quadrant_counts_100": {
+   "Q1": 30,
+   "Q2": 30,
+   "Q3": 20,
+   "Q4": 20
+  }
+ },
+ "E2_vitsup": {
+  "n": 100,
+  "sd": 0.12268824662406681,
+  "min": 0.18996769189834595,
+  "max": 0.8461833000183105,
+  "range": 0.6562156081199646,
+  "spearman_dperc_dsem": 0.051191997287576854,
+  "quadrant_counts": {
+   "Q1": 24,
+   "Q2": 27,
+   "Q3": 26,
+   "Q4": 23
+  },
+  "quadrant_counts_100": {
+   "Q1": 24,
+   "Q2": 24,
+   "Q3": 26,
+   "Q4": 26
+  }
+ },
+ "E3_rn50sup": {
+  "n": 100,
+  "sd": 0.09043117073404477,
+  "min": 0.0369870662689209,
+  "max": 0.4884408116340637,
+  "range": 0.4514537453651428,
+  "spearman_dperc_dsem": 0.07574326129284333,
+  "quadrant_counts": {
+   "Q1": 23,
+   "Q2": 27,
+   "Q3": 27,
+   "Q4": 23
+  },
+  "quadrant_counts_100": {
+   "Q1": 26,
+   "Q2": 26,
+   "Q3": 24,
+   "Q4": 24
+  }
+ },
+ "E4_mae": {
+  "n": 100,
+  "sd": 0.18046432665954423,
+  "min": 0.011018753051757812,
+  "max": 0.8762620687484741,
+  "range": 0.8652433156967163,
+  "spearman_dperc_dsem": 0.19609188827292665,
+  "quadrant_counts": {
+   "Q1": 23,
+   "Q2": 32,
+   "Q3": 27,
+   "Q4": 18
+  },
+  "quadrant_counts_100": {
+   "Q1": 27,
+   "Q2": 27,
+   "Q3": 23,
+   "Q4": 23
+  }
+ },
+ "F1_rn50rand0": {
+  "n": 100,
+  "sd": 0.00024350480795842487,
+  "min": 2.0503997802734375e-05,
+  "max": 0.001495063304901123,
+  "range": 0.0014745593070983887,
+  "spearman_dperc_dsem": 0.01894932482284689,
+  "quadrant_counts": {
+   "Q1": 24,
+   "Q2": 27,
+   "Q3": 26,
+   "Q4": 23
+  },
+  "quadrant_counts_100": {
+   "Q1": 27,
+   "Q2": 27,
+   "Q3": 23,
+   "Q4": 23
+  }
+ },
+ "F2_pixels": {
+  "n": 100,
+  "sd": 0.4357685845211876,
+  "min": 0.06994873285293579,
+  "max": 1.8120839595794678,
+  "range": 1.742135226726532,
+  "spearman_dperc_dsem": 0.20052300415355434,
+  "quadrant_counts": {
+   "Q1": 22,
+   "Q2": 32,
+   "Q3": 28,
+   "Q4": 18
+  },
+  "quadrant_counts_100": {
+   "Q1": 28,
+   "Q2": 28,
+   "Q3": 22,
+   "Q4": 22
+  }
+ },
+ "E4s_mae_cls": {
+  "n": 100,
+  "sd": 0.013674846146170093,
+  "min": 0.0016238093376159668,
+  "max": 0.07278639078140259,
+  "range": 0.07116258144378662,
+  "spearman_dperc_dsem": 0.16452168867896946,
+  "quadrant_counts": {
+   "Q1": 25,
+   "Q2": 31,
+   "Q3": 25,
+   "Q4": 19
+  },
+  "quadrant_counts_100": {
+   "Q1": 30,
+   "Q2": 30,
+   "Q3": 20,
+   "Q4": 20
+  }
+ },
+ "F1_rn50rand1": {
+  "status": "tecnico: falta /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c100train_F1_rn50rand1.npz"
+ },
+ "F1_rn50rand2": {
+  "status": "tecnico: falta /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c100train_F1_rn50rand2.npz"
+ }
+}

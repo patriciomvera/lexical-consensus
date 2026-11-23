@@ -1,0 +1,12 @@
+{
+ "encoder": "E1_siglip",
+ "ok": true,
+ "detail": {
+  "E1_siglip": {
+   "max_abs_diff": 8.940696716308594e-08,
+   "tol": 1e-05,
+   "ok": true,
+   "frozen_sha256": "2ec894ec6d762b43d15b85ed762cd3cd69056f6490af71abb67bb7a5c28fb267"
+  }
+ }
+}

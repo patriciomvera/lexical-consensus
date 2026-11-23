@@ -1,0 +1,12 @@
+{
+ "encoder": "O1_dinov2b",
+ "ok": true,
+ "detail": {
+  "O1_dinov2b": {
+   "max_abs_diff": 0.0,
+   "tol": 1e-05,
+   "ok": true,
+   "frozen_sha256": "3b2fddd24253d87d93c493da55f0ff5b155750a88eb10c628e910847515054d0"
+  }
+ }
+}

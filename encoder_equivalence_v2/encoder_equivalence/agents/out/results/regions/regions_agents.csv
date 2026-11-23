@@ -1,0 +1,105 @@
+encoder,analisis,fuente,control_positivo_agentes,status,region_0.10,p_region_0.10,rotulo_0.10,familia_0.10,p_holm_0.10,region_0.20,p_region_0.20,rotulo_0.20,familia_0.20,p_holm_0.20,region_0.30,p_region_0.30,rotulo_0.30,familia_0.30,p_holm_0.30,perfil,region_hc3_0.10,region_hc3_0.20,region_hc3_0.30,hc3_cambia_region
+R0_dinov2s,A,THINGS,pasa,ok,Apoyo,1.0,,,,Apoyo,1.0,,,,Apoyo,1.0,,,,robusto: Apoyo,,,,
+R0_dinov2s,A,HSJ,pasa,ok,Apoyo,1.0,,,,Apoyo,1.0,,,,Apoyo,1.0,,,,robusto: Apoyo,,,,
+R0_dinov2s,A,CIFAR10H,pasa,ok,Apoyo,1.0,,,,Apoyo,1.0,,,,Apoyo,1.0,,,,robusto: Apoyo,,,,
+R0_dinov2s,P,THINGS,pasa,ok,Inconcluso,0.4985774392264093,,,,Inconcluso,0.21868329804874076,,,,Inconcluso,0.05672528199378653,,,,robusto: Inconcluso,,,,
+R0_dinov2s,P,HSJ,pasa,ok,Apoyo,0.963635496082313,,,,Apoyo,0.8948411724114044,,,,Apoyo,0.754156619667357,,,,robusto: Apoyo,,,,
+R0_dinov2s,D,-,pasa,ok,Apoyo,0.9999927810299538,,,,Apoyo,0.9995716736118095,,,,Apoyo,0.988917093757586,,,,robusto: Apoyo,Apoyo,Apoyo,Apoyo,False
+R0_dinov2s,Dall,-,pasa,ok,Apoyo,1.0,,,,Apoyo,1.0,,,,Apoyo,1.0,,,,robusto: Apoyo,Apoyo,Apoyo,Apoyo,False
+R0_dinov2s,H4,-,pasa,ok,Apoyo,1.0,,,,Apoyo,1.0,,,,Apoyo,1.0,,,,robusto: Apoyo,,,,
+O1_dinov2b,A,THINGS,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,robusto: Apoyo,,,,
+O1_dinov2b,A,HSJ,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,robusto: Apoyo,,,,
+O1_dinov2b,A,CIFAR10H,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,Apoyo,0.998000199980002,,C,1.0,robusto: Apoyo,,,,
+O1_dinov2b,P,THINGS,pasa,ok,Inconcluso,0.7076216342150696,,C,1.0,Inconcluso,0.4103549243319174,,C,1.0,Inconcluso,0.15083550020813347,,C,1.0,robusto: Inconcluso,,,,
+O1_dinov2b,P,HSJ,pasa,ok,Inconcluso,0.9570754892416995,,C,1.0,Inconcluso,0.8801781184217459,,C,1.0,Inconcluso,0.7293385434288302,,C,1.0,robusto: Inconcluso,,,,
+O1_dinov2b,D,-,pasa,ok,Apoyo,0.9999999677055769,,D,1.0,Apoyo,0.9999946451411051,,D,1.0,Apoyo,0.9996046492381605,,D,1.0,robusto: Apoyo,Apoyo,Apoyo,Apoyo,False
+O1_dinov2b,Dall,-,pasa,ok,Apoyo,1.0,,,,Apoyo,1.0,,,,Apoyo,1.0,,,,robusto: Apoyo,Apoyo,Apoyo,Apoyo,False
+O1_dinov2b,H4,-,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,robusto: Apoyo,,,,
+R1_cvcl,A,THINGS,pasa,ok,Apoyo,1.0,,,,Apoyo,1.0,,,,Apoyo,1.0,,,,robusto: Apoyo,,,,
+R1_cvcl,A,HSJ,pasa,ok,Apoyo,1.0,,,,Apoyo,1.0,,,,Apoyo,1.0,,,,robusto: Apoyo,,,,
+R1_cvcl,A,CIFAR10H,pasa,ok,Apoyo,1.0,,,,Apoyo,1.0,,,,Apoyo,1.0,,,,robusto: Apoyo,,,,
+R1_cvcl,P,THINGS,pasa,ok,Inconcluso,0.08250338159897436,,,,No apoyo,0.01532798545193083,,,,No apoyo,0.0015000168306578043,,,,"dependiente del margen: Inconcluso (SESOI = 0.10); No apoyo (SESOI = 0.20, 0.30)",,,,
+R1_cvcl,P,HSJ,pasa,ok,Inconcluso,0.9475292354692336,,,,Inconcluso,0.8598219859989822,,,,Inconcluso,0.6965333723542748,,,,robusto: Inconcluso,,,,
+R1_cvcl,D,-,pasa,ok,Inconcluso,0.13003343968150632,,,,No apoyo,0.016605767521846,,,,No apoyo,0.000747089181449448,,,,"dependiente del margen: Inconcluso (SESOI = 0.10); No apoyo (SESOI = 0.20, 0.30)",Inconcluso,No apoyo,No apoyo,False
+R1_cvcl,Dall,-,pasa,ok,Apoyo,0.2323213167049603,,,,Apoyo,1.0730743302142455e-15,Apoyo con IC bajo SESOI,,,Apoyo,4.2248699854363843e-54,Apoyo con IC bajo SESOI,,,robusto: Apoyo,Apoyo,Apoyo,Apoyo,False
+R1_cvcl,H4,-,pasa,ok,Apoyo,1.0,,,,Apoyo,1.0,,,,Apoyo,1.0,,,,robusto: Apoyo,,,,
+E1_siglip,A,THINGS,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,robusto: Apoyo,,,,
+E1_siglip,A,HSJ,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,robusto: Apoyo,,,,
+E1_siglip,A,CIFAR10H,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,robusto: Apoyo,,,,
+E1_siglip,P,THINGS,pasa,ok,Inconcluso,0.6839315759039772,,C,1.0,Inconcluso,0.38424119807646073,,C,1.0,Inconcluso,0.13553863341446415,,C,1.0,robusto: Inconcluso,,,,
+E1_siglip,P,HSJ,pasa,ok,Apoyo,0.991726651420916,,C,1.0,Apoyo,0.9681871229902848,,C,1.0,Apoyo,0.9014276704022899,,C,1.0,robusto: Apoyo,,,,
+E1_siglip,D,-,pasa,ok,Apoyo,0.9784311940264868,,D,1.0,Apoyo,0.845920237230996,,D,1.0,Apoyo,0.4891486608596971,,D,1.0,robusto: Apoyo,Apoyo,Apoyo,Apoyo,False
+E1_siglip,Dall,-,pasa,ok,Apoyo,1.0,,,,Apoyo,1.0,,,,Apoyo,1.0,,,,robusto: Apoyo,Apoyo,Apoyo,Apoyo,False
+E1_siglip,H4,-,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,robusto: Apoyo,,,,
+O2_openclip,A,THINGS,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,robusto: Apoyo,,,,
+O2_openclip,A,HSJ,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,robusto: Apoyo,,,,
+O2_openclip,A,CIFAR10H,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,robusto: Apoyo,,,,
+O2_openclip,P,THINGS,pasa,ok,Inconcluso,0.7767460639341643,,C,1.0,Inconcluso,0.49527976760461967,,C,1.0,Inconcluso,0.20666240809312686,,C,1.0,robusto: Inconcluso,,,,
+O2_openclip,P,HSJ,pasa,ok,Apoyo,0.9804316281930406,,C,1.0,Apoyo,0.9358589335046361,,C,1.0,Apoyo,0.8304252821001372,,C,1.0,robusto: Apoyo,,,,
+O2_openclip,D,-,pasa,ok,Apoyo,0.9945066494346889,,D,1.0,Apoyo,0.9382000638210479,,D,1.0,Apoyo,0.6891854324426026,,D,1.0,robusto: Apoyo,Apoyo,Apoyo,Apoyo,False
+O2_openclip,Dall,-,pasa,ok,Apoyo,1.0,,,,Apoyo,1.0,,,,Apoyo,1.0,,,,robusto: Apoyo,Apoyo,Apoyo,Apoyo,False
+O2_openclip,H4,-,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,robusto: Apoyo,,,,
+E2_vitsup,A,THINGS,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,robusto: Apoyo,,,,
+E2_vitsup,A,HSJ,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,robusto: Apoyo,,,,
+E2_vitsup,A,CIFAR10H,pasa,ok,Apoyo,0.9999000099990001,,C,1.0,Apoyo,0.9996000399960004,,C,1.0,Apoyo,0.9975002499750025,,C,1.0,robusto: Apoyo,,,,
+E2_vitsup,P,THINGS,pasa,ok,Inconcluso,0.45176640439664856,,C,1.0,Inconcluso,0.1855855886788142,,C,1.0,Inconcluso,0.04451786904941947,,C,1.0,robusto: Inconcluso,,,,
+E2_vitsup,P,HSJ,pasa,ok,Inconcluso,0.9472442652962357,,C,1.0,Inconcluso,0.8592300611723198,,C,1.0,Inconcluso,0.6956054214007579,,C,1.0,robusto: Inconcluso,,,,
+E2_vitsup,D,-,pasa,ok,Apoyo,0.9999999999806182,,D,1.0,Apoyo,0.9999999896139089,,D,1.0,Apoyo,0.9999974319317627,,D,1.0,robusto: Apoyo,Apoyo,Apoyo,Apoyo,False
+E2_vitsup,Dall,-,pasa,ok,Apoyo,1.0,,,,Apoyo,1.0,,,,Apoyo,1.0,,,,robusto: Apoyo,Apoyo,Apoyo,Apoyo,False
+E2_vitsup,H4,-,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,robusto: Apoyo,,,,
+E3_rn50sup,A,THINGS,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,robusto: Apoyo,,,,
+E3_rn50sup,A,HSJ,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,robusto: Apoyo,,,,
+E3_rn50sup,A,CIFAR10H,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,robusto: Apoyo,,,,
+E3_rn50sup,P,THINGS,pasa,ok,Inconcluso,0.3199183096935755,,C,1.0,Inconcluso,0.10730117529068034,,C,1.0,No apoyo,0.020317569693386037,,C,0.6907973695751253,"dependiente del margen: Inconcluso (SESOI = 0.10, 0.20); No apoyo (SESOI = 0.30)",,,,
+E3_rn50sup,P,HSJ,pasa,ok,Inconcluso,0.9441333871656747,,C,1.0,Inconcluso,0.8528224914786688,,C,1.0,Inconcluso,0.6856479932989776,,C,1.0,robusto: Inconcluso,,,,
+E3_rn50sup,D,-,pasa,ok,Apoyo,0.9792298893570178,,D,1.0,Apoyo,0.8496219896591339,,D,1.0,Apoyo,0.4954195874707703,,D,1.0,robusto: Apoyo,Apoyo,Apoyo,Apoyo,False
+E3_rn50sup,Dall,-,pasa,ok,Apoyo,1.0,,,,Apoyo,1.0,,,,Apoyo,0.9999999999999661,,,,robusto: Apoyo,Apoyo,Apoyo,Apoyo,False
+E3_rn50sup,H4,-,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,robusto: Apoyo,,,,
+E4_mae,A,THINGS,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,Apoyo,0.30716928307169283,,C,1.0,robusto: Apoyo,,,,
+E4_mae,A,HSJ,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,0.8543145685431457,,C,1.0,Apoyo,0.0025997400259974,Apoyo con IC bajo SESOI,C,0.09099090090990901,robusto: Apoyo,,,,
+E4_mae,A,CIFAR10H,pasa,ok,Apoyo,0.9925007499250075,,C,1.0,Apoyo,0.962903709629037,,C,1.0,Apoyo,0.8645135486451355,,C,1.0,robusto: Apoyo,,,,
+E4_mae,P,THINGS,pasa,ok,Inconcluso,0.03776313791682594,,C,1.0,No apoyo,0.0053809407679670344,,C,0.19371386764681325,No apoyo,0.000394590675060748,,C,0.014205264302186929,"dependiente del margen: Inconcluso (SESOI = 0.10); No apoyo (SESOI = 0.20, 0.30)",,,,
+E4_mae,P,HSJ,pasa,ok,Inconcluso,0.817763619234595,,C,1.0,Inconcluso,0.6424592938679297,,C,1.0,Inconcluso,0.42073099380782897,,C,1.0,robusto: Inconcluso,,,,
+E4_mae,D,-,pasa,ok,Inconcluso,0.1730761290877576,,D,1.0,Inconcluso,0.02586568218372684,,D,0.15519409310236104,No apoyo,0.0013873362086521603,,D,0.008324017251912962,"dependiente del margen: Inconcluso (SESOI = 0.10, 0.20); No apoyo (SESOI = 0.30)",Inconcluso,Inconcluso,No apoyo,False
+E4_mae,Dall,-,pasa,ok,Apoyo,0.008820004397017796,Apoyo con IC bajo SESOI,,,Apoyo,5.119561592990943e-22,Apoyo con IC bajo SESOI,,,Apoyo,9.67008071472159e-66,Apoyo con IC bajo SESOI,,,robusto: Apoyo,Apoyo,Apoyo,Apoyo,False
+E4_mae,H4,-,pasa,ok,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,Apoyo,1.0,,C,1.0,robusto: Apoyo,,,,
+F1_rn50rand0,A,THINGS,no es puerta,ok,Apoyo,0.6968303169683032,,C-pisos,1.0,Apoyo,9.999000099990002e-05,Apoyo con IC bajo SESOI,C-pisos,0.0011998800119988001,Apoyo,9.999000099990002e-05,Apoyo con IC bajo SESOI,C-pisos,0.0011998800119988001,robusto: Apoyo,,,,
+F1_rn50rand0,A,HSJ,no es puerta,ok,Apoyo,0.5913408659134086,,C-pisos,1.0,Apoyo,0.00029997000299970003,Apoyo con IC bajo SESOI,C-pisos,0.0032996700329967,Apoyo,9.999000099990002e-05,Apoyo con IC bajo SESOI,C-pisos,0.0011998800119988001,robusto: Apoyo,,,,
+F1_rn50rand0,A,CIFAR10H,no es puerta,ok,Apoyo,0.9982001799820018,,C-pisos,1.0,Apoyo,0.9877012298770123,,C-pisos,1.0,Apoyo,0.9503049695030497,,C-pisos,1.0,robusto: Apoyo,,,,
+F1_rn50rand0,P,THINGS,no es puerta,ok,Inconcluso,0.37841200874444414,,C-pisos,1.0,Inconcluso,0.13946279982555954,,C-pisos,1.0,Inconcluso,0.029448554533153575,,C-pisos,0.20613988173207504,robusto: Inconcluso,,,,
+F1_rn50rand0,P,HSJ,no es puerta,ok,Apoyo,0.9196528696269934,,C-pisos,1.0,Apoyo,0.8053549070054735,,C-pisos,1.0,Apoyo,0.6163243876605958,,C-pisos,1.0,robusto: Apoyo,,,,
+F1_rn50rand0,D,-,no es puerta,ok,No apoyo,0.0026051604042094294,,D-pisos,0.005210320808418859,No apoyo,7.322348950859197e-05,,D-pisos,0.00014644697901718395,No apoyo,6.38458063703486e-07,,D-pisos,1.276916127406972e-06,robusto: No apoyo,No apoyo,No apoyo,No apoyo,False
+F1_rn50rand0,Dall,-,no es puerta,ok,No apoyo,1.4606194591001898e-22,,,,No apoyo,2.0809416488069133e-64,,,,No apoyo,5.97062769946185e-132,,,,robusto: No apoyo,No apoyo,No apoyo,No apoyo,False
+F1_rn50rand0,H4,-,no es puerta,ok,Apoyo,1.0,,C-pisos,1.0,Apoyo,1.0,,C-pisos,1.0,Apoyo,1.0,,C-pisos,1.0,robusto: Apoyo,,,,
+F2_pixels,A,THINGS,no es puerta,ok,Apoyo,0.9983001699830018,,C-pisos,1.0,Apoyo,0.0022997700229977,Apoyo con IC bajo SESOI,C-pisos,0.022997700229977002,Apoyo,9.999000099990002e-05,Apoyo con IC bajo SESOI,C-pisos,0.0011998800119988001,robusto: Apoyo,,,,
+F2_pixels,A,HSJ,no es puerta,ok,Apoyo,1.0,,C-pisos,1.0,Apoyo,0.48305169483051696,,C-pisos,1.0,Apoyo,9.999000099990002e-05,Apoyo con IC bajo SESOI,C-pisos,0.0011998800119988001,robusto: Apoyo,,,,
+F2_pixels,A,CIFAR10H,no es puerta,ok,Inconcluso,0.9147085291470853,,C-pisos,1.0,Inconcluso,0.7553244675532447,,C-pisos,1.0,Inconcluso,0.47855214478552144,,C-pisos,1.0,robusto: Inconcluso,,,,
+F2_pixels,P,THINGS,no es puerta,ok,Inconcluso,0.08223543501062852,,C-pisos,0.9868252201275423,No apoyo,0.015260094005621009,,C-pisos,0.13734084605058908,No apoyo,0.001491435933324291,,C-pisos,0.011931487466594328,"dependiente del margen: Inconcluso (SESOI = 0.10); No apoyo (SESOI = 0.20, 0.30)",,,,
+F2_pixels,P,HSJ,no es puerta,ok,Inconcluso,0.8431500616393928,,C-pisos,1.0,Inconcluso,0.6792683510011375,,C-pisos,1.0,Inconcluso,0.46040632572252865,,C-pisos,1.0,robusto: Inconcluso,,,,
+F2_pixels,D,-,no es puerta,ok,Inconcluso,0.647073663693361,,D-pisos,0.647073663693361,Inconcluso,0.2657060963654122,,D-pisos,0.2657060963654122,Inconcluso,0.04724768173115431,,D-pisos,0.04724768173115431,robusto: Inconcluso,Inconcluso,Inconcluso,Inconcluso,False
+F2_pixels,Dall,-,no es puerta,ok,Apoyo,0.9999999972218958,,,,Apoyo,0.08506663380386936,,,,Apoyo,3.287150905970215e-19,Apoyo con IC bajo SESOI,,,robusto: Apoyo,Apoyo,Apoyo,Apoyo,False
+F2_pixels,H4,-,no es puerta,ok,Apoyo,1.0,,C-pisos,1.0,Apoyo,1.0,,C-pisos,1.0,Apoyo,1.0,,C-pisos,1.0,robusto: Apoyo,,,,
+E4s_mae_cls,A,THINGS,no evaluable,tecnico: falta H1,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),,,,
+E4s_mae_cls,A,HSJ,no evaluable,tecnico: falta H1,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),,,,
+E4s_mae_cls,A,CIFAR10H,no evaluable,tecnico: falta H1,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),,,,
+E4s_mae_cls,P,THINGS,no evaluable,tecnico: falta H2,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),,,,
+E4s_mae_cls,P,HSJ,no evaluable,tecnico: falta H2,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),,,,
+E4s_mae_cls,D,-,no evaluable,tecnico: falta D,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),False
+E4s_mae_cls,Dall,-,no evaluable,tecnico: falta D-todos,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),False
+E4s_mae_cls,H4,-,no evaluable,tecnico: falta H4,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),,,,
+F1_rn50rand1,A,THINGS,no es puerta,tecnico: falta H1,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),,,,
+F1_rn50rand1,A,HSJ,no es puerta,tecnico: falta H1,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),,,,
+F1_rn50rand1,A,CIFAR10H,no es puerta,tecnico: falta H1,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),,,,
+F1_rn50rand1,P,THINGS,no es puerta,tecnico: falta H2,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),,,,
+F1_rn50rand1,P,HSJ,no es puerta,tecnico: falta H2,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),,,,
+F1_rn50rand1,D,-,no es puerta,tecnico: falta D,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),False
+F1_rn50rand1,Dall,-,no es puerta,tecnico: falta D-todos,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),False
+F1_rn50rand1,H4,-,no es puerta,tecnico: falta H4,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),,,,
+F1_rn50rand2,A,THINGS,no es puerta,tecnico: falta H1,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),,,,
+F1_rn50rand2,A,HSJ,no es puerta,tecnico: falta H1,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),,,,
+F1_rn50rand2,A,CIFAR10H,no es puerta,tecnico: falta H1,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),,,,
+F1_rn50rand2,P,THINGS,no es puerta,tecnico: falta H2,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),,,,
+F1_rn50rand2,P,HSJ,no es puerta,tecnico: falta H2,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),,,,
+F1_rn50rand2,D,-,no es puerta,tecnico: falta D,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),False
+F1_rn50rand2,Dall,-,no es puerta,tecnico: falta D-todos,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),False
+F1_rn50rand2,H4,-,no es puerta,tecnico: falta H4,inconcluso (técnico),,,,,inconcluso (técnico),,,,,inconcluso (técnico),,,,,robusto: inconcluso (técnico),,,,

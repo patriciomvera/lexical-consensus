@@ -1,0 +1,78 @@
+[run_clean] loading embeddings ...
+[run_clean] building normalized embedding matrix ...
+[run_clean] writing 5040 ledger rows -> ledger_c2_homogeneous.jsonl
+
+[tier: native] 10 concepts
+  episode 10/30
+  episode 20/30
+  episode 30/30
+
+[tier: near] 3 concepts
+  episode 10/30
+  episode 20/30
+  episode 30/30
+
+[tier: mid] 3 concepts
+  episode 10/30
+  episode 20/30
+  episode 30/30
+
+[tier: far] 4 concepts
+  episode 10/30
+  episode 20/30
+  episode 30/30
+
+[run_clean] done. Ledger: /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/sims/T_O1_dinov2b_episodes_seed42/ledger_c2_homogeneous.jsonl
+{"c1_by_tier": {"centroid": {"native": 0.9633333333333334, "near": 0.8344444, "mid": 0.6691111000000001, "far": 0.5444444666666667}, "exemplar_knn_k3": {"native": 0.9577778000000002, "near": 0.8284444, "mid": 0.6731111, "far": 0.5417777666666667}, "kcentroid_k2": {"native": 0.9613332666666669, "near": 0.8342221666666665, "mid": 0.6724444666666667, "far": 0.5480000333333334}, "logreg": {"native": 0.9711111000000001, "near": 0.8055555666666667, "mid": 0.6442222333333334, "far": 0.5653333333333332}, "linsvm": {"native": 0.9722221333333335, "near": 0.8213333666666666, "mid": 0.6397778, "far": 0.5593333666666667}, "random": {"native": 0.3335555333333333, "near": 0.3306667, "mid": 0.33422226666666666, "far": 0.34666670000000005}}, "positive_control": {"rule": "prototype (centroid), seed 42, native words: 95% bootstrap CI lower bound > 1/3 (lax gate, declared)", "ci_lo": 0.9464388800000001, "ci_hi": 0.9773389175, "pass_": true}, "seconds": 44.8}
+[run_clean] loading embeddings ...
+[run_clean] building normalized embedding matrix ...
+[run_clean] writing 5040 ledger rows -> ledger_c2_homogeneous.jsonl
+
+[tier: native] 10 concepts
+  episode 10/30
+  episode 20/30
+  episode 30/30
+
+[tier: near] 3 concepts
+  episode 10/30
+  episode 20/30
+  episode 30/30
+
+[tier: mid] 3 concepts
+  episode 10/30
+  episode 20/30
+  episode 30/30
+
+[tier: far] 4 concepts
+  episode 10/30
+  episode 20/30
+  episode 30/30
+
+[run_clean] done. Ledger: /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/sims/T_O2_openclip_episodes_seed42/ledger_c2_homogeneous.jsonl
+{"c1_by_tier": {"centroid": {"native": 0.9702222333333335, "near": 0.9144444333333333, "mid": 0.6708889, "far": 0.5240000000000001}, "exemplar_knn_k3": {"native": 0.9555556333333334, "near": 0.8902222333333333, "mid": 0.6684443999999999, "far": 0.5255555000000001}, "kcentroid_k2": {"native": 0.9637777000000001, "near": 0.8995555666666666, "mid": 0.6791111666666666, "far": 0.5284443666666667}, "logreg": {"native": 0.9720000333333335, "near": 0.9253332333333335, "mid": 0.6762222666666667, "far": 0.5168888333333334}, "linsvm": {"native": 0.9731111000000001, "near": 0.9233333666666669, "mid": 0.6808889333333333, "far": 0.5186667}, "random": {"native": 0.3299999666666667, "near": 0.3306668000000001, "mid": 0.33266656666666666, "far": 0.3208889666666667}}, "positive_control": {"rule": "prototype (centroid), seed 42, native words: 95% bootstrap CI lower bound > 1/3 (lax gate, declared)", "ci_lo": 0.9619999666666668, "ci_hi": 0.9775555666666667, "pass_": true}, "seconds": 38.1}
+[run_clean] loading embeddings ...
+[run_clean] building normalized embedding matrix ...
+[run_clean] writing 5040 ledger rows -> ledger_c2_homogeneous.jsonl
+
+[tier: native] 10 concepts
+  episode 10/30
+  episode 20/30
+  episode 30/30
+
+[tier: near] 3 concepts
+  episode 10/30
+  episode 20/30
+  episode 30/30
+
+[tier: mid] 3 concepts
+  episode 10/30
+  episode 20/30
+  episode 30/30
+
+[tier: far] 4 concepts
+  episode 10/30
+  episode 20/30
+  episode 30/30
+
+[run_clean] done. Ledger: /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/sims/T_E4_mae_episodes_seed42/ledger_c2_homogeneous.jsonl
+{"c1_by_tier": {"centroid": {"native": 0.4826667, "near": 0.42377783333333335, "mid": 0.4817777666666666, "far": 0.3882221000000002}, "exemplar_knn_k3": {"native": 0.4826666333333334, "near": 0.44466673333333334, "mid": 0.47599993333333335, "far": 0.3804444333333333}, "kcentroid_k2": {"native": 0.48688890000000007, "near": 0.4453333, "mid": 0.4691111333333333, "far": 0.3757778333333333}, "logreg": {"native": 0.5166667000000001, "near": 0.4535554666666667, "mid": 0.5004444333333333, "far": 0.39155553333333326}, "linsvm": {"native": 0.5775555000000002, "near": 0.5162223, "mid": 0.5166667, "far": 0.39844443333333324}, "random": {"native": 0.33600009999999997, "near": 0.33866673333333336, "mid": 0.32733340000000005, "far": 0.33133333333333337}}, "positive_control": {"rule": "prototype (centroid), seed 42, native words: 95% bootstrap CI lower bound > 1/3 (lax gate, declared)", "ci_lo": 0.45200009750000003, "ci_hi": 0.513783355, "pass_": true}, "seconds": 46.7}

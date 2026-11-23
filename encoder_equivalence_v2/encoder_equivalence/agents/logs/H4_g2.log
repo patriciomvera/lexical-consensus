@@ -1,0 +1,6 @@
+R1_cvcl H4 done in 241.6 s (ok)
+wrote /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/results/h4_R1_cvcl.csv 
+E2_vitsup H4 done in 237.6 s (ok)
+wrote /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/results/h4_E2_vitsup.csv 
+F1_rn50rand0 H4 done in 137.7 s (ok)
+wrote /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/results/h4_F1_rn50rand0.csv 

@@ -1,0 +1,12 @@
+{
+ "encoder": "F2_pixels",
+ "ok": true,
+ "detail": {
+  "F2_pixels": {
+   "max_abs_diff": 0.0,
+   "tol": 1e-05,
+   "ok": true,
+   "frozen_sha256": "f55b2c53f5743e6fcafec0966f4c573033b82524eeca42b6f6a477318cf6f1a9"
+  }
+ }
+}

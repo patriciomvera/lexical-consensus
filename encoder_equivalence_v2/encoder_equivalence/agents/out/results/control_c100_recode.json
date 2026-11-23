@@ -1,0 +1,22 @@
+{
+ "verdict": "PASA",
+ "ok": true,
+ "max_abs_diff": 6.394441637302961e-07,
+ "spearman": 0.9999999997526534,
+ "n_pairs": 4950,
+ "beta_perc_R0_cpu": -0.2119,
+ "beta_perc_v1": -0.2119,
+ "abs_beta_diff": 0.0,
+ "thresholds": {
+  "pass_maxabs": 0.0001,
+  "pass_spearman": 0.99999,
+  "dev_maxabs": 0.002,
+  "dev_spearman": 0.9999,
+  "dev_beta": 0.005
+ },
+ "versions": {
+  "torch": "2.14.1+cpu",
+  "transformers": "5.20.2"
+ },
+ "note": "beta on the v1 scale (raw d, classical OLS, regression_table.csv PS_beta_perc)"
+}

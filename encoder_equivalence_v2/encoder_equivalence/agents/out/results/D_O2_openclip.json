@@ -1,0 +1,241 @@
+{
+ "encoder": "O2_openclip",
+ "learners": {
+  "centroid": {
+   "model_ps": {
+    "n": 100,
+    "beta_v1": -0.27331,
+    "p_v1": 0.00046804461442965866,
+    "beta_sem_v1": -0.04325,
+    "p_sem_v1": 0.25973468602839583,
+    "r2p_perc_v1": 0.1191,
+    "r2p_sem_v1": 0.0131,
+    "vif": 1.019,
+    "beta_z": -0.02428817560578423,
+    "p_hc3": 0.0003631758608826767,
+    "ci_lo_z": -0.03763947889243445,
+    "ci_hi_z": -0.010936872319134008,
+    "p_sem_hc3": 0.25401294191658264,
+    "r_partial": -0.34511854983315354,
+    "r_ci_lo": -0.5079279154044917,
+    "r_ci_hi": -0.1585022165070656,
+    "r2p_perc": 0.11910681343893943,
+    "r2p_sem": 0.013075895580051743,
+    "n_others": 1,
+    "status": "ok"
+   },
+   "q3q4": {
+    "n_pairs": 38,
+    "rho_perc": -0.2375,
+    "rho_sem": 0.1243,
+    "q3_median_c1": 0.829,
+    "q4_median_c1": 0.8788499999999999
+   },
+   "quadrant_medians": {
+    "Q1": 0.8677,
+    "Q2": 0.8265499999999999,
+    "Q3": 0.829,
+    "Q4": 0.8788499999999999
+   },
+   "quadrant_counts": {
+    "Q1": 32,
+    "Q2": 30,
+    "Q3": 18,
+    "Q4": 20
+   },
+   "rule": "B",
+   "evidence": [
+    "A1: \u03b2_perc=-0.2733 significant (p=0.000) and negative \u2713",
+    "A2: \u03b2_sem not dominant (p=0.260, partial_R\u00b2_perc/partial_R\u00b2_sem=0.1191/0.0131) \u2713",
+    "A3 FAIL: \u03c1_perc=-0.237, \u03c1_sem=0.124, n_diss=38 (need n\u226520, \u03c1<0, |\u03c1|>0.3, |\u03c1_perc|>|\u03c1_sem|)",
+    "A4: Q4 median C1=0.879 > Q3 median C1=0.829 \u2713",
+    "Rule B: not all Rule A criteria met, no Rule C criteria met \u2014 collinearity or insufficient dissociation power."
+   ]
+  },
+  "exemplar_knn_k3": {
+   "model_ps": {
+    "n": 100,
+    "beta_v1": -0.22095,
+    "p_v1": 0.008917882410440291,
+    "beta_sem_v1": -0.04333,
+    "p_sem_v1": 0.3031226926144704,
+    "r2p_perc_v1": 0.0684,
+    "r2p_sem_v1": 0.0109,
+    "vif": 1.019,
+    "beta_z": -0.01963558971389605,
+    "p_hc3": 0.010470013387308668,
+    "ci_lo_z": -0.03466935714284985,
+    "ci_hi_z": -0.004601822284942247,
+    "p_sem_hc3": 0.2896060919598855,
+    "r_partial": -0.26156539926065364,
+    "r_ci_lo": -0.4364440834173067,
+    "r_ci_hi": -0.06764291934696043,
+    "r2p_perc": 0.06841645809038557,
+    "r2p_sem": 0.010928306970666742,
+    "n_others": 1,
+    "status": "ok"
+   },
+   "q3q4": {
+    "n_pairs": 38,
+    "rho_perc": -0.2023,
+    "rho_sem": 0.0648,
+    "q3_median_c1": 0.8256,
+    "q4_median_c1": 0.8681
+   },
+   "quadrant_medians": {
+    "Q1": 0.841,
+    "Q2": 0.82445,
+    "Q3": 0.8256,
+    "Q4": 0.8681
+   },
+   "quadrant_counts": {
+    "Q1": 32,
+    "Q2": 30,
+    "Q3": 18,
+    "Q4": 20
+   },
+   "rule": "B",
+   "evidence": [
+    "A1: \u03b2_perc=-0.2210 significant (p=0.009) and negative \u2713",
+    "A2: \u03b2_sem not dominant (p=0.303, partial_R\u00b2_perc/partial_R\u00b2_sem=0.0684/0.0109) \u2713",
+    "A3 FAIL: \u03c1_perc=-0.202, \u03c1_sem=0.065, n_diss=38 (need n\u226520, \u03c1<0, |\u03c1|>0.3, |\u03c1_perc|>|\u03c1_sem|)",
+    "A4: Q4 median C1=0.868 > Q3 median C1=0.826 \u2713",
+    "Rule B: not all Rule A criteria met, no Rule C criteria met \u2014 collinearity or insufficient dissociation power."
+   ]
+  },
+  "logreg": {
+   "model_ps": {
+    "n": 100,
+    "beta_v1": -0.26551,
+    "p_v1": 0.0004872809000709645,
+    "beta_sem_v1": -0.05508,
+    "p_sem_v1": 0.14180633252602318,
+    "r2p_perc_v1": 0.1184,
+    "r2p_sem_v1": 0.0221,
+    "vif": 1.019,
+    "beta_z": -0.02359513329718185,
+    "p_hc3": 0.00044161325757820837,
+    "ci_lo_z": -0.036755975255314335,
+    "ci_hi_z": -0.010434291339049363,
+    "p_sem_hc3": 0.14464057076400694,
+    "r_partial": -0.3441231437410665,
+    "r_ci_lo": -0.5070892933896733,
+    "r_ci_hi": -0.15740084124798062,
+    "r2p_perc": 0.11842073805823503,
+    "r2p_sem": 0.02211650718415983,
+    "n_others": 1,
+    "status": "ok"
+   },
+   "q3q4": {
+    "n_pairs": 38,
+    "rho_perc": -0.213,
+    "rho_sem": 0.0666,
+    "q3_median_c1": 0.83855,
+    "q4_median_c1": 0.88165
+   },
+   "quadrant_medians": {
+    "Q1": 0.8667499999999999,
+    "Q2": 0.82585,
+    "Q3": 0.83855,
+    "Q4": 0.88165
+   },
+   "quadrant_counts": {
+    "Q1": 32,
+    "Q2": 30,
+    "Q3": 18,
+    "Q4": 20
+   },
+   "rule": "B",
+   "evidence": [
+    "A1: \u03b2_perc=-0.2655 significant (p=0.000) and negative \u2713",
+    "A2: \u03b2_sem not dominant (p=0.142, partial_R\u00b2_perc/partial_R\u00b2_sem=0.1184/0.0221) \u2713",
+    "A3 FAIL: \u03c1_perc=-0.213, \u03c1_sem=0.067, n_diss=38 (need n\u226520, \u03c1<0, |\u03c1|>0.3, |\u03c1_perc|>|\u03c1_sem|)",
+    "A4: Q4 median C1=0.882 > Q3 median C1=0.839 \u2713",
+    "Rule B: not all Rule A criteria met, no Rule C criteria met \u2014 collinearity or insufficient dissociation power."
+   ]
+  },
+  "random": {
+   "model_ps": {
+    "n": 100,
+    "beta_v1": -0.00481,
+    "p_v1": 0.5269290064238177,
+    "beta_sem_v1": 0.00379,
+    "p_sem_v1": 0.3236828104320901,
+    "r2p_perc_v1": 0.0041,
+    "r2p_sem_v1": 0.01,
+    "vif": 1.019,
+    "beta_z": -0.00042704247913046174,
+    "p_hc3": 0.5474273890296566,
+    "ci_lo_z": -0.0018182669333795805,
+    "ci_hi_z": 0.000964181975118657,
+    "p_sem_hc3": 0.34465454759047,
+    "r_partial": -0.06434002623339656,
+    "r_ci_lo": -0.2584723448075683,
+    "r_ci_hi": 0.13478736286187978,
+    "r2p_perc": 0.0041396389757144625,
+    "r2p_sem": 0.01004239496818175,
+    "n_others": 1,
+    "status": "ok"
+   },
+   "q3q4": {
+    "n_pairs": 38,
+    "rho_perc": -0.0421,
+    "rho_sem": 0.0945,
+    "q3_median_c1": 0.33309999999999995,
+    "q4_median_c1": 0.33565
+   },
+   "quadrant_medians": {
+    "Q1": 0.33535000000000004,
+    "Q2": 0.3358,
+    "Q3": 0.33309999999999995,
+    "Q4": 0.33565
+   },
+   "quadrant_counts": {
+    "Q1": 32,
+    "Q2": 30,
+    "Q3": 18,
+    "Q4": 20
+   },
+   "rule": "B",
+   "evidence": [
+    "A1 FAIL: \u03b2_perc=-0.0048 p=0.527 (need p<0.05 and \u03b2<0)",
+    "A2: \u03b2_sem not dominant (p=0.324, partial_R\u00b2_perc/partial_R\u00b2_sem=0.0041/0.0100) \u2713",
+    "A3 FAIL: \u03c1_perc=-0.042, \u03c1_sem=0.095, n_diss=38 (need n\u226520, \u03c1<0, |\u03c1|>0.3, |\u03c1_perc|>|\u03c1_sem|)",
+    "A4: Q4 median C1=0.336 > Q3 median C1=0.333 \u2713",
+    "Rule B: not all Rule A criteria met, no Rule C criteria met \u2014 collinearity or insufficient dissociation power."
+   ]
+  }
+ },
+ "test": {
+  "n": 100,
+  "beta_v1": -0.27331,
+  "p_v1": 0.00046804461442965866,
+  "beta_sem_v1": -0.04325,
+  "p_sem_v1": 0.25973468602839583,
+  "r2p_perc_v1": 0.1191,
+  "r2p_sem_v1": 0.0131,
+  "vif": 1.019,
+  "beta_z": -0.02428817560578423,
+  "p_hc3": 0.0003631758608826767,
+  "ci_lo_z": -0.03763947889243445,
+  "ci_hi_z": -0.010936872319134008,
+  "p_sem_hc3": 0.25401294191658264,
+  "r_partial": -0.34511854983315354,
+  "r_ci_lo": -0.5079279154044917,
+  "r_ci_hi": -0.1585022165070656,
+  "r2p_perc": 0.11910681343893943,
+  "r2p_sem": 0.013075895580051743,
+  "n_others": 1,
+  "status": "ok"
+ },
+ "rule_centroid": "B",
+ "status": "ok",
+ "rule_centroid_q100_descriptiva": "B",
+ "quadrant_counts_100_descriptiva": {
+  "Q1": 30,
+  "Q2": 30,
+  "Q3": 20,
+  "Q4": 20
+ },
+ "seconds": 108.6
+}

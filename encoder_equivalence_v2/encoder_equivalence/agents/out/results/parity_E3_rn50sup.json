@@ -1,0 +1,12 @@
+{
+ "encoder": "E3_rn50sup",
+ "ok": true,
+ "detail": {
+  "E3_rn50sup": {
+   "max_abs_diff": 0.0,
+   "tol": 1e-05,
+   "ok": true,
+   "frozen_sha256": "7b35559f826208069562a967fba4581a1e234f0724e4f691debbff344955e2ad"
+  }
+ }
+}

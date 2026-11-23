@@ -1,0 +1,18 @@
+{
+ "encoder": "E4_mae",
+ "ok": true,
+ "detail": {
+  "E4_mae": {
+   "max_abs_diff": 0.0,
+   "tol": 1e-05,
+   "ok": true,
+   "frozen_sha256": "9a0b58274b47305c1d684b13c282711e3faa4c682f01d4e8b588d0d11f3f7cae"
+  },
+  "E4s_mae_cls": {
+   "max_abs_diff": 0.0,
+   "tol": 1e-05,
+   "ok": true,
+   "frozen_sha256": "02ea9c198c9491bafc26d92238b4ffcd79700eac4498a3bcb7281e23dfa9ffbb"
+  }
+ }
+}

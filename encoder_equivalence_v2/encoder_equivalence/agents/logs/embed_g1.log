@@ -1,0 +1,335 @@
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 612.52it/s]
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights: 100%|██████████| 223/223 [00:00<00:00, 11832.28it/s]
+[O1_dinov2b c100train]  2048/50000 images, 327 img/min (this session)
+[O1_dinov2b c100train]  4096/50000 images, 332 img/min (this session)
+[O1_dinov2b c100train]  6144/50000 images, 331 img/min (this session)
+[O1_dinov2b c100train]  8192/50000 images, 336 img/min (this session)
+[O1_dinov2b c100train]  10240/50000 images, 341 img/min (this session)
+[O1_dinov2b c100train]  12288/50000 images, 343 img/min (this session)
+[O1_dinov2b c100train]  14336/50000 images, 343 img/min (this session)
+[O1_dinov2b c100train]  16384/50000 images, 343 img/min (this session)
+[O1_dinov2b c100train]  18432/50000 images, 343 img/min (this session)
+[O1_dinov2b c100train]  20480/50000 images, 343 img/min (this session)
+[O1_dinov2b c100train]  22528/50000 images, 342 img/min (this session)
+[O1_dinov2b c100train]  24576/50000 images, 334 img/min (this session)
+[O1_dinov2b c100train]  26624/50000 images, 332 img/min (this session)
+[O1_dinov2b c100train]  28672/50000 images, 330 img/min (this session)
+[O1_dinov2b c100train]  30720/50000 images, 330 img/min (this session)
+[O1_dinov2b c100train]  32768/50000 images, 330 img/min (this session)
+[O1_dinov2b c100train]  34816/50000 images, 281 img/min (this session)
+[O1_dinov2b c100train]  36864/50000 images, 283 img/min (this session)
+[O1_dinov2b c100train]  38912/50000 images, 286 img/min (this session)
+[O1_dinov2b c100train]  40960/50000 images, 287 img/min (this session)
+[O1_dinov2b c100train]  43008/50000 images, 289 img/min (this session)
+[O1_dinov2b c100train]  45056/50000 images, 290 img/min (this session)
+[O1_dinov2b c100train]  47104/50000 images, 291 img/min (this session)
+[O1_dinov2b c100train]  49152/50000 images, 292 img/min (this session)
+[O1_dinov2b c100train]  50000/50000 images, 292 img/min (this session)
+O1_dinov2b c100train (50000, 768) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c100train_O1_dinov2b.npz
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 535.37it/s]
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights: 100%|██████████| 223/223 [00:00<00:00, 11063.36it/s]
+[O1_dinov2b c10pool]  2000/2000 images, 319 img/min (this session)
+O1_dinov2b c10pool (2000, 768) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10pool_O1_dinov2b.npz
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 974.06it/s]
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights: 100%|██████████| 223/223 [00:00<00:00, 12488.38it/s]
+[O1_dinov2b c10test]  2048/10000 images, 315 img/min (this session)
+[O1_dinov2b c10test]  4096/10000 images, 326 img/min (this session)
+[O1_dinov2b c10test]  6144/10000 images, 328 img/min (this session)
+[O1_dinov2b c10test]  8192/10000 images, 333 img/min (this session)
+[O1_dinov2b c10test]  10000/10000 images, 333 img/min (this session)
+O1_dinov2b c10test (10000, 768) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10test_O1_dinov2b.npz
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]Fetching 8 files: 100%|██████████| 8/8 [00:00<00:00, 1173.89it/s]
+Loading weights:   0%|          | 0/200 [00:00<?, ?it/s]Loading weights:  61%|██████    | 122/200 [00:00<00:00, 1145.75it/s]Loading weights: 100%|██████████| 200/200 [00:00<00:00, 1273.95it/s]
+[transformers] [1mCLIPVisionModelWithProjection LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--laion--CLIP-ViT-B-32-laion2B-s34B-b79K/snapshots/1a25a446712ba5ee05982a381eed697ef9b435cf
+Key                                                          | Status     |  | 
+-------------------------------------------------------------+------------+--+-
+text_model.encoder.layers.{0...11}.layer_norm1.bias          | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc1.bias              | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm2.weight        | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.v_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc1.weight            | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.v_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.k_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.out_proj.bias   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.q_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc2.bias              | UNEXPECTED |  | 
+text_model.final_layer_norm.bias                             | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.q_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc2.weight            | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.k_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm2.bias          | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm1.weight        | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.out_proj.weight | UNEXPECTED |  | 
+logit_scale                                                  | UNEXPECTED |  | 
+text_model.embeddings.position_embedding.weight              | UNEXPECTED |  | 
+text_model.embeddings.token_embedding.weight                 | UNEXPECTED |  | 
+text_projection.weight                                       | UNEXPECTED |  | 
+text_model.final_layer_norm.weight                           | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[O2_openclip c100train]  2048/50000 images, 1684 img/min (this session)
+[O2_openclip c100train]  4096/50000 images, 1638 img/min (this session)
+[O2_openclip c100train]  6144/50000 images, 1610 img/min (this session)
+[O2_openclip c100train]  8192/50000 images, 1660 img/min (this session)
+[O2_openclip c100train]  10240/50000 images, 1689 img/min (this session)
+[O2_openclip c100train]  12288/50000 images, 1733 img/min (this session)
+[O2_openclip c100train]  14336/50000 images, 1752 img/min (this session)
+[O2_openclip c100train]  16384/50000 images, 1766 img/min (this session)
+[O2_openclip c100train]  18432/50000 images, 1767 img/min (this session)
+[O2_openclip c100train]  20480/50000 images, 1769 img/min (this session)
+[O2_openclip c100train]  22528/50000 images, 1766 img/min (this session)
+[O2_openclip c100train]  24576/50000 images, 1753 img/min (this session)
+[O2_openclip c100train]  26624/50000 images, 1749 img/min (this session)
+[O2_openclip c100train]  28672/50000 images, 1727 img/min (this session)
+[O2_openclip c100train]  30720/50000 images, 1730 img/min (this session)
+[O2_openclip c100train]  32768/50000 images, 1736 img/min (this session)
+[O2_openclip c100train]  34816/50000 images, 1735 img/min (this session)
+[O2_openclip c100train]  36864/50000 images, 1736 img/min (this session)
+[O2_openclip c100train]  38912/50000 images, 1733 img/min (this session)
+[O2_openclip c100train]  40960/50000 images, 1735 img/min (this session)
+[O2_openclip c100train]  43008/50000 images, 1730 img/min (this session)
+[O2_openclip c100train]  45056/50000 images, 1728 img/min (this session)
+[O2_openclip c100train]  47104/50000 images, 1730 img/min (this session)
+[O2_openclip c100train]  49152/50000 images, 1735 img/min (this session)
+[O2_openclip c100train]  50000/50000 images, 1736 img/min (this session)
+O2_openclip c100train (50000, 512) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c100train_O2_openclip.npz
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]Fetching 8 files: 100%|██████████| 8/8 [00:00<00:00, 233.88it/s]
+Loading weights:   0%|          | 0/200 [00:00<?, ?it/s]Loading weights: 100%|██████████| 200/200 [00:00<00:00, 9642.85it/s]
+[transformers] [1mCLIPVisionModelWithProjection LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--laion--CLIP-ViT-B-32-laion2B-s34B-b79K/snapshots/1a25a446712ba5ee05982a381eed697ef9b435cf
+Key                                                          | Status     |  | 
+-------------------------------------------------------------+------------+--+-
+text_model.encoder.layers.{0...11}.self_attn.k_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.q_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm2.bias          | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.q_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.v_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.k_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc2.bias              | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.out_proj.weight | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc1.bias              | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc2.weight            | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.v_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc1.weight            | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm2.weight        | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.out_proj.bias   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm1.bias          | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm1.weight        | UNEXPECTED |  | 
+text_model.final_layer_norm.bias                             | UNEXPECTED |  | 
+text_model.final_layer_norm.weight                           | UNEXPECTED |  | 
+logit_scale                                                  | UNEXPECTED |  | 
+text_model.embeddings.token_embedding.weight                 | UNEXPECTED |  | 
+text_model.embeddings.position_embedding.weight              | UNEXPECTED |  | 
+text_projection.weight                                       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[O2_openclip c10pool]  2000/2000 images, 2229 img/min (this session)
+O2_openclip c10pool (2000, 512) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10pool_O2_openclip.npz
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]Fetching 8 files: 100%|██████████| 8/8 [00:00<00:00, 1278.65it/s]
+Loading weights:   0%|          | 0/200 [00:00<?, ?it/s]Loading weights: 100%|██████████| 200/200 [00:00<00:00, 16410.92it/s]
+[transformers] [1mCLIPVisionModelWithProjection LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--laion--CLIP-ViT-B-32-laion2B-s34B-b79K/snapshots/1a25a446712ba5ee05982a381eed697ef9b435cf
+Key                                                          | Status     |  | 
+-------------------------------------------------------------+------------+--+-
+text_model.encoder.layers.{0...11}.self_attn.out_proj.bias   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm1.weight        | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm2.weight        | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.v_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.out_proj.weight | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.q_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm1.bias          | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.k_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.v_proj.bias     | UNEXPECTED |  | 
+text_model.embeddings.position_embedding.weight              | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.q_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm2.bias          | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc1.bias              | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc2.weight            | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.k_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc1.weight            | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc2.bias              | UNEXPECTED |  | 
+text_projection.weight                                       | UNEXPECTED |  | 
+text_model.final_layer_norm.weight                           | UNEXPECTED |  | 
+logit_scale                                                  | UNEXPECTED |  | 
+text_model.embeddings.token_embedding.weight                 | UNEXPECTED |  | 
+text_model.final_layer_norm.bias                             | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[O2_openclip c10test]  2048/10000 images, 2190 img/min (this session)
+[O2_openclip c10test]  4096/10000 images, 2205 img/min (this session)
+[O2_openclip c10test]  6144/10000 images, 2208 img/min (this session)
+[O2_openclip c10test]  8192/10000 images, 2217 img/min (this session)
+[O2_openclip c10test]  10000/10000 images, 2231 img/min (this session)
+O2_openclip c10test (10000, 512) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10test_O2_openclip.npz
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 569.59it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights:  81%|████████  | 160/198 [00:00<00:00, 1544.55it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 1636.00it/s]
+[transformers] [1mViTMAEModel LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--facebook--vit-mae-base/snapshots/25b184bea5538bf5c4c852c79d221195fdd2778d
+Key                                                                     | Status     |  | 
+------------------------------------------------------------------------+------------+--+-
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.o_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_before.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.v_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.q_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc1.bias            | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.o_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc2.bias            | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.q_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc2.weight          | UNEXPECTED |  | 
+decoder.decoder_pos_embed                                               | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.k_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_norm.bias                                               | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_before.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_after.weight  | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.v_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_after.bias    | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc1.weight          | UNEXPECTED |  | 
+decoder.decoder_norm.weight                                             | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.k_proj.weight | UNEXPECTED |  | 
+decoder.decoder_pred.weight                                             | UNEXPECTED |  | 
+decoder.decoder_embed.weight                                            | UNEXPECTED |  | 
+decoder.decoder_pred.bias                                               | UNEXPECTED |  | 
+decoder.mask_token                                                      | UNEXPECTED |  | 
+decoder.decoder_embed.bias                                              | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[E4_mae c100train]  2048/50000 images, 419 img/min (this session)
+[E4_mae c100train]  4096/50000 images, 431 img/min (this session)
+[E4_mae c100train]  6144/50000 images, 442 img/min (this session)
+[E4_mae c100train]  8192/50000 images, 447 img/min (this session)
+[E4_mae c100train]  10240/50000 images, 449 img/min (this session)
+[E4_mae c100train]  12288/50000 images, 448 img/min (this session)
+[E4_mae c100train]  14336/50000 images, 447 img/min (this session)
+[E4_mae c100train]  16384/50000 images, 442 img/min (this session)
+[E4_mae c100train]  18432/50000 images, 440 img/min (this session)
+[E4_mae c100train]  20480/50000 images, 438 img/min (this session)
+[E4_mae c100train]  22528/50000 images, 437 img/min (this session)
+[E4_mae c100train]  24576/50000 images, 435 img/min (this session)
+[E4_mae c100train]  26624/50000 images, 436 img/min (this session)
+[E4_mae c100train]  28672/50000 images, 438 img/min (this session)
+[E4_mae c100train]  30720/50000 images, 438 img/min (this session)
+[E4_mae c100train]  32768/50000 images, 439 img/min (this session)
+[E4_mae c100train]  34816/50000 images, 439 img/min (this session)
+[E4_mae c100train]  36864/50000 images, 439 img/min (this session)
+[E4_mae c100train]  38912/50000 images, 438 img/min (this session)
+[E4_mae c100train]  40960/50000 images, 438 img/min (this session)
+[E4_mae c100train]  43008/50000 images, 438 img/min (this session)
+[E4_mae c100train]  45056/50000 images, 439 img/min (this session)
+[E4_mae c100train]  47104/50000 images, 438 img/min (this session)
+O1_dinov2b c100train: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c100train_O1_dinov2b.npz)
+O1_dinov2b c10pool: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10pool_O1_dinov2b.npz)
+O1_dinov2b c10test: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10test_O1_dinov2b.npz)
+O2_openclip c100train: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c100train_O2_openclip.npz)
+O2_openclip c10pool: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10pool_O2_openclip.npz)
+O2_openclip c10test: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10test_O2_openclip.npz)
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 623.75it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 8964.03it/s]
+[transformers] [1mViTMAEModel LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--facebook--vit-mae-base/snapshots/25b184bea5538bf5c4c852c79d221195fdd2778d
+Key                                                                     | Status     |  | 
+------------------------------------------------------------------------+------------+--+-
+decoder.decoder_norm.weight                                             | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.v_proj.weight | UNEXPECTED |  | 
+decoder.decoder_pred.weight                                             | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc1.bias            | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_before.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.v_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.k_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_before.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.k_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_after.weight  | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc1.weight          | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_after.bias    | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.o_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.q_proj.weight | UNEXPECTED |  | 
+decoder.decoder_norm.bias                                               | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.o_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.q_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc2.weight          | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc2.bias            | UNEXPECTED |  | 
+decoder.decoder_embed.bias                                              | UNEXPECTED |  | 
+decoder.mask_token                                                      | UNEXPECTED |  | 
+decoder.decoder_pred.bias                                               | UNEXPECTED |  | 
+decoder.decoder_embed.weight                                            | UNEXPECTED |  | 
+decoder.decoder_pos_embed                                               | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[E4_mae c100train]  49152/50000 images, 10142 img/min (this session)
+[E4_mae c100train]  50000/50000 images, 7283 img/min (this session)
+E4_mae c100train (50000, 768) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c100train_E4_mae.npz
+E4s_mae_cls c100train (50000, 768) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c100train_E4s_mae_cls.npz
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 825.11it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 14992.10it/s]
+[transformers] [1mViTMAEModel LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--facebook--vit-mae-base/snapshots/25b184bea5538bf5c4c852c79d221195fdd2778d
+Key                                                                     | Status     |  | 
+------------------------------------------------------------------------+------------+--+-
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.k_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.q_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.o_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_after.weight  | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_before.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.k_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.v_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc2.bias            | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.o_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc1.bias            | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc1.weight          | UNEXPECTED |  | 
+decoder.decoder_pred.bias                                               | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc2.weight          | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.v_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.q_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_after.bias    | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_before.bias   | UNEXPECTED |  | 
+decoder.decoder_norm.bias                                               | UNEXPECTED |  | 
+decoder.decoder_pred.weight                                             | UNEXPECTED |  | 
+decoder.decoder_embed.weight                                            | UNEXPECTED |  | 
+decoder.decoder_pos_embed                                               | UNEXPECTED |  | 
+decoder.decoder_embed.bias                                              | UNEXPECTED |  | 
+decoder.decoder_norm.weight                                             | UNEXPECTED |  | 
+decoder.mask_token                                                      | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[E4_mae c10pool]  2000/2000 images, 426 img/min (this session)
+E4_mae c10pool (2000, 768) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10pool_E4_mae.npz
+E4s_mae_cls c10pool (2000, 768) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10pool_E4s_mae_cls.npz
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 546.37it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 10737.52it/s]
+[transformers] [1mViTMAEModel LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--facebook--vit-mae-base/snapshots/25b184bea5538bf5c4c852c79d221195fdd2778d
+Key                                                                     | Status     |  | 
+------------------------------------------------------------------------+------------+--+-
+decoder.decoder_embed.weight                                            | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.v_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.q_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.q_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.o_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.o_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_before.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_after.bias    | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc2.weight          | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.k_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc1.bias            | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc1.weight          | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_after.weight  | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.v_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_pred.weight                                             | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc2.bias            | UNEXPECTED |  | 
+decoder.decoder_norm.bias                                               | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_before.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.k_proj.weight | UNEXPECTED |  | 
+decoder.mask_token                                                      | UNEXPECTED |  | 
+decoder.decoder_norm.weight                                             | UNEXPECTED |  | 
+decoder.decoder_embed.bias                                              | UNEXPECTED |  | 
+decoder.decoder_pos_embed                                               | UNEXPECTED |  | 
+decoder.decoder_pred.bias                                               | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[E4_mae c10test]  2048/10000 images, 416 img/min (this session)
+[E4_mae c10test]  4096/10000 images, 412 img/min (this session)
+[E4_mae c10test]  6144/10000 images, 415 img/min (this session)
+[E4_mae c10test]  8192/10000 images, 416 img/min (this session)
+[E4_mae c10test]  10000/10000 images, 417 img/min (this session)
+E4_mae c10test (10000, 768) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10test_E4_mae.npz
+E4s_mae_cls c10test (10000, 768) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10test_E4s_mae_cls.npz

@@ -1,0 +1,96 @@
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 314.71it/s]
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights:  35%|███▌      | 79/223 [00:00<00:00, 774.14it/s]Loading weights: 100%|██████████| 223/223 [00:00<00:00, 1113.66it/s]
+PARITY R0_dinov2s: PASS {'R0_dinov2s': {'max_abs_diff': 0.0, 'tol': 1e-05, 'ok': True, 'frozen_sha256': 'f80e1890c6fb8babd89a0245f4d8329822c4127e07ca8bbdbbc80a38aba69176'}}
+Fetching 6 files:   0%|          | 0/6 [00:00<?, ?it/s]Fetching 6 files: 100%|██████████| 6/6 [00:00<00:00, 297.57it/s]
+Loading weights:   0%|          | 0/208 [00:00<?, ?it/s]Loading weights:  31%|███▏      | 65/208 [00:00<00:00, 581.36it/s]Loading weights:  88%|████████▊ | 183/208 [00:00<00:00, 887.87it/s]Loading weights: 100%|██████████| 208/208 [00:00<00:00, 951.37it/s]
+[transformers] [1mSiglipVisionModel LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--google--siglip-base-patch16-224/snapshots/7fd15f0689c79d79e38b1c2e2e2370a7bf2761ed
+Key                                                          | Status     |  | 
+-------------------------------------------------------------+------------+--+-
+text_model.encoder.layers.{0...11}.layer_norm1.bias          | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc2.weight            | UNEXPECTED |  | 
+text_model.embeddings.position_embedding.weight              | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm2.bias          | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm1.weight        | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.out_proj.bias   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.out_proj.weight | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.q_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc1.bias              | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm2.weight        | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.k_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.v_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc1.weight            | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.v_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc2.bias              | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.k_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.q_proj.bias     | UNEXPECTED |  | 
+logit_scale                                                  | UNEXPECTED |  | 
+text_model.head.weight                                       | UNEXPECTED |  | 
+text_model.head.bias                                         | UNEXPECTED |  | 
+text_model.embeddings.token_embedding.weight                 | UNEXPECTED |  | 
+logit_bias                                                   | UNEXPECTED |  | 
+text_model.final_layer_norm.bias                             | UNEXPECTED |  | 
+text_model.final_layer_norm.weight                           | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+PARITY E1_siglip: PASS {'E1_siglip': {'max_abs_diff': 8.940696716308594e-08, 'tol': 1e-05, 'ok': True, 'frozen_sha256': '2ec894ec6d762b43d15b85ed762cd3cd69056f6490af71abb67bb7a5c28fb267'}}
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 694.84it/s]
+Loading weights:   0%|          | 0/318 [00:00<?, ?it/s]Loading weights: 100%|██████████| 318/318 [00:00<00:00, 3646.19it/s]
+[transformers] [1mResNetModel LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--microsoft--resnet-50/snapshots/34c2154c194f829b11125337b98c8f5f9965ff19
+Key                 | Status     |  | 
+--------------------+------------+--+-
+classifier.1.weight | UNEXPECTED |  | 
+classifier.1.bias   | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+PARITY E3_rn50sup: PASS {'E3_rn50sup': {'max_abs_diff': 0.0, 'tol': 1e-05, 'ok': True, 'frozen_sha256': '7b35559f826208069562a967fba4581a1e234f0724e4f691debbff344955e2ad'}}
+PARITY F2_pixels: PASS {'F2_pixels': {'max_abs_diff': 0.0, 'tol': 1e-05, 'ok': True, 'frozen_sha256': 'f55b2c53f5743e6fcafec0966f4c573033b82524eeca42b6f6a477318cf6f1a9'}}
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 484.46it/s]
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights:  16%|█▌        | 36/223 [00:00<00:00, 225.86it/s]Loading weights:  28%|██▊       | 62/223 [00:00<00:00, 235.98it/s]Loading weights:  47%|████▋     | 104/223 [00:00<00:00, 308.35it/s]Loading weights:  61%|██████▏   | 137/223 [00:00<00:00, 289.46it/s]Loading weights:  78%|███████▊  | 174/223 [00:00<00:00, 306.35it/s]Loading weights:  92%|█████████▏| 206/223 [00:00<00:00, 309.81it/s]Loading weights: 100%|██████████| 223/223 [00:00<00:00, 317.45it/s]
+PARITY R0_dinov2s: PASS {'R0_dinov2s': {'max_abs_diff': 0.0, 'tol': 1e-05, 'ok': True, 'frozen_sha256': 'f80e1890c6fb8babd89a0245f4d8329822c4127e07ca8bbdbbc80a38aba69176'}}
+Fetching 6 files:   0%|          | 0/6 [00:00<?, ?it/s]Fetching 6 files: 100%|██████████| 6/6 [00:00<00:00, 605.66it/s]
+Loading weights:   0%|          | 0/208 [00:00<?, ?it/s]Loading weights:  15%|█▍        | 31/208 [00:00<00:00, 257.44it/s]Loading weights:  32%|███▏      | 66/208 [00:00<00:00, 284.89it/s]Loading weights:  46%|████▌     | 95/208 [00:00<00:00, 286.09it/s]Loading weights:  61%|██████    | 126/208 [00:00<00:00, 291.93it/s]Loading weights:  75%|███████▌  | 156/208 [00:00<00:00, 183.84it/s]Loading weights:  87%|████████▋ | 180/208 [00:00<00:00, 188.43it/s]Loading weights: 100%|██████████| 208/208 [00:00<00:00, 249.25it/s]
+[transformers] [1mSiglipVisionModel LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--google--siglip-base-patch16-224/snapshots/7fd15f0689c79d79e38b1c2e2e2370a7bf2761ed
+Key                                                          | Status     |  | 
+-------------------------------------------------------------+------------+--+-
+text_model.encoder.layers.{0...11}.self_attn.out_proj.weight | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.k_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc2.bias              | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm1.weight        | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.k_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.q_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm1.bias          | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.v_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.q_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm2.weight        | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc2.weight            | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.out_proj.bias   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.v_proj.weight   | UNEXPECTED |  | 
+text_model.final_layer_norm.weight                           | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc1.bias              | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm2.bias          | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc1.weight            | UNEXPECTED |  | 
+logit_bias                                                   | UNEXPECTED |  | 
+text_model.final_layer_norm.bias                             | UNEXPECTED |  | 
+text_model.embeddings.token_embedding.weight                 | UNEXPECTED |  | 
+text_model.head.weight                                       | UNEXPECTED |  | 
+logit_scale                                                  | UNEXPECTED |  | 
+text_model.head.bias                                         | UNEXPECTED |  | 
+text_model.embeddings.position_embedding.weight              | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+PARITY E1_siglip: PASS {'E1_siglip': {'max_abs_diff': 8.940696716308594e-08, 'tol': 1e-05, 'ok': True, 'frozen_sha256': '2ec894ec6d762b43d15b85ed762cd3cd69056f6490af71abb67bb7a5c28fb267'}}
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 627.89it/s]
+Loading weights:   0%|          | 0/318 [00:00<?, ?it/s]Loading weights:  61%|██████    | 193/318 [00:00<00:00, 1929.39it/s]Loading weights: 100%|██████████| 318/318 [00:00<00:00, 1524.81it/s]
+[transformers] [1mResNetModel LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--microsoft--resnet-50/snapshots/34c2154c194f829b11125337b98c8f5f9965ff19
+Key                 | Status     |  | 
+--------------------+------------+--+-
+classifier.1.bias   | UNEXPECTED |  | 
+classifier.1.weight | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+PARITY E3_rn50sup: PASS {'E3_rn50sup': {'max_abs_diff': 0.0, 'tol': 1e-05, 'ok': True, 'frozen_sha256': '7b35559f826208069562a967fba4581a1e234f0724e4f691debbff344955e2ad'}}
+PARITY F2_pixels: PASS {'F2_pixels': {'max_abs_diff': 0.0, 'tol': 1e-05, 'ok': True, 'frozen_sha256': 'f55b2c53f5743e6fcafec0966f4c573033b82524eeca42b6f6a477318cf6f1a9'}}

@@ -1,0 +1,3 @@
+R1_cvcl H1/H2/H3 written; statuses: {'H1': {'THINGS': 'ok', 'HSJ': 'ok', 'CIFAR10H': 'ok'}, 'H2': {'THINGS': 'ok', 'HSJ': 'ok'}}
+E2_vitsup H1/H2/H3 written; statuses: {'H1': {'THINGS': 'ok', 'HSJ': 'ok', 'CIFAR10H': 'ok'}, 'H2': {'THINGS': 'ok', 'HSJ': 'ok'}}
+F1_rn50rand0 H1/H2/H3 written; statuses: {'H1': {'THINGS': 'ok', 'HSJ': 'ok', 'CIFAR10H': 'ok'}, 'H2': {'THINGS': 'ok', 'HSJ': 'ok'}}
