@@ -1,0 +1,115 @@
+R1_cvcl c100train: existing cache reused, not re-encoded: /workspace/hda_cache/cvcl_cifar100_train.npz
+R1_cvcl c10pool: existing cache reused, not re-encoded: /workspace/hda_cache/cvcl_cifar_all10.npz
+[R1_cvcl c10test]  2048/10000 images, 466 img/min (this session)
+[R1_cvcl c10test]  4096/10000 images, 465 img/min (this session)
+[R1_cvcl c10test]  6144/10000 images, 466 img/min (this session)
+[R1_cvcl c10test]  8192/10000 images, 465 img/min (this session)
+[R1_cvcl c10test]  10000/10000 images, 466 img/min (this session)
+R1_cvcl c10test (10000, 512) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10test_R1_cvcl.npz
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 668.77it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 13528.03it/s]
+[transformers] [1mViTModel LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--google--vit-base-patch16-224/snapshots/3f49326eb077187dfe1c2a2bb15fbd74e6ab91e3
+Key               | Status     |  | 
+------------------+------------+--+-
+classifier.bias   | UNEXPECTED |  | 
+classifier.weight | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[E2_vitsup c100train]  2048/50000 images, 491 img/min (this session)
+[E2_vitsup c100train]  4096/50000 images, 491 img/min (this session)
+[E2_vitsup c100train]  6144/50000 images, 489 img/min (this session)
+[E2_vitsup c100train]  8192/50000 images, 484 img/min (this session)
+[E2_vitsup c100train]  10240/50000 images, 479 img/min (this session)
+[E2_vitsup c100train]  12288/50000 images, 478 img/min (this session)
+[E2_vitsup c100train]  14336/50000 images, 477 img/min (this session)
+[E2_vitsup c100train]  16384/50000 images, 475 img/min (this session)
+[E2_vitsup c100train]  18432/50000 images, 474 img/min (this session)
+[E2_vitsup c100train]  20480/50000 images, 471 img/min (this session)
+[E2_vitsup c100train]  22528/50000 images, 454 img/min (this session)
+[E2_vitsup c100train]  24576/50000 images, 453 img/min (this session)
+[E2_vitsup c100train]  26624/50000 images, 450 img/min (this session)
+[E2_vitsup c100train]  28672/50000 images, 451 img/min (this session)
+[E2_vitsup c100train]  30720/50000 images, 448 img/min (this session)
+[E2_vitsup c100train]  32768/50000 images, 448 img/min (this session)
+[E2_vitsup c100train]  34816/50000 images, 448 img/min (this session)
+[E2_vitsup c100train]  36864/50000 images, 448 img/min (this session)
+[E2_vitsup c100train]  38912/50000 images, 369 img/min (this session)
+[E2_vitsup c100train]  40960/50000 images, 373 img/min (this session)
+[E2_vitsup c100train]  43008/50000 images, 376 img/min (this session)
+[E2_vitsup c100train]  45056/50000 images, 379 img/min (this session)
+[E2_vitsup c100train]  47104/50000 images, 381 img/min (this session)
+[E2_vitsup c100train]  49152/50000 images, 383 img/min (this session)
+[E2_vitsup c100train]  50000/50000 images, 383 img/min (this session)
+E2_vitsup c100train (50000, 768) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c100train_E2_vitsup.npz
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 824.84it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 14495.94it/s]
+[transformers] [1mViTModel LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--google--vit-base-patch16-224/snapshots/3f49326eb077187dfe1c2a2bb15fbd74e6ab91e3
+Key               | Status     |  | 
+------------------+------------+--+-
+classifier.bias   | UNEXPECTED |  | 
+classifier.weight | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[E2_vitsup c10pool]  2000/2000 images, 436 img/min (this session)
+E2_vitsup c10pool (2000, 768) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10pool_E2_vitsup.npz
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 537.94it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 13793.62it/s]
+[transformers] [1mViTModel LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--google--vit-base-patch16-224/snapshots/3f49326eb077187dfe1c2a2bb15fbd74e6ab91e3
+Key               | Status     |  | 
+------------------+------------+--+-
+classifier.bias   | UNEXPECTED |  | 
+classifier.weight | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[E2_vitsup c10test]  2048/10000 images, 430 img/min (this session)
+[E2_vitsup c10test]  4096/10000 images, 431 img/min (this session)
+[E2_vitsup c10test]  6144/10000 images, 433 img/min (this session)
+[E2_vitsup c10test]  8192/10000 images, 434 img/min (this session)
+[E2_vitsup c10test]  10000/10000 images, 431 img/min (this session)
+E2_vitsup c10test (10000, 768) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10test_E2_vitsup.npz
+[F1_rn50rand0 c100train]  2048/50000 images, 808 img/min (this session)
+[F1_rn50rand0 c100train]  4096/50000 images, 837 img/min (this session)
+[F1_rn50rand0 c100train]  6144/50000 images, 845 img/min (this session)
+[F1_rn50rand0 c100train]  8192/50000 images, 851 img/min (this session)
+[F1_rn50rand0 c100train]  10240/50000 images, 852 img/min (this session)
+[F1_rn50rand0 c100train]  12288/50000 images, 853 img/min (this session)
+[F1_rn50rand0 c100train]  14336/50000 images, 854 img/min (this session)
+[F1_rn50rand0 c100train]  16384/50000 images, 860 img/min (this session)
+[F1_rn50rand0 c100train]  18432/50000 images, 862 img/min (this session)
+[F1_rn50rand0 c100train]  20480/50000 images, 862 img/min (this session)
+[F1_rn50rand0 c100train]  22528/50000 images, 861 img/min (this session)
+[F1_rn50rand0 c100train]  24576/50000 images, 856 img/min (this session)
+[F1_rn50rand0 c100train]  26624/50000 images, 844 img/min (this session)
+[F1_rn50rand0 c100train]  28672/50000 images, 842 img/min (this session)
+[F1_rn50rand0 c100train]  30720/50000 images, 843 img/min (this session)
+[F1_rn50rand0 c100train]  32768/50000 images, 841 img/min (this session)
+[F1_rn50rand0 c100train]  34816/50000 images, 836 img/min (this session)
+[F1_rn50rand0 c100train]  36864/50000 images, 829 img/min (this session)
+[F1_rn50rand0 c100train]  38912/50000 images, 828 img/min (this session)
+[F1_rn50rand0 c100train]  40960/50000 images, 823 img/min (this session)
+[F1_rn50rand0 c100train]  43008/50000 images, 820 img/min (this session)
+[F1_rn50rand0 c100train]  45056/50000 images, 818 img/min (this session)
+[F1_rn50rand0 c100train]  47104/50000 images, 818 img/min (this session)
+[F1_rn50rand0 c100train]  49152/50000 images, 820 img/min (this session)
+[F1_rn50rand0 c100train]  50000/50000 images, 821 img/min (this session)
+F1_rn50rand0 c100train (50000, 2048) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c100train_F1_rn50rand0.npz
+[F1_rn50rand0 c10pool]  2000/2000 images, 855 img/min (this session)
+F1_rn50rand0 c10pool (2000, 2048) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10pool_F1_rn50rand0.npz
+[F1_rn50rand0 c10test]  2048/10000 images, 800 img/min (this session)
+[F1_rn50rand0 c10test]  4096/10000 images, 811 img/min (this session)
+[F1_rn50rand0 c10test]  6144/10000 images, 822 img/min (this session)
+[F1_rn50rand0 c10test]  8192/10000 images, 838 img/min (this session)
+[F1_rn50rand0 c10test]  10000/10000 images, 847 img/min (this session)
+F1_rn50rand0 c10test (10000, 2048) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10test_F1_rn50rand0.npz
+R1_cvcl c100train: existing cache reused, not re-encoded: /workspace/hda_cache/cvcl_cifar100_train.npz
+R1_cvcl c10pool: existing cache reused, not re-encoded: /workspace/hda_cache/cvcl_cifar_all10.npz
+R1_cvcl c10test: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10test_R1_cvcl.npz)
+E2_vitsup c100train: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c100train_E2_vitsup.npz)
+E2_vitsup c10pool: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10pool_E2_vitsup.npz)
+E2_vitsup c10test: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10test_E2_vitsup.npz)
+F1_rn50rand0 c100train: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c100train_F1_rn50rand0.npz)
+F1_rn50rand0 c10pool: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10pool_F1_rn50rand0.npz)
+F1_rn50rand0 c10test: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10test_F1_rn50rand0.npz)

@@ -1,0 +1,270 @@
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 317.71it/s]
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights: 100%|██████████| 223/223 [00:00<00:00, 12568.60it/s]
+[R0_dinov2s c100train]  2048/50000 images, 1051 img/min (this session)
+[R0_dinov2s c100train]  4096/50000 images, 1073 img/min (this session)
+[R0_dinov2s c100train]  6144/50000 images, 1070 img/min (this session)
+[R0_dinov2s c100train]  8192/50000 images, 1069 img/min (this session)
+[R0_dinov2s c100train]  10240/50000 images, 1068 img/min (this session)
+[R0_dinov2s c100train]  12288/50000 images, 1071 img/min (this session)
+[R0_dinov2s c100train]  14336/50000 images, 1074 img/min (this session)
+[R0_dinov2s c100train]  16384/50000 images, 1073 img/min (this session)
+[R0_dinov2s c100train]  18432/50000 images, 1073 img/min (this session)
+[R0_dinov2s c100train]  20480/50000 images, 1073 img/min (this session)
+[R0_dinov2s c100train]  22528/50000 images, 1073 img/min (this session)
+[R0_dinov2s c100train]  24576/50000 images, 1082 img/min (this session)
+[R0_dinov2s c100train]  26624/50000 images, 1089 img/min (this session)
+[R0_dinov2s c100train]  28672/50000 images, 1096 img/min (this session)
+[R0_dinov2s c100train]  30720/50000 images, 1102 img/min (this session)
+[R0_dinov2s c100train]  32768/50000 images, 1107 img/min (this session)
+[R0_dinov2s c100train]  34816/50000 images, 1112 img/min (this session)
+[R0_dinov2s c100train]  36864/50000 images, 1115 img/min (this session)
+[R0_dinov2s c100train]  38912/50000 images, 1116 img/min (this session)
+[R0_dinov2s c100train]  40960/50000 images, 1118 img/min (this session)
+[R0_dinov2s c100train]  43008/50000 images, 1119 img/min (this session)
+[R0_dinov2s c100train]  45056/50000 images, 1119 img/min (this session)
+[R0_dinov2s c100train]  47104/50000 images, 1120 img/min (this session)
+[R0_dinov2s c100train]  49152/50000 images, 1120 img/min (this session)
+[R0_dinov2s c100train]  50000/50000 images, 1121 img/min (this session)
+R0_dinov2s c100train (50000, 384) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c100train_R0_dinov2s.npz
+R0_dinov2s c10pool: existing cache reused, not re-encoded: /workspace/lexical-consensus-openmind/revision_runs/repo/.cache/embeddings_exp007/cifar_all10.npz
+R0_dinov2s c10test: existing cache reused, not re-encoded: /workspace/hda_cache/dino_c10_test.npz
+Fetching 6 files:   0%|          | 0/6 [00:00<?, ?it/s]Fetching 6 files: 100%|██████████| 6/6 [00:00<00:00, 1629.38it/s]
+Loading weights:   0%|          | 0/208 [00:00<?, ?it/s]Loading weights: 100%|██████████| 208/208 [00:00<00:00, 12712.98it/s]
+[transformers] [1mSiglipVisionModel LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--google--siglip-base-patch16-224/snapshots/7fd15f0689c79d79e38b1c2e2e2370a7bf2761ed
+Key                                                          | Status     |  | 
+-------------------------------------------------------------+------------+--+-
+text_model.encoder.layers.{0...11}.self_attn.v_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc2.bias              | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm2.weight        | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.k_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.out_proj.bias   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.k_proj.weight   | UNEXPECTED |  | 
+text_model.embeddings.token_embedding.weight                 | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc1.weight            | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc1.bias              | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.v_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm1.weight        | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm1.bias          | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc2.weight            | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.q_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm2.bias          | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.out_proj.weight | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.q_proj.bias     | UNEXPECTED |  | 
+logit_scale                                                  | UNEXPECTED |  | 
+text_model.head.weight                                       | UNEXPECTED |  | 
+text_model.final_layer_norm.weight                           | UNEXPECTED |  | 
+text_model.final_layer_norm.bias                             | UNEXPECTED |  | 
+logit_bias                                                   | UNEXPECTED |  | 
+text_model.head.bias                                         | UNEXPECTED |  | 
+text_model.embeddings.position_embedding.weight              | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[E1_siglip c100train]  2048/50000 images, 424 img/min (this session)
+[E1_siglip c100train]  4096/50000 images, 421 img/min (this session)
+[E1_siglip c100train]  6144/50000 images, 422 img/min (this session)
+[E1_siglip c100train]  8192/50000 images, 416 img/min (this session)
+[E1_siglip c100train]  10240/50000 images, 389 img/min (this session)
+[E1_siglip c100train]  12288/50000 images, 391 img/min (this session)
+[E1_siglip c100train]  14336/50000 images, 389 img/min (this session)
+[E1_siglip c100train]  16384/50000 images, 387 img/min (this session)
+[E1_siglip c100train]  18432/50000 images, 388 img/min (this session)
+[E1_siglip c100train]  20480/50000 images, 390 img/min (this session)
+[E1_siglip c100train]  22528/50000 images, 392 img/min (this session)
+[E1_siglip c100train]  24576/50000 images, 302 img/min (this session)
+[E1_siglip c100train]  26624/50000 images, 309 img/min (this session)
+[E1_siglip c100train]  28672/50000 images, 314 img/min (this session)
+[E1_siglip c100train]  30720/50000 images, 319 img/min (this session)
+[E1_siglip c100train]  32768/50000 images, 323 img/min (this session)
+[E1_siglip c100train]  34816/50000 images, 326 img/min (this session)
+[E1_siglip c100train]  36864/50000 images, 329 img/min (this session)
+[E1_siglip c100train]  38912/50000 images, 331 img/min (this session)
+[E1_siglip c100train]  40960/50000 images, 333 img/min (this session)
+[E1_siglip c100train]  43008/50000 images, 336 img/min (this session)
+[E1_siglip c100train]  45056/50000 images, 338 img/min (this session)
+[E1_siglip c100train]  47104/50000 images, 340 img/min (this session)
+[E1_siglip c100train]  49152/50000 images, 342 img/min (this session)
+[E1_siglip c100train]  50000/50000 images, 343 img/min (this session)
+E1_siglip c100train (50000, 768) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c100train_E1_siglip.npz
+Fetching 6 files:   0%|          | 0/6 [00:00<?, ?it/s]Fetching 6 files: 100%|██████████| 6/6 [00:00<00:00, 930.86it/s]
+Loading weights:   0%|          | 0/208 [00:00<?, ?it/s]Loading weights: 100%|██████████| 208/208 [00:00<00:00, 8865.02it/s]
+[transformers] [1mSiglipVisionModel LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--google--siglip-base-patch16-224/snapshots/7fd15f0689c79d79e38b1c2e2e2370a7bf2761ed
+Key                                                          | Status     |  | 
+-------------------------------------------------------------+------------+--+-
+text_model.final_layer_norm.weight                           | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm1.weight        | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm2.bias          | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.q_proj.weight   | UNEXPECTED |  | 
+text_model.embeddings.token_embedding.weight                 | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc2.bias              | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc2.weight            | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.v_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc1.bias              | UNEXPECTED |  | 
+text_model.final_layer_norm.bias                             | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.k_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm2.weight        | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.out_proj.weight | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.k_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm1.bias          | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.q_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc1.weight            | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.out_proj.bias   | UNEXPECTED |  | 
+text_model.head.bias                                         | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.v_proj.bias     | UNEXPECTED |  | 
+text_model.embeddings.position_embedding.weight              | UNEXPECTED |  | 
+logit_bias                                                   | UNEXPECTED |  | 
+logit_scale                                                  | UNEXPECTED |  | 
+text_model.head.weight                                       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[E1_siglip c10pool]  2000/2000 images, 407 img/min (this session)
+E1_siglip c10pool (2000, 768) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10pool_E1_siglip.npz
+Fetching 6 files:   0%|          | 0/6 [00:00<?, ?it/s]Fetching 6 files: 100%|██████████| 6/6 [00:00<00:00, 731.48it/s]
+Loading weights:   0%|          | 0/208 [00:00<?, ?it/s]Loading weights: 100%|██████████| 208/208 [00:00<00:00, 12775.53it/s]
+[transformers] [1mSiglipVisionModel LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--google--siglip-base-patch16-224/snapshots/7fd15f0689c79d79e38b1c2e2e2370a7bf2761ed
+Key                                                          | Status     |  | 
+-------------------------------------------------------------+------------+--+-
+text_model.encoder.layers.{0...11}.layer_norm1.bias          | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.out_proj.bias   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm2.weight        | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.k_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc2.bias              | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc1.weight            | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm1.weight        | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.q_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc1.bias              | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc2.weight            | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.k_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.q_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.out_proj.weight | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.v_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.v_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm2.bias          | UNEXPECTED |  | 
+text_model.embeddings.position_embedding.weight              | UNEXPECTED |  | 
+text_model.final_layer_norm.weight                           | UNEXPECTED |  | 
+text_model.head.weight                                       | UNEXPECTED |  | 
+text_model.final_layer_norm.bias                             | UNEXPECTED |  | 
+text_model.embeddings.token_embedding.weight                 | UNEXPECTED |  | 
+text_model.head.bias                                         | UNEXPECTED |  | 
+logit_scale                                                  | UNEXPECTED |  | 
+logit_bias                                                   | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[E1_siglip c10test]  2048/10000 images, 424 img/min (this session)
+[E1_siglip c10test]  4096/10000 images, 414 img/min (this session)
+[E1_siglip c10test]  6144/10000 images, 395 img/min (this session)
+[E1_siglip c10test]  8192/10000 images, 394 img/min (this session)
+[E1_siglip c10test]  10000/10000 images, 390 img/min (this session)
+E1_siglip c10test (10000, 768) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10test_E1_siglip.npz
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 721.25it/s]
+Loading weights:   0%|          | 0/318 [00:00<?, ?it/s]Loading weights:  84%|████████▍ | 267/318 [00:00<00:00, 2560.89it/s]Loading weights: 100%|██████████| 318/318 [00:00<00:00, 2220.97it/s]
+[transformers] [1mResNetModel LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--microsoft--resnet-50/snapshots/34c2154c194f829b11125337b98c8f5f9965ff19
+Key                 | Status     |  | 
+--------------------+------------+--+-
+classifier.1.weight | UNEXPECTED |  | 
+classifier.1.bias   | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[E3_rn50sup c100train]  2048/50000 images, 617 img/min (this session)
+[E3_rn50sup c100train]  4096/50000 images, 648 img/min (this session)
+[E3_rn50sup c100train]  6144/50000 images, 650 img/min (this session)
+[E3_rn50sup c100train]  8192/50000 images, 649 img/min (this session)
+[E3_rn50sup c100train]  10240/50000 images, 658 img/min (this session)
+[E3_rn50sup c100train]  12288/50000 images, 669 img/min (this session)
+[E3_rn50sup c100train]  14336/50000 images, 678 img/min (this session)
+[E3_rn50sup c100train]  16384/50000 images, 680 img/min (this session)
+[E3_rn50sup c100train]  18432/50000 images, 681 img/min (this session)
+[E3_rn50sup c100train]  20480/50000 images, 684 img/min (this session)
+[E3_rn50sup c100train]  22528/50000 images, 690 img/min (this session)
+[E3_rn50sup c100train]  24576/50000 images, 694 img/min (this session)
+[E3_rn50sup c100train]  26624/50000 images, 697 img/min (this session)
+[E3_rn50sup c100train]  28672/50000 images, 699 img/min (this session)
+[E3_rn50sup c100train]  30720/50000 images, 701 img/min (this session)
+[E3_rn50sup c100train]  32768/50000 images, 702 img/min (this session)
+[E3_rn50sup c100train]  34816/50000 images, 702 img/min (this session)
+[E3_rn50sup c100train]  36864/50000 images, 703 img/min (this session)
+[E3_rn50sup c100train]  38912/50000 images, 703 img/min (this session)
+[E3_rn50sup c100train]  40960/50000 images, 700 img/min (this session)
+[E3_rn50sup c100train]  43008/50000 images, 700 img/min (this session)
+[E3_rn50sup c100train]  45056/50000 images, 700 img/min (this session)
+[E3_rn50sup c100train]  47104/50000 images, 699 img/min (this session)
+[E3_rn50sup c100train]  49152/50000 images, 699 img/min (this session)
+[E3_rn50sup c100train]  50000/50000 images, 699 img/min (this session)
+E3_rn50sup c100train (50000, 2048) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c100train_E3_rn50sup.npz
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 158.43it/s]
+Loading weights:   0%|          | 0/318 [00:00<?, ?it/s]Loading weights: 100%|██████████| 318/318 [00:00<00:00, 10406.00it/s]
+[transformers] [1mResNetModel LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--microsoft--resnet-50/snapshots/34c2154c194f829b11125337b98c8f5f9965ff19
+Key                 | Status     |  | 
+--------------------+------------+--+-
+classifier.1.bias   | UNEXPECTED |  | 
+classifier.1.weight | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[E3_rn50sup c10pool]  2000/2000 images, 699 img/min (this session)
+E3_rn50sup c10pool (2000, 2048) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10pool_E3_rn50sup.npz
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 782.18it/s]
+Loading weights:   0%|          | 0/318 [00:00<?, ?it/s]Loading weights: 100%|██████████| 318/318 [00:00<00:00, 14078.11it/s]
+[transformers] [1mResNetModel LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--microsoft--resnet-50/snapshots/34c2154c194f829b11125337b98c8f5f9965ff19
+Key                 | Status     |  | 
+--------------------+------------+--+-
+classifier.1.bias   | UNEXPECTED |  | 
+classifier.1.weight | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[E3_rn50sup c10test]  2048/10000 images, 685 img/min (this session)
+[E3_rn50sup c10test]  4096/10000 images, 728 img/min (this session)
+[E3_rn50sup c10test]  6144/10000 images, 729 img/min (this session)
+[E3_rn50sup c10test]  8192/10000 images, 735 img/min (this session)
+[E3_rn50sup c10test]  10000/10000 images, 738 img/min (this session)
+E3_rn50sup c10test (10000, 2048) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10test_E3_rn50sup.npz
+[F2_pixels c100train]  2048/50000 images, 48371 img/min (this session)
+[F2_pixels c100train]  4096/50000 images, 50419 img/min (this session)
+[F2_pixels c100train]  6144/50000 images, 52039 img/min (this session)
+[F2_pixels c100train]  8192/50000 images, 52682 img/min (this session)
+[F2_pixels c100train]  10240/50000 images, 53285 img/min (this session)
+[F2_pixels c100train]  12288/50000 images, 53460 img/min (this session)
+[F2_pixels c100train]  14336/50000 images, 53396 img/min (this session)
+[F2_pixels c100train]  16384/50000 images, 53897 img/min (this session)
+[F2_pixels c100train]  18432/50000 images, 54595 img/min (this session)
+[F2_pixels c100train]  20480/50000 images, 55156 img/min (this session)
+[F2_pixels c100train]  22528/50000 images, 55465 img/min (this session)
+[F2_pixels c100train]  24576/50000 images, 55403 img/min (this session)
+[F2_pixels c100train]  26624/50000 images, 55356 img/min (this session)
+[F2_pixels c100train]  28672/50000 images, 55513 img/min (this session)
+[F2_pixels c100train]  30720/50000 images, 55768 img/min (this session)
+[F2_pixels c100train]  32768/50000 images, 56002 img/min (this session)
+[F2_pixels c100train]  34816/50000 images, 56302 img/min (this session)
+[F2_pixels c100train]  36864/50000 images, 56432 img/min (this session)
+[F2_pixels c100train]  38912/50000 images, 56384 img/min (this session)
+[F2_pixels c100train]  40960/50000 images, 56466 img/min (this session)
+[F2_pixels c100train]  43008/50000 images, 56491 img/min (this session)
+[F2_pixels c100train]  45056/50000 images, 56476 img/min (this session)
+[F2_pixels c100train]  47104/50000 images, 56582 img/min (this session)
+[F2_pixels c100train]  49152/50000 images, 56562 img/min (this session)
+[F2_pixels c100train]  50000/50000 images, 56606 img/min (this session)
+F2_pixels c100train (50000, 3072) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c100train_F2_pixels.npz
+[F2_pixels c10pool]  2000/2000 images, 55876 img/min (this session)
+F2_pixels c10pool (2000, 3072) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10pool_F2_pixels.npz
+[F2_pixels c10test]  2048/10000 images, 58993 img/min (this session)
+[F2_pixels c10test]  4096/10000 images, 57923 img/min (this session)
+[F2_pixels c10test]  6144/10000 images, 59021 img/min (this session)
+[F2_pixels c10test]  8192/10000 images, 59393 img/min (this session)
+[F2_pixels c10test]  10000/10000 images, 59965 img/min (this session)
+F2_pixels c10test (10000, 3072) -> /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10test_F2_pixels.npz
+R0_dinov2s c100train: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c100train_R0_dinov2s.npz)
+R0_dinov2s c10pool: existing cache reused, not re-encoded: /workspace/lexical-consensus-openmind/revision_runs/repo/.cache/embeddings_exp007/cifar_all10.npz
+R0_dinov2s c10test: existing cache reused, not re-encoded: /workspace/hda_cache/dino_c10_test.npz
+E1_siglip c100train: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c100train_E1_siglip.npz)
+E1_siglip c10pool: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10pool_E1_siglip.npz)
+E1_siglip c10test: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10test_E1_siglip.npz)
+E3_rn50sup c100train: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c100train_E3_rn50sup.npz)
+E3_rn50sup c10pool: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10pool_E3_rn50sup.npz)
+E3_rn50sup c10test: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10test_E3_rn50sup.npz)
+F2_pixels c100train: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c100train_F2_pixels.npz)
+F2_pixels c10pool: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10pool_F2_pixels.npz)
+F2_pixels c10test: already done (/workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/emb/c10test_F2_pixels.npz)

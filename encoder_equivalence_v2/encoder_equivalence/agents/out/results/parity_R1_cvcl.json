@@ -1,0 +1,12 @@
+{
+ "encoder": "R1_cvcl",
+ "ok": true,
+ "detail": {
+  "R1_cvcl": {
+   "max_abs_diff": 0.0,
+   "tol": 1e-05,
+   "ok": true,
+   "frozen_sha256": "ae62f0c988ee2f524852a1ce96969a223ff63b6d5894ecc652bf2cc5dbf72c85"
+  }
+ }
+}

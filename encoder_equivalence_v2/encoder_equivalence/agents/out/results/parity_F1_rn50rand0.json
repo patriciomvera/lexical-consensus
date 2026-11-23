@@ -1,0 +1,12 @@
+{
+ "encoder": "F1_rn50rand0",
+ "ok": true,
+ "detail": {
+  "F1_rn50rand0": {
+   "max_abs_diff": 0.0,
+   "tol": 1e-05,
+   "ok": true,
+   "frozen_sha256": "5c95e69f81369111871b8b845716f6e4dd61fdba69c34dd05eec5dcbeafa8402"
+  }
+ }
+}

@@ -1,0 +1,237 @@
+{
+ "encoder": "F2_pixels",
+ "learners": {
+  "centroid": {
+   "model_ps": {
+    "n": 100,
+    "beta_v1": -0.02269,
+    "p_v1": 0.17323435614128965,
+    "beta_sem_v1": -0.00512,
+    "p_sem_v1": 0.9008730805237729,
+    "r2p_perc_v1": 0.019,
+    "r2p_sem_v1": 0.0002,
+    "vif": 1.053,
+    "beta_z": -0.009888284752419159,
+    "p_hc3": 0.1818201903140355,
+    "ci_lo_z": -0.024403783743769093,
+    "ci_hi_z": 0.004627214238930777,
+    "p_sem_hc3": 0.8924730247917705,
+    "r_partial": -0.13797121523356695,
+    "r_ci_lo": -0.32649365865525154,
+    "r_ci_hi": 0.06110859775329919,
+    "r2p_perc": 0.019036056233027204,
+    "r2p_sem": 0.00016076025700676385,
+    "n_others": 1,
+    "status": "ok"
+   },
+   "q3q4": {
+    "n_pairs": 46,
+    "rho_perc": -0.3222,
+    "rho_sem": 0.1721,
+    "q3_median_c1": 0.46175,
+    "q4_median_c1": 0.5065999999999999
+   },
+   "quadrant_medians": {
+    "Q1": 0.4972,
+    "Q2": 0.47955000000000003,
+    "Q3": 0.46175,
+    "Q4": 0.5065999999999999
+   },
+   "quadrant_counts": {
+    "Q1": 22,
+    "Q2": 32,
+    "Q3": 28,
+    "Q4": 18
+   },
+   "rule": "B",
+   "evidence": [
+    "A1 FAIL: \u03b2_perc=-0.0227 p=0.173 (need p<0.05 and \u03b2<0)",
+    "A2: \u03b2_sem not dominant (p=0.901, partial_R\u00b2_perc/partial_R\u00b2_sem=0.0190/0.0002) \u2713",
+    "A3: Spearman(C1,d_perc) in Q3+Q4 = -0.322 (negative, |\u03c1|>0.3, |\u03c1_perc|>|\u03c1_sem|=0.172) \u2713",
+    "A4: Q4 median C1=0.507 > Q3 median C1=0.462 \u2713",
+    "Rule B: not all Rule A criteria met, no Rule C criteria met \u2014 collinearity or insufficient dissociation power."
+   ]
+  },
+  "exemplar_knn_k3": {
+   "model_ps": {
+    "n": 100,
+    "beta_v1": -0.02354,
+    "p_v1": 0.1301938023711095,
+    "beta_sem_v1": 0.00377,
+    "p_sem_v1": 0.921642625872015,
+    "r2p_perc_v1": 0.0235,
+    "r2p_sem_v1": 0.0001,
+    "vif": 1.053,
+    "beta_z": -0.010259096653840925,
+    "p_hc3": 0.1370514798140026,
+    "ci_lo_z": -0.02378252457591694,
+    "ci_hi_z": 0.003264331268235091,
+    "p_sem_hc3": 0.916830333532286,
+    "r_partial": -0.15314245091086973,
+    "r_ci_lo": -0.3402705229968585,
+    "r_ci_hi": 0.04565312419960878,
+    "r2p_perc": 0.02345261027098806,
+    "r2p_sem": 0.00010025925642999196,
+    "n_others": 1,
+    "status": "ok"
+   },
+   "q3q4": {
+    "n_pairs": 46,
+    "rho_perc": -0.2741,
+    "rho_sem": 0.1774,
+    "q3_median_c1": 0.45625,
+    "q4_median_c1": 0.51275
+   },
+   "quadrant_medians": {
+    "Q1": 0.5044500000000001,
+    "Q2": 0.48635,
+    "Q3": 0.45625,
+    "Q4": 0.51275
+   },
+   "quadrant_counts": {
+    "Q1": 22,
+    "Q2": 32,
+    "Q3": 28,
+    "Q4": 18
+   },
+   "rule": "B",
+   "evidence": [
+    "A1 FAIL: \u03b2_perc=-0.0235 p=0.130 (need p<0.05 and \u03b2<0)",
+    "A2: \u03b2_sem not dominant (p=0.922, partial_R\u00b2_perc/partial_R\u00b2_sem=0.0235/0.0001) \u2713",
+    "A3 FAIL: \u03c1_perc=-0.274, \u03c1_sem=0.177, n_diss=46 (need n\u226520, \u03c1<0, |\u03c1|>0.3, |\u03c1_perc|>|\u03c1_sem|)",
+    "A4: Q4 median C1=0.513 > Q3 median C1=0.456 \u2713",
+    "Rule B: not all Rule A criteria met, no Rule C criteria met \u2014 collinearity or insufficient dissociation power."
+   ]
+  },
+  "logreg": {
+   "model_ps": {
+    "n": 100,
+    "beta_v1": -0.02232,
+    "p_v1": 0.22156213189248844,
+    "beta_sem_v1": -0.00278,
+    "p_sem_v1": 0.9507801336966036,
+    "r2p_perc_v1": 0.0154,
+    "r2p_sem_v1": 0.0,
+    "vif": 1.053,
+    "beta_z": -0.009725557114311202,
+    "p_hc3": 0.2255269879326368,
+    "ci_lo_z": -0.025453561931554142,
+    "ci_hi_z": 0.006002447702931738,
+    "p_sem_hc3": 0.9445152183165418,
+    "r_partial": -0.12395411757585571,
+    "r_ci_lo": -0.313693262515986,
+    "r_ci_hi": 0.07530396322112114,
+    "r2p_perc": 0.015364623264009027,
+    "r2p_sem": 3.948302884445455e-05,
+    "n_others": 1,
+    "status": "ok"
+   },
+   "q3q4": {
+    "n_pairs": 46,
+    "rho_perc": -0.2683,
+    "rho_sem": 0.15,
+    "q3_median_c1": 0.46509999999999996,
+    "q4_median_c1": 0.5219
+   },
+   "quadrant_medians": {
+    "Q1": 0.51345,
+    "Q2": 0.49345,
+    "Q3": 0.46509999999999996,
+    "Q4": 0.5219
+   },
+   "quadrant_counts": {
+    "Q1": 22,
+    "Q2": 32,
+    "Q3": 28,
+    "Q4": 18
+   },
+   "rule": "B",
+   "evidence": [
+    "A1 FAIL: \u03b2_perc=-0.0223 p=0.222 (need p<0.05 and \u03b2<0)",
+    "A2: \u03b2_sem not dominant (p=0.951, partial_R\u00b2_perc/partial_R\u00b2_sem=0.0154/0.0000) \u2713",
+    "A3 FAIL: \u03c1_perc=-0.268, \u03c1_sem=0.150, n_diss=46 (need n\u226520, \u03c1<0, |\u03c1|>0.3, |\u03c1_perc|>|\u03c1_sem|)",
+    "A4: Q4 median C1=0.522 > Q3 median C1=0.465 \u2713",
+    "Rule B: not all Rule A criteria met, no Rule C criteria met \u2014 collinearity or insufficient dissociation power."
+   ]
+  },
+  "random": {
+   "model_ps": {
+    "n": 100,
+    "beta_v1": 0.00101,
+    "p_v1": 0.585576323323585,
+    "beta_sem_v1": 0.00024,
+    "p_sem_v1": 0.9582930095928704,
+    "r2p_perc_v1": 0.0031,
+    "r2p_sem_v1": 0.0,
+    "vif": 1.053,
+    "beta_z": 0.0004388297367379189,
+    "p_hc3": 0.5510235062533442,
+    "ci_lo_z": -0.0010037253588343243,
+    "ci_hi_z": 0.001881384832310162,
+    "p_sem_hc3": 0.9536525747743829,
+    "r_partial": 0.055462634972131206,
+    "r_ci_lo": -0.1435241958924997,
+    "r_ci_hi": 0.25013917628832566,
+    "r2p_perc": 0.003076103878052108,
+    "r2p_sem": 2.8339626178039952e-05,
+    "n_others": 1,
+    "status": "ok"
+   },
+   "q3q4": {
+    "n_pairs": 46,
+    "rho_perc": 0.014,
+    "rho_sem": -0.0941,
+    "q3_median_c1": 0.33399999999999996,
+    "q4_median_c1": 0.33235
+   },
+   "quadrant_medians": {
+    "Q1": 0.32945,
+    "Q2": 0.3311,
+    "Q3": 0.33399999999999996,
+    "Q4": 0.33235
+   },
+   "quadrant_counts": {
+    "Q1": 22,
+    "Q2": 32,
+    "Q3": 28,
+    "Q4": 18
+   },
+   "rule": "C",
+   "evidence": [
+    "Q3 median C1=0.334 > Q4 median C1=0.332 (opposite of Rule A prediction)"
+   ]
+  }
+ },
+ "test": {
+  "n": 100,
+  "beta_v1": -0.02269,
+  "p_v1": 0.17323435614128965,
+  "beta_sem_v1": -0.00512,
+  "p_sem_v1": 0.9008730805237729,
+  "r2p_perc_v1": 0.019,
+  "r2p_sem_v1": 0.0002,
+  "vif": 1.053,
+  "beta_z": -0.009888284752419159,
+  "p_hc3": 0.1818201903140355,
+  "ci_lo_z": -0.024403783743769093,
+  "ci_hi_z": 0.004627214238930777,
+  "p_sem_hc3": 0.8924730247917705,
+  "r_partial": -0.13797121523356695,
+  "r_ci_lo": -0.32649365865525154,
+  "r_ci_hi": 0.06110859775329919,
+  "r2p_perc": 0.019036056233027204,
+  "r2p_sem": 0.00016076025700676385,
+  "n_others": 1,
+  "status": "ok"
+ },
+ "rule_centroid": "B",
+ "status": "ok",
+ "rule_centroid_q100_descriptiva": "B",
+ "quadrant_counts_100_descriptiva": {
+  "Q1": 28,
+  "Q2": 28,
+  "Q3": 22,
+  "Q4": 22
+ },
+ "seconds": 169.1
+}

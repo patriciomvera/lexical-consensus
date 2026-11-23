@@ -1,0 +1,122 @@
+FREEZE agentes v2 (arXiv 2611.14116, addendum to FREEZE_encoders_v2.txt) - internal freeze, NOT an external preregistration
+time: 2026-11-22 18:00:36 America/Santiago (UTC-0300)
+human freeze at freeze time: VERIFY 47 files: OK; files not in manifest: ['encoder_equivalence/out/emb_E1_siglip_s6common.npz', 'encoder_equivalence/out/emb_E2_vitsup_s6common.npz', 'encoder_equivalence/out/emb_E3_rn50sup_s6common.npz', 'encoder_equivalence/out/emb_E4_mae_s6common.npz', 'encoder_equivalence/out/emb_F1_rn50rand0_s6common.npz', 'encoder_equivalence/out/emb_F2_pixels_s6common.npz', 'encoder_equivalence/out/emb_O1_dinov2b_s6common.npz', 'encoder_equivalence/out/emb_O2_openclip_s6common.npz', 'encoder_equivalence/out/emb_R0_dinov2s_s6common.npz', 'encoder_equivalence/out/emb_R1_cvcl_s6common.npz']
+files: 99
+
+# R0 / v1 CIFAR-10 cache (REVISION5 C1): revision_runs/repo/.cache/embeddings_exp007/cifar_all10.npz sha256 9744d7cfd6ed2c284ec4797c5d27d87bc512e4a1bba5d25d0b8994b14668024d
+#   rebuilt on 22-11-2026 after the box restart with the v1 code (revision_runs/repo/src/agents/perception.py, unchanged) and
+#   torch 2.14.1+cpu, transformers 5.20.2, numpy 2.5.4, scipy 1.18.1, scikit-learn 1.9.1, pandas 3.1.0, huggingface_hub 2.3.0 (CPU).
+#   facebook/dinov2-small revision ed25f3a31f01632728cabb09d1542f84ab7b0056: perception.py does NOT pin a revision
+#   (from_pretrained(DINO_MODEL)); on 22-11 the hub 'main' ref = ed25f3a3 = the revision pinned in 01_embed.py / 10_agent_embed.py.
+#   Independent verification by Ariadna (REVISION5, full precision): max|delta| 8.9e-8 on the 45 pairs vs pairs_c10.csv and
+#   5.6e-8 on the 10 tiers vs tiers_c10.csv.
+# (b) decisions (ACLARACIONES_scripts.md section (b), REVISION5): taken AFTER the human run and BEFORE any agent result;
+#   none uses human values (no human result was read to choose them).
+# COMPUTE (REVISION5 C5): primary ~13-28 core-h, ~3.5-7 h wall, 3 processes (<= 1.5 GB each), local CPU, no GPU/API, $0.
+#   Cap 14 h wall from the start of 'primary'. Rate (img/min) checked 15 min after the embeddings start; < 50 % of the
+#   measured rate -> logged and re-estimated. Over the cap: deviation logged; cut FIRST the sensitivities, THEN H4 per
+#   encoder; D-todos and the rest of 'primary' are never cut. Embeddings backed up outside /tmp (+SHA256SUMS) after step 3.
+# Patricio's confirmations (DONE): (1) b1, rebuilding the v1 R0 CIFAR-10 cache + recovering weights/CIFAR-10, approved 22-11-2026
+#   15:16 America/Santiago (message t218u); (2) freeze today and run on 23-11 at 08:30 (ahead of P1: freeze <= 27, run 28-29),
+#   approved 22-11-2026 17:59 America/Santiago ("Sí, congela hoy cuando Ariadna dé el OK y parte mañana a las 08:30").
+# Scripts review: REVISION5 (VB con condiciones) + REVISION5b_ariadna_verificacion_2026-11-22.md (OK para congelar, 16:48).
+
+78bdb8db012b4c97f4e722d0b47ffb41ccc5d25e0f93f42db852bad8214b8d14  /workspace/hda_cache/cvcl_cifar100_train.npz
+7cad8ecc9ca996c477db8226f90ea643716fcffc7cd4632b765e75ad67614018  /workspace/hda_cache/cvcl_cifar_all10.npz
+d2f55f0a3503fc1f30f9eb1de032f718a4e03af9112700a0a9bcf13117298ea0  /workspace/hda_cache/dino_c100_train_sub100.npz
+083281e7905a09dda78b8c9e95406a6dc3bff15f3fac40c4c6bd14ab981e002b  /workspace/hda_cache/dino_c10_test.npz
+7b0315cc94c32e7f129aec96650ffea91d3154c8e72b1d93f60942a59eb21dd7  REVISION4_ariadna_agentes_multi_encoder_2026-11-18.md
+21ba87e108d622a1c6dcb3b5b359e7ebfe9432853e5a17af9d7e21c6ce71e666  REVISION5_ariadna_scripts_agentes_2026-11-22.md
+d0d2a3061cdbf19a5ab1788ca6b8e5dca71d81f40d2c7ec0f99e721ec1bdd9fd  REVISION5b_ariadna_verificacion_2026-11-22.md
+21125d6a91ed5f8a3d28a8fbba56455eddb222a7075462a1f90182470a3cf87d  encoder_equivalence/DIFF_agentes_propuesta.patch
+975aab4cc922a73b3b531fb22f26ce87145143c89a8b8ea6d44430a00894b606  encoder_equivalence/FREEZE_encoders_v2.txt
+a0c2999a57efc8473c88012fe37ddd04b6833a384c4df8a96f754c09162b60b2  encoder_equivalence/FREEZE_encoders_v2_complemento.txt
+c7d4763ae39c1ac0e07d60854dfa2dab0c88c2a0549ae44e1278334cd74420be  encoder_equivalence/agents/ACLARACIONES_scripts.md
+e24a8ec734a948f0a03ce766090e33e511e6b5810419e1df7763d676aa288601  encoder_equivalence/agents/README_agentes.md
+e53c84ef242487b60721191795518ae120ac81359af676853ba43839de2fcb5c  encoder_equivalence/agents/scripts/10_agent_embed.py
+b9938c72f95d51742307c9bb070f2d5753491b5b79ba157d6ed032866747168d  encoder_equivalence/agents/scripts/11_agent_sims.py
+c4e7e796a6b665ab88dd35d28ee2840c70c1cf6963f97d92b7af833a5d56a425  encoder_equivalence/agents/scripts/12_agent_h1h2h3.py
+0aa2591de09b4d43735499df7902194156aebf58cbc501c2f8eaba71909d37e8  encoder_equivalence/agents/scripts/13_h4_by_encoder.R
+8fb29a364b47c193dd3168a2aed59d1e4af3b49f9c12d5901424ba3651ead2b7  encoder_equivalence/agents/scripts/14_agent_regions.py
+ce4f02f2b7d7109ab0876bf5c94046c2f38990e7e61981074c62a3df46d4a152  encoder_equivalence/agents/scripts/14b_fig_x1.py
+b26d7dfb775ecbd7df33561c273963cc598ec591020cb188b44e614eb4cfb607  encoder_equivalence/agents/scripts/15_freeze_agents.py
+31fb8cf8c30b30f7d16e485145c0ef85fa6f6f5934ccf3f261dd4dff1e09ca52  encoder_equivalence/agents/scripts/lib_agents.py
+387ced7af5004a560eb6344042eb38ef3038a5698c1c933619e42f91ded4efbf  encoder_equivalence/agents/scripts/run_agents.sh
+3213b8caa54dabcc3c88ed7100fd12db5259511f36654faa20737f13685d6c04  encoder_equivalence/agents/tests/make_synth_agents.py
+12efffa08a0b515ccbcdfa013abae79bafae368c1c6bf19835650192a39aab96  encoder_equivalence/agents/tests/test_controls_agents.py
+3ed826b9bda82d59e81a0dd638b9a7260cfe588f6e8f298ae631fafc0ff7ba19  encoder_equivalence/agents/tests/test_e2e_agents.py
+fc8d979e5e40d718574353519836c1f874ae9f1a122eb95d4e361e85b41f76d6  encoder_equivalence/agents/tests/test_embed_agents.py
+7993a91201a39823c85438977e97cd2a8071b2235eadbc26ad4e8228210a0ea4  encoder_equivalence/agents/tests/test_freeze_agents.py
+7e1605e445ad003a80cb6e1d71bc4189fac77391eb8025d4970ca789c2a2fd00  encoder_equivalence/agents/tests/test_regions_agents.py
+d6dc6c64191735389911da2a8d9f643046d59048b7b9fe63038e96405869d02e  encoder_equivalence/data/h4_long_E1_siglip.csv
+acc7f0402481e6de0fc8cc3eb3ae624dfe99fc89ee26dfc44c73328bf43deb66  encoder_equivalence/data/h4_long_E2_vitsup.csv
+d9e4c2799b878a1897d8245ef309f913aeade54eff1cde5f00cbd70f39222394  encoder_equivalence/data/h4_long_E3_rn50sup.csv
+7fb5d53c7c64c942d20eee4d9b90ccda640083e4b68274f7379c4e8e76eec2e2  encoder_equivalence/data/h4_long_E4_mae.csv
+c0df597d6f530fb151f47043eafb2d805660171979c2f97a2cefc8e0d1960279  encoder_equivalence/data/h4_long_F1_rn50rand0.csv
+aaab1c47ebb8ad5b67e88482142c1d85af25d385b9ae9744a9ea4a85bf11a6cc  encoder_equivalence/data/h4_long_F2_pixels.csv
+c197546360ec845dd53a760a94a02c2f1e41ce631bf1222dad9b9644037de177  encoder_equivalence/data/h4_long_O1_dinov2b.csv
+c8c15ca30781a38d41e8112efecaabb1d69fe6c1532dc1cc637f916e93f042e2  encoder_equivalence/data/h4_long_O2_openclip.csv
+d9d30f9d246cec07f9e4645fee983f934a4e68ef3c42b7aa4d8e8dab7b394dd1  encoder_equivalence/data/h4_long_R0_dinov2s.csv
+65157179104d8e266fcfd931ac28ea66b8b09b87493825b5cef93cd5307274a6  encoder_equivalence/data/h4_long_R1_cvcl.csv
+2ec894ec6d762b43d15b85ed762cd3cd69056f6490af71abb67bb7a5c28fb267  encoder_equivalence/out/emb_E1_siglip.npz
+f3cb539282613a192dda3874447380e94f9a18439d9551ecd21e4ee2326b88e6  encoder_equivalence/out/emb_E2_vitsup.npz
+7b35559f826208069562a967fba4581a1e234f0724e4f691debbff344955e2ad  encoder_equivalence/out/emb_E3_rn50sup.npz
+9a0b58274b47305c1d684b13c282711e3faa4c682f01d4e8b588d0d11f3f7cae  encoder_equivalence/out/emb_E4_mae.npz
+02ea9c198c9491bafc26d92238b4ffcd79700eac4498a3bcb7281e23dfa9ffbb  encoder_equivalence/out/emb_E4s_mae_cls.npz
+5c95e69f81369111871b8b845716f6e4dd61fdba69c34dd05eec5dcbeafa8402  encoder_equivalence/out/emb_F1_rn50rand0.npz
+401c329f5b8c864ca8041c742794a3af12958ff594b4c6a2d74a59281bbaebe7  encoder_equivalence/out/emb_F1_rn50rand1.npz
+2c75771406c6ef089f4059fa1a652fcc77d95ab6e871156c114f23a48e21005a  encoder_equivalence/out/emb_F1_rn50rand2.npz
+f55b2c53f5743e6fcafec0966f4c573033b82524eeca42b6f6a477318cf6f1a9  encoder_equivalence/out/emb_F2_pixels.npz
+3b2fddd24253d87d93c493da55f0ff5b155750a88eb10c628e910847515054d0  encoder_equivalence/out/emb_O1_dinov2b.npz
+cefd13c6b2b40233551480741666c4226c6f677850da3ff8a493f77a47b37b1e  encoder_equivalence/out/emb_O2_openclip.npz
+f80e1890c6fb8babd89a0245f4d8329822c4127e07ca8bbdbbc80a38aba69176  encoder_equivalence/out/emb_R0_dinov2s.npz
+ae62f0c988ee2f524852a1ce96969a223ff63b6d5894ecc652bf2cc5dbf72c85  encoder_equivalence/out/emb_R1_cvcl.npz
+b852b962cf8b60fd9687805842fb981bfac504c8bb3345795783d84c54913b6e  encoder_equivalence/out/encoder_specs.json
+2e9784320176043858cf07ffa305c4dc4559fc928ad24d05d4164ed904f919d9  encoder_equivalence/out/equivalence_grouping.json
+2e089bf402815f2b4961d18baa85a6169335d5ff1a526fabd42e8fef829d807e  encoder_equivalence/results/poscontrol.csv
+c2f4d7489d358f25e3aac07061f283ea0a3e42c51cf3e6e1212ee2c9b1f0686b  encoder_equivalence/results/regions/regions_table.csv
+3ed060c125fa2f7ac33523a12760d62778378f8fe08792d5a42659a0aa9af325  encoder_equivalence/scripts/01_embed.py
+f9d1de51fe5ff3783be7a099af0c77a8e3e18c3012d62c79e734371978bf02c8  encoder_equivalence/scripts/02_equivalence.py
+06153bf04558f9b78d01fbd975b2a1e841b5adb367ab555010d756aebf53499f  human_data_analyses/data/exp007b_clean_ledger.jsonl
+26d36f5a5d4a9112b7a37ca6549869aa10a177953ee3d5a7c0ecbca430452db4  human_data_analyses/data/pairs_c10.csv
+8dd9a1cb5e597f25c14eac232b201db31efb6a6e4a8fcc0ea3230e00b523e4b7  human_data_analyses/data/pairs_c100.csv
+ffc2ccab504dc025fb7de44ba164a438696850d117986cfaac3f54d30e78b8e7  human_data_analyses/data/sampled_100.csv
+07bec7864793ed27ddda5530e3b856f915a2999779178d7ef27e39affd175dfd  human_data_analyses/data/tiers_c10.csv
+8e6b93d8d3a9cde598ec79fce411f9efb55e6f9583d8b85ce095c9a3a52f6e3a  human_data_analyses/out/h4_person_re.txt
+5354931fc7da17787f3741cd29096e45bb1e3b782ba509786d0b6fe059cca22d  human_data_analyses/scripts/05_h5.py
+2436b333e86b5362e80a665b314cb7d49a85bf4c7f822951e8a00486beb72b00  human_data_analyses/scripts/h6_embed_cvcl.py
+c1940e43abb1be26730d1c3246b6720212663080689cabf12bc447979de1aa9a  human_data_analyses/scripts/stats_lib.py
+9b36b4550349af56c79083356312eb4af856cc5fd3caf1f669d40b9d0bbb69ff  human_data_scouting/cifar10h-counts.npy
+30d7776eed9219767f8a6aabdf95d7120cd050ddeab431acef13d435807bbc39  human_data_scouting/norms/glasgow_esm2.csv
+bfc99face128a5b202b92c29b3c6e33b0adc8da83dcbf2539ddc930394f888e8  propuesta_agentes_bfc99fac_snapshot.md
+633a5e7eabf0a8cc387e4d884d8d42d68ff40289a745773cde724cf93300db25  propuesta_agentes_multi_encoder_v2_2026-11-18.md
+9744d7cfd6ed2c284ec4797c5d27d87bc512e4a1bba5d25d0b8994b14668024d  revision_runs/repo/.cache/embeddings_exp007/cifar_all10.npz
+0f07f9b215043fd700fde8276147b950e61cf1e3918c55b94e6718d6287726b0  revision_runs/repo/experiments/exp_007_concept_carving/_shared.py
+036ca1d1521d3ef50f935e4ba056f666d56fb07c481d463ab20234699812ec9a  revision_runs/repo/experiments/exp_007b_extension_clean/run_clean.py
+39e4ad1f1a602adf046b3f87d7c64efc24d3bf9118b99ace2c929fd7cb0c994a  revision_runs/repo/experiments/exp_008_dissociation/_shared.py
+7954edaef076ef66b5d3f43d755e0a1ec4c367663ed60355fc0e72fd96aae635  revision_runs/repo/experiments/exp_008_dissociation/config/exp_008_config.yaml
+a65e84f3d6a0212858d875624709d60af3ff54a3bccef8c871e1f51c4dc811b6  revision_runs/repo/experiments/exp_008_dissociation/results/exp_008_20260608_173255/phase1/perceptual_distance_matrix.csv
+4c87e32a7a8fd7090d913d3c7cabd494786826eb9586491f5cf2061bf83df57a  revision_runs/repo/experiments/exp_008_dissociation/results/exp_008_20260608_173255/phase1/semantic_distance_matrix.csv
+5530ebb262195098ffa89e30614323c804c3144d2a8e41c0ff13af8bacaf2dc8  revision_runs/repo/experiments/exp_008_dissociation/results/exp_008_20260608_173255/phase2/sampled_pairs.csv
+82d8414b88e33277f137fe67ac203b65743cb2e1d440ffec8aab6c111ec6293e  revision_runs/repo/experiments/exp_008_dissociation/results/exp_008_20260608_173255/phase4/regression_table.csv
+7a5e7edd00553b2785e502f9c965d219bdbcaddbf1c2ff5538d141d198f1aba4  revision_runs/repo/experiments/exp_008_dissociation/src/phase2/classify_quadrants.py
+024722501edc03adf42605b2969889ab8a5ffb364fef2b802788e309cfed88fa  revision_runs/repo/experiments/exp_008_dissociation/src/phase3/run_episodes.py
+fb3847050c1cb127bf434acf435f54cb2b634ff3cf0d43c0234866c809ef49b5  revision_runs/repo/experiments/exp_008_dissociation/src/phase4/dissociation_analysis.py
+176c8f36fbaa4f36cce7847cf4088aef623ebf633fd59a2365df380d7d2648b8  revision_runs/repo/experiments/exp_008_dissociation/src/phase4/regression_analysis.py
+c572b9d97d7fd4e00e9d42c251fc0bd1f8ea56c008cd3aeb751e60d7d32ba1c8  revision_runs/repo/src/agents/perception.py
+94b5bd7f61c4f5c411de15bb378cbbe0bc4120627cee51efea68d029c65b64ae  revision_runs/repo/src/eval/__init__.py
+19c75a62d0a36092f2fd8edb448976e8f3bd9b4a49bbe6ef85b04e985c5ca943  revision_runs/repo/src/eval/concepts.py
+7ca267adeaadaf0226306ad7a3a9a5c9a161bc589fbdfb58410a68821c6ebfcd  revision_runs/repo/src/eval/descriptors.py
+1044661e4c7d003abb9f3ed87a153dde3d530b55c938d2234082e9ca21cbcdef  revision_runs/repo/src/eval/episodes.py
+64eb1d0bf12cb95a15422e3c0c9e222d171d0f73733f2f0cfe8b5493986592b8  revision_runs/repo/src/eval/falsification.py
+461cf557a84eda2880e5d495972ac83757277f34d9545a9d05cfe35e8d3283ea  revision_runs/repo/src/eval/harness.py
+abb72a8078272147c67b21f59297664b4e69ad1d66777d03da05a01e1fa1a242  revision_runs/repo/src/eval/metrics.py
+f4c0c73234aaeadca6f23cce34215c4aa2e03b0069b4c5f7225ccb18ccbf649b  revision_runs/repo/src/eval/stats.py
+70ec68b8dde8a3e4bfb08edb27b378477df187a42657aad40f18f685a3da471b  revision_runs/repo/src/learners/__init__.py
+118b55091736f55bdf2da310aaf2c7e7f1158c115a297ea0cef6231af521c20c  revision_runs/repo/src/learners/base.py
+95a22f3929f7f274f1ce9041aa770a562a71094bb0d65a86d77094ec1cfb3033  revision_runs/repo/src/learners/centroid.py
+3783f91a42e7761f03d64e3ca1cd01428f006c49509dd6172949767ce40ef88a  revision_runs/repo/src/learners/exemplar_knn.py
+52406f4c306f5a80774c255b02792c7905a2b87c80b3b4def9e8cf297d1bb2b3  revision_runs/repo/src/learners/kcentroid.py
+8fc55ff112cf7d9900345e04c760c0797533da223cb53fdb3c91e78c3d8b4b8d  revision_runs/repo/src/learners/linsvm.py
+3ba74ba28425bcd4fe806b441a26d0659740fa9a69f7cc2a67a2cd652d2497b7  revision_runs/repo/src/learners/logreg.py
+def5bd33ba76c26582a705a8f7ac784ba35362597055a11a694ccd8559b3e93d  revision_runs/repo/src/learners/random_baseline.py

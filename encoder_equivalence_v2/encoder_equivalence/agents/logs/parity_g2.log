@@ -1,0 +1,26 @@
+PARITY R1_cvcl: PASS {'R1_cvcl': {'max_abs_diff': 0.0, 'tol': 1e-05, 'ok': True, 'frozen_sha256': 'ae62f0c988ee2f524852a1ce96969a223ff63b6d5894ecc652bf2cc5dbf72c85'}}
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 416.42it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights:  54%|█████▍    | 107/198 [00:00<00:00, 1024.12it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 1360.41it/s]
+[transformers] [1mViTModel LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--google--vit-base-patch16-224/snapshots/3f49326eb077187dfe1c2a2bb15fbd74e6ab91e3
+Key               | Status     |  | 
+------------------+------------+--+-
+classifier.bias   | UNEXPECTED |  | 
+classifier.weight | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+PARITY E2_vitsup: PASS {'E2_vitsup': {'max_abs_diff': 0.0, 'tol': 1e-05, 'ok': True, 'frozen_sha256': 'f3cb539282613a192dda3874447380e94f9a18439d9551ecd21e4ee2326b88e6'}}
+PARITY F1_rn50rand0: PASS {'F1_rn50rand0': {'max_abs_diff': 0.0, 'tol': 1e-05, 'ok': True, 'frozen_sha256': '5c95e69f81369111871b8b845716f6e4dd61fdba69c34dd05eec5dcbeafa8402'}}
+PARITY R1_cvcl: PASS {'R1_cvcl': {'max_abs_diff': 0.0, 'tol': 1e-05, 'ok': True, 'frozen_sha256': 'ae62f0c988ee2f524852a1ce96969a223ff63b6d5894ecc652bf2cc5dbf72c85'}}
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 443.39it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights:  13%|█▎        | 26/198 [00:00<00:00, 224.93it/s]Loading weights:  33%|███▎      | 66/198 [00:00<00:00, 312.49it/s]Loading weights:  49%|████▉     | 98/198 [00:00<00:00, 294.76it/s]Loading weights:  70%|██████▉   | 138/198 [00:00<00:00, 318.43it/s]Loading weights:  92%|█████████▏| 183/198 [00:00<00:00, 359.15it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 354.78it/s]
+[transformers] [1mViTModel LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--google--vit-base-patch16-224/snapshots/3f49326eb077187dfe1c2a2bb15fbd74e6ab91e3
+Key               | Status     |  | 
+------------------+------------+--+-
+classifier.bias   | UNEXPECTED |  | 
+classifier.weight | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+PARITY E2_vitsup: PASS {'E2_vitsup': {'max_abs_diff': 0.0, 'tol': 1e-05, 'ok': True, 'frozen_sha256': 'f3cb539282613a192dda3874447380e94f9a18439d9551ecd21e4ee2326b88e6'}}
+PARITY F1_rn50rand0: PASS {'F1_rn50rand0': {'max_abs_diff': 0.0, 'tol': 1e-05, 'ok': True, 'frozen_sha256': '5c95e69f81369111871b8b845716f6e4dd61fdba69c34dd05eec5dcbeafa8402'}}

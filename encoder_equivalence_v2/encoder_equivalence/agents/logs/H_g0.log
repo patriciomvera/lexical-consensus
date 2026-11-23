@@ -1,0 +1,4 @@
+R0_dinov2s H1/H2/H3 written; statuses: {'H1': {'THINGS': 'ok', 'HSJ': 'ok', 'CIFAR10H': 'ok'}, 'H2': {'THINGS': 'ok', 'HSJ': 'ok'}}
+E1_siglip H1/H2/H3 written; statuses: {'H1': {'THINGS': 'ok', 'HSJ': 'ok', 'CIFAR10H': 'ok'}, 'H2': {'THINGS': 'ok', 'HSJ': 'ok'}}
+E3_rn50sup H1/H2/H3 written; statuses: {'H1': {'THINGS': 'ok', 'HSJ': 'ok', 'CIFAR10H': 'ok'}, 'H2': {'THINGS': 'ok', 'HSJ': 'ok'}}
+F2_pixels H1/H2/H3 written; statuses: {'H1': {'THINGS': 'ok', 'HSJ': 'ok', 'CIFAR10H': 'ok'}, 'H2': {'THINGS': 'ok', 'HSJ': 'ok'}}

@@ -1,0 +1,134 @@
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 190.98it/s]
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights:  53%|█████▎    | 118/223 [00:00<00:00, 1170.12it/s]Loading weights: 100%|██████████| 223/223 [00:00<00:00, 1195.87it/s]
+PARITY O1_dinov2b: PASS {'O1_dinov2b': {'max_abs_diff': 0.0, 'tol': 1e-05, 'ok': True, 'frozen_sha256': '3b2fddd24253d87d93c493da55f0ff5b155750a88eb10c628e910847515054d0'}}
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]Fetching 8 files: 100%|██████████| 8/8 [00:00<00:00, 1171.31it/s]
+Loading weights:   0%|          | 0/200 [00:00<?, ?it/s]Loading weights:  60%|██████    | 121/200 [00:00<00:00, 1170.68it/s]Loading weights: 100%|██████████| 200/200 [00:00<00:00, 1203.72it/s]
+[transformers] [1mCLIPVisionModelWithProjection LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--laion--CLIP-ViT-B-32-laion2B-s34B-b79K/snapshots/1a25a446712ba5ee05982a381eed697ef9b435cf
+Key                                                          | Status     |  | 
+-------------------------------------------------------------+------------+--+-
+text_model.encoder.layers.{0...11}.self_attn.k_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc2.bias              | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm2.bias          | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc2.weight            | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.k_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc1.bias              | UNEXPECTED |  | 
+text_model.final_layer_norm.weight                           | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.q_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.v_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.out_proj.weight | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.v_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc1.weight            | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm1.bias          | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm2.weight        | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.out_proj.bias   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.q_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm1.weight        | UNEXPECTED |  | 
+text_model.final_layer_norm.bias                             | UNEXPECTED |  | 
+logit_scale                                                  | UNEXPECTED |  | 
+text_model.embeddings.token_embedding.weight                 | UNEXPECTED |  | 
+text_model.embeddings.position_embedding.weight              | UNEXPECTED |  | 
+text_projection.weight                                       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+PARITY O2_openclip: PASS {'O2_openclip': {'max_abs_diff': 0.0, 'tol': 1e-05, 'ok': True, 'frozen_sha256': 'cefd13c6b2b40233551480741666c4226c6f677850da3ff8a493f77a47b37b1e'}}
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 549.18it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2883.94it/s]
+[transformers] [1mViTMAEModel LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--facebook--vit-mae-base/snapshots/25b184bea5538bf5c4c852c79d221195fdd2778d
+Key                                                                     | Status     |  | 
+------------------------------------------------------------------------+------------+--+-
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.o_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.q_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_after.bias    | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc2.weight          | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.o_proj.bias   | UNEXPECTED |  | 
+decoder.mask_token                                                      | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_before.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.q_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc1.weight          | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_after.weight  | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.v_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.k_proj.weight | UNEXPECTED |  | 
+decoder.decoder_norm.weight                                             | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.v_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc1.bias            | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_before.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.k_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc2.bias            | UNEXPECTED |  | 
+decoder.decoder_pos_embed                                               | UNEXPECTED |  | 
+decoder.decoder_pred.weight                                             | UNEXPECTED |  | 
+decoder.decoder_norm.bias                                               | UNEXPECTED |  | 
+decoder.decoder_pred.bias                                               | UNEXPECTED |  | 
+decoder.decoder_embed.weight                                            | UNEXPECTED |  | 
+decoder.decoder_embed.bias                                              | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+PARITY E4_mae: PASS {'E4_mae': {'max_abs_diff': 0.0, 'tol': 1e-05, 'ok': True, 'frozen_sha256': '9a0b58274b47305c1d684b13c282711e3faa4c682f01d4e8b588d0d11f3f7cae'}, 'E4s_mae_cls': {'max_abs_diff': 0.0, 'tol': 1e-05, 'ok': True, 'frozen_sha256': '02ea9c198c9491bafc26d92238b4ffcd79700eac4498a3bcb7281e23dfa9ffbb'}}
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 420.54it/s]
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights:  16%|█▌        | 35/223 [00:00<00:00, 253.15it/s]Loading weights:  27%|██▋       | 61/223 [00:00<00:00, 192.23it/s]Loading weights:  48%|████▊     | 107/223 [00:00<00:00, 282.57it/s]Loading weights:  62%|██████▏   | 138/223 [00:00<00:00, 282.27it/s]Loading weights:  75%|███████▌  | 168/223 [00:00<00:00, 278.28it/s]Loading weights:  88%|████████▊ | 197/223 [00:00<00:00, 272.62it/s]Loading weights: 100%|██████████| 223/223 [00:00<00:00, 300.73it/s]
+PARITY O1_dinov2b: PASS {'O1_dinov2b': {'max_abs_diff': 0.0, 'tol': 1e-05, 'ok': True, 'frozen_sha256': '3b2fddd24253d87d93c493da55f0ff5b155750a88eb10c628e910847515054d0'}}
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]Fetching 8 files: 100%|██████████| 8/8 [00:00<00:00, 978.18it/s]
+Loading weights:   0%|          | 0/200 [00:00<?, ?it/s]Loading weights:  24%|██▍       | 48/200 [00:00<00:00, 449.13it/s]Loading weights:  46%|████▋     | 93/200 [00:00<00:00, 423.33it/s]Loading weights:  68%|██████▊   | 136/200 [00:00<00:00, 384.57it/s]Loading weights:  88%|████████▊ | 175/200 [00:00<00:00, 316.89it/s]Loading weights: 100%|██████████| 200/200 [00:00<00:00, 379.59it/s]
+[transformers] [1mCLIPVisionModelWithProjection LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--laion--CLIP-ViT-B-32-laion2B-s34B-b79K/snapshots/1a25a446712ba5ee05982a381eed697ef9b435cf
+Key                                                          | Status     |  | 
+-------------------------------------------------------------+------------+--+-
+text_model.encoder.layers.{0...11}.self_attn.k_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc1.bias              | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.out_proj.weight | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.k_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm2.weight        | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc1.weight            | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.v_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.q_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.q_proj.weight   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm2.bias          | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.v_proj.bias     | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm1.weight        | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.self_attn.out_proj.bias   | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc2.weight            | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.layer_norm1.bias          | UNEXPECTED |  | 
+text_model.final_layer_norm.bias                             | UNEXPECTED |  | 
+text_model.embeddings.token_embedding.weight                 | UNEXPECTED |  | 
+text_projection.weight                                       | UNEXPECTED |  | 
+text_model.embeddings.position_embedding.weight              | UNEXPECTED |  | 
+logit_scale                                                  | UNEXPECTED |  | 
+text_model.encoder.layers.{0...11}.mlp.fc2.bias              | UNEXPECTED |  | 
+text_model.final_layer_norm.weight                           | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+PARITY O2_openclip: PASS {'O2_openclip': {'max_abs_diff': 0.0, 'tol': 1e-05, 'ok': True, 'frozen_sha256': 'cefd13c6b2b40233551480741666c4226c6f677850da3ff8a493f77a47b37b1e'}}
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 409.48it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights:  11%|█         | 21/198 [00:00<00:00, 183.50it/s]Loading weights:  45%|████▍     | 89/198 [00:00<00:00, 393.54it/s]Loading weights:  65%|██████▍   | 128/198 [00:00<00:00, 373.57it/s]Loading weights:  83%|████████▎ | 165/198 [00:00<00:00, 366.31it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 422.51it/s]
+[transformers] [1mViTMAEModel LOAD REPORT[0m from: /home/box/.cache/huggingface/hub/models--facebook--vit-mae-base/snapshots/25b184bea5538bf5c4c852c79d221195fdd2778d
+Key                                                                     | Status     |  | 
+------------------------------------------------------------------------+------------+--+-
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_after.weight  | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc2.bias            | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc1.weight          | UNEXPECTED |  | 
+decoder.mask_token                                                      | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.o_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.q_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc2.weight          | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.v_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc1.bias            | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.k_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_after.bias    | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.v_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.q_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_pos_embed                                               | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_before.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_before.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.o_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.k_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_embed.bias                                              | UNEXPECTED |  | 
+decoder.decoder_pred.bias                                               | UNEXPECTED |  | 
+decoder.decoder_pred.weight                                             | UNEXPECTED |  | 
+decoder.decoder_norm.weight                                             | UNEXPECTED |  | 
+decoder.decoder_embed.weight                                            | UNEXPECTED |  | 
+decoder.decoder_norm.bias                                               | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+PARITY E4_mae: PASS {'E4_mae': {'max_abs_diff': 0.0, 'tol': 1e-05, 'ok': True, 'frozen_sha256': '9a0b58274b47305c1d684b13c282711e3faa4c682f01d4e8b588d0d11f3f7cae'}, 'E4s_mae_cls': {'max_abs_diff': 0.0, 'tol': 1e-05, 'ok': True, 'frozen_sha256': '02ea9c198c9491bafc26d92238b4ffcd79700eac4498a3bcb7281e23dfa9ffbb'}}

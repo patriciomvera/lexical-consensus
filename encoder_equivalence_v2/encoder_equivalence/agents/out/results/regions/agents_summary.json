@@ -1,0 +1,540 @@
+{
+ "controls": {
+  "ok": true,
+  "control_T": {
+   "n_new": 5040,
+   "n_v1": 5040,
+   "estricto": false,
+   "propuesto_b1": true,
+   "keys_identical": true,
+   "nonrandom_mismatches": {},
+   "random_c1_by_tier": {
+    "native": {
+     "mean_c1_new": 0.33688893333333336,
+     "mean_c1_v1": 0.34622213333333346,
+     "sd_c1_new": 0.029551410403942182,
+     "sd_c1_v1": 0.03630863407945218,
+     "n": 30,
+     "chance": 0.3333333333333333
+    },
+    "near": {
+     "mean_c1_new": 0.3313332999999999,
+     "mean_c1_v1": 0.34399993333333334,
+     "sd_c1_new": 0.032937636022388334,
+     "sd_c1_v1": 0.03393248547427998,
+     "n": 30,
+     "chance": 0.3333333333333333
+    },
+    "mid": {
+     "mean_c1_new": 0.3322222,
+     "mean_c1_v1": 0.32888886666666667,
+     "sd_c1_new": 0.02743789035670685,
+     "sd_c1_v1": 0.030127330606094016,
+     "n": 30,
+     "chance": 0.3333333333333333
+    },
+    "far": {
+     "mean_c1_new": 0.32422219999999996,
+     "mean_c1_v1": 0.3415555666666667,
+     "sd_c1_new": 0.039308170734509304,
+     "sd_c1_v1": 0.03505268084819698,
+     "n": 30,
+     "chance": 0.3333333333333333
+    }
+   },
+   "nonrandom_margin_max_abs_diff": 1.000000000139778e-06,
+   "random_mean_c1_new": 0.3311666583333333,
+   "random_mean_c1_v1": 0.340166625,
+   "rule_used": "propuesto_b1",
+   "ok": true,
+   "rule_text": "same 5,040 rows/keys; for the 5 non-random learners c1, c2 and per_concept_c1 identical and |margin diff| <= 1e-6 (6-decimal rounding); the random learner (Gumbel noise hashed from the embedding BYTES) is reported, not required"
+  },
+  "control_c100": {
+   "verdict": "PASA",
+   "ok": true,
+   "max_abs_diff": 6.394441637302961e-07,
+   "spearman": 0.9999999997526534,
+   "n_pairs": 4950,
+   "beta_perc_R0_cpu": -0.2119,
+   "beta_perc_v1": -0.2119,
+   "abs_beta_diff": 0.0,
+   "thresholds": {
+    "pass_maxabs": 0.0001,
+    "pass_spearman": 0.99999,
+    "dev_maxabs": 0.002,
+    "dev_spearman": 0.9999,
+    "dev_beta": 0.005
+   },
+   "versions": {
+    "torch": "2.14.1+cpu",
+    "transformers": "5.20.2"
+   },
+   "note": "beta on the v1 scale (raw d, classical OLS, regression_table.csv PS_beta_perc)"
+  }
+ },
+ "families": {
+  "C": {
+   "incluidos": [
+    "O1_dinov2b",
+    "E1_siglip",
+    "O2_openclip",
+    "E2_vitsup",
+    "E3_rn50sup",
+    "E4_mae"
+   ],
+   "excluidos": {},
+   "tests_per_encoder": [
+    "A:THINGS",
+    "A:HSJ",
+    "A:CIFAR10H",
+    "P:THINGS",
+    "P:HSJ",
+    "H4:-"
+   ],
+   "n_tests": 36,
+   "h4_tecnico_fuera_solo_prueba": []
+  },
+  "D": {
+   "incluidos": [
+    "O1_dinov2b",
+    "E1_siglip",
+    "O2_openclip",
+    "E2_vitsup",
+    "E3_rn50sup",
+    "E4_mae"
+   ],
+   "excluidos": {},
+   "tests_per_encoder": [
+    "D:-"
+   ],
+   "n_tests": 6,
+   "h4_tecnico_fuera_solo_prueba": []
+  },
+  "C-pisos": {
+   "incluidos": [
+    "F1_rn50rand0",
+    "F2_pixels"
+   ],
+   "excluidos": {},
+   "tests_per_encoder": [
+    "A:THINGS",
+    "A:HSJ",
+    "A:CIFAR10H",
+    "P:THINGS",
+    "P:HSJ",
+    "H4:-"
+   ],
+   "n_tests": 12,
+   "h4_tecnico_fuera_solo_prueba": []
+  },
+  "D-pisos": {
+   "incluidos": [
+    "F1_rn50rand0",
+    "F2_pixels"
+   ],
+   "excluidos": {},
+   "tests_per_encoder": [
+    "D:-"
+   ],
+   "n_tests": 2,
+   "h4_tecnico_fuera_solo_prueba": []
+  }
+ },
+ "ga_profile": {
+  "D": "depende solo del margen: SESOI = 0.10: GA3; SESOI = 0.20: GA3; SESOI = 0.30: GA1",
+  "A": "robusta: GA2b",
+  "P": "robusta: GA0b"
+ },
+ "cifar_geometry": {
+  "status": "ok",
+  "ids": [
+   "R0_dinov2s",
+   "O1_dinov2b",
+   "R1_cvcl",
+   "E1_siglip",
+   "O2_openclip",
+   "E2_vitsup",
+   "E3_rn50sup",
+   "E4_mae",
+   "F1_rn50rand0",
+   "F2_pixels"
+  ],
+  "rho": [
+   [
+    1.0,
+    0.822,
+    0.6177,
+    0.7837,
+    0.7353,
+    0.6804,
+    0.7308,
+    0.5141,
+    0.404,
+    0.2141
+   ],
+   [
+    0.822,
+    1.0,
+    0.4917,
+    0.7008,
+    0.6924,
+    0.7225,
+    0.6196,
+    0.4163,
+    0.2829,
+    0.2386
+   ],
+   [
+    0.6177,
+    0.4917,
+    1.0,
+    0.6911,
+    0.6722,
+    0.4344,
+    0.7587,
+    0.5115,
+    0.3869,
+    0.1707
+   ],
+   [
+    0.7837,
+    0.7008,
+    0.6911,
+    1.0,
+    0.9153,
+    0.545,
+    0.7694,
+    0.5016,
+    0.4005,
+    0.1636
+   ],
+   [
+    0.7353,
+    0.6924,
+    0.6722,
+    0.9153,
+    1.0,
+    0.5007,
+    0.7506,
+    0.4046,
+    0.3184,
+    0.1189
+   ],
+   [
+    0.6804,
+    0.7225,
+    0.4344,
+    0.545,
+    0.5007,
+    1.0,
+    0.6187,
+    0.4402,
+    0.3383,
+    0.3054
+   ],
+   [
+    0.7308,
+    0.6196,
+    0.7587,
+    0.7694,
+    0.7506,
+    0.6187,
+    1.0,
+    0.4879,
+    0.4172,
+    0.2223
+   ],
+   [
+    0.5141,
+    0.4163,
+    0.5115,
+    0.5016,
+    0.4046,
+    0.4402,
+    0.4879,
+    1.0,
+    0.6443,
+    0.5377
+   ],
+   [
+    0.404,
+    0.2829,
+    0.3869,
+    0.4005,
+    0.3184,
+    0.3383,
+    0.4172,
+    0.6443,
+    1.0,
+    0.2828
+   ],
+   [
+    0.2141,
+    0.2386,
+    0.1707,
+    0.1636,
+    0.1189,
+    0.3054,
+    0.2223,
+    0.5377,
+    0.2828,
+    1.0
+   ]
+  ],
+  "grouping": {
+   "rule": "UPGMA on 1 - r (8 items, partial level), cuts 0.3/0.5/0.7, calibration per cut",
+   "cuts": {
+    "0.3": {
+     "cut": 0.3,
+     "labels": {
+      "R0_dinov2s": 3,
+      "O1_dinov2b": 3,
+      "R1_cvcl": 4,
+      "E1_siglip": 3,
+      "O2_openclip": 3,
+      "E2_vitsup": 5,
+      "E3_rn50sup": 3,
+      "E4_mae": 1,
+      "F1_rn50rand0": 2,
+      "F2_pixels": 6
+     },
+     "partition": [
+      [
+       "E1_siglip",
+       "E3_rn50sup",
+       "O1_dinov2b",
+       "O2_openclip",
+       "R0_dinov2s"
+      ],
+      [
+       "E2_vitsup"
+      ],
+      [
+       "E4_mae"
+      ],
+      [
+       "F1_rn50rand0"
+      ],
+      [
+       "F2_pixels"
+      ],
+      [
+       "R1_cvcl"
+      ]
+     ],
+     "calibration": {
+      "O1_with_R0": true,
+      "floors_apart": true,
+      "discriminates": true
+     },
+     "n_trained_groups": 4,
+     "reading": "grupos"
+    },
+    "0.5": {
+     "cut": 0.5,
+     "labels": {
+      "R0_dinov2s": 2,
+      "O1_dinov2b": 2,
+      "R1_cvcl": 2,
+      "E1_siglip": 2,
+      "O2_openclip": 2,
+      "E2_vitsup": 2,
+      "E3_rn50sup": 2,
+      "E4_mae": 1,
+      "F1_rn50rand0": 1,
+      "F2_pixels": 3
+     },
+     "partition": [
+      [
+       "E1_siglip",
+       "E2_vitsup",
+       "E3_rn50sup",
+       "O1_dinov2b",
+       "O2_openclip",
+       "R0_dinov2s",
+       "R1_cvcl"
+      ],
+      [
+       "E4_mae",
+       "F1_rn50rand0"
+      ],
+      [
+       "F2_pixels"
+      ]
+     ],
+     "calibration": {
+      "O1_with_R0": true,
+      "floors_apart": false,
+      "discriminates": false
+     },
+     "n_trained_groups": 2,
+     "reading": "sin grupos"
+    },
+    "0.7": {
+     "cut": 0.7,
+     "labels": {
+      "R0_dinov2s": 1,
+      "O1_dinov2b": 1,
+      "R1_cvcl": 1,
+      "E1_siglip": 1,
+      "O2_openclip": 1,
+      "E2_vitsup": 1,
+      "E3_rn50sup": 1,
+      "E4_mae": 1,
+      "F1_rn50rand0": 1,
+      "F2_pixels": 2
+     },
+     "partition": [
+      [
+       "E1_siglip",
+       "E2_vitsup",
+       "E3_rn50sup",
+       "E4_mae",
+       "F1_rn50rand0",
+       "O1_dinov2b",
+       "O2_openclip",
+       "R0_dinov2s",
+       "R1_cvcl"
+      ],
+      [
+       "F2_pixels"
+      ]
+     ],
+     "calibration": {
+      "O1_with_R0": true,
+      "floors_apart": false,
+      "discriminates": false
+     },
+     "n_trained_groups": 1,
+     "reading": "sin grupos"
+    }
+   },
+   "profile": "depende del corte",
+   "linkage": [
+    [
+     3.0,
+     4.0,
+     0.0847,
+     2.0
+    ],
+    [
+     0.0,
+     1.0,
+     0.178,
+     2.0
+    ],
+    [
+     6.0,
+     10.0,
+     0.24,
+     3.0
+    ],
+    [
+     11.0,
+     12.0,
+     0.2896,
+     5.0
+    ],
+    [
+     2.0,
+     13.0,
+     0.3537,
+     6.0
+    ],
+    [
+     7.0,
+     8.0,
+     0.3557,
+     2.0
+    ],
+    [
+     5.0,
+     14.0,
+     0.4164,
+     7.0
+    ],
+    [
+     15.0,
+     16.0,
+     0.584,
+     9.0
+    ],
+    [
+     9.0,
+     17.0,
+     0.7496,
+     10.0
+    ]
+   ],
+   "ref90_vs_R0": {
+    "R0_dinov2s": true,
+    "O1_dinov2b": false,
+    "R1_cvcl": false,
+    "E1_siglip": false,
+    "O2_openclip": false,
+    "E2_vitsup": false,
+    "E3_rn50sup": false,
+    "E4_mae": false,
+    "F1_rn50rand0": false,
+    "F2_pixels": false
+   }
+  },
+  "concordance": {
+   "0.3": false,
+   "0.5": false,
+   "0.7": false
+  },
+  "ari_descriptivo": {
+   "0.3": 0.352,
+   "0.5": 0.10179640718562874,
+   "0.7": 0.10256410256410256
+  },
+  "label": "grupos medidos en est\u00edmulos de Lewis & Frank; \u03c1 entre encoders en CIFAR-100 (4.950 pares) solo para concordancia"
+ },
+ "spearman_descriptiva": {
+  "_nota": "Spearman entre encoders (los 10 primarios), solo descriptiva: sin p ni IC inferencial",
+  "beta_zd_humano_vs_H1_rho_THINGS": {
+   "n": 10,
+   "rho": -0.4545454545454545
+  },
+  "beta_zd_humano_vs_H1_rho_HSJ": {
+   "n": 10,
+   "rho": -0.7454545454545454
+  },
+  "beta_zd_humano_vs_H1_rho_CIFAR10H": {
+   "n": 10,
+   "rho": -0.5515151515151515
+  },
+  "beta_zd_humano_vs_H2_beta_humana_THINGS": {
+   "n": 10,
+   "rho": 0.7454545454545454
+  },
+  "beta_zd_humano_vs_H2_beta_humana_HSJ": {
+   "n": 10,
+   "rho": 0.4545454545454545
+  }
+ },
+ "constants": {
+  "D_P": "v1",
+  "A_AGG": "todas",
+  "CONCORD": "particion_identica",
+  "GROUPS_OVER": [
+   "O1_dinov2b",
+   "E1_siglip",
+   "O2_openclip",
+   "E2_vitsup",
+   "E3_rn50sup",
+   "E4_mae"
+  ],
+  "SESOIS": [
+   0.1,
+   0.2,
+   0.3
+  ],
+  "CUTS": [
+   "0.3",
+   "0.5",
+   "0.7"
+  ]
+ }
+}

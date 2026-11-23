@@ -1,0 +1,14 @@
+encoder,D100_0.10,D100_0.20,D100_0.30,Dtodos_0.10,Dtodos_0.20,Dtodos_0.30,rotulo,rule_centroid_D100
+R0_dinov2s,Apoyo,Apoyo,Apoyo,Apoyo,Apoyo,Apoyo,estable,A
+O1_dinov2b,Apoyo,Apoyo,Apoyo,Apoyo,Apoyo,Apoyo,estable,A
+R1_cvcl,Inconcluso,No apoyo,No apoyo,Apoyo,Apoyo,Apoyo,sensible al muestreo de pares,C
+E1_siglip,Apoyo,Apoyo,Apoyo,Apoyo,Apoyo,Apoyo,estable,B
+O2_openclip,Apoyo,Apoyo,Apoyo,Apoyo,Apoyo,Apoyo,estable,B
+E2_vitsup,Apoyo,Apoyo,Apoyo,Apoyo,Apoyo,Apoyo,estable,A
+E3_rn50sup,Apoyo,Apoyo,Apoyo,Apoyo,Apoyo,Apoyo,estable,B
+E4_mae,Inconcluso,Inconcluso,No apoyo,Apoyo,Apoyo,Apoyo,sensible al muestreo de pares,C
+F1_rn50rand0,No apoyo,No apoyo,No apoyo,No apoyo,No apoyo,No apoyo,estable,C
+F2_pixels,Inconcluso,Inconcluso,Inconcluso,Apoyo,Apoyo,Apoyo,sensible al muestreo de pares,B
+E4s_mae_cls,inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),estable,
+F1_rn50rand1,inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),estable,
+F1_rn50rand2,inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),inconcluso (técnico),estable,

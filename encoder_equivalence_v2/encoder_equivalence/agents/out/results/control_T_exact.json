@@ -1,0 +1,48 @@
+{
+ "n_new": 5040,
+ "n_v1": 5040,
+ "estricto": false,
+ "propuesto_b1": true,
+ "keys_identical": true,
+ "nonrandom_mismatches": {},
+ "random_c1_by_tier": {
+  "native": {
+   "mean_c1_new": 0.33688893333333336,
+   "mean_c1_v1": 0.34622213333333346,
+   "sd_c1_new": 0.029551410403942182,
+   "sd_c1_v1": 0.03630863407945218,
+   "n": 30,
+   "chance": 0.3333333333333333
+  },
+  "near": {
+   "mean_c1_new": 0.3313332999999999,
+   "mean_c1_v1": 0.34399993333333334,
+   "sd_c1_new": 0.032937636022388334,
+   "sd_c1_v1": 0.03393248547427998,
+   "n": 30,
+   "chance": 0.3333333333333333
+  },
+  "mid": {
+   "mean_c1_new": 0.3322222,
+   "mean_c1_v1": 0.32888886666666667,
+   "sd_c1_new": 0.02743789035670685,
+   "sd_c1_v1": 0.030127330606094016,
+   "n": 30,
+   "chance": 0.3333333333333333
+  },
+  "far": {
+   "mean_c1_new": 0.32422219999999996,
+   "mean_c1_v1": 0.3415555666666667,
+   "sd_c1_new": 0.039308170734509304,
+   "sd_c1_v1": 0.03505268084819698,
+   "n": 30,
+   "chance": 0.3333333333333333
+  }
+ },
+ "nonrandom_margin_max_abs_diff": 1.000000000139778e-06,
+ "random_mean_c1_new": 0.3311666583333333,
+ "random_mean_c1_v1": 0.340166625,
+ "rule_used": "propuesto_b1",
+ "ok": true,
+ "rule_text": "same 5,040 rows/keys; for the 5 non-random learners c1, c2 and per_concept_c1 identical and |margin diff| <= 1e-6 (6-decimal rounding); the random learner (Gumbel noise hashed from the embedding BYTES) is reported, not required"
+}

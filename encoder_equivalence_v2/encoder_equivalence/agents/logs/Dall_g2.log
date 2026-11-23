@@ -1,0 +1,6 @@
+[pool] built episode pool: 20000 images (200/class × 100 classes)
+R1_cvcl Dall ok 550.7
+[pool] built episode pool: 20000 images (200/class × 100 classes)
+E2_vitsup Dall ok 597.3
+[pool] built episode pool: 20000 images (200/class × 100 classes)
+F1_rn50rand0 Dall ok 627.8

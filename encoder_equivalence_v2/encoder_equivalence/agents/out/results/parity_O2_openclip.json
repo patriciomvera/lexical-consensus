@@ -1,0 +1,12 @@
+{
+ "encoder": "O2_openclip",
+ "ok": true,
+ "detail": {
+  "O2_openclip": {
+   "max_abs_diff": 0.0,
+   "tol": 1e-05,
+   "ok": true,
+   "frozen_sha256": "cefd13c6b2b40233551480741666c4226c6f677850da3ff8a493f77a47b37b1e"
+  }
+ }
+}

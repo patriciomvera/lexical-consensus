@@ -1,0 +1,8 @@
+R0_dinov2s H4 done in 242.7 s (ok)
+wrote /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/results/h4_R0_dinov2s.csv 
+E1_siglip H4 done in 395.1 s (ok)
+wrote /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/results/h4_E1_siglip.csv 
+E3_rn50sup H4 done in 212.0 s (ok)
+wrote /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/results/h4_E3_rn50sup.csv 
+F2_pixels H4 done in 272.0 s (ok)
+wrote /workspace/lexical-consensus-openmind/encoder_equivalence/agents/out/results/h4_F2_pixels.csv 

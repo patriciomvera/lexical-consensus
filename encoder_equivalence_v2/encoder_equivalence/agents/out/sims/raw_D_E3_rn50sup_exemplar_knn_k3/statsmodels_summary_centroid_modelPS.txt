@@ -1,0 +1,26 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.060
+Model:                            OLS   Adj. R-squared:                  0.041
+Method:                 Least Squares   F-statistic:                     3.105
+Date:                Mon, 23 Nov 2026   Prob (F-statistic):             0.0493
+Time:                        15:31:39   Log-Likelihood:                 112.59
+No. Observations:                 100   AIC:                            -219.2
+Df Residuals:                      97   BIC:                            -211.4
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          0.8460      0.034     25.170      0.000       0.779       0.913
+x1            -0.2062      0.089     -2.306      0.023      -0.384      -0.029
+x2            -0.0282      0.046     -0.613      0.541      -0.120       0.063
+==============================================================================
+Omnibus:                       16.019   Durbin-Watson:                   2.436
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               18.199
+Skew:                          -0.936   Prob(JB):                     0.000112
+Kurtosis:                       3.927   Cond. No.                         13.7
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

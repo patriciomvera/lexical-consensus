@@ -1,0 +1,10 @@
+hora: 2026-11-23 16:48:29 -03
+pid_6834: muerto
+ultima_linea_run_agents: [2026-11-23 16:44:36 -03] primary done. Next: sensitivities (optional), then RESULTADOS_agentes.md + DESVIACIONES by hand; notify Evaristo. Nothing is published.
+42:[2026-11-23 15:21:39 -03] 4. §3.6 dispersion of d_perc on the 100 v1 pairs (BEFORE any accuracy)
+43:[2026-11-23 15:21:51 -03] 5. T (seed 42; R0 already done in step 2), D (100 v1 pairs) and D-todos (4,950 pairs, mandatory)
+44:control_c100: PASA
+45:[2026-11-23 16:16:58 -03] 6. H1/H2/H3
+46:[2026-11-23 16:21:38 -03] 7. H4 per encoder (people; replica of v1 H4, 24 items)
+47:[2026-11-23 16:44:32 -03] 8. regions, GA, families, agents x humans table (14) and fig x1 (14b)
+49:[2026-11-23 16:44:36 -03] primary done. Next: sensitivities (optional), then RESULTADOS_agentes.md + DESVIACIONES by hand; notify Evaristo. Nothing is published.
