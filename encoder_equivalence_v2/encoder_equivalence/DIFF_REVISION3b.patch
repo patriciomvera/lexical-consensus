@@ -1,0 +1,332 @@
+--- propuesta 4ff4b341 (snapshot)
++++ propuesta_comparacion_encoders_v2_2026-11-18.md (actual)
+@@ -42,6 +42,11 @@
+   - §5.4: S9 pasa a ser el ajuste mixto (primer peldaño que converge en cada experimento) y no cuesta ajustes; S4–S8 usan el peldaño común de 8 ítems.
+   - §8.11, §9.2 (peor caso del costo; el primario no se corta), §10.2, §10.3 (paso 5b) y §10.4 (sin puntos pendientes).
+   - **Más allá de la decisión (para Evaristo):** que la singularidad cuente como no convergencia; los peldaños intermedios L2 y L4; que los pisos entren en la elección; que el peldaño se elija por separado con 24 ítems; que S4–S8 hereden el peldaño de 8 ítems; la redefinición de S9; y el peor caso del costo.
++- **2026-11-18 ~12:55** (encabezado del archivo). Revisión del diff por Ariadna (`REVISION3b_ariadna_diff_2026-11-18.md`) sobre `4ff4b341…`: diff correcto; un arreglo IMPORTANTE y dos menores. El visto bueno para `09_freeze.py` queda condicionado además a revisar la propuesta de simulaciones de agentes (Patricio, 12:36), que va en un documento aparte.
++- **2026-11-18 12:42–13:06. Respuesta a REVISION3b.** Copias previas: `encoder_equivalence/propuesta_4ff4b341_snapshot.md` y `encoder_equivalence/scripts_snapshot_4ff4b341/`; diff en `encoder_equivalence/DIFF_REVISION3b.patch`. Detalle en §11.5.
++  - **IMPORTANTE:** si R0 queda "inconcluso (técnico)" con 8 ítems, la conclusión es **G0 "sin lectura: técnico"** en las 9 celdas de la grilla, nunca G1 (§7.4). Con 24 ítems, la lectura de referencia de R0 es "sin lectura: técnico".
++  - **Menor:** G0 falla también si algún grupo de casi-empates de la v1 mide ≥ 1e−6 (§5.1). La prueba de ruido 1e−8 ahora perturba el archivo nuevo y no el de la v1 (el de la v1 está fijado por su sha256); con el ruido en el archivo de la v1, los datos sintéticos (que tienen por azar dos valores a 9,9e−7) daban un grupo de 1,01e−6.
++  - **Menor:** sin estructura común no hay caída a L4: `05b` termina con código 4 y `run_weekend.sh` se detiene y registra la desviación (§5.2). También se corrigió que un conjunto vacío de encoders elegibles daba L1 por vacuidad.
+ 
+ ---
+ 
+@@ -175,7 +180,7 @@
+ 
+ ### 5.1 Datos de entrada
+ `h4_prep_encoders.py`, por escribir antes del congelamiento, es idéntico a `h4_prep.py` salvo por la función `encode`, que lee `encoder_equivalence/out/emb_<ID>.npz`. Genera `data/h4_long_<ID>.csv` con las mismas filas y el mismo orden que `h4_long.csv`.
+-- **Control de tubería:** con R0, `dist` debe coincidir con la de `h4_long.csv` (sha256 `d9d30f9d…394dd1`) con |Δ| ≤ 1e−5 y el mismo orden de rangos con los casi-empates (< 1e−6) agrupados (§3.2, BC3). Si no coincide, se detiene todo. El resultado se escribe en `pipeline_control.json`, que es lo que lee `08_regions.py`.
++- **Control de tubería:** con R0, `dist` debe coincidir con la de `h4_long.csv` (sha256 `d9d30f9d…394dd1`) con |Δ| ≤ 1e−5 y el mismo orden de rangos con los casi-empates (< 1e−6) agrupados (§3.2, BC3). Además, ningún grupo de casi-empates de la v1 puede medir 1e−6 o más (de su mínimo a su máximo; protección contra el encadenamiento, REVISION3b; en la v1 el más ancho mide 6,0e−8 según Ariadna). Si algo no se cumple, se detiene todo. El resultado se escribe en `pipeline_control.json`, que es lo que lee `08_regions.py`.
+ 
+ ### 5.2 Análisis primario de la familia B: dos etapas a nivel experimento (B1)
+ Ariadna propuso dos remedios: (a) pendiente aleatoria por experimento o (b) 12 pendientes más permutación exacta. **Elijo (b)** por tres razones:
+@@ -200,6 +205,7 @@
+     - **Regla de elección (constante `STRUCTURE_SCOPE = "common"` en `05b_select_structure.py`; sin opción en tiempo de ejecución):** el peldaño común es el más rico que converge en los 12 experimentos **para cada uno** de los 10 encoders primarios (R0, O1, R1, E1, O2, E2, E3, E4, F1 semilla 0 y F2; **los pisos F1 y F2 entran en la elección**; F0 no tiene zd y no entra). Se elige por separado para 8 y para 24 ítems. La elección depende **solo** de la convergencia; nunca de β̂, Δ ni p (`05b` no lee esas columnas para elegir; hay una prueba que lo verifica).
+     - **Cómo se busca:** pasada 1, en cada experimento se ajusta L1 → L4 hasta el primer peldaño que converge; pasada 2, se ajustan los peldaños que falten para decidir (p. ej., si un encoder necesita L2 en un experimento, se ajusta L2 en los 12 experimentos de todos).
+     - **Encoder sin ningún peldaño que converja en sus 12 experimentos:** sale de la elección (para no bajar a todos a nada) y se ajusta igual con el peldaño común. Si ahí falta alguna pendiente, queda **"inconcluso (técnico)"** en ese conjunto de ítems, igual que cualquier encoder al que le falte una pendiente con el peldaño común. No se imputa nada.
++    - **Sin estructura común (REVISION3b):** si para un conjunto de ítems no hay ningún peldaño común (por ejemplo, todos los encoders quedan fuera de la elección, o convergen solo en peldaños distintos), `05b_select_structure.py` termina con código 4, escribe `structure_DEVIATION.txt` y no produce tablas de la etapa 1; `run_weekend.sh` se detiene y registra la desviación. **No hay caída silenciosa a L4 ni a otro peldaño.** Lo mismo vale para el peldaño de 8 ítems que heredan S4–S8 y S6 (`rung8`): si falta, se detiene y se registra (S6 sigue sin bloquear el resto).
+     - **Descriptivo (no entra en las regiones):** el peldaño que habría alcanzado cada encoder por separado (variante `per_encoder_rung`) y la tabla `structure.csv` con el primer peldaño que convergió en cada experimento.
+     - **Costo que se acepta:** un encoder difícil (por ejemplo, un piso) puede bajar el peldaño de todos. Se prefiere así por comparabilidad entre encoders.
+   - **Salida:** β̂(e, s, x) con su EE.
+@@ -310,13 +316,14 @@
+ ### 7.4 Conclusión global (8 ítems; se evalúa con cada δ y se aplica la primera que se cumpla)
+ | # | Condición (con un δ dado) | Lectura permitida |
+ |---|---|---|
+-| G0 | Falla el control de tubería, **o R0 falla el control positivo** (BC1); no depende de δ | Se detiene todo; no hay lectura |
+-| G1 | R0 no está en la región "se mantiene" con ese δ | **La moderación de la v1 no se sostiene, con ese margen, con inferencia a nivel experimento.** Con ese δ, la comparación entre encoders pasa a ser descriptiva |
++| G0 | Falla el control de tubería, **o R0 falla el control positivo** (BC1), **o R0 queda "inconcluso (técnico)" con 8 ítems** (REVISION3b); no depende de δ ni del corte | Se detiene todo; no hay lectura. Con R0 técnico el texto es **"sin lectura: técnico"**: una falla técnica nunca se lee como G1 |
++| G1 | R0 tiene un resultado (no técnico) y no está en la región "se mantiene" con ese δ | **La moderación de la v1 no se sostiene, con ese margen, con inferencia a nivel experimento.** Con ese δ, la comparación entre encoders pasa a ser descriptiva |
+ | G2 | ≥ 1 encoder entrenado distinto de R0 (que pasó el control positivo) cae en la región 1 o 2 y el p de la prueba que define esa región (signo opuesto para la 1, p_TOST(δ) para la 2) es < .05 con Holm en la familia de entrenados con ese δ | **Depende del encoder** con ese margen. Si la calibración discrimina, se describe en qué grupos de geometría están los encoders que fallan; si falla, **sin grupos** (m2) |
+ | G3 | **Los 8 entrenados pasaron el control positivo** y están en "se mantiene", la calibración discrimina y los entrenados ocupan ≥ 2 grupos de geometría | **No es específico de DINOv2 (a través de geometrías)** con ese margen. Con 24 ítems se informa si también son todos "positivos"; si no, la lectura es "solo con 8 ítems" |
+ | G3b | **Los 8 entrenados pasaron el control positivo** y están en "se mantiene", pero la calibración falla o hay un solo grupo | Se mantiene en todos los encoders con ese margen, **sin evidencia de que difieran en la geometría que entra en el modelo** |
+ | G4 | Cualquier otro caso (lo más probable), incluido que algún entrenado esté en "no interpretable (control positivo)" sin que se cumpla G1 o G2 | **Inconcluso o mixto** con ese margen, reportado encoder por encoder |
+ 
++- **R0 con 24 ítems (REVISION3b).** No hay grilla G con 24 ítems (§7.1). Si R0 queda "inconcluso (técnico)" con 24 ítems, su lectura de referencia con 24 ítems es "sin lectura: técnico" (no "inconcluso" ni un resultado), y la frase de G3 sobre 24 ítems no se puede afirmar.
+ - **Grilla δ × corte (10:44).** G0, G1 y G4 por control positivo no dependen del corte. G2 tampoco, salvo la descripción de grupos, que es "sin grupos" en un corte cuya calibración falla. G3 frente a G3b sí depende del corte (calibración y número de grupos de ese corte). La conclusión se calcula en las 9 celdas.
+ - **Regla de perfil global (declarada de antemano; ninguna combinación queda ambigua):**
+   1. **"Robusta: Gk"** si la conclusión es la misma en las 9 celdas.
+@@ -501,3 +508,8 @@
+ - **(2)/(3):** §7.3 y columna `familia_holm` más la sección "Familias Holm" de `regions_report.md`.
+ - **(6):** §9.3 y `out/rules_02_sha256_before_run.txt`.
+ - **Menores:** §8.16, §9.2 y G0 en JSON.
++
++### 11.5 Respuesta a la revisión del diff (REVISION3b)
++- **IMPORTANTE (R0 técnico):** §7.4 (G0 y G1; R0 con 24 ítems). Implementado en `08_regions.py::conclude` (`TECH0`) y `r0_reading24`, con dos pruebas en `tests/test_regions.py`.
++- **Menor (ancho de los casi-empates):** §5.1. Implementado en `h4_prep_encoders.py::near_tie_max_width` (G0 falla si el grupo más ancho mide ≥ 1e−6; campo en `pipeline_control.json`), con prueba en `tests/test_prep.py`.
++- **Menor (`rung8`):** §5.2. Implementado en `05b_select_structure.py` (código 4), `run_weekend.sh` (`select_structure`, `rung8`, S4–S8 y S6) y `README_weekend.md`, con tres pruebas en `tests/test_select_structure.py`.
+diff -ruN -x __pycache__ scripts_snapshot_4ff4b341/05b_select_structure.py scripts/05b_select_structure.py
+--- scripts_snapshot_4ff4b341/05b_select_structure.py	2026-11-18 12:42:11.981837921 -0300
++++ scripts/05b_select_structure.py	2026-11-18 12:45:14.212351563 -0300
+@@ -8,7 +8,9 @@
+ Descriptive outputs (never enter the regions): per-encoder rung, and S9 = the "mixed" fit (per experiment, the first converged rung of pass 1).
+ Usage: python 05b_select_structure.py <out_prefix> <stage1_ladder.csv> [more stage-1 csv ...]
+ Exit 0 = selection complete (writes <out_prefix>_primary.csv, _per_encoder.csv, _S9_mixed.csv, _structure.csv, _status.json)
+-Exit 3 = fits missing (writes <out_prefix>_needs.csv with encoder, items, rung): run 05 with fit=<rung> for those and call again."""
++Exit 3 = fits missing (writes <out_prefix>_needs.csv with encoder, items, rung): run 05 with fit=<rung> for those and call again.
++Exit 4 = NO common structure for some item set (REVISION3b): writes <out_prefix>_status.json (common_rung null) and <out_prefix>_DEVIATION.txt
++         and NO stage-1 tables. There is no silent fallback to L4 or to anything else: the run stops and the deviation is logged (plan §5.2)."""
+ import sys, json, pandas as pd
+ STRUCTURE_SCOPE = "common"          # pre-declared constant (plan §5.2 and §10.4). "per_encoder" would be the only alternative.
+ RUNGS = ["L1", "L2", "L3", "L4"]
+@@ -17,7 +19,8 @@
+ def status(T, enc, exp, rung):
+     r = T.get((enc, exp, rung)); return None if r is None else bool(r["converged"])
+ def richest(T, encs):
+-    """('ok', rung) | ('need', [(enc, rung)]) | ('none', None)"""
++    """('ok', rung) | ('need', [(enc, rung)]) | ('none', None). An empty encoder set has no common rung (REVISION3b: never a vacuous L1)."""
++    if not encs: return "none", None
+     for rg in RUNGS:
+         st = [status(T, e, x, rg) for e in encs for x in EXPS]
+         if any(s is False for s in st): continue
+@@ -57,6 +60,12 @@
+     out, needs = select(df)
+     if needs:
+         pd.DataFrame(needs, columns=["encoder", "items", "rung"]).to_csv(f"{pre}_needs.csv", index=False); print("NEEDS", needs); sys.exit(3)
++    none = {items: o for items, o in out.items() if o["common"] is None}
++    if none:   # REVISION3b: no common rung (e.g. every encoder left out, or encoders converging only on disjoint rungs) -> stop, never a silent L4
++        st = {str(i): dict(scope=STRUCTURE_SCOPE, common_rung=o["common"], excluded_from_selection=o.get("excluded", []), own_rung=o["own"]) for i, o in out.items()}
++        open(f"{pre}_status.json", "w").write(json.dumps(st, indent=1))
++        msg = "".join(f"DEVIATION (plan §5.2): no common stage-1 structure for {i} items; eligible={o.get('eligible')}; own rungs={o['own']}. Stop: no fallback.\n" for i, o in none.items())
++        open(f"{pre}_DEVIATION.txt", "w").write(msg); print(msg, end=""); sys.exit(4)
+     prim, per, mix, struct, st = [], [], [], [], {}
+     for items, o in out.items():
+         T, own, common = o["T"], o["own"], o["common"]
+diff -ruN -x __pycache__ scripts_snapshot_4ff4b341/08_regions.py scripts/08_regions.py
+--- scripts_snapshot_4ff4b341/08_regions.py	2026-11-18 12:42:11.981837921 -0300
++++ scripts/08_regions.py	2026-11-18 12:42:47.671113590 -0300
+@@ -47,10 +47,15 @@
+     parts = []
+     for v in dict.fromkeys(vals): parts.append(f"{v} (δ = {', '.join(f'{d:.2f}' for d in DELTAS if labels[d] == v)})")
+     return "dependiente del margen: " + "; ".join(parts)
++TECH0 = "sin lectura: técnico (R0 inconcluso (técnico))"
++def r0_reading24(reg24):
++    """REVISION3b: the 24-item reference reading of R0 (no G grid at 24 items, §7.1); a technical R0 gives 'sin lectura: técnico', never a result."""
++    return TECH0 if reg24 == R5T else reg24
+ def conclude(dl, cut, regs, adj, pc, pipeline_ok, grouping):
+     """§7.4 for one (delta, cut). Returns (code, detail)."""
+     if not pipeline_ok: return "G0", "falla el control de tubería"
+     if not pc.get(R0, False): return "G0", "R0 falla el control positivo (BC1): se detiene todo"
++    if regs[R0][dl] == R5T: return "G0", TECH0   # REVISION3b (IMPORTANT): a technical failure of R0 is never read as G1
+     if regs[R0][dl] != R3_: return "G1", f"R0 en '{regs[R0][dl]}'"
+     g = grouping["cuts"][cut]; disc = g["calibration"]["discriminates"]
+     fails = [e for e in TRAINED[1:] if pc.get(e, False) and e in adj and (
+@@ -115,7 +120,7 @@
+     fam = family_summary(s8, pc)
+     for row in rows: row["familia_holm"] = fam["membership"][row["encoder"]]
+     out = (pd.DataFrame(rows), grid, pd.DataFrame(floors), grid_profile({k: v[0] for k, v in G.items()}))
+-    analyse.families = fam; return out
++    analyse.families = fam; analyse.r0_24 = r0_reading24(next(r["region_24"] for r in rows if r["encoder"] == R0)); return out
+ def family_summary(s8, pc):
+     """REVISION3 (2)/(3): k and excluded encoders of each Holm family (membership does not depend on delta)."""
+     mem, fams = {}, {}
+@@ -148,7 +153,8 @@
+     r0 = tab[tab.encoder == R0].iloc[0]
+     md = ["# Regiones y conclusión global (plan §7; generado por 08_regions.py)", "",
+           f"- Control de tubería: {'PASA' if pipeline_ok else 'FALLA'}. Perfil del agrupamiento de geometría: {grouping['profile']}.",
+-          f"- Referencia descriptiva, no confirmatoria (I-b): Δ en dos etapas de R0 con 8 ítems = {r0.delta_hat} [IC 95 % {r0.ci95_lo}; {r0.ci95_hi}].", "",
++          f"- Referencia descriptiva, no confirmatoria (I-b): Δ en dos etapas de R0 con 8 ítems = {r0.delta_hat} [IC 95 % {r0.ci95_lo}; {r0.ci95_hi}].",
++          f"- Lectura de R0 con 24 ítems (REVISION3b): {analyse.r0_24}.", "",
+           "## Tabla única (§7.2): región con δ = 0,05 / 0,10 / 0,20 y con 24 ítems", "", md_table(tab[[c for c in ["encoder", "control_positivo", "familia_holm", "region_d0.05", "region_d0.10", "region_d0.20", "region_24", "tipo_de_ajuste", "perfil"] if c in tab.columns]]), "",
+           "## Familias Holm (§7.3; iguales con los tres δ)", "",
+           *[f"- **{n}:** k = {f['k']} encoders, {f['n_tests']} pruebas por δ; incluidos: {', '.join(f['incluidos']) or 'ninguno'}; excluidos: {', '.join(f['excluidos']) or 'ninguno'}." for n, f in analyse.families["families"].items()], "",
+diff -ruN -x __pycache__ scripts_snapshot_4ff4b341/README_weekend.md scripts/README_weekend.md
+--- scripts_snapshot_4ff4b341/README_weekend.md	2026-11-18 12:42:11.981837921 -0300
++++ scripts/README_weekend.md	2026-11-18 12:45:56.257854453 -0300
+@@ -14,7 +14,7 @@
+ | `02_equivalence.py` | parte A descriptiva; parte B: r de zd (8 ítems, parcializando nivel), UPGMA con cortes 0,3/0,5/0,7, calibración por corte, perfil | §6 |
+ | `lib_glmm.R` | lectura, mapeo de condiciones, z por encoder y conjunto de ítems, control de convergencia | §4, §5 |
+ | `05_twostage_stage1.R` | etapa 1: pendiente de zd por experimento (contr.sum); `fit` = `ladder` (pasada 1: L1 → L4 hasta el primero que converge) o un peldaño fijo | §5.2 |
+-| `05b_select_structure.py` | peldaño **común** a todos los encoders (`STRUCTURE_SCOPE = "common"`, confirmado por Patricio 18-11 12:14), solo por convergencia; pide las pasadas 2; escribe primario, `per_encoder_rung` y `S9_mixed` (descriptivos) y `structure.csv` | §5.2, S9 |
++| `05b_select_structure.py` | peldaño **común** a todos los encoders (`STRUCTURE_SCOPE = "common"`, confirmado por Patricio 18-11 12:14), solo por convergencia; pide las pasadas 2; escribe primario, `per_encoder_rung` y `S9_mixed` (descriptivos) y `structure.csv`; **sin estructura común sale con código 4 y `structure_DEVIATION.txt`, sin caer a L4** (REVISION3b) | §5.2, S9 |
+ | `06_stage2_permutation.py` | etapa 2: Δ, permutación exacta 924, IC por inversión, TOST, Welch; tabla tipo de ajuste × orden (`*_fit_type_by_order.csv`) | §5.2 |
+ | `07_pooled_glmm.R` | control positivo, S1 (04f), S2, S3, F0 | §5.3, §5.4 |
+ | `08_regions.py` | regiones (con BC1), Holm por δ con k y excluidos de cada familia, G0–G4 en la grilla δ × corte, perfiles, pisos; `--stage2-s9` añade el rótulo descriptivo "sensible al tipo de ajuste" | §7, S9 |
+@@ -22,10 +22,10 @@
+ | `run_weekend.sh` | orden del sábado y domingo (§10.3); `WEEKEND_SYNTH_DIR=/tmp/synth…` solo para el ensayo sintético | §10.3 |
+ 
+ ## Lista de verificación de Ariadna (REVISION2, "Scripts de análisis") y dónde se cumple
+-1. **Prep.** (BC3 de REVISION3: el orden de rangos agrupa casi-empates < 1e−6; ruido 1e−8, casi-empate invertido y borde de redondeo PASAN; intercambio real con brecha 5e−6 FALLA.) `tests/test_prep.py` ejecuta el bucle de `h4_prep.py` **desde su propio texto fuente** sobre datos sintéticos y compara: columnas, filas y orden idénticos, d idéntica (diferencia 0). Los npz se leen por nombre de imagen (`names`). G0: `--check` exige filas idénticas, |Δd| ≤ 1e−5 y el mismo orden de rangos (falla con +2e−5 y con filas reordenadas). z: `lib_glmm.R::add_zd`, por encoder y conjunto de ítems, sobre todos los experimentos; `02` lee con `usecols` sin `selected`.
+-2. **Etapa 1.** `contrasts(dd$condition) <- contr.sum(4)` dentro de cada experimento; `read_long` falla si una condición no se mapea (`stopifnot`), y la salida guarda n, personas, el peldaño (`rung` L1–L4), `converged` (criterio de `lib_glmm.R::ladder_converged`: sin error, código 0, sin avisos de convergencia de lme4, no singular con tol 1e−4), advertencias, singularidad y código del optimizador. Se guarda el β̂ de `zd`. La elección del peldaño (`05b`) usa solo `converged` (`tests/test_select_structure.py`, 5 pruebas: todo L1; un piso difícil baja a todos a L2 con dos pasadas; encoder sin peldaño fuera de la elección y evaluado con el común; la elección no cambia si cambian los β̂; constante fija sin opción).
++1. **Prep.** (BC3 de REVISION3: el orden de rangos agrupa casi-empates < 1e−6; ruido 1e−8, casi-empate invertido y borde de redondeo PASAN; intercambio real con brecha 5e−6 FALLA.) `tests/test_prep.py` ejecuta el bucle de `h4_prep.py` **desde su propio texto fuente** sobre datos sintéticos y compara: columnas, filas y orden idénticos, d idéntica (diferencia 0). Los npz se leen por nombre de imagen (`names`). G0: `--check` exige filas idénticas, |Δd| ≤ 1e−5 y el mismo orden de rangos (falla con +2e−5 y con filas reordenadas). REVISION3b: G0 también falla si el grupo de casi-empates más ancho de la v1 mide ≥ 1e−6 (prueba con cinco valores a 4e−7: ancho 1,6e−6, FALLA). z: `lib_glmm.R::add_zd`, por encoder y conjunto de ítems, sobre todos los experimentos; `02` lee con `usecols` sin `selected`.
++2. **Etapa 1.** `contrasts(dd$condition) <- contr.sum(4)` dentro de cada experimento; `read_long` falla si una condición no se mapea (`stopifnot`), y la salida guarda n, personas, el peldaño (`rung` L1–L4), `converged` (criterio de `lib_glmm.R::ladder_converged`: sin error, código 0, sin avisos de convergencia de lme4, no singular con tol 1e−4), advertencias, singularidad y código del optimizador. Se guarda el β̂ de `zd`. La elección del peldaño (`05b`) usa solo `converged` (`tests/test_select_structure.py`, 8 pruebas: todo L1; un piso difícil baja a todos a L2 con dos pasadas; encoder sin peldaño fuera de la elección y evaluado con el común; la elección no cambia si cambian los β̂; constante fija sin opción; REVISION3b: sin estructura común → código 4 sin tablas, conjunto elegible vacío → sin estructura, y `run_weekend.sh rung8` con peldaño nulo → falla y registra la desviación, nunca imprime L4).
+ 3. **Etapa 2.** `COMBOS` = las 924 asignaciones (prueba: 924 filas únicas con 6 "3-1"); Δ = 3-1 menos 1-3; p con ≥ (tolerancia 1e−12); IC por inversión en grilla de paso 0,001 que cubre Δ ± 3·(rango + 1), con banderas `ci*_at_grid_edge` y `ci*_contiguous`; TOST = máx. de los dos p desplazados. `tests/test_stage2.py` contrasta todo contra fuerza bruta con Δ conocido.
+-4. **Regiones.** Precedencia [no interpretable] → 1 → 2 → 3 → 4 → 5 por δ; familias Holm de 2·k; G0–G4 en orden; perfiles por encoder, por agrupamiento y global (grilla δ × corte); sin opciones para elegir δ, corte ni encoders (`tests/test_regions.py`, 18 pruebas, incluidos los dos ejemplos de §7.1, un encoder que falla el control, R0 que falla y calibración que pasa en un corte y falla en otro).
++4. **Regiones.** Precedencia [no interpretable] → 1 → 2 → 3 → 4 → 5 por δ; familias Holm de 2·k; G0–G4 en orden; perfiles por encoder, por agrupamiento y global (grilla δ × corte); sin opciones para elegir δ, corte ni encoders (`tests/test_regions.py`, 20 pruebas, incluidos los dos ejemplos de §7.1, un encoder que falla el control, R0 que falla, R0 "inconcluso (técnico)" → G0 "sin lectura: técnico" en las 9 celdas y nunca G1 (REVISION3b), R0 técnico solo con 24 ítems, y calibración que pasa en un corte y falla en otro).
+ 5. **`07`.** Fórmulas copiadas de §5.3 (= C6 de 04c, con su fallback), §5.4 y 04f (Mbase, Mb, Mc con contrastes de tratamiento, como en 04f).
+ 6. **Congelamiento.** `09_freeze.py --freeze --scripts-review <archivo>` escribe el sha256 del plan, de las revisiones, de todo `scripts/` (incluidas las pruebas y este README), de los snapshots del plan, de `encoder_specs.json` y de los 13 npz.
+ 
+@@ -44,5 +44,5 @@
+ ## Fin de semana (solo después del congelamiento; plan §10.3)
+ Antes de empezar: `/tmp/renv` (R 4.5.3 + lme4 2.0.6) y `/tmp/XTMEM` están en `/tmp` y pueden haberse borrado. `run_weekend.sh` lo comprueba
+ (paso 0) y se detiene si falta R; las imágenes solo hacen falta para S6. `09_freeze.py --verify` debe dar OK; `h4_long.csv` debe tener el sha256 `d9d30f9d…394dd1`.
+-- **Sábado** (`bash run_weekend.sh saturday`): 0 verificación → 1 prep + G0 (si falla, se detiene todo) → 2 `02` → 3 tiempo de un encoder (columna `secs`; solo actualiza el presupuesto) → 4 etapa 1 con 8 ítems (pasada 1) → 5 etapa 1 con 24 ítems (pasada 1) → 5b `05b` + pasadas 2 (peldaño común) → 6 control positivo → 7 etapa 2 y `08_regions.py`.
++- **Sábado** (`bash run_weekend.sh saturday`): 0 verificación → 1 prep + G0 (si falla, se detiene todo) → 2 `02` → 3 tiempo de un encoder (columna `secs`; solo actualiza el presupuesto) → 4 etapa 1 con 8 ítems (pasada 1) → 5 etapa 1 con 24 ítems (pasada 1) → 5b `05b` + pasadas 2 (peldaño común; si no hay, se detiene y registra la desviación) → 6 control positivo → 7 etapa 2 y `08_regions.py`.
+ - **Domingo** (`bash run_weekend.sh sunday`): S1 → S5, S7, S8 (S4, S5, S7, S8 con el peldaño común de 8 ítems), regiones con S9 (ajuste mixto, sin ajustes extra), familia A (F0) y **S6 al final** (si falla, no detiene nada y se registra). Tope de 32 h de CPU **vigilado a mano** (el script no lo aplica); si se supera, se corta en orden inverso de ejecución y se registra. Después, a mano: `RESULTADOS_encoders.md`, entradas de `DESVIACIONES` y aviso a Evaristo. No se publica nada sin Patricio.
+diff -ruN -x __pycache__ scripts_snapshot_4ff4b341/h4_prep_encoders.py scripts/h4_prep_encoders.py
+--- scripts_snapshot_4ff4b341/h4_prep_encoders.py	2026-11-18 12:42:11.977837778 -0300
++++ scripts/h4_prep_encoders.py	2026-11-18 12:43:16.816155343 -0300
+@@ -35,15 +35,24 @@
+     k = cl.max() + 1; mx = np.full(k, -np.inf); mn = np.full(k, np.inf)
+     np.maximum.at(mx, cl, ns); np.minimum.at(mn, cl, ns)
+     return bool((mx[:-1] < mn[1:]).all())
++def near_tie_max_width(v1, near_tie=NEAR_TIE):
++    """REVISION3b (minor): width (max - min of the v1 values) of the widest near-tie group. Single linkage can chain; a group whose
++    width reaches near_tie is no longer 'one value computed twice' and the check must not merge it (measured on v1: 6.0e-8, 288 groups)."""
++    vs = np.sort(v1); cl = np.concatenate([[0], np.cumsum(np.diff(vs) >= near_tie)]); k = cl.max() + 1
++    lo = np.full(k, np.inf); hi = np.full(k, -np.inf); np.minimum.at(lo, cl, vs); np.maximum.at(hi, cl, vs)
++    return float((hi - lo).max())
+ def check(new_csv, v1_csv, tol=1e-5, json_out=None):
+     a = pd.read_csv(new_csv, usecols=["exp", "subid", "trial", "image", "dist"]); b = pd.read_csv(v1_csv, usecols=["exp", "subid", "trial", "image", "dist"])
+     same_rows = a[["exp", "subid", "trial", "image"]].equals(b[["exp", "subid", "trial", "image"]])
+     diff = float(np.abs(a.dist.to_numpy() - b.dist.to_numpy()).max()) if same_rows else float("nan")
++    width = near_tie_max_width(b.dist.to_numpy(float)); no_chain = width < NEAR_TIE   # REVISION3b: guard against chained near-tie groups
+     same_rank = same_rows and rank_order_ok(a.dist.to_numpy(float), b.dist.to_numpy(float))
+-    ok = bool(same_rows and diff <= tol and same_rank)
+-    print(f"PIPELINE_CONTROL rows_identical={same_rows} max_abs_diff={diff:.3g} tol={tol} same_rank_order(near-ties<{NEAR_TIE:g} merged)={same_rank} -> {'PASS' if ok else 'FAIL (G0: stop)'}")
++    ok = bool(same_rows and diff <= tol and same_rank and no_chain)
++    print(f"PIPELINE_CONTROL rows_identical={same_rows} max_abs_diff={diff:.3g} tol={tol} same_rank_order(near-ties<{NEAR_TIE:g} merged)={same_rank} "
++          f"near_tie_group_max_width={width:.3g} (<{NEAR_TIE:g}: {no_chain}) -> {'PASS' if ok else 'FAIL (G0: stop)'}")
+     if json_out:
+-        import json; pathlib.Path(json_out).write_text(json.dumps(dict(ok=ok, rows_identical=bool(same_rows), max_abs_diff=diff, tol=tol, near_tie=NEAR_TIE, same_rank_order=bool(same_rank))))
++        import json; pathlib.Path(json_out).write_text(json.dumps(dict(ok=ok, rows_identical=bool(same_rows), max_abs_diff=diff, tol=tol, near_tie=NEAR_TIE, same_rank_order=bool(same_rank),
++                                                       near_tie_group_max_width=width, near_tie_groups_ok=bool(no_chain))))
+     return ok
+ if __name__ == "__main__":
+     if len(sys.argv) > 1 and sys.argv[1] == "--check":
+diff -ruN -x __pycache__ scripts_snapshot_4ff4b341/run_weekend.sh scripts/run_weekend.sh
+--- scripts_snapshot_4ff4b341/run_weekend.sh	2026-11-18 12:42:11.981837921 -0300
++++ scripts/run_weekend.sh	2026-11-18 12:44:50.863516981 -0300
+@@ -34,13 +34,17 @@
+   for k in 1 2 3 4 5 6 7 8; do
+     rc=0; $PY $S/05b_select_structure.py $RES/structure "${files[@]}" > $L/05b_select_iter$k.log 2>&1 || rc=$?
+     [ $rc -eq 0 ] && { cat $RES/structure_status.json | tee -a $L/run_weekend.log; return 0; }
++    [ $rc -eq 4 ] && { cat $RES/structure_DEVIATION.txt | tee -a $L/run_weekend.log; log "DEVIATION: no common stage-1 structure (plan §5.2): stop, no fallback"; exit 1; }
+     [ $rc -eq 3 ] || { cat $L/05b_select_iter$k.log; log "05b failed"; exit 1; }
+     local lines=(); mapfile -t lines < <($PY -c "import pandas as p; d=p.read_csv('$RES/structure_needs.csv')
+ for (i, r), g in d.groupby(['items', 'rung']): print(i, r, ' '.join(sorted(set(g.encoder))))")
+     for ln in "${lines[@]}"; do set -- $ln; local it=$1 rg=$2; shift 2; log "   pass 2 (iter $k): items=$it rung=$rg: $*"
+       par3 $RES/stage1_pass2_${it}_${rg}_i$k $it primary - - $rg "$@"; files+=($RES/stage1_pass2_${it}_${rg}_i${k}_g*.csv); done
+   done; log "05b: selection did not finish after 8 iterations: stop"; exit 1; }
+-rung8() { $PY -c "import json; print(json.load(open('$RES/structure_status.json'))['8']['common_rung'] or 'L4')"; }
++rung8() {  # common 8-item rung fixed on Saturday (plan §5.2). REVISION3b: missing/null -> log the deviation and fail (no silent L4)
++  local r; r=$($PY -c "import json,sys; r=json.load(open('$RES/structure_status.json'))['8']['common_rung']; print(r) if r in ('L1','L2','L3','L4') else sys.exit(4)" 2>/dev/null) \
++    || { log "DEVIATION: no common 8-item stage-1 structure in $RES/structure_status.json (plan §5.2): stop, no fallback" >&2; return 1; }
++  echo "$r"; }
+ saturday() {
+   step0
+   log "1. h4_prep_encoders + pipeline control (G0)"
+@@ -59,17 +63,18 @@
+   log "Saturday done"; }
+ s6() {  # S6, common preprocessing; run in a subshell at the very end of Sunday. errexit is off inside "( s6 ) || ...", hence the && chain.
+   [ -n "${WEEKEND_SYNTH_DIR:-}" ] && [ -n "${WEEKEND_SYNTH_S6_FAIL:-}" ] && return 1   # rehearsal of the non-blocking failure
++  local RG; RG=$(rung8) || return 1                                                       # REVISION3b: no common rung -> S6 fails (logged)
+   if [ -n "${WEEKEND_SYNTH_DIR:-}" ]; then for i in $P10; do cp $EMB/emb_$i.npz $EMB/emb_${i}_s6common.npz || return 1; done
+   else $PY $S/01b_embed_common.py > $L/01b.log 2>&1 || return 1; fi
+   $PY $S/h4_prep_encoders.py --raw $RAW --key $KEY --emb-dir $EMB --out-dir $DATA --suffix _s6common $P10 >> $L/01_prep.log 2>&1 &&
+-  par3 $RES/stage1_S6 8 primary _s6common - $(rung8) $P10 &&
++  par3 $RES/stage1_S6 8 primary _s6common - $RG $P10 &&
+   $PY $S/06_stage2_permutation.py $RES/stage2_S6.csv $RES/stage1_S6_g*.csv; }
+ sunday() {
+   step0
+   log "8. S1"; $R $S/07_pooled_glmm.R $DATA $KEY $RES/S1_24.csv S1 24 - $P10 > $L/S1_24.log 2>&1; $R $S/07_pooled_glmm.R $DATA $KEY $RES/S1_8.csv S1 8 - $P10 > $L/S1_8.log 2>&1
+   log "S2"; $R $S/07_pooled_glmm.R $DATA $KEY $RES/S2.csv S2 8 - $P10 > $L/S2.log 2>&1
+   log "S3"; $R $S/07_pooled_glmm.R $DATA $KEY $RES/S3.csv S3 8 - $P10 > $L/S3.log 2>&1
+-  local RG; RG=$(rung8); log "S4/S5/S7/S8 at the common 8-item rung $RG (fixed on Saturday by 05b; not re-selected)"
++  local RG; RG=$(rung8) || exit 1; log "S4/S5/S7/S8 at the common 8-item rung $RG (fixed on Saturday by 05b; not re-selected)"
+   log "S4"; par3 $RES/stage1_S4 8 first_session - $FS $RG $P10
+   log "S5"; par3 $RES/stage1_S5 8 rank - - $RG $P10
+   log "S7"; $R $S/05_twostage_stage1.R $DATA $KEY $RES/stage1_S7.csv 8 primary - - $RG F1_rn50rand1 F1_rn50rand2 > $L/S7.log 2>&1
+diff -ruN -x __pycache__ scripts_snapshot_4ff4b341/tests/test_prep.py scripts/tests/test_prep.py
+--- scripts_snapshot_4ff4b341/tests/test_prep.py	2026-11-18 12:42:11.977837778 -0300
++++ scripts/tests/test_prep.py	2026-11-18 12:44:00.781726861 -0300
+@@ -27,8 +27,9 @@
+ for ID in IDS: assert pd.read_csv(D / f"long/h4_long_{ID}.csv", usecols=["exp", "subid", "trial", "image"]).equals(new[["exp", "subid", "trial", "image"]])
+ print("[prep] all 13 sources have identical keys/order. OK")
+ # BC3 (REVISION3): near-ties. Inject numerical noise of 1e-8 (well below 1e-6 rounding of the rank check): must PASS.
+-rng = np.random.default_rng(0); noisy = old.copy(); noisy["dist"] = noisy.dist + rng.uniform(-1e-8, 1e-8, len(noisy)); noisy.to_csv(D / "v1like/noise_1e-8.csv", index=False)
+-r = chk(D / "long/h4_long_R0_dinov2s.csv", D / "v1like/noise_1e-8.csv"); print("[G0 noise 1e-8]", r.stdout.strip()); assert r.returncode == 0
++# REVISION3b: the noise goes into the NEW file (the v1 file is fixed by its sha256; the near-tie groups and their width are measured on it)
++rng = np.random.default_rng(0); noisy = new.copy(); noisy["dist"] = noisy.dist + rng.uniform(-1e-8, 1e-8, len(noisy)); noisy.to_csv(D / "v1like/noise_1e-8.csv", index=False)
++r = chk(D / "v1like/noise_1e-8.csv", D / "v1like/h4_long_SYNTH_v1code.csv"); print("[G0 noise 1e-8]", r.stdout.strip()); assert r.returncode == 0
+ # near-ties of the v1 kind (same centroid, other image order: |gap| < 1e-6) broken in opposite directions: must PASS
+ u = np.sort(old.dist.unique()); a_, b_ = u[10], u[11]; nt = old.copy(); nt2 = new.copy()
+ nt.loc[nt.dist == b_, "dist"] = a_ + 3e-7; nt2.loc[nt2.dist == b_, "dist"] = a_ - 3e-7   # gap 3e-7 above in one file, below in the other
+@@ -50,6 +51,15 @@
+ snew = new.copy(); snew.loc[i, "dist"] = x + 5e-6; snew.loc[j, "dist"] = x
+ sv1.to_csv(D / "v1like/real_swap_v1.csv", index=False); snew.to_csv(D / "v1like/real_swap_new.csv", index=False)
+ r = chk(D / "v1like/real_swap_new.csv", D / "v1like/real_swap_v1.csv"); print("[G0 real swap, gap 5e-6, values within 1e-5]", r.stdout.strip()); assert r.returncode == 1 and "max_abs_diff=5e-06" in r.stdout
++# REVISION3b (minor): chained near-ties. Five v1 values 4e-7 apart (each gap < 1e-6, group width 1.6e-6 >= 1e-6), identical in both
++# files (so values and ranks agree): the width guard alone must FAIL G0; and the real v1-like case (width ~0) must report PASS
++ch = old.copy(); base_ = 0.4
++for q in range(5): ch.loc[ch.dist == u[60 + q], "dist"] = base_ + q * 4e-7
++ch.to_csv(D / "v1like/chain_v1.csv", index=False); ch.to_csv(D / "v1like/chain_new.csv", index=False)
++import importlib.util; sp = importlib.util.spec_from_file_location("hp", S / "h4_prep_encoders.py"); HP = importlib.util.module_from_spec(sp); sp.loader.exec_module(HP)
++assert abs(HP.near_tie_max_width(ch.dist.to_numpy(float)) - 1.6e-6) < 1e-9 and HP.near_tie_max_width(old.dist.to_numpy(float)) < 1e-6
++r = chk(D / "v1like/chain_new.csv", D / "v1like/chain_v1.csv"); print("[G0 chained near-ties, width 1.6e-6]", r.stdout.strip())
++assert r.returncode == 1 and "same_rank_order(near-ties<1e-06 merged)=True" in r.stdout and "(<1e-06: False)" in r.stdout
+ r = subprocess.run([PY, S / "h4_prep_encoders.py", "--check", D / "long/h4_long_R0_dinov2s.csv", D / "v1like/h4_long_SYNTH_v1code.csv", D / "pipeline_control_SYNTH.json"], capture_output=True, text=True)
+-import json; assert json.loads((D / "pipeline_control_SYNTH.json").read_text())["ok"] is True; print("[G0 json] ok=True written")
++import json; js = json.loads((D / "pipeline_control_SYNTH.json").read_text()); assert js["ok"] is True and js["near_tie_groups_ok"] is True; print("[G0 json] ok=True written")
+ print("[prep] BC3 tests OK")
+diff -ruN -x __pycache__ scripts_snapshot_4ff4b341/tests/test_regions.py scripts/tests/test_regions.py
+--- scripts_snapshot_4ff4b341/tests/test_regions.py	2026-11-18 12:42:11.977837778 -0300
++++ scripts/tests/test_regions.py	2026-11-18 12:42:47.671113590 -0300
+@@ -47,6 +47,19 @@
+     def test_BC1_R0_fails_control_stops(self):
+         rows, pc = self.base(); pc["R0_dinov2s"] = False; tab, grid, fl, gp = self.run_(rows, pc)
+         self.assertEqual(gp, "robusta: G0"); self.assertTrue(all("R0 falla el control positivo" in d for d in grid.detalle))
++    def test_REVISION3b_R0_technical_is_G0_not_G1(self):
++        """R0 'inconcluso (técnico)' with 8 items -> G0 'sin lectura: técnico' in all 9 cells of the grid, never G1 (even if the others hold)."""
++        rows, pc = self.base(); rows[0] = dict(encoder="R0_dinov2s", items=8, variant="primary", suffix="", status="inconcluso_tecnico")
++        tab, grid, fl, gp = self.run_(rows, pc)
++        self.assertEqual(set(grid.conclusion), {"G0"}); self.assertNotIn("G1", set(grid.conclusion)); self.assertEqual(gp, "robusta: G0")
++        self.assertTrue(all(d == R.TECH0 for d in grid.detalle)); self.assertTrue(all(tab.set_index("encoder").loc["R0_dinov2s", f"region_d{d:.2f}"] == R.R5T for d in R.DELTAS))
++        # same with the other encoders in mixed regions: still G0
++        rows[1] = row(-.3, (-.5, -.1), (-.45, -.15), popp=.001, enc="O1_dinov2b"); tab, grid, fl, gp = self.run_(rows, pc); self.assertEqual(gp, "robusta: G0")
++    def test_REVISION3b_R0_technical_at_24_only(self):
++        """R0 technical only with 24 items: the 8-item grid is unchanged (G3) and the 24-item R0 reading is 'sin lectura: técnico'."""
++        rows, pc = self.base(); rows.append(dict(encoder="R0_dinov2s", items=24, variant="primary", suffix="", status="inconcluso_tecnico"))
++        tab, grid, fl, gp = self.run_(rows, pc); self.assertEqual(gp, "robusta: G3"); self.assertEqual(R.analyse.r0_24, R.TECH0)
++        rows[-1] = dict(row(**HOLDS, enc="R0_dinov2s", items=24)); tab, grid, fl, gp = self.run_(rows, pc); self.assertEqual(R.analyse.r0_24, R.POS24)
+     def test_BC1_trained_fails_control(self):
+         rows, pc = self.base(); pc["E2_vitsup"] = False
+         rows[R.PRIMARY.index("O1_dinov2b")] = row(.0, (-.02, .02), (-.015, .015), popp=.5, ptost=(.002, .002, .002), enc="O1_dinov2b")
+diff -ruN -x __pycache__ scripts_snapshot_4ff4b341/tests/test_select_structure.py scripts/tests/test_select_structure.py
+--- scripts_snapshot_4ff4b341/tests/test_select_structure.py	2026-11-18 12:42:11.977837778 -0300
++++ scripts/tests/test_select_structure.py	2026-11-18 12:45:14.212351563 -0300
+@@ -42,4 +42,34 @@
+         self.assertEqual(SEL.STRUCTURE_SCOPE, "common"); src = (S / "05b_select_structure.py").read_text()
+         self.assertNotIn("argparse", src); self.assertNotIn("--scope", src)
+         self.assertNotIn("F0", SEL.SELECTION_SET); self.assertEqual(len(SEL.SELECTION_SET), 10)
++    def test_REVISION3b_no_common_structure_stops(self):
++        """Encoders converging only on disjoint rungs (the other 9: L1 is their only full rung, L2 fails in exp 4; F2: L2 is its only full
++        rung, L1 fails in exp 4) -> no rung common to all: 05b exits 4, writes the DEVIATION file and a null common_rung, and writes NO stage-1 tables (no silent L4)."""
++        import subprocess, tempfile, sys
++        rows = []
++        for e in SEL.SELECTION_SET:
++            for x in range(1, 13):
++                for rg in SEL.RUNGS:
++                    if e == "F2_pixels": ok = (rg == "L2") if x == 4 else (rg in ("L1", "L2"))      # F2: L2 is its only full rung
++                    else: ok = rg == "L1" or (rg == "L2" and x != 4)                               # others: L2 fails in exp 4 -> only L1
++                    rows.append(dict(encoder=e, items=8, variant="primary", suffix="", exp=x, order=ORD[x], rung=rg, converged=ok, beta=0.0, se=.1))
++        with tempfile.TemporaryDirectory(dir="/tmp") as d:
++            f = pathlib.Path(d) / "s1.csv"; pd.DataFrame(rows).to_csv(f, index=False); pre = pathlib.Path(d) / "structure"
++            r = subprocess.run([sys.executable, S / "05b_select_structure.py", pre, f], capture_output=True, text=True)
++            self.assertEqual(r.returncode, 4, r.stdout + r.stderr); self.assertIn("DEVIATION", (pathlib.Path(d) / "structure_DEVIATION.txt").read_text())
++            import json; self.assertIsNone(json.loads((pathlib.Path(d) / "structure_status.json").read_text())["8"]["common_rung"])
++            self.assertFalse((pathlib.Path(d) / "structure_primary.csv").exists())
++    def test_REVISION3b_all_encoders_left_out_is_no_structure(self):
++        out, needs = SEL.select(pass1({(e, 1): "none" for e in SEL.SELECTION_SET})); self.assertEqual(needs, []); self.assertIsNone(out[8]["common"])
++    def test_REVISION3b_rung8_stops_without_common_structure(self):
++        """run_weekend.sh rung8: a null common_rung -> non-zero exit and a DEVIATION line in the log; never prints L4."""
++        import subprocess, tempfile, json
++        with tempfile.TemporaryDirectory(prefix="synth_rung8_", dir="/tmp") as d:
++            res = pathlib.Path(d) / "w_results"; res.mkdir(); env = dict(__import__("os").environ, WEEKEND_SYNTH_DIR=d)
++            (res / "structure_status.json").write_text(json.dumps({"8": {"common_rung": None}}))
++            r = subprocess.run(["bash", S / "run_weekend.sh", "rung8"], capture_output=True, text=True, env=env)
++            self.assertNotEqual(r.returncode, 0); self.assertNotIn("L4", r.stdout); self.assertIn("DEVIATION", (pathlib.Path(d) / "w_logs/run_weekend.log").read_text())
++            (res / "structure_status.json").write_text(json.dumps({"8": {"common_rung": "L2"}}))
++            r = subprocess.run(["bash", S / "run_weekend.sh", "rung8"], capture_output=True, text=True, env=env)
++            self.assertEqual((r.returncode, r.stdout.strip()), (0, "L2"))
+ if __name__ == "__main__": unittest.main(verbosity=2)

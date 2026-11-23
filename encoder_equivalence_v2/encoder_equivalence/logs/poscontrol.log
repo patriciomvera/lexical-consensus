@@ -1,0 +1,11 @@
+R0_dinov2s poscontrol items=8 done in 80.0 s
+O1_dinov2b poscontrol items=8 done in 45.0 s
+R1_cvcl poscontrol items=8 done in 32.6 s
+E1_siglip poscontrol items=8 done in 85.5 s
+O2_openclip poscontrol items=8 done in 82.3 s
+E2_vitsup poscontrol items=8 done in 45.4 s
+E3_rn50sup poscontrol items=8 done in 36.7 s
+E4_mae poscontrol items=8 done in 35.0 s
+F1_rn50rand0 poscontrol items=8 done in 53.7 s
+F2_pixels poscontrol items=8 done in 31.9 s
+wrote /workspace/lexical-consensus-openmind/encoder_equivalence/results/poscontrol.csv 70 rows

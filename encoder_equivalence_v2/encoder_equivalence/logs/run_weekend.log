@@ -1,0 +1,72 @@
+[2026-11-21 08:25:17 -03] 0. checks
+VERIFY 47 files: OK; files not in manifest: none
+d9d30f9d246cec07f9e4645fee983f934a4e68ef3c42b7aa4d8e8dab7b394dd1  /workspace/lexical-consensus-openmind/human_data_analyses/data/h4_long.csv
+MemAvailable:    2517948 kB
+[2026-11-21 08:25:19 -03] 1. h4_prep_encoders + pipeline control (G0)
+PIPELINE_CONTROL rows_identical=True max_abs_diff=0 tol=1e-05 same_rank_order(near-ties<1e-06 merged)=True near_tie_group_max_width=5.96e-08 (<1e-06: True) -> PASS
+[2026-11-21 08:25:47 -03] 2. 02_equivalence (descriptive table + geometry rule at cuts 0.3/0.5/0.7 + calibration per cut)
+[2026-11-21 13:26:16 -03] 3. timing: R0, 8 items, ladder pass 1 (secs column) -> update budget only
+[2026-11-21 13:27:28 -03] 4. stage 1, 8 items, ladder pass 1
+[2026-11-21 13:31:05 -03] 5. stage 1, 24 items, ladder pass 1
+[2026-11-21 13:57:47 -03] 5b. common structure (05b, convergence only; pass 2 fits where needed)
+[2026-11-21 13:57:48 -03]    pass 2 (iter 1): items=8 rung=L2: E3_rn50sup O1_dinov2b R0_dinov2s R1_cvcl
+[2026-11-21 13:59:28 -03]    pass 2 (iter 1): items=8 rung=L3: F1_rn50rand0
+[2026-11-21 13:59:57 -03]    pass 2 (iter 1): items=8 rung=L4: E4_mae F2_pixels
+[2026-11-21 14:00:21 -03]    pass 2 (iter 1): items=24 rung=L3: E3_rn50sup E4_mae F1_rn50rand0 F2_pixels O1_dinov2b R1_cvcl
+[2026-11-21 14:08:23 -03]    pass 2 (iter 2): items=8 rung=L4: E1_siglip E2_vitsup E3_rn50sup F1_rn50rand0 O1_dinov2b O2_openclip R0_dinov2s R1_cvcl
+[2026-11-21 14:09:19 -03]    pass 2 (iter 2): items=24 rung=L4: E4_mae
+[2026-11-21 14:11:20 -03]    pass 2 (iter 3): items=24 rung=L4: E1_siglip E2_vitsup E3_rn50sup F1_rn50rand0 F2_pixels O1_dinov2b O2_openclip R0_dinov2s R1_cvcl
+{
+ "8": {
+  "scope": "common",
+  "common_rung": "L4",
+  "excluded_from_selection": [],
+  "own_rung": {
+   "R0_dinov2s": "L2",
+   "O1_dinov2b": "L2",
+   "R1_cvcl": "L2",
+   "E1_siglip": "L1",
+   "O2_openclip": "L1",
+   "E2_vitsup": "L1",
+   "E3_rn50sup": "L2",
+   "E4_mae": "L4",
+   "F1_rn50rand0": "L3",
+   "F2_pixels": "L4"
+  }
+ },
+ "24": {
+  "scope": "common",
+  "common_rung": "L4",
+  "excluded_from_selection": [],
+  "own_rung": {
+   "R0_dinov2s": "L1",
+   "O1_dinov2b": "L3",
+   "R1_cvcl": "L3",
+   "E1_siglip": "L1",
+   "O2_openclip": "L1",
+   "E2_vitsup": "L1",
+   "E3_rn50sup": "L3",
+   "E4_mae": "L4",
+   "F1_rn50rand0": "L3",
+   "F2_pixels": "L3"
+  }
+ }
+}[2026-11-21 14:16:03 -03] 6. positive control (before regions: 08 uses it)
+[2026-11-21 14:24:59 -03] 7. stage 2 (primary = common rung; per_encoder_rung and S9_mixed descriptive) + regions (primary only)
+[2026-11-21 14:25:06 -03] Saturday done
+[2026-11-21 14:57:14 -03] 0. checks
+VERIFY 47 files: OK; files not in manifest: none
+d9d30f9d246cec07f9e4645fee983f934a4e68ef3c42b7aa4d8e8dab7b394dd1  /workspace/lexical-consensus-openmind/human_data_analyses/data/h4_long.csv
+MemAvailable:    2851120 kB
+[2026-11-21 14:57:15 -03] 8. S1
+[2026-11-21 21:53:14 -03] S2
+[2026-11-22 09:06:58 -03] S3
+[2026-11-22 09:28:29 -03] S4/S5/S7/S8 at the common 8-item rung L4 (fixed on Saturday by 05b; not re-selected)
+[2026-11-22 09:28:29 -03] S4
+[2026-11-22 09:29:30 -03] S5
+[2026-11-22 09:30:40 -03] S7
+[2026-11-22 09:31:18 -03] S8
+[2026-11-22 09:31:38 -03] S9 (descriptive; Patricio 12:12): mixed fit = first converged rung per experiment, already in stage2_primary.csv (variant S9_mixed); no extra fits
+[2026-11-22 09:31:39 -03] 9. Family A: F0 (Mb condition:order coefficients are in S1_*.csv)
+[2026-11-22 09:32:50 -03] S6 (last; REVISION3 I2: its failure does not stop anything else)
+[2026-11-22 09:35:56 -03] 10. write RESULTADOS_encoders.md + DESVIACIONES entries by hand from results/; notify Evaristo. Nothing is published.

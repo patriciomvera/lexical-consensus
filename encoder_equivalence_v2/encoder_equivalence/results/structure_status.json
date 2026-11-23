@@ -1,0 +1,36 @@
+{
+ "8": {
+  "scope": "common",
+  "common_rung": "L4",
+  "excluded_from_selection": [],
+  "own_rung": {
+   "R0_dinov2s": "L2",
+   "O1_dinov2b": "L2",
+   "R1_cvcl": "L2",
+   "E1_siglip": "L1",
+   "O2_openclip": "L1",
+   "E2_vitsup": "L1",
+   "E3_rn50sup": "L2",
+   "E4_mae": "L4",
+   "F1_rn50rand0": "L3",
+   "F2_pixels": "L4"
+  }
+ },
+ "24": {
+  "scope": "common",
+  "common_rung": "L4",
+  "excluded_from_selection": [],
+  "own_rung": {
+   "R0_dinov2s": "L1",
+   "O1_dinov2b": "L3",
+   "R1_cvcl": "L3",
+   "E1_siglip": "L1",
+   "O2_openclip": "L1",
+   "E2_vitsup": "L1",
+   "E3_rn50sup": "L3",
+   "E4_mae": "L4",
+   "F1_rn50rand0": "L3",
+   "F2_pixels": "L3"
+  }
+ }
+}

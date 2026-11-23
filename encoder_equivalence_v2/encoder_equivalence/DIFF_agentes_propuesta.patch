@@ -1,0 +1,116 @@
+--- a/propuesta_comparacion_encoders_v2_2026-11-18.md (sha256 4ff4b341a934fcd8cacec5ae9303909781e0b7abca0e45e4a7d34b54d256e3f7)
++++ b/propuesta_comparacion_encoders_v2_2026-11-18.md (PROPUESTA agentes, no aplicada)
+@@ -3,9 +3,11 @@
+ - **Estado:** PLAN FINAL CON LA RESPUESTA A LA SEGUNDA REVISIÓN DE ARIADNA (REVISION2). INCLUYE EL RANGO DE CORTES DE GEOMETRÍA (PATRICIO, 10:44) Y LA RESPUESTA A REVISION3. FALTA QUE ARIADNA REVISE EL DIFF (`encoder_equivalence/DIFF_REVISION3.patch`). NO SE CONGELA ANTES DEL VIERNES 20-11. **No está congelado** (no tiene hash de congelamiento). No se ha ajustado ningún GLMM ni se ha leído ninguna respuesta de participantes para esta v2.
+ - **Origen:** pedido de Patricio (18-11, 09:57, vía Evaristo), a partir de la sugerencia de @1shareShare1 en X: cambiar el backbone y ver si el efecto del orden se mantiene.
+ - **Alcance:** solo diseño. No se propone título ni encuadre del paper.
++- **Alcance ampliado (PENDIENTE DE APROBACIÓN DE PATRICIO; aclaración del 18-11 12:36):** la v2 repite la v1 con múltiples encoders comparando **agentes y personas**. La parte de agentes se detalla en `propuesta_agentes_multi_encoder_v2_2026-11-18.md` y se resume en §12. Mientras Patricio no apruebe §12, nada de §12 entra en el congelamiento.
+ - **Fuentes de las cifras:** todas salen de archivos, con archivo y sección indicados: `human_data_analyses/` (commit 1e7a904 del repo `patriciomvera/lexical-consensus`), `paper_arxiv_v_concl/main.tex` y `encoder_equivalence/out/`.
+ 
+ ## Registro de cambios (hora de Santiago, UTC−3)
++- **2026-11-18 (propuesta, no aplicada).** Se agrega §12 (agentes por encoder), familias C y D en §7.3, GA0–GA3 en §7.4, riesgos en §8, costo en §9.2, ejecución en §10.3 y decisiones P1–P8 en §10.4. Base: este archivo con sha256 `4ff4b341…e3f7`. Requiere la aprobación de Patricio y la revisión de Ariadna.
+ - **2026-11-18 10:04.** Primera versión (sha256 `afb7e139…46845c1a`; copia en `encoder_equivalence/propuesta_v1004_snapshot.md`). Es la versión que revisó Ariadna.
+ - **2026-11-18 10:13.** Patricio, vía Evaristo, pide una tabla de equivalencias entre todos los encoders en vez de un umbral de .90 contra DINOv2.
+ - **2026-11-18 10:15–10:19.** Se calcularon embeddings de las 45 imágenes de estímulo. No son distancias de ensayo ni usan respuestas humanas.
+@@ -306,6 +308,7 @@
+   - **Consecuencia:** una afirmación "robusta" es más exigente que cualquier δ aislado.
+ - **Tamaño de cada familia en la salida (REVISION3):** la tabla de regiones indica, por encoder, a qué familia pertenece o por qué queda excluido, y el informe da k y la lista de excluidos de cada familia.
+ - **Sensibilidades y descriptivos:** no entran en ninguna familia.
++- **Familias de agentes (§12; propuesta):** **C** = réplica por encoder del Holm de 6 de la v1 (H1 ×3, H2 ×2, H4 ×1) para los nuevos entrenados O1, E1, O2, E2, E3 y E4 que pasan el control positivo de agentes (≤ 36 pruebas, Holm); **D** = disociación de agentes, β_perc < 0 del Modelo PS por encoder (≤ 6 pruebas, Holm). Pisos F1 y F2 con Holm aparte (C-pisos 12, D-pisos 2). R0 y R1 son descriptivos (resultados conocidos por la v1 y por H6). Las familias B, C y D no se mezclan.
+ 
+ ### 7.4 Conclusión global (8 ítems; se evalúa con cada δ y se aplica la primera que se cumpla)
+ | # | Condición (con un δ dado) | Lectura permitida |
+@@ -331,6 +334,7 @@
+   - si no, es inconcluso.
+ - **S1–S9 y la familia A** no cambian la región. Si contradicen la conclusión, se informa.
+ - **Lo que nunca se afirma:** que el orden *causa* el efecto, ni que el efecto "viene de los ejemplos" en sentido causal.
++- **Agentes (§12; propuesta):** G0–G4 no cambian y se refieren solo a personas. Los agentes tienen su conjunto paralelo **GA0–GA3** (§12.4), evaluado en la misma grilla margen × corte. GA0 detiene solo la parte de agentes y G0 no detiene a los agentes. No se afirma nada sobre el orden en agentes: los aprendices de la v1 son invariantes al orden por construcción.
+ 
+ ---
+ 
+@@ -351,12 +355,14 @@
+ 14. **Ventaja de casa (I4):** la tubería se calibró con DINOv2 (los δ los fijó Patricio y no se refieren al 0,2041 de la v1, que está en otra escala; I-b).
+ 15. **Bifurcaciones:** todo lo que decide está en §5.2, §6.1 y §7. Cualquier otro análisis es descriptivo y se rotula así.
+ 16. **Expectativa con el corte 0,7 (REVISION3, menor):** con 0,7 se unen grupos con r promedio ≥ .30, así que es probable que algún piso quede con un entrenado. Entonces la calibración falla en ese corte y un "se mantiene en todos" saldría como "depende solo del corte" casi por construcción. Se declara de antemano para no leerlo como hallazgo.
++17. **Agentes (§12):** sin factor de orden; R0 y R1 conocidos; pares de exp_008 muestreados con cuadrantes de DINOv2; CIFAR de 32 × 32 escalado; supervisión categórica; potencia de H2; tolerancia GPU/CPU del control de tubería de agentes. Detalle en `propuesta_agentes_multi_encoder_v2_2026-11-18.md` §6.
+ 
+ **Fuera de alcance (trabajo futuro):**
+ - separar el orden de `blocking` y `timing` (haría falta un diseño factorial con participantes nuevos);
+ - la causalidad de "los ejemplos";
+ - probar capas intermedias;
+-- repetir H6 (el aprendiz en CIFAR) con los encoders nuevos.
++- ~~repetir H6 (el aprendiz en CIFAR) con los encoders nuevos.~~ Pasa a §12 (propuesta, pendiente de Patricio).
++- un aprendiz secuencial que permita estudiar el orden en agentes (no existe en la v1).
+ 
+ ---
+ 
+@@ -381,12 +387,16 @@
+ | S4–S8: dos etapas con 8 ítems (4 × 10 fuentes y 3 fuentes extra) × 12 | ~520 | 4–8 h |
+ | S9: ajuste mixto (sale de la pasada 1 del primario) | 0 | segundos |
+ | Familia A: F0 | 2 | ~0,3 h |
++| **Agentes (§12; propuesta):** embeddings de CIFAR (~62.000 imágenes × 10 encoders; medido R0 ≈ 1.000, O1 ≈ 480 y E1 ≈ 590 img/min con 4 hilos; el resto estimado) | — | ~40–55 h-núcleo; ~6–9 h de reloj con 3 procesos |
++| Agentes: simulaciones T y D, H1–H3 | — | ~3–6 h de CPU |
++| H4 por encoder (personas, 24 ítems; sin medir) | 9 | ~2–5,5 h |
+ | **Total** | | **~22–31 h de CPU**; con 3 procesos de R en paralelo, **~8–11 h de reloj** |
+ 
+ - **Impacto de los tres δ (10:37):** ninguno en los ajustes. Son los mismos 120 + 120 ajustes de la etapa 1; solo cambian la etapa 2 (pruebas de permutación desplazadas a ±δ, segundos) y `08_regions.py`.
+ - **Escalera (12:12/12:14):** si todo converge en L1, el costo es el de antes. El peor caso (cuatro peldaños por experimento más la pasada 2) multiplica la etapa 1 por ~5; con 24 ítems eso solo ya pasaría el tope. El primario no se corta: si el tope se supera por la etapa 1, se cortan las sensibilidades y se registra como desviación. S9 ya no cuesta ajustes.
+ - **Tope de presupuesto:** 32 h de CPU. Si se supera, las sensibilidades se cortan en orden inverso de ejecución (S6 → S8 → … → S1), y queda registrado. No hay re-corridas selectivas. `run_weekend.sh` no aplica el tope solo: se vigila a mano con las horas del log (REVISION3, menor).
+-- **Costo monetario:** ninguno.
++- **Costo monetario:** ninguno (también para agentes: CPU local, sin API ni LLM; pesos y CIFAR ya en cache).
++- **Con §12 en el mismo fin de semana:** ~16–24 h de reloj en total (incertidumbre hasta ×2). Si se supera el tope, se corta en este orden: sensibilidades de agentes → H4 por encoder → sensibilidades humanas (S6 → … → S1).
+ - **Tiempo humano:** escribir y probar los scripts antes del congelamiento, ~3–4 h. Revisión breve de Ariadna de los cambios, ~1 h. Supervisión el fin de semana, ~1 jornada. Resultados y desviaciones, ~½ jornada.
+ 
+ ### 9.3 Qué se ejecutó antes del congelamiento (I5)
+@@ -410,6 +420,7 @@
+ - **Geometría:** una sola regla (§6.1, `02_equivalence.py`).
+ - **Regiones a tres márgenes, lectura del espectro, multiplicidad y conclusión global:** §7.
+ - **Presupuesto y parada:** §9.2.
++- **Agentes (solo si Patricio aprueba §12 a tiempo; si no, adenda propia para el 28–29):** §12, scripts `10_agent_embed.py`, `11_agent_sims.py`, `12_agent_h1h2h3.py`, `13_h4_by_encoder.R` y `14_agent_regions.py`, con sus tests sintéticos.
+ 
+ ### 10.2 Lista antes del congelamiento (jueves 19 a viernes 20)
+ 1. Aprobación de Patricio: hecha (10:17, 10:37, 10:38, 10:44, 12:12 y 12:14; ver §10.4). No queda ningún punto pendiente de Patricio.
+@@ -440,6 +451,7 @@
+ - 8. S1 → S5, S7 y S8 en ese orden, dentro del presupuesto (S4, S5, S7 y S8 con el peldaño común de 8 ítems), y `08_regions.py` otra vez con S9 (ajuste mixto, ya calculado el sábado; rótulo descriptivo).
+ - 9. Familia A.
+ - 9b. **S6 al final** (REVISION3, I2): si falla, no detiene nada y se registra como desviación.
++- 9c. **Agentes (§12; si se aprueba para este fin de semana):** el sábado, embeddings de CIFAR en paralelo con la etapa 1 (o antes de congelar si se aprueba P5) y el control de tubería GA0; el domingo, el control positivo de agentes, T, D, H1–H3, H4 por encoder, `14_agent_regions.py` y la tabla agentes × personas.
+ - 10. `RESULTADOS_encoders.md`, nuevas entradas de `DESVIACIONES` y aviso a Evaristo.
+ - No se publica nada sin Patricio.
+ 
+@@ -456,7 +468,7 @@
+ - **12:12 (REVISION3, I1, opción B):** el primario de la etapa 1 usa el mismo modelo en los 12 experimentos, la estructura más rica que converja en los 12; el ajuste mixto con fallback pasa a S9, secundario y solo para reportar (§5.2, §5.4).
+ - **12:14:** **una sola estructura común para todos los encoders**, elegida solo por convergencia (`STRUCTURE_SCOPE = "common"`: **confirmado por Patricio 18-11 12:14**); la variante por encoder queda como descriptiva (§5.2).
+ 
+-No queda ningún punto pendiente de Patricio.
++**Pendientes de Patricio sobre §12 (agentes; aclaración del 18-11 12:36):** P1 calendario (recomendado: personas el 21–22 sin cambios y agentes el 28–29; alternativa: opción mínima el 21–22); P2 familias C y D (sí); P3 SESOI como espectro 0,10/0,20/0,30 (sí); P4 reutilizar los grupos de geometría de Lewis & Frank (sí); P5 embeddings de CIFAR antes de congelar (sí, si se mantiene el 21–22); P6 control de tubería GA0 con tolerancias fijadas por Ariadna (sí); P7 H4 por encoder en la familia C (sí); P8 opcionales como sensibilidades (sí, dentro del tope). Detalle en `propuesta_agentes_multi_encoder_v2_2026-11-18.md` §7.
+ 
+ **Siguiente paso antes de congelar:** Ariadna ya hizo la segunda revisión del plan (REVISION2, respondida en §11.2). Revisó los scripts y el plan en REVISION3 (respondida en §11.4). Falta que revise solo el diff `encoder_equivalence/DIFF_REVISION3.patch` (REVISION3 y decisiones de Patricio de las 12:12 y 12:14) y dé el visto bueno para `09_freeze.py`.
+ - Si no encuentra nada de fondo, se congela con hash (§10.2, paso 4) y se ejecuta el sábado 21 y el domingo 22.
+@@ -501,3 +513,26 @@
+ - **(2)/(3):** §7.3 y columna `familia_holm` más la sección "Familias Holm" de `regions_report.md`.
+ - **(6):** §9.3 y `out/rules_02_sha256_before_run.txt`.
+ - **Menores:** §8.16, §9.2 y G0 en JSON.
++
++---
++
++## 12. Agentes por encoder (PROPUESTA; pendiente de aprobación de Patricio)
++Detalle completo en `propuesta_agentes_multi_encoder_v2_2026-11-18.md`. Resumen:
++
++### 12.1 Qué se repite de la v1
++T (tiers de CIFAR-10, 6 aprendices, semilla 42; T-sem con 5 semillas como sensibilidad), D (disociación de exp_008: los mismos 100 pares, Modelo PS y reglas A/B/C con los cuadrantes recalculados por encoder), H1, H2, H2b, H3, H4 por encoder (personas), H5 opcional, la figura x1 y una tabla agentes × personas por encoder (descriptiva). Encoders: los 10 primarios de §3, con las mismas representaciones.
++
++### 12.2 Sin orden en agentes
++Los aprendices de la v1 (prototipo, k-NN, k-centroides, logreg y SVM en lote) son invariantes al orden por construcción (`revision_runs/repo/src/learners/centroid.py:35-47`). La familia B no tiene contraparte en agentes, y eso se declara de antemano.
++
++### 12.3 Familias y estatus
++Las familias C y D están en §7.3. R0 y R1 son descriptivos porque sus resultados de agentes se conocen por la v1 y por H6. Margen: SESOI de la v1 evaluado como espectro (0,10, 0,20 y 0,30; P3). Los δ de §7.1 no se trasladan, porque están en otra escala.
++
++### 12.4 Conclusiones GA0–GA3 (por separado para D, H1 y H2; con cada SESOI y cada corte, en una grilla 3 × 3)
++GA0: falla el control de tubería de agentes (se detienen solo los agentes). GA1: depende del encoder (≥ 1 nuevo entrenado en "No apoyo" con Holm). GA2: no es específico de DINOv2 (todos los nuevos entrenados en "Apoyo", ≥ 2 grupos). GA2b: igual, pero sin evidencia de diferencia geométrica. GA3: inconcluso o mixto. Los grupos son los de §6.1 (P4).
++
++### 12.5 Controles
++Tubería: R0 reproduce la v1 (T exacto; distancias de CIFAR-100 con una tolerancia GPU/CPU que fija Ariadna; β_perc de D). Control positivo de agentes por encoder: C1 de las palabras nativas con IC 95 % > 1/3. Un entrenado que falla queda "no interpretable" y sale de C y D. En los pisos no es puerta.
++
++### 12.6 Costo y calendario
++§9.2. Cabe en el 21–22 solo con la opción mínima y con la aprobación y la revisión de Ariadna el jueves 19 y el viernes 20. Respaldo: adenda de agentes congelada a más tardar el viernes 27 y ejecutada el 28–29, con la parte humana sin cambios.

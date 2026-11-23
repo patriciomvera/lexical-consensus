@@ -1,0 +1,10 @@
+encoder,items,rung
+E1_siglip,24,L4
+E2_vitsup,24,L4
+E3_rn50sup,24,L4
+F1_rn50rand0,24,L4
+F2_pixels,24,L4
+O1_dinov2b,24,L4
+O2_openclip,24,L4
+R0_dinov2s,24,L4
+R1_cvcl,24,L4
