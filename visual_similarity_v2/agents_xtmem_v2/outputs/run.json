@@ -1,0 +1,59 @@
+{
+  "commit": "23e4082b0bd7a33889714d0d179fa5a12791fb6c",
+  "xtmem": "220ed17ec2b85d30a4053711209252fdbc3cb166",
+  "seed": 42,
+  "primary_encoders": [
+    "R0_dinov2s",
+    "O1_dinov2b",
+    "R1_cvcl",
+    "E1_siglip",
+    "O2_openclip",
+    "E2_vitsup",
+    "E3_rn50sup",
+    "E4_mae",
+    "F1_rn50rand0",
+    "F2_pixels"
+  ],
+  "other_variants": [
+    "F1_rn50rand1",
+    "F1_rn50rand2",
+    "E4s_mae_cls"
+  ],
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "pandas": "2.2.3",
+  "sklearn": "1.8.0",
+  "centroid_max_error_vs_frozen": {
+    "R0_dinov2s": 1.1568452575050348e-07,
+    "O1_dinov2b": 1.375157077793121e-07,
+    "R1_cvcl": 1.0024192531599141e-07,
+    "E1_siglip": 1.3374096291540738e-07,
+    "O2_openclip": 1.480443494600303e-07,
+    "E2_vitsup": 8.398108196361331e-08,
+    "E3_rn50sup": 1.5029012340184167e-07,
+    "E4_mae": 2.781478272810556e-07,
+    "F1_rn50rand0": 1.8504214860382007e-07,
+    "F2_pixels": 4.375598862127461e-07,
+    "F1_rn50rand1": 1.8275773488066562e-07,
+    "F1_rn50rand2": 2.0160541445887444e-07,
+    "E4s_mae_cls": 2.7158804525792557e-07
+  },
+  "embedding_sha256": {
+    "R0_dinov2s": "f80e1890c6fb8babd89a0245f4d8329822c4127e07ca8bbdbbc80a38aba69176",
+    "O1_dinov2b": "3b2fddd24253d87d93c493da55f0ff5b155750a88eb10c628e910847515054d0",
+    "R1_cvcl": "ae62f0c988ee2f524852a1ce96969a223ff63b6d5894ecc652bf2cc5dbf72c85",
+    "E1_siglip": "2ec894ec6d762b43d15b85ed762cd3cd69056f6490af71abb67bb7a5c28fb267",
+    "O2_openclip": "cefd13c6b2b40233551480741666c4226c6f677850da3ff8a493f77a47b37b1e",
+    "E2_vitsup": "f3cb539282613a192dda3874447380e94f9a18439d9551ecd21e4ee2326b88e6",
+    "E3_rn50sup": "7b35559f826208069562a967fba4581a1e234f0724e4f691debbff344955e2ad",
+    "E4_mae": "9a0b58274b47305c1d684b13c282711e3faa4c682f01d4e8b588d0d11f3f7cae",
+    "F1_rn50rand0": "5c95e69f81369111871b8b845716f6e4dd61fdba69c34dd05eec5dcbeafa8402",
+    "F2_pixels": "f55b2c53f5743e6fcafec0966f4c573033b82524eeca42b6f6a477318cf6f1a9",
+    "F1_rn50rand1": "401c329f5b8c864ca8041c742794a3af12958ff594b4c6a2d74a59281bbaebe7",
+    "F1_rn50rand2": "2c75771406c6ef089f4059fa1a652fcc77d95ab6e871156c114f23a48e21005a",
+    "E4s_mae_cls": "02ea9c198c9491bafc26d92238b4ffcd79700eac4498a3bcb7281e23dfa9ffbb"
+  },
+  "one_word_scores": 14976,
+  "three_word_target_rows": 22464,
+  "three_word_classifications": 7488
+}

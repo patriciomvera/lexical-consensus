@@ -1,0 +1,651 @@
+encoder,learner,task,domain,condition,pair,image_A,image_B,score_A,score_B,higher_score,accept_A,accept_B,human_A,human_B,n_sessions
+E1_siglip,centroid,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.8610321222358917,0.7290190507283021,A,1.0,0.0,490,4,600
+E1_siglip,centroid,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.8067922717823969,0.8610321222358917,B,0.0,1.0,431,490,600
+E1_siglip,centroid,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.8309446959396293,0.8715426268137219,B,0.0,1.0,502,480,600
+E1_siglip,centroid,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.6907481913256124,0.7253087616457142,B,0.0,0.0,458,1,600
+E1_siglip,centroid,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.6199173850211399,0.6907481913256124,B,0.0,0.0,452,458,600
+E1_siglip,centroid,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.8610321222358919,0.7290190507283021,A,1.0,0.0,490,4,600
+E1_siglip,centroid,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.8067922717823971,0.8610321222358919,B,1.0,1.0,431,490,600
+E1_siglip,centroid,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.8309446959396288,0.8715426268137222,B,1.0,1.0,502,480,600
+E1_siglip,centroid,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.6907481913256123,0.7253087616457145,B,1.0,0.0,458,1,600
+E1_siglip,centroid,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.6199173850211398,0.6907481913256123,B,1.0,1.0,452,458,600
+E1_siglip,kcentroid2,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.8414642367219214,0.7237131644547121,A,1.0,0.0,490,4,600
+E1_siglip,kcentroid2,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.7860293323328986,0.8414642367219214,B,0.0,1.0,431,490,600
+E1_siglip,kcentroid2,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.8059842661356618,0.8677634735896533,B,0.0,1.0,502,480,600
+E1_siglip,kcentroid2,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.6708110794814037,0.7196099687839074,B,0.0,0.0,458,1,600
+E1_siglip,kcentroid2,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.6054774761660335,0.6708110794814037,B,0.0,0.0,452,458,600
+E1_siglip,kcentroid2,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.8414642367219214,0.7237131644547121,A,1.0,0.0,490,4,600
+E1_siglip,kcentroid2,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.7860293323328986,0.8414642367219214,B,1.0,1.0,431,490,600
+E1_siglip,kcentroid2,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.8059842661356618,0.8677634735896533,B,1.0,1.0,502,480,600
+E1_siglip,kcentroid2,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.6708110794814037,0.7196099687839074,B,1.0,0.0,458,1,600
+E1_siglip,kcentroid2,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.6054774761660335,0.6708110794814037,B,1.0,1.0,452,458,600
+E1_siglip,knn3,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,2.3842476867449984,2.0186958655832763,A,1.0,0.0,490,4,600
+E1_siglip,knn3,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,2.23405440750087,2.3842476867449984,B,0.0,1.0,431,490,600
+E1_siglip,knn3,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,2.3304356823213648,2.4442950849984806,B,0.0,1.0,502,480,600
+E1_siglip,knn3,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,1.8397771928097404,1.9318277400915185,B,0.0,0.0,458,1,600
+E1_siglip,knn3,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,1.6511224795238326,1.8397771928097404,B,0.0,0.0,452,458,600
+E1_siglip,knn3,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,2.3842476867449984,-inf,A,1.0,0.0,490,4,600
+E1_siglip,knn3,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,2.23405440750087,2.3842476867449984,B,1.0,1.0,431,490,600
+E1_siglip,knn3,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,2.3304356823213648,2.4442950849984806,B,1.0,1.0,502,480,600
+E1_siglip,knn3,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,1.239297628389324,-inf,A,1.0,0.0,458,1,600
+E1_siglip,knn3,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.6303337153219931,1.239297628389324,B,0.0,1.0,452,458,600
+E1_siglip,linsvm,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.03536506253429483,-0.5111631201084845,A,1.0,0.0,490,4,600
+E1_siglip,linsvm,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.094035939366727,0.03536506253429483,B,1.0,1.0,431,490,600
+E1_siglip,linsvm,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.09673275748890675,0.01503554846647659,A,1.0,1.0,502,480,600
+E1_siglip,linsvm,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.007296479956687502,-0.45638278389961917,A,1.0,0.0,458,1,600
+E1_siglip,linsvm,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-0.02422360346771739,-0.007296479956687502,B,1.0,1.0,452,458,600
+E1_siglip,logreg,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.14673352990024258,-0.0780521525582071,A,1.0,0.0,490,4,600
+E1_siglip,logreg,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.09425681076239054,0.14673352990024258,B,1.0,1.0,431,490,600
+E1_siglip,logreg,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.1783400606108861,0.14400387153631344,A,1.0,1.0,502,480,600
+E1_siglip,logreg,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.13497684018318495,-0.05699213881591557,A,1.0,0.0,458,1,600
+E1_siglip,logreg,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.12448335610047577,0.13497684018318495,B,1.0,1.0,452,458,600
+E1_siglip,random,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9342126108380113,3.206712186612731,B,,,490,4,600
+E1_siglip,random,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.041423577778551,0.9342126108380113,B,,,431,490,600
+E1_siglip,random,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,3.206712186612731,5.435672989952161,B,,,502,480,600
+E1_siglip,random,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.936334834739591,0.041423577778551,B,,,458,1,600
+E1_siglip,random,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,1.03065696404346,-0.936334834739591,A,,,452,458,600
+E1_siglip,random,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.48875787233943524,-0.18056029450746713,A,1.0,0.0,490,4,600
+E1_siglip,random,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.37590001068067225,0.48875787233943524,B,1.0,1.0,431,490,600
+E1_siglip,random,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,2.1080998979466212,4.337060701286052,B,1.0,1.0,502,480,600
+E1_siglip,random,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.21398858064057746,-1.381988735601899,A,1.0,0.0,458,1,600
+E1_siglip,random,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-0.8050862618171737,0.21398858064057746,B,0.0,1.0,452,458,600
+E2_vitsup,centroid,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.23723710481690136,0.04234292254460492,A,1.0,0.0,490,4,600
+E2_vitsup,centroid,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.1458799418660659,0.23723710481690136,B,0.0,1.0,431,490,600
+E2_vitsup,centroid,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.30826377455738474,0.2895310799468508,A,1.0,1.0,502,480,600
+E2_vitsup,centroid,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.31293616826573767,0.07531402154652421,A,1.0,0.0,458,1,600
+E2_vitsup,centroid,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.23240281147382486,0.31293616826573767,B,1.0,1.0,452,458,600
+E2_vitsup,centroid,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.2372371048169014,0.04234292254460494,A,1.0,0.0,490,4,600
+E2_vitsup,centroid,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.14587994186606595,0.2372371048169014,B,1.0,1.0,431,490,600
+E2_vitsup,centroid,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.30826377455738474,0.2895310799468508,A,1.0,1.0,502,480,600
+E2_vitsup,centroid,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.31293616826573756,0.07531402154652417,A,1.0,0.0,458,1,600
+E2_vitsup,centroid,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.2324028114738248,0.31293616826573756,B,1.0,1.0,452,458,600
+E2_vitsup,kcentroid2,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.20718581000479114,0.04762006590073127,A,1.0,0.0,490,4,600
+E2_vitsup,kcentroid2,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.139933251888042,0.20718581000479114,B,0.0,1.0,431,490,600
+E2_vitsup,kcentroid2,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.2954954498792237,0.2565814403323852,A,1.0,1.0,502,480,600
+E2_vitsup,kcentroid2,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.26244556646648104,0.10826575484992271,A,1.0,0.0,458,1,600
+E2_vitsup,kcentroid2,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.20536367775274028,0.26244556646648104,B,1.0,1.0,452,458,600
+E2_vitsup,kcentroid2,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.20718581000479114,0.04762006590073127,A,1.0,0.0,490,4,600
+E2_vitsup,kcentroid2,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.139933251888042,0.20718581000479114,B,1.0,1.0,431,490,600
+E2_vitsup,kcentroid2,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.2954954498792237,0.2565814403323852,A,1.0,1.0,502,480,600
+E2_vitsup,kcentroid2,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.26244556646648104,0.10826575484992271,A,1.0,0.0,458,1,600
+E2_vitsup,kcentroid2,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.20536367775274028,0.26244556646648104,B,1.0,1.0,452,458,600
+E2_vitsup,knn3,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.4615139181999053,0.0823726461620666,A,1.0,0.0,490,4,600
+E2_vitsup,knn3,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.2837904450458715,0.4615139181999053,B,0.0,1.0,431,490,600
+E2_vitsup,knn3,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.60888536136583,0.5718843756234483,A,1.0,1.0,502,480,600
+E2_vitsup,knn3,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.6233738962794727,0.15002674608089792,A,1.0,0.0,458,1,600
+E2_vitsup,knn3,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.4629501501779706,0.6233738962794727,B,1.0,1.0,452,458,600
+E2_vitsup,knn3,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.4615139181999053,-inf,A,1.0,0.0,490,4,600
+E2_vitsup,knn3,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.139933251888042,0.4615139181999053,B,1.0,1.0,431,490,600
+E2_vitsup,knn3,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.60888536136583,0.5718843756234483,A,1.0,1.0,502,480,600
+E2_vitsup,knn3,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.6233738962794727,0.08988841190921477,A,1.0,0.0,458,1,600
+E2_vitsup,knn3,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.4629501501779706,0.6233738962794727,B,1.0,1.0,452,458,600
+E2_vitsup,linsvm,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.04178638016447067,-0.4887522575211566,A,1.0,0.0,490,4,600
+E2_vitsup,linsvm,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.19172275347560863,0.04178638016447067,B,1.0,1.0,431,490,600
+E2_vitsup,linsvm,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.11137656180307648,0.034633082661432946,A,1.0,1.0,502,480,600
+E2_vitsup,linsvm,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.01153343536549456,-0.42058698399863814,A,1.0,0.0,458,1,600
+E2_vitsup,linsvm,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-0.09283947915090052,0.01153343536549456,B,1.0,1.0,452,458,600
+E2_vitsup,logreg,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.1942048548639678,-0.11621614129919285,A,1.0,0.0,490,4,600
+E2_vitsup,logreg,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.05628962687473113,0.1942048548639678,B,1.0,1.0,431,490,600
+E2_vitsup,logreg,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.23260314910552235,0.18754261640433184,A,1.0,1.0,502,480,600
+E2_vitsup,logreg,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.1775463379179325,-0.07230705057323808,A,1.0,0.0,458,1,600
+E2_vitsup,logreg,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.11380894455638446,0.1775463379179325,B,1.0,1.0,452,458,600
+E2_vitsup,random,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.051965086298173035,-0.9030725179720244,A,,,490,4,600
+E2_vitsup,random,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.6038135004321854,0.051965086298173035,A,,,431,490,600
+E2_vitsup,random,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-0.9030725179720244,0.7309756906872518,B,,,502,480,600
+E2_vitsup,random,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,2.4895105528020736,0.6038135004321854,A,,,458,1,600
+E2_vitsup,random,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-0.5855816547089537,2.4895105528020736,B,,,452,458,600
+E2_vitsup,random,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-1.8091758041106374,-1.7076881727294317,B,0.0,0.0,490,4,600
+E2_vitsup,random,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-1.460559374944435,-1.8091758041106374,A,0.0,0.0,431,490,600
+E2_vitsup,random,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-2.001684806638134,-0.36763659797885806,B,0.0,1.0,502,480,600
+E2_vitsup,random,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-1.3355967488786258,-1.233861402956057,B,0.0,0.0,458,1,600
+E2_vitsup,random,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.26762877926698203,-1.3355967488786258,A,0.0,0.0,452,458,600
+E3_rn50sup,centroid,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.5279201682390889,0.46539637125763234,A,1.0,1.0,490,4,600
+E3_rn50sup,centroid,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.4453942453340574,0.5279201682390889,B,1.0,1.0,431,490,600
+E3_rn50sup,centroid,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.5507608725842554,0.5332997274811215,A,1.0,1.0,502,480,600
+E3_rn50sup,centroid,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.3242465899937077,0.3892357002537633,B,0.0,0.0,458,1,600
+E3_rn50sup,centroid,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.2986742435340276,0.3242465899937077,B,0.0,0.0,452,458,600
+E3_rn50sup,centroid,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.5279201682390892,0.4653963712576324,A,1.0,0.0,490,4,600
+E3_rn50sup,centroid,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.4453942453340576,0.5279201682390892,B,1.0,1.0,431,490,600
+E3_rn50sup,centroid,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.5507608725842555,0.5332997274811216,A,1.0,1.0,502,480,600
+E3_rn50sup,centroid,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.3242465899937077,0.38923570025376325,B,1.0,0.0,458,1,600
+E3_rn50sup,centroid,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.2986742435340277,0.3242465899937077,B,1.0,1.0,452,458,600
+E3_rn50sup,kcentroid2,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.5150327435587281,0.4585105943553155,A,1.0,1.0,490,4,600
+E3_rn50sup,kcentroid2,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.4574666837957838,0.5150327435587281,B,1.0,1.0,431,490,600
+E3_rn50sup,kcentroid2,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.46518842868588295,0.5339030376428686,B,1.0,1.0,502,480,600
+E3_rn50sup,kcentroid2,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.3095817372623878,0.37027564796331924,B,0.0,0.0,458,1,600
+E3_rn50sup,kcentroid2,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.2826787094176749,0.3095817372623878,B,0.0,0.0,452,458,600
+E3_rn50sup,kcentroid2,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.5150327435587281,0.4585105943553155,A,1.0,0.0,490,4,600
+E3_rn50sup,kcentroid2,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.4574666837957838,0.5150327435587281,B,1.0,1.0,431,490,600
+E3_rn50sup,kcentroid2,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.46518842868588295,0.5339030376428686,B,1.0,1.0,502,480,600
+E3_rn50sup,kcentroid2,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.3095817372623878,0.37027564796331924,B,1.0,0.0,458,1,600
+E3_rn50sup,kcentroid2,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.2826787094176749,0.3095817372623878,B,1.0,1.0,452,458,600
+E3_rn50sup,knn3,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,1.210588555243191,1.0672134814918488,A,1.0,1.0,490,4,600
+E3_rn50sup,knn3,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,1.021346045124753,1.210588555243191,B,1.0,1.0,431,490,600
+E3_rn50sup,knn3,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,1.216671572635005,1.1780986094305645,A,1.0,1.0,502,480,600
+E3_rn50sup,knn3,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.7313986981976467,0.8779937653721401,B,0.0,0.0,458,1,600
+E3_rn50sup,knn3,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.673715498165128,0.7313986981976467,B,0.0,0.0,452,458,600
+E3_rn50sup,knn3,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.8767931856027431,0.40877101326010223,A,1.0,0.0,490,4,600
+E3_rn50sup,knn3,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.7787925641793516,0.8767931856027431,B,1.0,1.0,431,490,600
+E3_rn50sup,knn3,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.8526192872296896,0.8885184395165348,B,1.0,1.0,502,480,600
+E3_rn50sup,knn3,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.31236940742268526,0.3229893089688413,B,1.0,0.0,458,1,600
+E3_rn50sup,knn3,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.48330521076656874,0.31236940742268526,A,1.0,1.0,452,458,600
+E3_rn50sup,linsvm,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.07148289484428502,-0.3117226346037284,A,1.0,0.0,490,4,600
+E3_rn50sup,linsvm,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.2148034469067374,-0.07148289484428502,B,1.0,1.0,431,490,600
+E3_rn50sup,linsvm,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-0.01461755712213722,-0.18893026308560232,A,1.0,1.0,502,480,600
+E3_rn50sup,linsvm,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.1514176313673209,-0.3409866656711653,A,1.0,0.0,458,1,600
+E3_rn50sup,linsvm,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-0.13096089751028034,-0.1514176313673209,A,1.0,1.0,452,458,600
+E3_rn50sup,logreg,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.12838208908221038,0.012952747685677418,A,1.0,0.0,490,4,600
+E3_rn50sup,logreg,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.04390920208480502,0.12838208908221038,B,1.0,1.0,431,490,600
+E3_rn50sup,logreg,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.1598773219291352,0.07404117214150052,A,1.0,1.0,502,480,600
+E3_rn50sup,logreg,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.06712929367255584,-0.027549556192969723,A,1.0,0.0,458,1,600
+E3_rn50sup,logreg,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.07859899688084124,0.06712929367255584,A,1.0,1.0,452,458,600
+E3_rn50sup,random,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,2.5749985195089518,-0.9137142976352917,A,,,490,4,600
+E3_rn50sup,random,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.4555299564871951,2.5749985195089518,B,,,431,490,600
+E3_rn50sup,random,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-0.9137142976352917,4.336566605144045,B,,,502,480,600
+E3_rn50sup,random,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,1.6593954736443404,-0.4555299564871951,A,,,458,1,600
+E3_rn50sup,random,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,1.304410027452501,1.6593954736443404,B,,,452,458,600
+E3_rn50sup,random,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-1.5095780428877672,0.020054912598388208,B,0.0,1.0,490,4,600
+E3_rn50sup,random,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-1.5272335983063905,-1.5095780428877672,B,0.0,0.0,431,490,600
+E3_rn50sup,random,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-2.0123265863014015,3.2379543164779347,B,0.0,1.0,502,480,600
+E3_rn50sup,random,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.9020458083886972,-0.3975361510180422,B,0.0,1.0,458,1,600
+E3_rn50sup,random,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-2.2113179883797303,-0.9020458083886972,B,0.0,0.0,452,458,600
+E4_mae,centroid,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9909023986933072,0.9910950252152373,B,1.0,1.0,490,4,600
+E4_mae,centroid,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9909395878027517,0.9909023986933072,A,1.0,1.0,431,490,600
+E4_mae,centroid,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9955919275660322,0.9502193047717403,A,1.0,0.0,502,480,600
+E4_mae,centroid,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.9966700445284368,0.9940300416182173,A,1.0,1.0,458,1,600
+E4_mae,centroid,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.9940042622155241,0.9966700445284368,B,0.0,1.0,452,458,600
+E4_mae,centroid,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9909023986933072,0.9910950252152368,B,0.0,0.0,490,4,600
+E4_mae,centroid,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.990939587802752,0.9909023986933072,A,0.0,0.0,431,490,600
+E4_mae,centroid,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9955919275660319,0.9502193047717401,A,1.0,1.0,502,480,600
+E4_mae,centroid,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.9966700445284372,0.9940300416182171,A,1.0,1.0,458,1,600
+E4_mae,centroid,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.9940042622155243,0.9966700445284372,B,1.0,1.0,452,458,600
+E4_mae,kcentroid2,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9933312247201412,0.9955490572098634,B,1.0,1.0,490,4,600
+E4_mae,kcentroid2,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9926779709802728,0.9933312247201412,B,1.0,1.0,431,490,600
+E4_mae,kcentroid2,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.996245369933428,0.948971943059575,A,1.0,0.0,502,480,600
+E4_mae,kcentroid2,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.9955836406976311,0.9931555874985143,A,1.0,1.0,458,1,600
+E4_mae,kcentroid2,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.9929398776768787,0.9955836406976311,B,1.0,1.0,452,458,600
+E4_mae,kcentroid2,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9933312247201412,0.9955490572098634,B,1.0,0.0,490,4,600
+E4_mae,kcentroid2,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9926779709802728,0.9933312247201412,B,0.0,1.0,431,490,600
+E4_mae,kcentroid2,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.996245369933428,0.948971943059575,A,1.0,1.0,502,480,600
+E4_mae,kcentroid2,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.9955836406976311,0.9931555874985143,A,1.0,1.0,458,1,600
+E4_mae,kcentroid2,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.9929398776768787,0.9955836406976311,B,1.0,1.0,452,458,600
+E4_mae,knn3,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,2.9446169406805285,2.9451893596397007,B,1.0,1.0,490,4,600
+E4_mae,knn3,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,2.9447274537662027,2.9446169406805285,A,1.0,1.0,431,490,600
+E4_mae,knn3,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,2.973051077225836,2.837558691901946,A,1.0,0.0,502,480,600
+E4_mae,knn3,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,2.982084506230654,2.9741854910869856,A,1.0,1.0,458,1,600
+E4_mae,knn3,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,2.9741083578794916,2.982084506230654,B,0.0,1.0,452,458,600
+E4_mae,knn3,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9919691466549277,0.9933553940576132,B,0.0,0.0,490,4,600
+E4_mae,knn3,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9935051292326258,0.9919691466549277,A,1.0,0.0,431,490,600
+E4_mae,knn3,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9962453699334283,1.899201769439157,B,1.0,1.0,502,480,600
+E4_mae,knn3,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,1.989244273946541,0.9931555874985142,A,1.0,0.0,458,1,600
+E4_mae,knn3,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,2.9741083578794916,1.989244273946541,A,1.0,1.0,452,458,600
+E4_mae,linsvm,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.33023275756383996,-0.3554734379164793,A,0.0,0.0,490,4,600
+E4_mae,linsvm,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.3181662729084191,-0.33023275756383996,A,0.0,0.0,431,490,600
+E4_mae,linsvm,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-0.2922376714713771,-0.234517871311654,B,1.0,1.0,502,480,600
+E4_mae,linsvm,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.2544132529114405,-0.28097564634523187,A,1.0,1.0,458,1,600
+E4_mae,linsvm,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-0.22060354258789033,-0.2544132529114405,A,1.0,1.0,452,458,600
+E4_mae,logreg,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.0012822187421763637,-0.00802100990517089,A,0.0,0.0,490,4,600
+E4_mae,logreg,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.0020917373912245456,-0.0012822187421763637,A,0.0,0.0,431,490,600
+E4_mae,logreg,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.008699799263454003,0.02207853024512474,B,1.0,1.0,502,480,600
+E4_mae,logreg,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.0187265075255796,0.011770981272037243,A,1.0,1.0,458,1,600
+E4_mae,logreg,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.027414295305325565,0.0187265075255796,A,1.0,1.0,452,458,600
+E4_mae,random,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.4894137260460701,-0.3909316920905651,A,,,490,4,600
+E4_mae,random,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.6323144206472274,0.4894137260460701,B,,,431,490,600
+E4_mae,random,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-0.3909316920905651,-0.9295865032945261,A,,,502,480,600
+E4_mae,random,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.0677295321619448,-0.6323144206472274,A,,,458,1,600
+E4_mae,random,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,1.5662292171677072,-0.0677295321619448,A,,,452,458,600
+E4_mae,random,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.46126291937739106,2.469330563368767,B,1.0,1.0,490,4,600
+E4_mae,random,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-1.8792837423784654,-0.46126291937739106,B,0.0,1.0,431,490,600
+E4_mae,random,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-1.4895439807566748,-2.028198791960636,A,0.0,0.0,502,480,600
+E4_mae,random,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.20326967553984943,0.07236797685747409,B,1.0,1.0,458,1,600
+E4_mae,random,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-1.303088294718089,-0.20326967553984943,B,0.0,1.0,452,458,600
+E4s_mae_cls,centroid,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9663782320211769,0.9526597316895559,A,1.0,1.0,490,4,600
+E4s_mae_cls,centroid,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9661619075865393,0.9663782320211769,B,1.0,1.0,431,490,600
+E4s_mae_cls,centroid,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9833976194165044,0.9590098891153092,A,1.0,0.0,502,480,600
+E4s_mae_cls,centroid,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.9783598448937358,0.9651185462979686,A,1.0,1.0,458,1,600
+E4s_mae_cls,centroid,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.9724185591821642,0.9783598448937358,B,1.0,1.0,452,458,600
+E4s_mae_cls,centroid,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9663782320211769,0.952659731689556,A,1.0,0.0,490,4,600
+E4s_mae_cls,centroid,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9661619075865391,0.9663782320211769,B,1.0,1.0,431,490,600
+E4s_mae_cls,centroid,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9833976194165046,0.9590098891153092,A,1.0,1.0,502,480,600
+E4s_mae_cls,centroid,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.978359844893736,0.9651185462979686,A,1.0,0.0,458,1,600
+E4s_mae_cls,centroid,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.9724185591821646,0.978359844893736,B,1.0,1.0,452,458,600
+E4s_mae_cls,kcentroid2,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9673814530376152,0.9575123147812983,A,1.0,1.0,490,4,600
+E4s_mae_cls,kcentroid2,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9654996101998892,0.9673814530376152,B,1.0,1.0,431,490,600
+E4s_mae_cls,kcentroid2,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9821050526223802,0.9585789752662356,A,1.0,0.0,502,480,600
+E4s_mae_cls,kcentroid2,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.9692395958487461,0.9634549711741879,A,1.0,1.0,458,1,600
+E4s_mae_cls,kcentroid2,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.9674911194930005,0.9692395958487461,B,1.0,1.0,452,458,600
+E4s_mae_cls,kcentroid2,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9673814530376152,0.9575123147812983,A,1.0,0.0,490,4,600
+E4s_mae_cls,kcentroid2,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9654996101998892,0.9673814530376152,B,1.0,1.0,431,490,600
+E4s_mae_cls,kcentroid2,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9821050526223802,0.9585789752662356,A,1.0,1.0,502,480,600
+E4s_mae_cls,kcentroid2,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.9692395958487461,0.9634549711741879,A,1.0,0.0,458,1,600
+E4s_mae_cls,kcentroid2,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.9674911194930005,0.9692395958487461,B,1.0,1.0,452,458,600
+E4s_mae_cls,knn3,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,2.841309598076624,2.800974969903214,A,1.0,1.0,490,4,600
+E4s_mae_cls,knn3,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,2.8406735689608302,2.841309598076624,B,1.0,1.0,431,490,600
+E4s_mae_cls,knn3,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,2.910791426249318,2.838605369597562,A,1.0,0.0,502,480,600
+E4s_mae_cls,knn3,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,2.89127207694473,2.852141079191456,A,1.0,1.0,458,1,600
+E4s_mae_cls,knn3,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,2.8737142493533048,2.89127207694473,B,1.0,1.0,452,458,600
+E4s_mae_cls,knn3,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9586634396557248,-inf,A,0.0,0.0,490,4,600
+E4s_mae_cls,knn3,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,1.9073220618586064,0.9586634396557248,A,1.0,0.0,431,490,600
+E4s_mae_cls,knn3,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,2.910791426249318,2.838605369597562,A,1.0,1.0,502,480,600
+E4s_mae_cls,knn3,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,2.89127207694473,0.9591907141708796,A,1.0,0.0,458,1,600
+E4s_mae_cls,knn3,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,2.8737142493533048,2.89127207694473,B,1.0,1.0,452,458,600
+E4s_mae_cls,linsvm,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.3029610722367068,-0.462276674775588,A,0.0,0.0,490,4,600
+E4s_mae_cls,linsvm,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.28678361369606187,-0.3029610722367068,A,1.0,0.0,431,490,600
+E4s_mae_cls,linsvm,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-0.13833441971445043,-0.1245802950905399,B,1.0,1.0,502,480,600
+E4s_mae_cls,linsvm,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.15135315557987042,-0.29552169743299317,A,1.0,0.0,458,1,600
+E4s_mae_cls,linsvm,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-0.17881016957914025,-0.15135315557987042,B,1.0,1.0,452,458,600
+E4s_mae_cls,logreg,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.005846247446773954,-0.04110971900447575,A,0.0,0.0,490,4,600
+E4s_mae_cls,logreg,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.011266240584379071,0.005846247446773954,A,1.0,0.0,431,490,600
+E4s_mae_cls,logreg,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.057166696500449435,0.06017198819953029,B,1.0,1.0,502,480,600
+E4s_mae_cls,logreg,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.05126025748833589,0.008968942427129768,A,1.0,0.0,458,1,600
+E4s_mae_cls,logreg,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.043085128240796966,0.05126025748833589,B,1.0,1.0,452,458,600
+E4s_mae_cls,random,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.7997102592989547,0.15944767957641476,B,,,490,4,600
+E4s_mae_cls,random,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.11991182690992432,-0.7997102592989547,A,,,431,490,600
+E4s_mae_cls,random,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.15944767957641476,2.5863664165376603,B,,,502,480,600
+E4s_mae_cls,random,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.13162154243285917,-0.11991182690992432,B,,,458,1,600
+E4s_mae_cls,random,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,3.73246349504493,-0.13162154243285917,A,,,452,458,600
+E4s_mae_cls,random,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.08879541557845938,0.949977238881532,B,0.0,0.0,490,4,600
+E4s_mae_cls,random,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,1.666146349920362,0.08879541557845938,A,1.0,0.0,431,490,600
+E4s_mae_cls,random,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-0.939164609089695,1.4877541278715505,B,0.0,1.0,502,480,600
+E4s_mae_cls,random,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.8567485153033875,-0.2670707291896445,B,0.0,0.0,458,1,600
+E4s_mae_cls,random,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-0.039297081761649366,-0.8567485153033875,A,0.0,0.0,452,458,600
+F1_rn50rand0,centroid,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9988786548150164,0.9996832679165872,B,0.0,1.0,490,4,600
+F1_rn50rand0,centroid,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9996655951255565,0.9988786548150164,A,1.0,0.0,431,490,600
+F1_rn50rand0,centroid,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9997198067429749,0.9989656089167653,A,1.0,0.0,502,480,600
+F1_rn50rand0,centroid,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.9995799948135853,0.9997986508957215,B,1.0,1.0,458,1,600
+F1_rn50rand0,centroid,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.999817534725707,0.9995799948135853,A,1.0,1.0,452,458,600
+F1_rn50rand0,centroid,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9988786548150164,0.9996832679165868,B,0.0,0.0,490,4,600
+F1_rn50rand0,centroid,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9996655951255562,0.9988786548150164,A,0.0,0.0,431,490,600
+F1_rn50rand0,centroid,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9997198067429749,0.9989656089167653,A,1.0,0.0,502,480,600
+F1_rn50rand0,centroid,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.9995799948135853,0.9997986508957216,B,1.0,1.0,458,1,600
+F1_rn50rand0,centroid,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.9998175347257074,0.9995799948135853,A,1.0,1.0,452,458,600
+F1_rn50rand0,kcentroid2,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9986425277174017,0.9997151329255989,B,0.0,1.0,490,4,600
+F1_rn50rand0,kcentroid2,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9995339452517497,0.9986425277174017,A,1.0,0.0,431,490,600
+F1_rn50rand0,kcentroid2,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9996986405866192,0.998786390761307,A,1.0,0.0,502,480,600
+F1_rn50rand0,kcentroid2,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.9995822010053821,0.9998266734093331,B,1.0,1.0,458,1,600
+F1_rn50rand0,kcentroid2,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.9997839687619632,0.9995822010053821,A,1.0,1.0,452,458,600
+F1_rn50rand0,kcentroid2,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9986425277174017,0.9997151329255989,B,0.0,1.0,490,4,600
+F1_rn50rand0,kcentroid2,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9995339452517497,0.9986425277174017,A,0.0,0.0,431,490,600
+F1_rn50rand0,kcentroid2,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9996986405866192,0.998786390761307,A,0.0,0.0,502,480,600
+F1_rn50rand0,kcentroid2,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.9995822010053821,0.9998266734093331,B,1.0,1.0,458,1,600
+F1_rn50rand0,kcentroid2,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.9997839687619632,0.9995822010053821,A,1.0,1.0,452,458,600
+F1_rn50rand0,knn3,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,2.995407205861453,2.9978200553810197,B,0.0,1.0,490,4,600
+F1_rn50rand0,knn3,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,2.9977670587479,2.995407205861453,A,1.0,0.0,431,490,600
+F1_rn50rand0,knn3,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,2.9980101432527517,2.995748416799254,A,1.0,0.0,502,480,600
+F1_rn50rand0,knn3,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,2.9982104548606063,2.998866307273502,B,1.0,1.0,458,1,600
+F1_rn50rand0,knn3,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,2.9989229487597107,2.9982104548606063,A,1.0,1.0,452,458,600
+F1_rn50rand0,knn3,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-inf,0.9997337644977873,B,0.0,1.0,490,4,600
+F1_rn50rand0,knn3,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9995226009607019,-inf,A,0.0,0.0,431,490,600
+F1_rn50rand0,knn3,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9995587081666145,-inf,A,0.0,0.0,502,480,600
+F1_rn50rand0,knn3,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.9995893359446374,1.9994034764483737,B,1.0,1.0,458,1,600
+F1_rn50rand0,knn3,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,1.9993180778261097,0.9995893359446374,A,1.0,1.0,452,458,600
+F1_rn50rand0,linsvm,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.32495441285800686,-0.32499782393127913,A,0.0,0.0,490,4,600
+F1_rn50rand0,linsvm,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.3237129154226958,-0.32495441285800686,A,0.0,0.0,431,490,600
+F1_rn50rand0,linsvm,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-0.3235863467386234,-0.32666369707703014,A,1.0,0.0,502,480,600
+F1_rn50rand0,linsvm,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.32361116629720654,-0.32196157234123246,B,1.0,1.0,458,1,600
+F1_rn50rand0,linsvm,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-0.3229670288606534,-0.32361116629720654,A,1.0,1.0,452,458,600
+F1_rn50rand0,logreg,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.0001943023867575223,-0.00017378020340852741,B,0.0,0.0,490,4,600
+F1_rn50rand0,logreg,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.00014421617471636392,-0.0001943023867575223,A,0.0,0.0,431,490,600
+F1_rn50rand0,logreg,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.00017299792061440238,-0.0006195908464802154,A,1.0,0.0,502,480,600
+F1_rn50rand0,logreg,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.00020082725188058726,0.0006169570412308972,B,1.0,1.0,458,1,600
+F1_rn50rand0,logreg,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.0003688589960006446,0.00020082725188058726,A,1.0,1.0,452,458,600
+F1_rn50rand0,random,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.04906446374361826,8.614902960772222,B,,,490,4,600
+F1_rn50rand0,random,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,1.7353922070928613,-0.04906446374361826,A,,,431,490,600
+F1_rn50rand0,random,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,8.614902960772222,0.7044408283431287,A,,,502,480,600
+F1_rn50rand0,random,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.5801008067909997,1.7353922070928613,B,,,458,1,600
+F1_rn50rand0,random,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,1.546587100184208,0.5801008067909997,A,,,452,458,600
+F1_rn50rand0,random,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-3.403476702067613,0.272141641201501,B,0.0,0.0,490,4,600
+F1_rn50rand0,random,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.9811124682205539,-3.403476702067613,A,0.0,0.0,431,490,600
+F1_rn50rand0,random,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,7.516290672106112,-0.3941714603229811,A,1.0,1.0,502,480,600
+F1_rn50rand0,random,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.6542715979904171,0.5614212479377316,B,0.0,0.0,458,1,600
+F1_rn50rand0,random,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-0.5622173197228673,-0.6542715979904171,A,0.0,0.0,452,458,600
+F1_rn50rand1,centroid,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9993277370196726,0.9997616878608887,B,1.0,1.0,490,4,600
+F1_rn50rand1,centroid,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.999803711180384,0.9993277370196726,A,1.0,1.0,431,490,600
+F1_rn50rand1,centroid,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9997236971859714,0.9988162245727266,A,1.0,0.0,502,480,600
+F1_rn50rand1,centroid,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.9995893983186439,0.9998589015827173,B,0.0,1.0,458,1,600
+F1_rn50rand1,centroid,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.9998349785855438,0.9995893983186439,A,1.0,0.0,452,458,600
+F1_rn50rand1,centroid,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9993277370196727,0.9997616878608881,B,0.0,1.0,490,4,600
+F1_rn50rand1,centroid,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9998037111803842,0.9993277370196727,A,0.0,0.0,431,490,600
+F1_rn50rand1,centroid,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9997236971859707,0.9988162245727267,A,0.0,0.0,502,480,600
+F1_rn50rand1,centroid,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.999589398318644,0.9998589015827171,B,0.0,1.0,458,1,600
+F1_rn50rand1,centroid,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.9998349785855434,0.999589398318644,A,1.0,0.0,452,458,600
+F1_rn50rand1,kcentroid2,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9992115865479383,0.9997285564758045,B,1.0,1.0,490,4,600
+F1_rn50rand1,kcentroid2,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9997891971687762,0.9992115865479383,A,1.0,1.0,431,490,600
+F1_rn50rand1,kcentroid2,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9996513070082466,0.9989040700010212,A,1.0,0.0,502,480,600
+F1_rn50rand1,kcentroid2,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.9995290805894983,0.999862716545867,B,0.0,1.0,458,1,600
+F1_rn50rand1,kcentroid2,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.9998111027202126,0.9995290805894983,A,1.0,0.0,452,458,600
+F1_rn50rand1,kcentroid2,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9992115865479383,0.9997285564758045,B,0.0,1.0,490,4,600
+F1_rn50rand1,kcentroid2,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9997891971687762,0.9992115865479383,A,0.0,0.0,431,490,600
+F1_rn50rand1,kcentroid2,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9996513070082466,0.9989040700010212,A,0.0,0.0,502,480,600
+F1_rn50rand1,kcentroid2,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.9995290805894983,0.999862716545867,B,1.0,1.0,458,1,600
+F1_rn50rand1,kcentroid2,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.9998111027202126,0.9995290805894983,A,1.0,1.0,452,458,600
+F1_rn50rand1,knn3,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,2.9971591221095224,2.9984606167785044,B,1.0,1.0,490,4,600
+F1_rn50rand1,knn3,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,2.998586652082742,2.9971591221095224,A,1.0,1.0,431,490,600
+F1_rn50rand1,knn3,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,2.9986955300199645,2.995973543858576,A,1.0,0.0,502,480,600
+F1_rn50rand1,knn3,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,2.9984292169936233,2.9992376353926486,B,0.0,1.0,458,1,600
+F1_rn50rand1,knn3,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,2.999165874513828,2.9984292169936233,A,1.0,0.0,452,458,600
+F1_rn50rand1,knn3,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-inf,1.9992780041865612,B,0.0,1.0,490,4,600
+F1_rn50rand1,knn3,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9997182355768244,-inf,A,0.0,0.0,431,490,600
+F1_rn50rand1,knn3,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-inf,-inf,tie,0.0,0.0,502,480,600
+F1_rn50rand1,knn3,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,1.9990233989577901,1.9996203663027061,B,1.0,1.0,458,1,600
+F1_rn50rand1,knn3,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,1.9995171440750408,1.9990233989577901,A,1.0,1.0,452,458,600
+F1_rn50rand1,linsvm,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.32415385623330206,-0.32391243002720305,B,0.0,1.0,490,4,600
+F1_rn50rand1,linsvm,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.32408769442373064,-0.32415385623330206,A,0.0,0.0,431,490,600
+F1_rn50rand1,linsvm,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-0.3242222742927562,-0.3265622240174413,A,0.0,0.0,502,480,600
+F1_rn50rand1,linsvm,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.3240317344066276,-0.3236907717027484,B,0.0,1.0,458,1,600
+F1_rn50rand1,linsvm,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-0.3237930080313607,-0.3240317344066276,A,1.0,0.0,452,458,600
+F1_rn50rand1,logreg,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.0002646383805563424,-0.00018783433414417325,B,0.0,0.0,490,4,600
+F1_rn50rand1,logreg,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.00022929350013850837,-0.0002646383805563424,A,0.0,0.0,431,490,600
+F1_rn50rand1,logreg,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,4.69591476535387e-05,-0.0005686130022038717,A,0.0,0.0,502,480,600
+F1_rn50rand1,logreg,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.00032640610392741594,0.00042135793600670983,B,1.0,1.0,458,1,600
+F1_rn50rand1,logreg,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.00039515857716185114,0.00032640610392741594,A,1.0,1.0,452,458,600
+F1_rn50rand1,random,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.9396728402395735,0.9455663167060414,B,,,490,4,600
+F1_rn50rand1,random,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.845691871652287,-0.9396728402395735,A,,,431,490,600
+F1_rn50rand1,random,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9455663167060414,-0.6192136366780399,A,,,502,480,600
+F1_rn50rand1,random,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,1.5244785319039582,0.845691871652287,A,,,458,1,600
+F1_rn50rand1,random,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-0.41445347063528426,1.5244785319039582,B,,,452,458,600
+F1_rn50rand1,random,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-1.9380766228007198,-1.2864619700186914,B,0.0,0.0,490,4,600
+F1_rn50rand1,random,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,2.402750061466173,-1.9380766228007198,A,1.0,0.0,431,490,600
+F1_rn50rand1,random,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-0.15304597196006842,-1.7178259253441497,A,0.0,0.0,502,480,600
+F1_rn50rand1,random,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-1.1466803973586963,-0.922620193687854,B,0.0,0.0,458,1,600
+F1_rn50rand1,random,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-1.1320911255012365,-1.1466803973586963,A,0.0,0.0,452,458,600
+F1_rn50rand2,centroid,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9991140263881424,0.9998443803530904,B,0.0,1.0,490,4,600
+F1_rn50rand2,centroid,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9998559967055103,0.9991140263881424,A,1.0,0.0,431,490,600
+F1_rn50rand2,centroid,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.999860516060765,0.9995980504445255,A,1.0,0.0,502,480,600
+F1_rn50rand2,centroid,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.9997934644485997,0.9998944848062087,B,0.0,1.0,458,1,600
+F1_rn50rand2,centroid,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.999866452447564,0.9997934644485997,A,1.0,0.0,452,458,600
+F1_rn50rand2,centroid,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9991140263881426,0.9998443803530905,B,0.0,0.0,490,4,600
+F1_rn50rand2,centroid,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9998559967055103,0.9991140263881426,A,0.0,0.0,431,490,600
+F1_rn50rand2,centroid,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9998605160607655,0.9995980504445259,A,1.0,0.0,502,480,600
+F1_rn50rand2,centroid,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.9997934644485997,0.9998944848062086,B,1.0,1.0,458,1,600
+F1_rn50rand2,centroid,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.9998664524475647,0.9997934644485997,A,1.0,1.0,452,458,600
+F1_rn50rand2,kcentroid2,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9990134732945675,0.9998745439905338,B,0.0,1.0,490,4,600
+F1_rn50rand2,kcentroid2,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9998343028411449,0.9990134732945675,A,1.0,0.0,431,490,600
+F1_rn50rand2,kcentroid2,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9998831882145983,0.9996101953395669,A,1.0,0.0,502,480,600
+F1_rn50rand2,kcentroid2,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.9997481855647544,0.9999025422181382,B,0.0,1.0,458,1,600
+F1_rn50rand2,kcentroid2,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.999843173349956,0.9997481855647544,A,1.0,0.0,452,458,600
+F1_rn50rand2,kcentroid2,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9990134732945675,0.9998745439905338,B,0.0,0.0,490,4,600
+F1_rn50rand2,kcentroid2,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9998343028411449,0.9990134732945675,A,0.0,0.0,431,490,600
+F1_rn50rand2,kcentroid2,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9998831882145983,0.9996101953395669,A,1.0,0.0,502,480,600
+F1_rn50rand2,kcentroid2,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.9997481855647544,0.9999025422181382,B,1.0,1.0,458,1,600
+F1_rn50rand2,kcentroid2,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.999843173349956,0.9997481855647544,A,1.0,1.0,452,458,600
+F1_rn50rand2,knn3,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,2.9965841532212694,2.998774661071026,B,0.0,1.0,490,4,600
+F1_rn50rand2,knn3,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,2.9988095013161433,2.9965841532212694,A,1.0,0.0,431,490,600
+F1_rn50rand2,knn3,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,2.9992473314547965,2.998460022338714,A,1.0,0.0,502,480,600
+F1_rn50rand2,knn3,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,2.999150016871875,2.9994530546671805,B,0.0,1.0,458,1,600
+F1_rn50rand2,knn3,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,2.9993689640505776,2.999150016871875,A,1.0,0.0,452,458,600
+F1_rn50rand2,knn3,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.9991325491321604,0.9998018887282305,B,0.0,0.0,490,4,600
+F1_rn50rand2,knn3,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9997838222387634,0.9991325491321604,A,0.0,0.0,431,490,600
+F1_rn50rand2,knn3,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9998430703308927,-inf,A,1.0,0.0,502,480,600
+F1_rn50rand2,knn3,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,2.999150016871875,1.999711408994996,A,1.0,1.0,458,1,600
+F1_rn50rand2,knn3,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,2.9993689640505776,2.999150016871875,A,1.0,1.0,452,458,600
+F1_rn50rand2,linsvm,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.3250336053559448,-0.324546414867231,B,0.0,0.0,490,4,600
+F1_rn50rand2,linsvm,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.3241064106714922,-0.3250336053559448,A,0.0,0.0,431,490,600
+F1_rn50rand2,linsvm,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-0.3238482130851361,-0.3248907429740157,A,1.0,0.0,502,480,600
+F1_rn50rand2,linsvm,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.32383071374762973,-0.32376110255457224,B,1.0,1.0,458,1,600
+F1_rn50rand2,linsvm,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-0.32354290352255066,-0.32383071374762973,A,1.0,1.0,452,458,600
+F1_rn50rand2,logreg,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.0004898509009893251,-0.0003406103724583361,B,0.0,0.0,490,4,600
+F1_rn50rand2,logreg,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.00023119944994130881,-0.0004898509009893251,A,0.0,0.0,431,490,600
+F1_rn50rand2,logreg,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.00013181153528627295,-0.0001366409285096098,A,0.0,0.0,502,480,600
+F1_rn50rand2,logreg,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.00039079511914603417,0.00041201559434962003,B,1.0,1.0,458,1,600
+F1_rn50rand2,logreg,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.0004647100714083166,0.00039079511914603417,A,1.0,1.0,452,458,600
+F1_rn50rand2,random,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-1.085687415562762,0.8360926022532414,B,,,490,4,600
+F1_rn50rand2,random,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.24400305649032647,-1.085687415562762,A,,,431,490,600
+F1_rn50rand2,random,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.8360926022532414,-0.5098938158461774,A,,,502,480,600
+F1_rn50rand2,random,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.20346085371799716,0.24400305649032647,B,,,458,1,600
+F1_rn50rand2,random,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-0.14479568479323465,0.20346085371799716,B,,,452,458,600
+F1_rn50rand2,random,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.5143271817860181,-1.5748468646017568,A,1.0,0.0,490,4,600
+F1_rn50rand2,random,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-1.6537126749386732,-0.5143271817860181,B,0.0,1.0,431,490,600
+F1_rn50rand2,random,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-0.2625196864128684,-1.6085061045122873,A,1.0,0.0,502,480,600
+F1_rn50rand2,random,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.2528247099792218,-2.1084309856841,A,1.0,0.0,458,1,600
+F1_rn50rand2,random,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-0.3652600721246019,0.2528247099792218,B,1.0,1.0,452,458,600
+F2_pixels,centroid,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.8494744138319963,0.7960467158545206,A,1.0,1.0,490,4,600
+F2_pixels,centroid,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.7080735959684793,0.8494744138319963,B,1.0,1.0,431,490,600
+F2_pixels,centroid,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.8287311362352189,0.405504524654984,A,1.0,0.0,502,480,600
+F2_pixels,centroid,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.8581449107099728,0.7250818345683782,A,1.0,0.0,458,1,600
+F2_pixels,centroid,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.8652910279347488,0.8581449107099728,A,1.0,1.0,452,458,600
+F2_pixels,centroid,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.8494744138319965,0.7960467158545204,A,0.0,0.0,490,4,600
+F2_pixels,centroid,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.7080735959684796,0.8494744138319965,B,0.0,0.0,431,490,600
+F2_pixels,centroid,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.8287311362352199,0.40550452465498343,A,1.0,0.0,502,480,600
+F2_pixels,centroid,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.8581449107099726,0.7250818345683776,A,1.0,1.0,458,1,600
+F2_pixels,centroid,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.8652910279347469,0.8581449107099726,A,1.0,1.0,452,458,600
+F2_pixels,kcentroid2,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.8588887856310491,0.802685489402191,A,1.0,1.0,490,4,600
+F2_pixels,kcentroid2,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.6505447528775515,0.8588887856310491,B,1.0,1.0,431,490,600
+F2_pixels,kcentroid2,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.826986628647082,0.44891894948556776,A,1.0,0.0,502,480,600
+F2_pixels,kcentroid2,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.8353695247584674,0.7076415920706647,A,1.0,0.0,458,1,600
+F2_pixels,kcentroid2,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.8484711291253769,0.8353695247584674,A,1.0,1.0,452,458,600
+F2_pixels,kcentroid2,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.8588887856310491,0.802685489402191,A,0.0,0.0,490,4,600
+F2_pixels,kcentroid2,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.6505447528775515,0.8588887856310491,B,0.0,0.0,431,490,600
+F2_pixels,kcentroid2,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.826986628647082,0.44891894948556776,A,1.0,1.0,502,480,600
+F2_pixels,kcentroid2,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.8353695247584674,0.7076415920706647,A,1.0,1.0,458,1,600
+F2_pixels,kcentroid2,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.8484711291253769,0.8353695247584674,A,1.0,1.0,452,458,600
+F2_pixels,knn3,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,2.037794873648274,1.9096277537485813,A,1.0,1.0,490,4,600
+F2_pixels,knn3,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,1.6985899993400362,2.037794873648274,B,1.0,1.0,431,490,600
+F2_pixels,knn3,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,2.2723360149486904,1.1118715048937582,A,1.0,0.0,502,480,600
+F2_pixels,knn3,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,2.370461930098082,2.0029005166831473,A,1.0,0.0,458,1,600
+F2_pixels,knn3,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,2.3902017183528796,2.370461930098082,A,1.0,1.0,452,458,600
+F2_pixels,knn3,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.8358601525667853,0.8083432737851091,A,0.0,0.0,490,4,600
+F2_pixels,knn3,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-inf,0.8358601525667853,B,0.0,0.0,431,490,600
+F2_pixels,knn3,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,1.557263794916199,0.8453404234955582,A,1.0,1.0,502,480,600
+F2_pixels,knn3,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,1.6100708146157745,2.0029005166831473,B,1.0,1.0,458,1,600
+F2_pixels,knn3,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,2.3902017183528796,1.6100708146157745,A,1.0,1.0,452,458,600
+F2_pixels,linsvm,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.22659957277928533,-0.27508206183888384,A,0.0,0.0,490,4,600
+F2_pixels,linsvm,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.29794682937330946,-0.22659957277928533,B,0.0,0.0,431,490,600
+F2_pixels,linsvm,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-0.14300582759962666,-0.4343815956044519,A,1.0,0.0,502,480,600
+F2_pixels,linsvm,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.027327268475898392,-0.13179005942323077,A,1.0,1.0,458,1,600
+F2_pixels,linsvm,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.24597175886223266,0.027327268475898392,A,1.0,1.0,452,458,600
+F2_pixels,logreg,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.047097033738127236,0.028163680740750055,A,0.0,0.0,490,4,600
+F2_pixels,logreg,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.031128380848366555,0.047097033738127236,B,0.0,0.0,431,490,600
+F2_pixels,logreg,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.0949269972000147,-0.10218811650005782,A,1.0,0.0,502,480,600
+F2_pixels,logreg,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.16810631154290018,0.0819403605749732,A,1.0,1.0,458,1,600
+F2_pixels,logreg,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.26347091135379863,0.16810631154290018,A,1.0,1.0,452,458,600
+F2_pixels,random,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-1.0743548313726146,-0.7028221318652593,B,,,490,4,600
+F2_pixels,random,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.3665411861432564,-1.0743548313726146,A,,,431,490,600
+F2_pixels,random,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-0.7028221318652593,-0.2986890141685913,B,,,502,480,600
+F2_pixels,random,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.1407710570881325,0.3665411861432564,B,,,458,1,600
+F2_pixels,random,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,1.073280183800713,0.1407710570881325,A,,,452,458,600
+F2_pixels,random,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,4.1479025988225375,-0.18724703375698015,A,1.0,1.0,490,4,600
+F2_pixels,random,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.7380795155104674,4.1479025988225375,B,0.0,1.0,431,490,600
+F2_pixels,random,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-1.8014344205313693,-1.397301302834701,B,0.0,0.0,502,480,600
+F2_pixels,random,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-1.1044104429645558,-0.1521788871612424,B,0.0,1.0,458,1,600
+F2_pixels,random,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-1.0780829485205983,-1.1044104429645558,A,0.0,0.0,452,458,600
+O1_dinov2b,centroid,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.08333436311346226,0.0833469697645935,B,1.0,1.0,490,4,600
+O1_dinov2b,centroid,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.0793085352107476,0.08333436311346226,B,1.0,1.0,431,490,600
+O1_dinov2b,centroid,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.1714078633329179,0.059055658338372286,A,1.0,0.0,502,480,600
+O1_dinov2b,centroid,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.068184736403852,0.05583658888737592,A,1.0,1.0,458,1,600
+O1_dinov2b,centroid,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.1791651870514318,0.068184736403852,A,1.0,1.0,452,458,600
+O1_dinov2b,centroid,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.08333436311346222,0.08334696976459352,B,1.0,0.0,490,4,600
+O1_dinov2b,centroid,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.07930853521074761,0.08333436311346222,B,1.0,1.0,431,490,600
+O1_dinov2b,centroid,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.17140786333291794,0.0590556583383723,A,1.0,1.0,502,480,600
+O1_dinov2b,centroid,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.06818473640385202,0.055836588887375915,A,0.0,0.0,458,1,600
+O1_dinov2b,centroid,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.17916518705143183,0.06818473640385202,A,1.0,0.0,452,458,600
+O1_dinov2b,kcentroid2,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.0649316616929658,0.06708343004689227,B,1.0,1.0,490,4,600
+O1_dinov2b,kcentroid2,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.08145923269831967,0.0649316616929658,A,1.0,1.0,431,490,600
+O1_dinov2b,kcentroid2,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.1474171850066911,0.07417812053429751,A,1.0,0.0,502,480,600
+O1_dinov2b,kcentroid2,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.05852934699017154,0.06745023830481056,B,1.0,1.0,458,1,600
+O1_dinov2b,kcentroid2,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.22389504672782318,0.05852934699017154,A,1.0,1.0,452,458,600
+O1_dinov2b,kcentroid2,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.0649316616929658,0.06708343004689227,B,0.0,0.0,490,4,600
+O1_dinov2b,kcentroid2,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.08145923269831967,0.0649316616929658,A,1.0,0.0,431,490,600
+O1_dinov2b,kcentroid2,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.1474171850066911,0.07417812053429751,A,1.0,1.0,502,480,600
+O1_dinov2b,kcentroid2,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.05852934699017154,0.06745023830481056,B,0.0,0.0,458,1,600
+O1_dinov2b,kcentroid2,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.22389504672782318,0.05852934699017154,A,1.0,0.0,452,458,600
+O1_dinov2b,knn3,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.1498841819172038,0.1499068560881092,B,1.0,1.0,490,4,600
+O1_dinov2b,knn3,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.14264337633360225,0.1498841819172038,B,1.0,1.0,431,490,600
+O1_dinov2b,knn3,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.3231028638523582,0.11131958572258849,A,1.0,0.0,502,480,600
+O1_dinov2b,knn3,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.12259857692182902,0.10039616927190724,A,1.0,1.0,458,1,600
+O1_dinov2b,knn3,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.3221453674960303,0.12259857692182902,A,1.0,1.0,452,458,600
+O1_dinov2b,knn3,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.15583456521471015,0.06858548973287062,A,1.0,0.0,490,4,600
+O1_dinov2b,knn3,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.0653996514061452,0.15583456521471015,B,0.0,1.0,431,490,600
+O1_dinov2b,knn3,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.26337785627097093,0.1127632602194148,A,1.0,1.0,502,480,600
+O1_dinov2b,knn3,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.14022601181160826,0.05720019407075118,A,1.0,0.0,458,1,600
+O1_dinov2b,knn3,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.31205707840081753,0.14022601181160826,A,1.0,1.0,452,458,600
+O1_dinov2b,linsvm,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.2541278188554108,-0.33313154346746454,A,1.0,0.0,490,4,600
+O1_dinov2b,linsvm,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.2557869974134653,-0.2541278188554108,B,1.0,1.0,431,490,600
+O1_dinov2b,linsvm,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-0.14819505981987802,-0.24680827490038532,A,1.0,1.0,502,480,600
+O1_dinov2b,linsvm,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.29871135245065433,-0.29372070123081284,B,0.0,0.0,458,1,600
+O1_dinov2b,linsvm,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-0.12036526067813874,-0.29871135245065433,A,1.0,0.0,452,458,600
+O1_dinov2b,logreg,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.024604853380360246,-0.018133804505522308,A,1.0,0.0,490,4,600
+O1_dinov2b,logreg,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.02244639823142676,0.024604853380360246,B,1.0,1.0,431,490,600
+O1_dinov2b,logreg,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.08289407245023013,0.018078098829498703,A,1.0,1.0,502,480,600
+O1_dinov2b,logreg,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.001238291298020753,-0.0002485024139493343,B,0.0,0.0,458,1,600
+O1_dinov2b,logreg,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.10203508530454601,-0.001238291298020753,A,1.0,0.0,452,458,600
+O1_dinov2b,random,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-1.4717013560846026,-0.3623625682909628,B,,,490,4,600
+O1_dinov2b,random,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.3491764766185461,-1.4717013560846026,A,,,431,490,600
+O1_dinov2b,random,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-0.3623625682909628,1.1122228965016994,B,,,502,480,600
+O1_dinov2b,random,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.7092849287085213,0.3491764766185461,B,,,458,1,600
+O1_dinov2b,random,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.5249450795955081,-0.7092849287085213,A,,,452,458,600
+O1_dinov2b,random,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-1.391868963990321,2.118644571612946,B,0.0,1.0,490,4,600
+O1_dinov2b,random,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.5005415882078378,-1.391868963990321,A,1.0,0.0,431,490,600
+O1_dinov2b,random,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-1.4609748569570726,0.013610607835589539,B,0.0,1.0,502,480,600
+O1_dinov2b,random,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-1.4491020064306914,-0.7346929117215035,B,0.0,0.0,458,1,600
+O1_dinov2b,random,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.5482852483617553,-1.4491020064306914,A,1.0,0.0,452,458,600
+O2_openclip,centroid,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.644209995480942,0.42716907916999436,A,1.0,0.0,490,4,600
+O2_openclip,centroid,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.6075898245606418,0.644209995480942,B,0.0,1.0,431,490,600
+O2_openclip,centroid,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.66195322196282,0.7217520211950201,B,0.0,1.0,502,480,600
+O2_openclip,centroid,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.45227962403180516,0.4655958879096461,B,1.0,0.0,458,1,600
+O2_openclip,centroid,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.35867769014740886,0.45227962403180516,B,0.0,1.0,452,458,600
+O2_openclip,centroid,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.644209995480942,0.42716907916999436,A,1.0,0.0,490,4,600
+O2_openclip,centroid,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.6075898245606417,0.644209995480942,B,1.0,1.0,431,490,600
+O2_openclip,centroid,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.6619532219628201,0.7217520211950204,B,1.0,1.0,502,480,600
+O2_openclip,centroid,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.4522796240318052,0.46559588790964623,B,1.0,0.0,458,1,600
+O2_openclip,centroid,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.3586776901474089,0.4522796240318052,B,1.0,1.0,452,458,600
+O2_openclip,kcentroid2,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.6376998711810736,0.41859979140745585,A,1.0,0.0,490,4,600
+O2_openclip,kcentroid2,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.5911284049650076,0.6376998711810736,B,0.0,1.0,431,490,600
+O2_openclip,kcentroid2,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.6662137977047129,0.6912076041615549,B,0.0,1.0,502,480,600
+O2_openclip,kcentroid2,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.4671649260508769,0.4324846054330778,A,1.0,0.0,458,1,600
+O2_openclip,kcentroid2,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.365512805156153,0.4671649260508769,B,0.0,1.0,452,458,600
+O2_openclip,kcentroid2,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.6376998711810736,0.41859979140745585,A,1.0,0.0,490,4,600
+O2_openclip,kcentroid2,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.5911284049650076,0.6376998711810736,B,1.0,1.0,431,490,600
+O2_openclip,kcentroid2,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.6662137977047129,0.6912076041615549,B,1.0,1.0,502,480,600
+O2_openclip,kcentroid2,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.4671649260508769,0.4324846054330778,A,1.0,0.0,458,1,600
+O2_openclip,kcentroid2,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.365512805156153,0.4671649260508769,B,1.0,1.0,452,458,600
+O2_openclip,knn3,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,1.6206852973938761,1.0746598950164405,A,1.0,0.0,490,4,600
+O2_openclip,knn3,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,1.5285573064981857,1.6206852973938761,B,0.0,1.0,431,490,600
+O2_openclip,knn3,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,1.7262973777663069,1.8822457240890613,B,0.0,1.0,502,480,600
+O2_openclip,knn3,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,1.0672159133800523,1.098637467573704,B,1.0,0.0,458,1,600
+O2_openclip,knn3,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.8463492900418526,1.0672159133800523,B,0.0,1.0,452,458,600
+O2_openclip,knn3,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,1.130713495690263,-inf,A,1.0,0.0,490,4,600
+O2_openclip,knn3,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,1.5285573064981857,1.130713495690263,A,1.0,1.0,431,490,600
+O2_openclip,knn3,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,1.7262973777663069,1.8822457240890613,B,1.0,1.0,502,480,600
+O2_openclip,knn3,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.8116800775845039,-inf,A,1.0,0.0,458,1,600
+O2_openclip,knn3,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.365512805156153,0.8116800775845039,B,1.0,1.0,452,458,600
+O2_openclip,linsvm,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.046473245774282856,-0.5939321068024003,A,1.0,0.0,490,4,600
+O2_openclip,linsvm,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.03751800772393324,0.046473245774282856,B,1.0,1.0,431,490,600
+O2_openclip,linsvm,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.22453982028856645,0.16070390716072824,A,1.0,1.0,502,480,600
+O2_openclip,linsvm,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.10307241645458753,-0.428141159945134,A,1.0,0.0,458,1,600
+O2_openclip,linsvm,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-0.04454687427653439,0.10307241645458753,B,1.0,1.0,452,458,600
+O2_openclip,logreg,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.18653857942541968,-0.1527064527317456,A,1.0,0.0,490,4,600
+O2_openclip,logreg,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.14698434772439373,0.18653857942541968,B,1.0,1.0,431,490,600
+O2_openclip,logreg,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.2864919971634148,0.26326288958649113,A,1.0,1.0,502,480,600
+O2_openclip,logreg,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.23335671356669763,-0.05693585310601178,A,1.0,0.0,458,1,600
+O2_openclip,logreg,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.1397181015397854,0.23335671356669763,B,1.0,1.0,452,458,600
+O2_openclip,random,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.22296281866517415,1.1197865140130414,B,,,490,4,600
+O2_openclip,random,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.5005309705980657,-0.22296281866517415,A,,,431,490,600
+O2_openclip,random,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,1.1197865140130414,-0.42197134030767197,A,,,502,480,600
+O2_openclip,random,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,1.4578533912943348,0.5005309705980657,A,,,458,1,600
+O2_openclip,random,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,1.382573339386827,1.4578533912943348,B,,,452,458,600
+O2_openclip,random,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,1.0022237151618691,-2.913989794635664,A,0.0,0.0,490,4,600
+O2_openclip,random,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.4564017715691028,1.0022237151618691,B,1.0,0.0,431,490,600
+O2_openclip,random,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.021174225346931586,-1.5205836289737817,A,1.0,0.0,502,480,600
+O2_openclip,random,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-1.7463881755885862,-1.9398900475539809,A,0.0,0.0,458,1,600
+O2_openclip,random,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-0.7510836389191993,-1.7463881755885862,A,0.0,0.0,452,458,600
+R0_dinov2s,centroid,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.011434838580286379,0.12427958949944319,B,1.0,1.0,490,4,600
+R0_dinov2s,centroid,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.08698949376659407,0.011434838580286379,A,1.0,1.0,431,490,600
+R0_dinov2s,centroid,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.35851038571784033,0.18299802921442077,A,1.0,0.0,502,480,600
+R0_dinov2s,centroid,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.05347981701010385,0.07245175330182892,B,0.0,0.0,458,1,600
+R0_dinov2s,centroid,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.16415317288488318,0.05347981701010385,A,1.0,0.0,452,458,600
+R0_dinov2s,centroid,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.01143483858028636,0.12427958949944322,B,0.0,0.0,490,4,600
+R0_dinov2s,centroid,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.08698949376659404,0.01143483858028636,A,1.0,0.0,431,490,600
+R0_dinov2s,centroid,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.3585103857178403,0.18299802921442077,A,1.0,1.0,502,480,600
+R0_dinov2s,centroid,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.05347981701010386,0.07245175330182893,B,0.0,0.0,458,1,600
+R0_dinov2s,centroid,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.16415317288488318,0.05347981701010386,A,1.0,0.0,452,458,600
+R0_dinov2s,kcentroid2,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.08985124210852409,0.15372325811874887,B,1.0,1.0,490,4,600
+R0_dinov2s,kcentroid2,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.09088799464118355,0.08985124210852409,A,1.0,1.0,431,490,600
+R0_dinov2s,kcentroid2,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.38653225068964464,0.15603546605300228,A,1.0,0.0,502,480,600
+R0_dinov2s,kcentroid2,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.1072550336918601,0.06018998856473507,A,0.0,0.0,458,1,600
+R0_dinov2s,kcentroid2,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.15995244242306894,0.1072550336918601,A,1.0,0.0,452,458,600
+R0_dinov2s,kcentroid2,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.08985124210852409,0.15372325811874887,B,0.0,0.0,490,4,600
+R0_dinov2s,kcentroid2,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.09088799464118355,0.08985124210852409,A,1.0,0.0,431,490,600
+R0_dinov2s,kcentroid2,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.38653225068964464,0.15603546605300228,A,1.0,0.0,502,480,600
+R0_dinov2s,kcentroid2,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.1072550336918601,0.06018998856473507,A,0.0,0.0,458,1,600
+R0_dinov2s,kcentroid2,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.15995244242306894,0.1072550336918601,A,1.0,0.0,452,458,600
+R0_dinov2s,knn3,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.021701779305609875,0.23586587642421789,B,1.0,1.0,490,4,600
+R0_dinov2s,knn3,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.16509431089687232,0.021701779305609875,A,1.0,1.0,431,490,600
+R0_dinov2s,knn3,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.7299084334347955,0.3725744361857296,A,1.0,0.0,502,480,600
+R0_dinov2s,knn3,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.10390064465377394,0.14075934240638874,B,0.0,0.0,458,1,600
+R0_dinov2s,knn3,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.31891695668067593,0.10390064465377394,A,1.0,0.0,452,458,600
+R0_dinov2s,knn3,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.13718982918643136,0.13442433740851167,A,1.0,0.0,490,4,600
+R0_dinov2s,knn3,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.08759395969637696,0.13718982918643136,B,1.0,1.0,431,490,600
+R0_dinov2s,knn3,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.601346142323302,0.2812818018512429,A,1.0,1.0,502,480,600
+R0_dinov2s,knn3,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.1164968988535551,0.06018998856473507,A,0.0,0.0,458,1,600
+R0_dinov2s,knn3,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.26538172639910934,0.1164968988535551,A,1.0,0.0,452,458,600
+R0_dinov2s,linsvm,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.3151560885963862,-0.37790747060975205,A,0.0,0.0,490,4,600
+R0_dinov2s,linsvm,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.18537895175877542,-0.3151560885963862,A,1.0,0.0,431,490,600
+R0_dinov2s,linsvm,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.058608469854475764,-0.17433838257058287,A,1.0,0.0,502,480,600
+R0_dinov2s,linsvm,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.4138709818036957,-0.24968437154147077,B,0.0,0.0,458,1,600
+R0_dinov2s,linsvm,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-0.14934250590920456,-0.4138709818036957,A,1.0,0.0,452,458,600
+R0_dinov2s,logreg,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.01227898042552579,-0.04915939251113436,A,0.0,0.0,490,4,600
+R0_dinov2s,logreg,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.063060304953101,-0.01227898042552579,A,1.0,0.0,431,490,600
+R0_dinov2s,logreg,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.22599061969368173,0.06895268966315446,A,1.0,0.0,502,480,600
+R0_dinov2s,logreg,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.07087783320601784,0.023089503658504117,B,0.0,0.0,458,1,600
+R0_dinov2s,logreg,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.08653775368407206,-0.07087783320601784,A,1.0,0.0,452,458,600
+R0_dinov2s,random,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.7978037904939073,0.9024472124516064,B,,,490,4,600
+R0_dinov2s,random,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-0.9878646846054572,0.7978037904939073,B,,,431,490,600
+R0_dinov2s,random,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.9024472124516064,0.04417698935188682,A,,,502,480,600
+R0_dinov2s,random,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.49755748964676255,-0.9878646846054572,A,,,458,1,600
+R0_dinov2s,random,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-0.4088353090892505,-0.49755748964676255,A,,,452,458,600
+R0_dinov2s,random,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-1.0476492163080158,1.0734934963238287,B,0.0,1.0,490,4,600
+R0_dinov2s,random,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.9809708472833871,-1.0476492163080158,A,1.0,0.0,431,490,600
+R0_dinov2s,random,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-0.1961650762145034,-1.054435299314223,A,0.0,0.0,502,480,600
+R0_dinov2s,random,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.570255847437797,0.6273862678613653,B,1.0,0.0,458,1,600
+R0_dinov2s,random,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.31887617529562795,0.570255847437797,B,1.0,1.0,452,458,600
+R1_cvcl,centroid,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.5767892547270088,0.5909207844846653,B,1.0,1.0,490,4,600
+R1_cvcl,centroid,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.6591938923728208,0.5767892547270088,A,1.0,1.0,431,490,600
+R1_cvcl,centroid,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.5247465277142013,0.354854720834476,A,1.0,0.0,502,480,600
+R1_cvcl,centroid,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.6658457641088841,0.5191953684752453,A,1.0,0.0,458,1,600
+R1_cvcl,centroid,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.693159566293505,0.6658457641088841,A,1.0,1.0,452,458,600
+R1_cvcl,centroid,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.5767892547270089,0.5909207844846653,B,0.0,1.0,490,4,600
+R1_cvcl,centroid,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.6591938923728207,0.5767892547270089,A,1.0,0.0,431,490,600
+R1_cvcl,centroid,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.5247465277142013,0.3548547208344759,A,0.0,0.0,502,480,600
+R1_cvcl,centroid,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.6658457641088842,0.5191953684752452,A,1.0,0.0,458,1,600
+R1_cvcl,centroid,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.6931595662935048,0.6658457641088842,A,1.0,1.0,452,458,600
+R1_cvcl,kcentroid2,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.5684088103107956,0.5178506178649032,A,1.0,1.0,490,4,600
+R1_cvcl,kcentroid2,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.6172576019748913,0.5684088103107956,A,1.0,1.0,431,490,600
+R1_cvcl,kcentroid2,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.5131790577852776,0.3353318424380086,A,1.0,0.0,502,480,600
+R1_cvcl,kcentroid2,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.6136988865870804,0.5082957214091625,A,1.0,0.0,458,1,600
+R1_cvcl,kcentroid2,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.6456571699725562,0.6136988865870804,A,1.0,1.0,452,458,600
+R1_cvcl,kcentroid2,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.5684088103107956,0.5178506178649032,A,0.0,1.0,490,4,600
+R1_cvcl,kcentroid2,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.6172576019748913,0.5684088103107956,A,1.0,0.0,431,490,600
+R1_cvcl,kcentroid2,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.5131790577852776,0.3353318424380086,A,0.0,0.0,502,480,600
+R1_cvcl,kcentroid2,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.6136988865870804,0.5082957214091625,A,1.0,0.0,458,1,600
+R1_cvcl,kcentroid2,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.6456571699725562,0.6136988865870804,A,1.0,1.0,452,458,600
+R1_cvcl,knn3,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,1.3347034218834577,1.3674041023649601,B,1.0,1.0,490,4,600
+R1_cvcl,knn3,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,1.5253896230280801,1.3347034218834577,A,1.0,1.0,431,490,600
+R1_cvcl,knn3,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,1.2496818180588865,0.8450851396976385,A,1.0,0.0,502,480,600
+R1_cvcl,knn3,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,1.6664860972887834,1.2994478751376932,A,1.0,0.0,458,1,600
+R1_cvcl,knn3,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,1.7348473816256818,1.6664860972887834,A,1.0,1.0,452,458,600
+R1_cvcl,knn3,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.5684088103107956,0.5178506178649032,A,1.0,1.0,490,4,600
+R1_cvcl,knn3,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,1.1107577847916317,0.5684088103107956,A,1.0,1.0,431,490,600
+R1_cvcl,knn3,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.4948864429719463,-inf,A,0.0,0.0,502,480,600
+R1_cvcl,knn3,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,1.2199316627417662,0.5561974173534041,A,1.0,0.0,458,1,600
+R1_cvcl,knn3,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,1.7348473816256818,1.2199316627417662,A,1.0,1.0,452,458,600
+R1_cvcl,linsvm,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.3067179845254602,-0.06599794820050611,B,1.0,1.0,490,4,600
+R1_cvcl,linsvm,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.022145705658077663,-0.3067179845254602,A,1.0,1.0,431,490,600
+R1_cvcl,linsvm,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-0.34575976094766014,-0.4667350317197411,A,0.0,0.0,502,480,600
+R1_cvcl,linsvm,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.23166526721491254,-0.43265115002228094,A,1.0,0.0,458,1,600
+R1_cvcl,linsvm,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.3185918176443715,0.23166526721491254,A,1.0,1.0,452,458,600
+R1_cvcl,logreg,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,0.012522864494871416,0.1307785584290357,B,0.0,1.0,490,4,600
+R1_cvcl,logreg,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.18067018105914084,0.012522864494871416,A,1.0,0.0,431,490,600
+R1_cvcl,logreg,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,0.0009903916011749121,-0.06041560889368659,A,0.0,0.0,502,480,600
+R1_cvcl,logreg,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,0.26606845025732095,-0.08134628393743702,A,1.0,0.0,458,1,600
+R1_cvcl,logreg,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,0.32287542970268024,0.26606845025732095,A,1.0,1.0,452,458,600
+R1_cvcl,random,one_word,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.21611500341388215,-0.41644407529699695,A,,,490,4,600
+R1_cvcl,random,one_word,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,0.513288343298892,-0.21611500341388215,A,,,431,490,600
+R1_cvcl,random,one_word,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-0.41644407529699695,-0.9991057553757725,A,,,502,480,600
+R1_cvcl,random,one_word,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.12272530658038294,0.513288343298892,B,,,458,1,600
+R1_cvcl,random,one_word,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-1.1351888649851094,-0.12272530658038294,B,,,452,458,600
+R1_cvcl,random,three_words,animals,3sup,rabbit / radish,c3_sup1,c1_sup3,-0.38826713695653325,1.1950136023290114,B,1.0,1.0,490,4,600
+R1_cvcl,random,three_words,animals,3sup,turtle / rabbit,c3_sup2,c3_sup1,-2.169737542642162,-0.38826713695653325,B,0.0,1.0,431,490,600
+R1_cvcl,random,three_words,vegetables,3sup,radish / broccoli,c1_sup3,c1_sup4,-1.5150563639631067,-2.0977180440418826,A,0.0,0.0,502,480,600
+R1_cvcl,random,three_words,vehicles,3sup,gray car / turtle,c2_sup4,c3_sup2,-0.46380525372237447,4.09182054202551,B,0.0,1.0,458,1,600
+R1_cvcl,random,three_words,vehicles,3sup,blue car / gray car,c2_sup3,c2_sup4,-1.0563473600307074,-0.46380525372237447,B,1.0,0.0,452,458,600

@@ -1,0 +1,36 @@
+# Results and conclusions
+
+## Adult word extension
+
+Visual distance predicted adult choices across all eight trained encoders. Each fit used the same responses to eight within-domain test images per taught domain, adjusting for taxonomic level and teaching condition. A one-standard-deviation increase in distance corresponded to a change in log odds of −4.30 for supervised ViT, −3.16 for DINOv2-small and −0.20 for MAE. All eight 95% intervals lay below zero. The direction of this association extends beyond DINOv2. Its magnitude depends on the representation. [Model estimates](exhibits/distance_effects.csv)
+
+The internally frozen primary analysis addressed a different question. Does presentation order change the slope of visual distance? Order varied across 12 experiments and was closely aligned with blocking. With inference at the experiment level, the DINOv2-small slope difference was 0.020 (95% CI −0.205 to 0.274). The frozen decision rule returned G1 at every combination of three effect margins and three geometry cutoffs. The evidence for moderation by order was inconclusive even for the reference encoder. Claims of equivalent moderation across encoders would go beyond the data. The 24-item sensitivity was also inconclusive for DINOv2-small. [Primary results and decision grid](encoder_equivalence_v2/encoder_equivalence/results/regions/) · [Sensitivity outputs](encoder_equivalence_v2/encoder_equivalence/results/)
+
+## CIFAR agent replication
+
+All eight trained encoders passed the native-word naming control. With DINOv2-small, centroid naming accuracy was 94.3% for native categories, 84.7% for near, 65.4% for mid and 53.0% for far categories. The archived ledgers report naming and retrieval by learner and episode. [Task outputs](encoder_equivalence_v2/encoder_equivalence/agents/out/results/) · [Cross-encoder table](encoder_equivalence_v2/encoder_equivalence/agents/out/results/regions/tabla_agentes_personas.csv)
+
+On the 100 original CIFAR-100 class pairs, greater visual distance predicted lower centroid naming accuracy after adjustment for WordNet distance in six of eight trained encoders. The partial correlation was −0.650 for supervised ViT and −0.495 for DINOv2-small. CVCL (+0.015) and MAE (−0.004) had intervals spanning zero. The frozen decision was mixed or inconclusive at minimum effects of 0.10 and 0.20 (GA3) and encoder-dependent at 0.30 (GA1, MAE). CVCL, MAE and pixels changed classification in the descriptive analysis of all 4,950 pairs. Those pairs share classes, which limits inference from their nominal significance levels. [Distance estimates](exhibits/distance_effects.csv) · [Decision grid and pair-sampling results](encoder_equivalence_v2/encoder_equivalence/agents/out/results/regions/)
+
+For external human similarity judgments (H1), the frozen rule classified the effect as supported across trained encoders, while the geometry calibration across stimulus sets failed at each cutoff (GA2b). For H2, which relates human similarity judgments to agent performance, the reference encoder was inconclusive on THINGS and supported on HSJ. The overall comparison therefore remained descriptive (GA0b). H3 is descriptive. The H4 replication used the human responses to all 24 images, including out-of-domain choices. All ten primary fits converged with person-specific distance slopes. The optional CIFAR sensitivity block for alternative MAE pooling and random-network seeds was not run. [Frozen decisions](encoder_equivalence_v2/encoder_equivalence/agents/out/results/regions/ga_grid.csv) · [Full per-encoder outputs](encoder_equivalence_v2/encoder_equivalence/agents/out/results/)
+
+## Adults and agents on the same photographs
+
+This analysis was exploratory. The investigators knew the adult outcomes and the motivating image pairs in advance. Each of three domains had eight test images. Four per domain were superordinates relative to the teaching examples. Adult percentages pool 600 judgments per word–image–condition combination. Each fixed agent made one decision per combination. The one-word comparison uses a centroid and an explicit acceptance rule that adapts to dispersion among the examples. The single-example condition has no informative acceptance decision under this symmetric rule. [Protocol and alternative learners](agents_xtmem_v2/protocol.md) · [Item records](agents_xtmem_v2/outputs/)
+
+| After three teaching examples | Same subtype | Same basic type | Different basic types in one domain |
+| --- | ---: | ---: | ---: |
+| Adults selecting a within-domain superordinate | 1.06% | 1.83% | 77.49% |
+| Adults selecting an outside-domain image | 0.61% | 0.29% | 0.34% |
+| Supervised ViT accepting a within-domain superordinate | 0/12 | 3/12 | 10/12 |
+| Supervised ViT accepting an outside-domain image | 0/48 | 0/48 | 0/48 |
+| DINOv2-base accepting a within-domain superordinate | 0/12 | 6/12 | 10/12 |
+| DINOv2-base accepting an outside-domain image | 0/48 | 12/48 | 20/48 |
+
+Broad teaching yielded similar adult extension across animals (79.25%), vegetables (78.92%) and vehicles (74.29%). Outside-domain selection stayed below 0.5% in each case. Supervised ViT accepted 3/4, 4/4 and 3/4 within-domain candidates. Supervised ResNet-50 accepted 4/4, 4/4 and 0/4. With four such candidates per domain, one decision changes an agent's rate by 25 percentage points. The 48 outside-domain combinations reuse photographs across taught words. [Domain counts](exhibits/broad_teaching_by_domain.csv) · [Full comparison table](exhibits/word_extension_table.tex)
+
+Across the eight trained encoders, the maximum narrow-to-broad gain attainable with a common threshold on the raw centroid score ranged from 8.33 to 66.67 percentage points. The observed adult gain was 76.43 points. A support-dependent rule allowed some agents to approximate this gain while differing in which candidates they admitted. In the broad vehicle example, four of eight trained centroid models ranked the gray car above the turtle. Adults selected the car 458 times and the turtle once across 600 sessions. The archive also contains the native three-word forced-choice task, where agents saw examples of all competing words. [Threshold analysis](agents_xtmem_v2/outputs/broad_minus_narrow.csv) · [Contrasting image pairs](agents_xtmem_v2/outputs/broad_teaching_pairs.csv) · [Three-word predictions](agents_xtmem_v2/outputs/three_word_items.csv)
+
+## Interpretation
+
+The adult visual-distance association survives replacing DINOv2. The teaching condition under which a word's extension broadens and the location of its boundary depend on the examples and the agent's representation and decision rule. Supervised ViT and DINOv2-base accepted the same number of within-domain targets under broad teaching, yet their outside-domain acceptance differed by 20 of 48 combinations. Supervised ViT also broadened earlier than adults under same-basic-type teaching. These observations support category-sensitive adult behavior and are consistent with an inference about the intended scope of the word. The mechanism behind that inference remains open. The adult decisions, deterministic model decisions and CIFAR coefficients have different units of observation. [Three-page exhibit](exhibits/adults_and_agents_by_encoder.pdf)

@@ -1,0 +1,36 @@
+% Requires booktabs. Include this file from a one- or two-column manuscript.
+\begin{table*}[t]
+\centering
+\small
+\caption{Extension of a novel word after three teaching examples. Entries are percentages.}
+\label{tab:matched-extension}
+\begin{tabular}{lrrrrrr}
+\toprule
+ & \multicolumn{3}{c}{Within-domain superordinates} & \multicolumn{3}{c}{Outside domain} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+ & Subtype & Basic & Broad & Subtype & Basic & Broad \\
+\midrule
+Adults & 1.06 & 1.83 & 77.5 & 0.61 & 0.29 & 0.34 \\
+\midrule
+DINOv2-small & 0 & 25.0 & 58.3 & 0 & 4.2 & 12.5 \\
+DINOv2-base & 0 & 50.0 & 83.3 & 0 & 25.0 & 41.7 \\
+CVCL & 0 & 50.0 & 91.7 & 0 & 10.4 & 29.2 \\
+SigLIP & 0 & 0 & 41.7 & 0 & 0 & 16.7 \\
+OpenCLIP & 0 & 0 & 50.0 & 0 & 0 & 2.1 \\
+Supervised ViT & 0 & 25.0 & 83.3 & 0 & 0 & 0 \\
+Supervised ResNet-50 & 0 & 33.3 & 66.7 & 0 & 4.2 & 16.7 \\
+MAE & 0 & 75.0 & 66.7 & 0 & 45.8 & 47.9 \\
+\midrule
+Random ResNet-50 (s0) & 8.3 & 75.0 & 75.0 & 8.3 & 62.5 & 79.2 \\
+Pixels & 33.3 & 75.0 & 75.0 & 29.2 & 72.9 & 41.7 \\
+\midrule
+MAE (CLS variant) & 0 & 16.7 & 91.7 & 0 & 0 & 33.3 \\
+Random ResNet-50 (s1) & 16.7 & 58.3 & 66.7 & 16.7 & 64.6 & 72.9 \\
+Random ResNet-50 (s2) & 16.7 & 58.3 & 50.0 & 20.8 & 52.1 & 62.5 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{0.96\linewidth}\footnotesize
+Subtype, Basic and Broad denote three examples of the same subtype, of different subtypes of one basic type, and of different basic types in one domain, respectively. Each condition has 12 within-domain superordinate and 48 outside-domain word--image combinations, weighted equally across domains. The adult row pools 600 judgments per combination from a study with 520 unique adults. Agent rows give the fraction accepted by the centroid learner with a support-dependent rule. Blocks below the adult row show eight trained encoders, two controls and three exploratory variants. s0--s2 denote network initialization seeds.
+\end{minipage}
+\end{table*}
