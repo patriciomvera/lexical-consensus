@@ -6,7 +6,20 @@ RAW="${RAW:?set RAW to all_raw_A.csv of Lewis & Frank 2018 (OSF md5 e42712b8a151
 KEY="${KEY:?set KEY to experiment_key.csv from XTMEM commit 220ed17}"
 IDS="R0_dinov2s O1_dinov2b R1_cvcl E1_siglip O2_openclip E2_vitsup E3_rn50sup E4_mae F1_rn50rand0 F2_pixels"
 mkdir -p "$H/data" "$H/out" "$H/logs"; cd "$H"
-[ -f data/p01_check.json ] && [ "${FORCE:-0}" != 1 ] || "$PY" scripts/p01_prep_exemplar.py "$REPO" "$RAW" "$KEY" data > logs/p01.log 2>&1
+prepare_tables=${FORCE:-0}
+for id in $IDS; do
+  if [ ! -s "data/ex_long_$id.csv" ]; then
+    prepare_tables=1
+    break
+  fi
+done
+if [ "$prepare_tables" = 1 ] || [ ! -s data/p01_check.json ]; then
+  stage=$(mktemp -d data/.p01.XXXXXX)
+  trap 'rm -rf -- "$stage"' EXIT
+  "$PY" scripts/p01_prep_exemplar.py "$REPO" "$RAW" "$KEY" "$stage" > logs/p01.log 2>&1
+  mv "$stage"/ex_long_*.csv data/
+  mv "$stage/p01_check.json" data/
+fi
 jobs_list=""
 for id in $IDS; do
   [ -f out/p03_$id.csv ] && [ "${FORCE:-0}" != 1 ] || jobs_list+="p03_exemplar.R $id"$'\n'

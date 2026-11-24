@@ -2,7 +2,7 @@
 
 This directory contains everything used to produce version 2 of *Visual Similarity in Adult Word Extension and Artificial Word Learning* ([arXiv:2611.14116](https://arxiv.org/abs/2611.14116)): the post hoc analyses of Appendix E, the scripts that write every number, table and figure of the manuscript, the step-by-step text build, the LaTeX source as submitted to arXiv, the final PDF and the two automated external reviews of an earlier draft.
 
-All frozen inputs are read from this repository at commit [`a945ed2`](https://github.com/patriciomvera/lexical-consensus/commit/a945ed2cbdd9365fe346b262763f0262eaf686ea) (`git show a945ed2:<path>`), never from a working tree. The internally frozen plans and their outputs are in [`../encoder_equivalence_v2/`](../encoder_equivalence_v2/) and [`../agents_xtmem_v2/`](../agents_xtmem_v2/); see [`../README.md`](../README.md) and [`../RESULTS.md`](../RESULTS.md). Nothing in this directory changes a frozen result.
+Use a clean checkout of [`a945ed2`](https://github.com/patriciomvera/lexical-consensus/commit/a945ed2cbdd9365fe346b262763f0262eaf686ea) for `REPO`. Some scripts read frozen inputs directly from that checkout and others use `git show` at the same commit. The internally frozen plans and their outputs are in [`../encoder_equivalence_v2/`](../encoder_equivalence_v2/) and [`../agents_xtmem_v2/`](../agents_xtmem_v2/). See [`../README.md`](../README.md) and [`../RESULTS.md`](../RESULTS.md).
 
 ## Contents
 
@@ -47,7 +47,8 @@ export REPO="$(cd ../lc_a945ed2 && pwd)" PY=python3
 #    (see human_data_analyses/data/download_data.sh)
 export RAW=/path/to/all_raw_A.csv KEY=/path/to/experiment_key.csv
 
-# 3. Post hoc analyses. Writes posthoc_v2c/data/ex_long_<ID>.csv; skips outputs that already exist (FORCE=1 reruns all; CPU only)
+# 3. Post hoc analyses. Regenerate the per-trial tables if any are missing or empty.
+#    Existing R fits are reused. Set FORCE=1 to refit them as well.
 bash visual_similarity_v2/paper_v2/posthoc_v2c/scripts/run_posthoc.sh
 
 # 4. Numbers, tables, figures, text and PDF of the final version (all checks asserted)

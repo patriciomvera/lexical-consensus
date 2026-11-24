@@ -13,6 +13,7 @@ FOREST_MARK='$^{a}$' FOREST_OUT=fig_forest_adults_v2c.pdf "$PY" "$ROOT/scripts/m
 "$PY" "$ROOT/scripts/fix_v1_number_format.py" "$HERE/generated/numbers.tex" "$HERE/generated/numbers_v1_fmt.tex"
 cp "$ROOT/generated/numbers_v2_text.tex" "$HERE/generated/"
 cp "$ROOT/generated/fig_forest_adults_v2c.pdf" "$HERE/figs/"
+mkdir -p "$HERE/tables"
 for t in tab3_matched tab3b_imagenes_por_encoder tab3c_tortuga_por_contexto; do cp "$ROOT/generated/$t.tex" "$HERE/tables/"; done
 for t in tab1_adults tab2a_agents_distance tab2b_agents_human tab_agents_compact tab_h1_compact; do cp "$ROOT/generated/${t}_v2b.tex" "$HERE/tables/$t.tex"; done
 sed 's/DINOv2-small (reference, v1)/DINOv2-small (reference)/' "$ROOT/generated/tab_checkpoints.tex" > "$HERE/tables/tab_checkpoints.tex"
