@@ -1,0 +1,19 @@
+\setlength{\tabcolsep}{3.5pt}
+\noindent\adjustbox{max width=\linewidth}{%
+\begin{tabular}{llrrr}
+\toprule
+Encoder & Role & THINGS & ImageNet-HSJ & CIFAR-10H \\
+\midrule
+DINOv2-small & Descriptive & .52 & .50 & .79 \\
+DINOv2-base & Confirmatory & .52 & .55 & .68 \\
+CVCL & Descriptive & .68 & .43 & .79 \\
+SigLIP & Confirmatory & .64 & .50 & .89 \\
+OpenCLIP & Confirmatory & .70 & .52 & .87 \\
+Supervised ViT & Confirmatory & .39 & .56 & .66 \\
+Supervised ResNet-50 & Confirmatory & .62 & .53 & .91 \\
+MAE & Confirmatory & .29 & .23 & .44 \\
+\midrule
+Random ResNet-50 (s0) & Control & .11 & .11 & .53 \\
+Pixels & Control & .15 & .20 & .29$^{\dagger}$ \\
+\bottomrule
+\end{tabular}}

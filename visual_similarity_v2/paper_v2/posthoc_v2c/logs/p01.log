@@ -1,0 +1,10 @@
+R0_dinov2s (172800, 16) max|dist - frozen| = 0.00e+00
+O1_dinov2b (172800, 16) max|dist - frozen| = 0.00e+00
+R1_cvcl (172800, 16) max|dist - frozen| = 0.00e+00
+E1_siglip (172800, 16) max|dist - frozen| = 0.00e+00
+O2_openclip (172800, 16) max|dist - frozen| = 0.00e+00
+E2_vitsup (172800, 16) max|dist - frozen| = 0.00e+00
+E3_rn50sup (172800, 16) max|dist - frozen| = 0.00e+00
+E4_mae (172800, 16) max|dist - frozen| = 0.00e+00
+F1_rn50rand0 (172800, 16) max|dist - frozen| = 0.00e+00
+F2_pixels (172800, 16) max|dist - frozen| = 0.00e+00

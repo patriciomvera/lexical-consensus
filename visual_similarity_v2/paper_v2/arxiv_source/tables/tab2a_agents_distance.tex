@@ -1,0 +1,20 @@
+\setlength{\tabcolsep}{3.5pt}
+\noindent\adjustbox{max width=\linewidth}{%
+\begin{tabular}{llrlrlrlcrc}
+\toprule
+ & & \multicolumn{2}{c}{C1 native (\%)} & \multicolumn{2}{c}{C1 far (\%)} & \multicolumn{2}{c}{D: partial $r$, 100 pairs} & Region D & D-all: partial $r$ & Region D-all \\ \cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+Encoder & Role & \multicolumn{1}{c}{Est.} & \multicolumn{1}{c}{95\% CI} & \multicolumn{1}{c}{Est.} & \multicolumn{1}{c}{95\% CI} & \multicolumn{1}{c}{Est.} & \multicolumn{1}{c}{95\% CI} & SESOI $.10/.20/.30$ & 4{,}950 pairs & SESOI $.10/.20/.30$ \\
+\midrule
+DINOv2-small & Descriptive & 94.3 & \mbox{[92.2,~96.1]} & 53.0 & \mbox{[51.0,~55.0]} & \ensuremath{-}.50 & \mbox{[\ensuremath{-}.63,~\ensuremath{-}.33]} & S/S/S & \ensuremath{-}.60 & S/S/S \\
+DINOv2-base & Confirmatory & 96.3 & \mbox{[94.6,~97.7]} & 54.4 & \mbox{[52.5,~56.4]} & \ensuremath{-}.57 & \mbox{[\ensuremath{-}.69,~\ensuremath{-}.42]} & S/S/S & \ensuremath{-}.69 & S/S/S \\
+CVCL & Descriptive & 67.5 & \mbox{[63.6,~71.0]} & 42.8 & \mbox{[41.3,~44.2]} & .015 & \mbox{[\ensuremath{-}.18,~.21]} & I/N/N & \ensuremath{-}.09 & S/S/S \\
+SigLIP & Confirmatory & 95.8 & \mbox{[94.6,~96.7]} & 53.4 & \mbox{[50.7,~56.3]} & \ensuremath{-}.30 & \mbox{[\ensuremath{-}.47,~\ensuremath{-}.11]} & S/S/S & \ensuremath{-}.48 & S/S/S \\
+OpenCLIP & Confirmatory & 97.0 & \mbox{[96.2,~97.8]} & 52.4 & \mbox{[49.8,~55.2]} & \ensuremath{-}.35 & \mbox{[\ensuremath{-}.51,~\ensuremath{-}.16]} & S/S/S & \ensuremath{-}.52 & S/S/S \\
+Supervised ViT & Confirmatory & 97.8 & \mbox{[97.0,~98.4]} & 51.8 & \mbox{[49.8,~54.0]} & \ensuremath{-}.65 & \mbox{[\ensuremath{-}.75,~\ensuremath{-}.52]} & S/S/S & \ensuremath{-}.68 & S/S/S \\
+Supervised ResNet-50 & Confirmatory & 87.0 & \mbox{[84.3,~89.4]} & 49.5 & \mbox{[47.4,~51.6]} & \ensuremath{-}.30 & \mbox{[\ensuremath{-}.47,~\ensuremath{-}.11]} & S/S/S & \ensuremath{-}.39 & S/S/S \\
+MAE & Confirmatory & 48.3 & \mbox{[45.2,~51.4]} & 38.8 & \mbox{[36.9,~40.6]} & \ensuremath{-}.004 & \mbox{[\ensuremath{-}.20,~.19]} & I/I/N & \ensuremath{-}.07 & S/S/S \\
+\midrule
+Random ResNet-50 (s0) & Control & 41.0 & \mbox{[38.4,~43.4]} & 38.4 & \mbox{[36.5,~40.3]} & .18 & \mbox{[\ensuremath{-}.02,~.37]} & N/N/N & .04 & N/N/N \\
+Pixels & Control & 45.8 & \mbox{[42.7,~48.5]} & 38.7 & \mbox{[36.9,~40.5]} & \ensuremath{-}.14 & \mbox{[\ensuremath{-}.33,~.06]} & I/I/I & \ensuremath{-}.18 & S/S/S \\
+\bottomrule
+\end{tabular}}

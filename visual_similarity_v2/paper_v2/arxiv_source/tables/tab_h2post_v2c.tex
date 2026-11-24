@@ -1,0 +1,17 @@
+\begin{tabular}{lcccccc}
+\toprule
+ & \multicolumn{3}{c}{THINGS ($n = 61$)} & \multicolumn{3}{c}{ImageNet-HSJ ($n = 32$)} \\ \cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Representation & $r$ [95\% CI] & $p$ & all pairs $r$ & $r$ [95\% CI] & $p$ & all pairs $r$ \\
+\midrule
+DINOv2-small & \ensuremath{-}.10 [\ensuremath{-}.34, .16] & .374 & \ensuremath{-}.20 & \ensuremath{-}.41 [\ensuremath{-}.67, \ensuremath{-}.07] & .039 & \ensuremath{-}.18 \\
+DINOv2-base & \ensuremath{-}.17 [\ensuremath{-}.41, .09] & .164 & \ensuremath{-}.22 & \ensuremath{-}.40 [\ensuremath{-}.66, \ensuremath{-}.05] & .052 & \ensuremath{-}.21 \\
+CVCL & .08 [\ensuremath{-}.17, .33] & .561 & \ensuremath{-}.06 & \ensuremath{-}.39 [\ensuremath{-}.65, \ensuremath{-}.04] & .052 & \ensuremath{-}.05 \\
+SigLIP & \ensuremath{-}.16 [\ensuremath{-}.40, .10] & .144 & \ensuremath{-}.27 & \ensuremath{-}.50 [\ensuremath{-}.73, \ensuremath{-}.18] & .011 & \ensuremath{-}.12 \\
+OpenCLIP & \ensuremath{-}.20 [\ensuremath{-}.43, .06] & .088 & \ensuremath{-}.30 & \ensuremath{-}.45 [\ensuremath{-}.70, \ensuremath{-}.12] & .022 & \ensuremath{-}.13 \\
+ViT (supervised) & \ensuremath{-}.08 [\ensuremath{-}.33, .17] & .476 & \ensuremath{-}.12 & \ensuremath{-}.39 [\ensuremath{-}.65, \ensuremath{-}.04] & .069 & \ensuremath{-}.24 \\
+ResNet-50 (supervised) & \ensuremath{-}.04 [\ensuremath{-}.29, .22] & .749 & \ensuremath{-}.14 & \ensuremath{-}.38 [\ensuremath{-}.65, \ensuremath{-}.03] & .058 & \ensuremath{-}.10 \\
+MAE & .13 [\ensuremath{-}.12, .38] & .229 & \ensuremath{-}.07 & \ensuremath{-}.27 [\ensuremath{-}.57, .10] & .131 & \ensuremath{-}.07 \\
+Random ResNet-50 & \ensuremath{-}.06 [\ensuremath{-}.31, .20] & .655 & \ensuremath{-}.08 & \ensuremath{-}.35 [\ensuremath{-}.63, .00] & .032 & \ensuremath{-}.03 \\
+Pixels & .08 [\ensuremath{-}.17, .33] & .487 & \ensuremath{-}.07 & \ensuremath{-}.28 [\ensuremath{-}.58, .08] & .143 & \ensuremath{-}.06 \\
+\bottomrule
+\end{tabular}

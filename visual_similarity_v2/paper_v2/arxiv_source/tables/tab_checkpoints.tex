@@ -1,0 +1,18 @@
+\setlength{\tabcolsep}{4pt}
+\noindent\adjustbox{max width=\linewidth}{%
+\begin{tabular}{llll}
+\toprule
+Encoder & Checkpoint & Revision & Embedding \\
+\midrule
+DINOv2-small (reference) & \texttt{facebook/dinov2-small} & \texttt{ed25f3a3} & CLS, last layer \\
+DINOv2-base & \texttt{facebook/dinov2-base} & \texttt{f9e44c81} & CLS, last layer \\
+CVCL & \texttt{wkvong/cvcl\_s\_dino\_resnext50\_embedding} & \texttt{f50eaa0c} & ResNeXt-50 vision encoder \\
+SigLIP & \texttt{google/siglip-base-patch16-224} & \texttt{7fd15f06} & attention-pooled output \\
+OpenCLIP & \texttt{laion/CLIP-ViT-B-32-laion2B-s34B-b79K} & \texttt{1a25a446} & projected image embedding \\
+Supervised ViT & \texttt{google/vit-base-patch16-224} & \texttt{3f49326e} & CLS, last layer \\
+Supervised ResNet-50 & \texttt{microsoft/resnet-50} & \texttt{34c2154c} & global average pool \\
+MAE & \texttt{facebook/vit-mae-base} & \texttt{25b184be} & mean of patch tokens, mask ratio 0 \\
+Random ResNet-50 (s0) & torchvision \texttt{resnet50(weights=None)}, seed 0 & -- & global average pool \\
+Pixels & none & -- & resized, center-cropped pixels \\
+\bottomrule
+\end{tabular}}

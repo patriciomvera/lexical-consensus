@@ -1,0 +1,32 @@
++\input{generated/numbers_v2d.tex}
+-In post hoc models that let the distance slope vary across images, the slope stayed negative for \VcImgTrSameSignWord{}
+-of the eight trained encoders, but its interval included zero for \VcImgTrInclWord{}
+-of them, including the reference encoder.
++In post hoc models that let the distance slope vary across images, \VcImgTrSameSignWord{}
++of the eight trained encoders retained a negative estimate, and \VcImgTrExclWord{}
++had 95\% intervals entirely below zero; the interval of the reference encoder included zero.
+-Visual distance predicted adult word extension across all eight trained encoders, extending the original finding beyond DINOv2.\footnote{This statement rests on the positive-control models of the eight within-domain test images (Figure~\ref{fig:forest}a), with distance measured as the cosine distance to the centroid of the teaching examples in final-layer global embeddings.
+-A randomly initialized ResNet-50 also gave a negative slope (\VtPcRandB{}
+-[\VtPcRandLo,~\VtPcRandHi]), so the association is not attributed to what the encoders learned.
+-In post hoc models that let the slope vary across images, its interval included zero for \VcImgTrInclList{}
+-(Appendix~\ref{app:posthoc}).
+-The frozen primary test of order moderation is summarized in the next paragraph.}
++In the planned within-domain models, greater visual distance was associated with less word extension for all eight trained encoders and for the randomly initialized network.
++When the distance slope was allowed to vary across images, \VcImgTrSameSignWord{}
++of the eight trained encoders retained a negative estimate, and \VcImgTrExclWord{}
++had 95\% intervals entirely below zero.
+-After three examples of the same basic type, adults selected other members of the broader category on only \VtXSameBasicPct\% of judgments.
++After three examples of the same subtype, adults selected other members of the broader category on only \VcXSameSubPct\% of judgments.
+-In the broad teaching condition, supervised ViT and DINOv2-base each accepted \VtXViTIn{}
++After broad teaching, both agents (supervised ViT and DINOv2-base) accepted \VtXViTIn{}
+-within-domain candidates.
+-Yet ViT accepted none of the \VtXOutN{}
+-outside-domain combinations, whereas DINOv2-base accepted \VtXDinoBOut.
+-Thus, two agents can attain the same within-domain score while drawing substantially different category boundaries.
++within-domain images, agreeing on \VdAgreeWord{}
++and differing on \VdDifferWord.
++Outside the taught domain, supervised ViT accepted none of the \VtXOutN{}
++word--image pairings, whereas DINOv2-base accepted \VtXDinoBOut.
+-Post hoc, distances to the individual teaching examples did not account for the effect of composition in adults either, and with by-image random slopes the adult distance slope was uncertain for \VcImgTrInclList.
++Post hoc, distances to the individual teaching examples did not account for the effect of composition in adults either.
++A direct test would ask whether training on category relations improves transfer to novel items beyond what a learner can achieve by adapting to the visual dispersion of the same teaching examples.

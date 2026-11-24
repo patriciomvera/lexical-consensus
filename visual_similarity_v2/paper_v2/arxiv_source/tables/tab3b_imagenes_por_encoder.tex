@@ -1,0 +1,24 @@
+\setlength{\tabcolsep}{4pt}
+\noindent\adjustbox{max width=\linewidth}{%
+\begin{tabular}{lllccccccccc}
+\toprule
+Taught domain & Image ID & Visual description & Adults ($k$/600) & DINOv2-s & DINOv2-b & CVCL & SigLIP & OpenCLIP & ViT & RN50 & MAE \\
+\midrule
+Animals & \texttt{c3\_sup1} & rabbit & 490 & A & A & A & A & A & A & A & A \\
+ & \texttt{c3\_sup2} & turtle & 431 & A & A & A & R & R & R & A & A \\
+ & \texttt{c3\_sup3} & horse & 496 & R & A & A & A & R & A & A & A \\
+ & \texttt{c3\_sup4} & cat & 485 & R & A & A & A & R & A & A & A \\
+\midrule
+Vegetables & \texttt{c1\_sup1} & celery & 494 & A & A & A & R & A & A & A & A \\
+ & \texttt{c1\_sup2} & potato & 418 & R & R & A & R & R & A & A & A \\
+ & \texttt{c1\_sup3} & radish & 502 & A & A & A & R & R & A & A & A \\
+ & \texttt{c1\_sup4} & broccoli & 480 & R & R & R & A & A & A & A & R \\
+\midrule
+Vehicles & \texttt{c2\_sup1} & dump truck & 499 & A & A & A & A & A & A & R & R \\
+ & \texttt{c2\_sup2} & red railway car & 374 & A & A & A & R & A & R & R & R \\
+ & \texttt{c2\_sup3} & blue car & 452 & A & A & A & R & R & A & R & R \\
+ & \texttt{c2\_sup4} & gray car & 458 & R & A & A & R & A & A & R & A \\
+\midrule
+Accepted &  &  & 5579/7200 & 7/12 & 10/12 & 11/12 & 5/12 & 6/12 & 10/12 & 8/12 & 8/12 \\
+\bottomrule
+\end{tabular}}

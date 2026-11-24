@@ -1,0 +1,42 @@
+{
+ "R0_dinov2s": {
+  "rows": 172800,
+  "max_abs_diff_dist_vs_frozen": 0.0
+ },
+ "O1_dinov2b": {
+  "rows": 172800,
+  "max_abs_diff_dist_vs_frozen": 0.0
+ },
+ "R1_cvcl": {
+  "rows": 172800,
+  "max_abs_diff_dist_vs_frozen": 0.0
+ },
+ "E1_siglip": {
+  "rows": 172800,
+  "max_abs_diff_dist_vs_frozen": 0.0
+ },
+ "O2_openclip": {
+  "rows": 172800,
+  "max_abs_diff_dist_vs_frozen": 0.0
+ },
+ "E2_vitsup": {
+  "rows": 172800,
+  "max_abs_diff_dist_vs_frozen": 0.0
+ },
+ "E3_rn50sup": {
+  "rows": 172800,
+  "max_abs_diff_dist_vs_frozen": 0.0
+ },
+ "E4_mae": {
+  "rows": 172800,
+  "max_abs_diff_dist_vs_frozen": 0.0
+ },
+ "F1_rn50rand0": {
+  "rows": 172800,
+  "max_abs_diff_dist_vs_frozen": 0.0
+ },
+ "F2_pixels": {
+  "rows": 172800,
+  "max_abs_diff_dist_vs_frozen": 0.0
+ }
+}

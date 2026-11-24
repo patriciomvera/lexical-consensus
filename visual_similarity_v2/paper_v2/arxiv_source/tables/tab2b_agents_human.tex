@@ -1,0 +1,21 @@
+\setlength{\tabcolsep}{3.5pt}
+\noindent\adjustbox{max width=\linewidth}{%
+\begin{tabular}{llrcrcrccccc}
+\toprule
+ & & \multicolumn{7}{c}{H1: Spearman $\rho$ and region} & \multicolumn{3}{c}{H2: region} \\ \cmidrule(lr){3-9}\cmidrule(lr){10-12}
+ & & \multicolumn{2}{c}{THINGS} & \multicolumn{2}{c}{ImageNet-HSJ} & \multicolumn{2}{c}{CIFAR-10H} & CIFAR-10H & & & \\ \cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+Encoder & Role & $\rho$ & Region & $\rho$ & Region & $\rho$ & Region & Mantel $p$ & THINGS & HSJ & CIFAR-10H \\
+\midrule
+DINOv2-small & Descriptive & .52 & S/S/S & .50 & S/S/S & .79 & S/S/S & $<$.001 & I/I/I & S/S/S & n/a$^{b}$ \\
+DINOv2-base & Confirmatory & .52 & S/S/S & .55 & S/S/S & .68 & S/S/S & $<$.001 & I/I/I & I/I/I & n/a$^{b}$ \\
+CVCL & Descriptive & .68 & S/S/S & .43 & S/S/S & .79 & S/S/S & $<$.001 & I/N/N & I/I/I & n/a$^{b}$ \\
+SigLIP & Confirmatory & .64 & S/S/S & .50 & S/S/S & .89 & S/S/S & $<$.001 & I/I/I & S/S/S & n/a$^{b}$ \\
+OpenCLIP & Confirmatory & .70 & S/S/S & .52 & S/S/S & .87 & S/S/S & $<$.001 & I/I/I & S/S/S & n/a$^{b}$ \\
+Supervised ViT & Confirmatory & .39 & S/S/S & .56 & S/S/S & .66 & S/S/S & $<$.001 & I/I/I & I/I/I & n/a$^{b}$ \\
+Supervised ResNet-50 & Confirmatory & .62 & S/S/S & .53 & S/S/S & .91 & S/S/S & $<$.001 & I/I/N & I/I/I & n/a$^{b}$ \\
+MAE & Confirmatory & .29 & S/S/S & .23 & S/S/S & .44 & S/S/S & .015 & I/N/N & I/I/I & n/a$^{b}$ \\
+\midrule
+Random ResNet-50 (s0) & Control & .11 & S/S/S & .11 & S/S/S & .53 & S/S/S & .006 & I/I/I & S/S/S & n/a$^{b}$ \\
+Pixels & Control & .15 & S/S/S & .20 & S/S/S & .29 & I/I/I & .0505 & I/N/N & I/I/I & n/a$^{b}$ \\
+\bottomrule
+\end{tabular}}

@@ -12,6 +12,10 @@ This directory collects the evidence for the second version of *Visual Similarit
 | Original CIFAR agent tasks | The frozen encoder used by each lexical learner | [Scripts, tests and logs](encoder_equivalence_v2/encoder_equivalence/agents/) · [Per-encoder outputs](encoder_equivalence_v2/encoder_equivalence/agents/out/results/) · [Decision tables](encoder_equivalence_v2/encoder_equivalence/agents/out/results/regions/) |
 | Exploratory matched-stimulus task | Agent decisions under the same teaching sets and test photographs shown to adults | [English protocol](agents_xtmem_v2/protocol.md) · [Item decisions, rankings and three-word task](agents_xtmem_v2/outputs/) · [Input hashes](agents_xtmem_v2/outputs/run.json) |
 
+## Manuscript version 2, post hoc analyses and build
+
+[`paper_v2/`](paper_v2/) contains the final manuscript of version 2 ([PDF](paper_v2/Lexical_Consensus_v2.pdf), [LaTeX source as submitted to arXiv](paper_v2/arxiv_source/)), the exploratory post hoc analyses of Appendix E (Tables 13 and 14, Figure 8), the scripts that write every number, table and figure, and the build that reproduces the PDF from commit `a945ed2`. See [`paper_v2/README.md`](paper_v2/README.md).
+
 ## Manuscript exhibits
 
 The PDF has three pages. The first compares extension across teaching conditions. The second shows broad teaching separately for animals, vegetables and vehicles. The third plots the adult and CIFAR distance coefficients on separate scales. The LaTeX table contains the values from the first page and uses the `booktabs` package. In a LaTeX manuscript, include it with `\input{path/to/word_extension_table.tex}`.
