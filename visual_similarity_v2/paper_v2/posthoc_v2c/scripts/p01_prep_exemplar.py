@@ -6,6 +6,8 @@ Builds per-trial tables with, for every trial x test item and representation:
   disp  = mean pairwise cosine distance among the teaching images (0 with one example)
 Same row order, same 24 items, same embeddings (frozen emb_<ID>.npz) as h4_prep_encoders.py at a945ed2.
 Per-trial derivatives of Lewis & Frank (2018) are written locally only and are NOT redistributed.
+Note (24-11-2026): the tables written by this script were published on Hugging Face (MrPatoVera/lexical-consensus-data,
+v2_encoders/trials_exemplar/, config v2_trials_exemplar; CC BY 4.0, attribution to Lewis & Frank 2018); they are still not stored in git.
 Usage: python p01_prep_exemplar.py <repo> <all_raw_A.csv> <experiment_key.csv> <out_dir>"""
 import sys, re, pathlib, hashlib, json, numpy as np, pandas as pd
 repo, raw_p, key_p, out = map(pathlib.Path, sys.argv[1:5])

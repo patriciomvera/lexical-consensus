@@ -15,3 +15,5 @@ no reemplazan ni modifican ningún resultado confirmatorio y se informan aunque 
 Reglas: semilla 42 en todo; nada se ajustó después de ver resultados; un modelo que no converge (criterio `fit_ok` de `lib_glmm.R`:
 sin error, código 0, sin avisos de convergencia, no singular) se informa como "no convergió". Tope de cómputo: ~30 min por análisis, sin GPU.
 Los archivos de `data/` son derivados por ensayo para uso local; no se redistribuyen.
+
+**Nota (24-11-2026).** Con la aprobación de Patricio, las tablas por ensayo `data/ex_long_<ID>.csv` (y las tablas congeladas `h4_long_<ID>.csv`) se publicaron en Hugging Face, en `MrPatoVera/lexical-consensus-data`, carpeta `v2_encoders/` (Parquet, CC BY 4.0, con atribución a Lewis & Frank, 2018), configuraciones `v2_trials_exemplar` y `v2_trials_centroid`. En git siguen sin guardarse; `scripts/run_posthoc.sh` las regenera.

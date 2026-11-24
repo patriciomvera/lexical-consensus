@@ -1,6 +1,6 @@
 """B3 (post hoc, v2c): distribution of the distances of the superordinate target-domain items by teaching condition (reference encoder),
 with the centroid distance used in the paper and the nearest-exemplar distance, plus teaching-set dispersion for every representation.
-Descriptive; reads the local per-trial tables of p01 (not redistributed). Deterministic (the horizontal jitter uses seed 42).
+Descriptive; reads the local per-trial tables of p01 (not stored in git; published on Hugging Face on 24-11-2026, see p01_prep_exemplar.py). Deterministic (the horizontal jitter uses seed 42).
 Usage: python p05_sup_distances.py <data_dir> <out_dir> <fig.pdf>"""
 import sys, pathlib, numpy as np, pandas as pd, matplotlib
 matplotlib.use("Agg"); matplotlib.rcParams["pdf.fonttype"] = 42; matplotlib.rcParams["ps.fonttype"] = 42
