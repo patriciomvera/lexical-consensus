@@ -1,0 +1,20 @@
+\setlength{\tabcolsep}{3.5pt}
+\noindent\adjustbox{max width=\linewidth}{%
+\begin{tabular}{llrrrlr}
+\toprule
+ & & & & \multicolumn{2}{c}{D: partial $r$} & D-all \\ \cmidrule(lr){5-6}
+Encoder & Role & Native (\%) & Far (\%) & \multicolumn{1}{c}{Est.} & \multicolumn{1}{c}{95\% CI} & partial $r$ \\
+\midrule
+DINOv2-small & Descriptive & 94.3 & 53.0 & \ensuremath{-}.50 & \mbox{[\ensuremath{-}.63,~\ensuremath{-}.33]} & \ensuremath{-}.60 \\
+DINOv2-base & Confirmatory & 96.3 & 54.4 & \ensuremath{-}.57 & \mbox{[\ensuremath{-}.69,~\ensuremath{-}.42]} & \ensuremath{-}.69 \\
+CVCL & Descriptive & 67.5 & 42.8 & .015 & \mbox{[\ensuremath{-}.18,~.21]}$^{\dagger}$ & \ensuremath{-}.09 \\
+SigLIP & Confirmatory & 95.8 & 53.4 & \ensuremath{-}.30 & \mbox{[\ensuremath{-}.47,~\ensuremath{-}.11]} & \ensuremath{-}.48 \\
+OpenCLIP & Confirmatory & 97.0 & 52.4 & \ensuremath{-}.35 & \mbox{[\ensuremath{-}.51,~\ensuremath{-}.16]} & \ensuremath{-}.52 \\
+Supervised ViT & Confirmatory & 97.8 & 51.8 & \ensuremath{-}.65 & \mbox{[\ensuremath{-}.75,~\ensuremath{-}.52]} & \ensuremath{-}.68 \\
+Supervised ResNet-50 & Confirmatory & 87.0 & 49.5 & \ensuremath{-}.30 & \mbox{[\ensuremath{-}.47,~\ensuremath{-}.11]} & \ensuremath{-}.39 \\
+MAE & Confirmatory & 48.3 & 38.8 & \ensuremath{-}.004 & \mbox{[\ensuremath{-}.20,~.19]}$^{\dagger}$ & \ensuremath{-}.07 \\
+\midrule
+Random ResNet-50 (s0) & Control & 41.0 & 38.4 & .18 & \mbox{[\ensuremath{-}.02,~.37]}$^{\dagger}$ & .04$^{\dagger}$ \\
+Pixels & Control & 45.8 & 38.7 & \ensuremath{-}.14 & \mbox{[\ensuremath{-}.33,~.06]}$^{\dagger}$ & \ensuremath{-}.18 \\
+\bottomrule
+\end{tabular}}

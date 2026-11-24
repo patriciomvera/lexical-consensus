@@ -1,0 +1,21 @@
+\setlength{\tabcolsep}{3.5pt}
+\noindent\adjustbox{max width=\linewidth}{%
+\begin{tabular}{llrlrlrlc}
+\toprule
+ & & \multicolumn{2}{c}{Positive control, 8 items} & \multicolumn{2}{c}{H4 replication, 24 items} & \multicolumn{2}{c}{Order moderation (primary)} & Region \\ \cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+Encoder & Role & \multicolumn{2}{c}{$\beta_{z(d)}$} & \multicolumn{2}{c}{$\beta_{z(d)}$} & \multicolumn{2}{c}{$\hat\Delta$} & $\delta = .05/.10/.20$ \\
+ & & \multicolumn{1}{c}{Est.} & \multicolumn{1}{c}{95\% CI} & \multicolumn{1}{c}{Est.} & \multicolumn{1}{c}{95\% CI} & \multicolumn{1}{c}{Est.} & \multicolumn{1}{c}{95\% CI} & \\
+\midrule
+DINOv2-small & Reference & \ensuremath{-}3.16 & \mbox{[\ensuremath{-}3.30,~\ensuremath{-}3.02]} & \ensuremath{-}3.23 & \mbox{[\ensuremath{-}3.29,~\ensuremath{-}3.16]} & 0.020 & \mbox{[\ensuremath{-}0.205,~0.274]} & I/I/I \\
+DINOv2-base & Trained & \ensuremath{-}2.85 & \mbox{[\ensuremath{-}2.98,~\ensuremath{-}2.72]} & \ensuremath{-}2.86 & \mbox{[\ensuremath{-}2.91,~\ensuremath{-}2.80]} & \ensuremath{-}0.063 & \mbox{[\ensuremath{-}0.370,~0.244]} & I/I/I \\
+CVCL & Trained & \ensuremath{-}0.62 & \mbox{[\ensuremath{-}0.71,~\ensuremath{-}0.52]} & \ensuremath{-}3.61 & \mbox{[\ensuremath{-}3.69,~\ensuremath{-}3.54]} & 0.065 & \mbox{[\ensuremath{-}0.058,~0.187]} & I/I/E \\
+SigLIP & Trained & \ensuremath{-}3.89 & \mbox{[\ensuremath{-}4.06,~\ensuremath{-}3.72]} & \ensuremath{-}5.48 & \mbox{[\ensuremath{-}5.58,~\ensuremath{-}5.38]} & \ensuremath{-}0.044 & \mbox{[\ensuremath{-}0.352,~0.270]} & I/I/I \\
+OpenCLIP & Trained & \ensuremath{-}3.99 & \mbox{[\ensuremath{-}4.16,~\ensuremath{-}3.83]} & \ensuremath{-}4.80 & \mbox{[\ensuremath{-}4.90,~\ensuremath{-}4.71]} & \ensuremath{-}0.057 & \mbox{[\ensuremath{-}0.284,~0.209]} & I/I/I \\
+Supervised ViT & Trained & \ensuremath{-}4.30 & \mbox{[\ensuremath{-}4.46,~\ensuremath{-}4.13]} & \ensuremath{-}4.46 & \mbox{[\ensuremath{-}4.55,~\ensuremath{-}4.36]} & \ensuremath{-}0.034 & \mbox{[\ensuremath{-}0.318,~0.265]} & I/I/I \\
+Supervised ResNet-50 & Trained & \ensuremath{-}2.65 & \mbox{[\ensuremath{-}2.77,~\ensuremath{-}2.52]} & \ensuremath{-}4.14 & \mbox{[\ensuremath{-}4.23,~\ensuremath{-}4.05]} & \ensuremath{-}0.026 & \mbox{[\ensuremath{-}0.172,~0.127]} & I/I/E \\
+MAE & Trained & \ensuremath{-}0.20 & \mbox{[\ensuremath{-}0.30,~\ensuremath{-}0.10]}$^{a}$ & \ensuremath{-}7.56 & \mbox{[\ensuremath{-}7.66,~\ensuremath{-}7.45]} & 0.463 & \mbox{[\ensuremath{-}0.227,~1.180]} & I/I/I \\
+\midrule
+Random ResNet-50 (s0) & Control & \ensuremath{-}1.10 & \mbox{[\ensuremath{-}1.22,~\ensuremath{-}0.99]} & \ensuremath{-}2.68 & \mbox{[\ensuremath{-}2.73,~\ensuremath{-}2.63]} & \ensuremath{-}0.046 & \mbox{[\ensuremath{-}0.243,~0.148]} & I/I/I \\
+Pixels & Control & 0.12 & \mbox{[0.04,~0.19]} & \ensuremath{-}2.43 & \mbox{[\ensuremath{-}2.47,~\ensuremath{-}2.39]} & 0.012 & \mbox{[\ensuremath{-}0.066,~0.088]} & I/E/E \\
+\bottomrule
+\end{tabular}}

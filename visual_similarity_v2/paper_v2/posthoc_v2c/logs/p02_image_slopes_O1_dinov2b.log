@@ -1,0 +1,14 @@
+boundary (singular) fit: see help('isSingular')
+boundary (singular) fit: see help('isSingular')
+              model
+1   pc_frozen_refit
+2    pc_image_slope
+3 pc_cell_intercept
+                                                                                                      re
+1                                                                        (1 + zd | person) + (1 | image)
+2                                                                   (1 + zd | person) + (1 + zd | image)
+3 none converged: (1 + zd | person) + (1 | image) + (1 | cell) | (1 | person) + (1 | image) + (1 | cell)
+   estimate       lo        hi converged_ok seconds
+1 -2.847931 -2.97672 -2.719143         TRUE    52.7
+2 -2.803098 -7.40412  1.797924         TRUE   426.0
+3        NA       NA        NA        FALSE      NA

@@ -1,0 +1,4 @@
+"encoder","model","re","term","estimate","se","lo","hi","p","logLik","AIC","converged_ok","singular","warn","nobs","seconds","sd_image_slope","ok_all3","LR_dist_given_cond","LR_cond_given_dist","p_dist_given_cond","p_cond_given_dist"
+"O1_dinov2b","pc_frozen_refit","(1 + zd | person) + (1 | image)","zd",-2.84793145160832,0.0657098537297492,-2.97672039834802,-2.71914250486862,0,-13886.8267435036,27795.6534870071,TRUE,FALSE,"",57600,52.7,NA,NA,NA,NA,NA,NA
+"O1_dinov2b","pc_image_slope","(1 + zd | person) + (1 + zd | image)","zd",-2.80309787597734,2.347503198035,-7.40411959771854,1.79792384576387,0.23244813252429,-13224.4528773427,26474.9057546855,TRUE,FALSE,"",57600,426,12.8769788895602,NA,NA,NA,NA,NA
+"O1_dinov2b","pc_cell_intercept","none converged: (1 + zd | person) + (1 | image) + (1 | cell) | (1 | person) + (1 | image) + (1 | cell)","zd",NA,NA,NA,NA,NA,NA,NA,FALSE,NA,"fit error",NA,NA,NA,NA,NA,NA,NA,NA

@@ -1,0 +1,17 @@
+\begin{tabular}{lcccccccc}
+\toprule
+ & \multicolumn{2}{c}{SD of $d$} & \multicolumn{2}{c}{Distance slope (8 items)} & & \multicolumn{2}{c}{$\Delta$AIC vs.\ centroid} & \\ \cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){7-8}
+Representation & 8 & 24 & Frozen model (refit) & By-image slopes & SD$_{\text{image}}$ & Mean & Nearest & $\chi^2_{\text{cond}}$ \\
+\midrule
+DINOv2-small & .296 & .219 & \ensuremath{-}3.16 [\ensuremath{-}3.30, \ensuremath{-}3.02] & \ensuremath{-}2.79 [\ensuremath{-}5.88, 0.30] & 7.76 & \ensuremath{-}153 & +1562 & 18{,}198 \\
+DINOv2-base & .331 & .230 & \ensuremath{-}2.85 [\ensuremath{-}2.98, \ensuremath{-}2.72] & \ensuremath{-}2.80 [\ensuremath{-}7.40, 1.80] & 12.88 & +78 & +1465 & 17{,}145 \\
+CVCL & .117 & .159 & \ensuremath{-}0.62 [\ensuremath{-}0.71, \ensuremath{-}0.52] & \ensuremath{-}1.57 [\ensuremath{-}2.44, \ensuremath{-}0.71] & 2.14 & \ensuremath{-}581 & +180 & 18{,}862 \\
+SigLIP & .094 & .105 & \ensuremath{-}3.89 [\ensuremath{-}4.06, \ensuremath{-}3.71] & \ensuremath{-}5.73 [\ensuremath{-}8.02, \ensuremath{-}3.44] & 5.77 & \ensuremath{-}32 & +1672 & 14{,}072 \\
+OpenCLIP & .169 & .183 & \ensuremath{-}3.99 [\ensuremath{-}4.16, \ensuremath{-}3.83] & \ensuremath{-}3.48 [\ensuremath{-}5.64, \ensuremath{-}1.31] & 5.59 & \ensuremath{-}351 & +2226 & 11{,}645 \\
+ViT (supervised) & .285 & .238 & \ensuremath{-}4.30 [\ensuremath{-}4.46, \ensuremath{-}4.13] & \ensuremath{-}4.87 [\ensuremath{-}6.44, \ensuremath{-}3.30] & 3.89 & +123 & +1333 & 7{,}019 \\
+ResNet-50 (supervised) & .206 & .178 & \ensuremath{-}2.65 [\ensuremath{-}2.78, \ensuremath{-}2.52] & \ensuremath{-}3.71 [\ensuremath{-}4.37, \ensuremath{-}3.05] & 1.57 & +347 & +1808 & 5{,}042 \\
+MAE & .011 & .012 & \ensuremath{-}0.20 [\ensuremath{-}0.31, \ensuremath{-}0.09]$^{a}$ & 0.15 [\ensuremath{-}3.61, 3.92] & 10.10 & +15 & \ensuremath{-}380 & 18{,}628 \\
+Random ResNet-50 & .00028 & .00026 & \ensuremath{-}1.10 [\ensuremath{-}1.22, \ensuremath{-}0.98] & \ensuremath{-}1.85 [\ensuremath{-}3.29, \ensuremath{-}0.40] & 3.62 & \ensuremath{-}386 & +228 & 16{,}754 \\
+Pixels & .120 & .115 & 0.12 [0.04, 0.20] & \ensuremath{-}0.13 [\ensuremath{-}1.24, 0.98] & 2.73 & \ensuremath{-}112 & \ensuremath{-}60 & 18{,}837 \\
+\bottomrule
+\end{tabular}

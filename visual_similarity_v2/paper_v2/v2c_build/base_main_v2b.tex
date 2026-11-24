@@ -1,0 +1,446 @@
+\documentclass[11pt]{article}
+\input{glyphtounicode}\pdfgentounicode=1 % copy/paste of minus signs and other glyphs
+
+\usepackage[top=0.85in,bottom=1in,left=1in,right=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[section]{placeins}
+\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage{titling}
+\usepackage{textcomp}
+\usepackage{adjustbox}
+\usepackage{subcaption}
+
+\usepackage[style=apa, backend=biber]{biblatex}
+\addbibresource{references.bib}
+\input{generated/numbers_v1_fmt.tex}
+\input{generated/numbers_v2_text.tex}
+
+% ---------- Title spacing ----------
+\setlength{\droptitle}{-4.2em}
+
+\pretitle{%
+  \begin{center}
+  \rule{\linewidth}{0.8pt}\par\vspace{0.4em}
+  \LARGE\bfseries
+}
+
+\posttitle{%
+  \par\vspace{0.4em}\rule{\linewidth}{0.8pt}
+  \end{center}
+}
+
+\preauthor{%
+  \begin{center}\normalsize
+}
+
+\postauthor{%
+  \par\end{center}\vspace{-1.0em}
+}
+
+\predate{}
+\postdate{}
+
+\title{Visual Similarity in Adult Word Extension and Artificial Word Learning}
+
+\author{
+P.~M.~Vera\\
+Neurocreaciones\\
+\texttt{patricio@neurocreaciones.ai}
+}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+\vspace{-1.0em}
+
+\begin{abstract}
+When two objects share a name, how much does their visual similarity explain, and what do the teaching examples add? We evaluated the limits of visual similarity as an account of word extension across ten visual representations: eight trained encoders that differ in architecture, training data, and objective, a randomly initialized network, and raw pixels. First, we reanalyzed trial-level data from a large adult word-extension study \parencite{lewis2018}, computing each test image's distance to the teaching examples in each representation (\VtPersons{} people). Within the taught domain, greater distance was associated with less extension for all eight trained encoders (log odds per standard deviation from \VtPcViTB{} to \VtPcMaeB) and also for the untrained network (\VtPcRandB), so the association cannot be attributed only to what the encoders learned; raw pixels showed no negative association (\VtPcPixB). Whether presentation order changes this slope, the frozen primary question, remained inconclusive ($\hat\Delta = \VtOrdDelta$, 95\% CI [\VtOrdLo,~\VtOrdHi]). The composition of the examples, by contrast, changed extension at comparable distances: after three examples, adults extended a word to \SelSubSup\% of superordinate items when the examples were subordinate and to \SelSupSup\% when they were superordinate. Second, in artificial learners built on each representation, words joining more distant categories were learned less accurately for \VtDSupportWord{} of the eight trained encoders. Every trained encoder's geometry correlated with human similarity measures from three datasets, but so did the untrained network's, so this alignment does not show what the encoders learned. In an exploratory comparison in which adults and learners judged the same images, no common acceptance threshold on any trained encoder reproduced the adults' gain from narrow to broad teaching (at most \VtXJumpMax{} vs.\ \VtXJumpAdult{} percentage points), and two learners with equal within-domain acceptance extended the word to different images. Visual geometry predicts part of word extension across architectures, even without training, but does not capture the effect of example composition. Analyses followed internal plans fixed before the confirmatory runs (not externally preregistered).
+\end{abstract}
+
+\vspace{-0.6em}
+\noindent\textbf{Keywords:} word learning; word extension; suspicious coincidence; visual similarity; vision encoders; self-supervised vision models; secondary data analysis; artificial learners
+
+\section{Introduction}
+
+Visual similarity is the most obvious candidate explanation for why a novel word spreads from its examples to some objects and not to others. This article evaluates how far that explanation goes. We measured visual similarity with ten representations, eight trained vision encoders that differ in architecture, training data, and objective, plus a randomly initialized network and raw pixels, and asked, for adults and for artificial learners, what distance in each space predicts about word extension and what it leaves out. The pattern is consistent across architectures: visual distance is associated with part of adult extension, even when it is measured in a network that was never trained, but it does not capture the change in extension produced by the composition of the teaching examples, and the frozen primary test of whether presentation order changes the distance slope was inconclusive.
+
+A word can cover several kinds of objects and still be coherent. Children call cats and dogs \emph{doggie} long before they call frogs and trucks by a common name \parencite{rescorla1980}, and adults told that three Dalmatians are all \emph{feps} will typically refuse the label for a cow. Two kinds of explanation are usually offered for such patterns. Similarity-based accounts hold that a word spreads to referents that resemble its known instances \parencite{sloutsky2004,nosofsky1986}. Bayesian accounts hold that learners infer the most plausible extension from a structured hypothesis space, so that the \emph{composition} of the examples, and not only their similarity to a test object, determines how far the word is extended \parencite{xu2007}. Developmental work shows both influences: children extend novel nouns by shape \parencite{landau1988}, construe them taxonomically rather than thematically \parencite{markman1984}, and project properties by category membership over appearance \parencite{gelman1986}.
+
+This article asks a narrow version of this question: \emph{when two objects receive the same name, how much is explained by their visual similarity, and what do the examples used to teach the word contribute?} Answering it requires a measure of visual similarity that is defined independently of the word-learning behavior under study and can be applied to the exact images people saw. Vision models trained with self-supervision, language supervision, or labels now provide such measures. Their embedding spaces can be queried for any image, and their geometry partly aligns with human similarity judgments \parencite{hebart2020,roads2021}. They are not models of human perception, and human similarity judgments themselves mix perceptual and conceptual information \parencite{hebart2020,hebart2023}; but they give an explicit, reproducible similarity space in which both human and artificial generalization can be described.
+
+A growing literature asks how far such representations align with human similarity and how alignment can be increased. Alignment with human similarity judgments varies across networks and depends more on training data and objective than on model scale or architecture \parencite{muttenthaler2023}. Representations can be made more human-like by fine-tuning on human perceptual similarity judgments \parencite{fu2023}, which also benefits several downstream vision tasks \parencite{sundaram2024}, or by transferring the hierarchical structure of human judgments across abstraction levels \parencite{muttenthaler2025}. We deliberately used frozen encoders that were not aligned to human data, so that any convergence with human measures is not built in, and we compared encoders that differ in training data and objective with two controls that have no learned features: a randomly initialized network and raw pixels. The partial alignment we report should be read against these choices. We used one global embedding per image from the final layer of each encoder (Appendix~\ref{app:checkpoints}); intermediate layers and patch-level features may relate differently to human similarity and were not examined.
+
+We combine two sources of evidence. The first is human: we reanalyzed trial-level data from \textcite{lewis2018}, who conducted a large, multi-experiment replication of the suspicious-coincidence paradigm of \textcite{xu2007} with adults and made their data, stimuli, and code public. Because the exact images are available, we could compute, for every test item, its distance in each encoder's space to the examples a participant had just seen, and ask whether that distance is associated with the participant's decision to extend the word. The second is artificial: a learner that operates over each frozen encoder, for which we fix which categories each word designates and measure whether the learner can name new images. The artificial learner is not a model of the adult participant; it is a controlled system in which the representation is fully known, so that the contribution of similarity in that space can be isolated. Finally, in an exploratory comparison, we gave artificial learners the same teaching and test images that adults saw.
+
+The two parts address different behaviors. The adult decided how far to extend a word; the learner tried to recover a taught label. We therefore treat the comparison as a test of how far a shared similarity space describes both, not as evidence of a common mechanism. Our contributions are:
+\begin{itemize}
+\item A secondary analysis of adult word extension across ten visual representations: within the taught domain, distance is associated with extension for every trained encoder and for an untrained network; the frozen primary test of order moderation is inconclusive; and, in the reference encoder, the effect of distance depends on the composition of the teaching examples (exploratory).
+\item A controlled demonstration, in artificial learners, that the learnability of a two-category word decreases with the distance between its categories for most trained encoders, with taxonomic relatedness adding no detectable prediction in the sample tested.
+\item Tests of two links between the systems: every trained encoder's geometry, and also that of the untrained network, partially aligns with human similarity and confusability measures, but this alignment did not translate into conclusive evidence that human-derived distances predict which words the learner finds hard.
+\item An exploratory comparison on the same images showing that equal within-domain acceptance can hide different extension boundaries, and that no common threshold on a trained encoder reproduced the adults' response to example composition.
+\end{itemize}
+
+All human data are secondary: they come from experiments designed and run by other teams to answer other questions.
+
+\section{Adults: Visual Distance and the Composition of Examples}
+\label{sec:adults}
+
+\subsection{Data}
+
+\textcite{lewis2018} ran 12 online experiments with adults in the word-learning paradigm of \textcite{xu2007}. On each trial a novel word was taught with one subordinate example, three subordinate examples, three basic-level examples, or three superordinate examples (e.g., one Dalmatian; three Dalmatians; three dogs of different breeds; three different animals), and participants selected, from an array of 24 test images, all the objects that the word could also name. Of the 24 test items, 8 belonged to the taught domain (subordinate, basic-level, and superordinate matches); the rest came from other domains. The suspicious-coincidence effect is the reduction in basic-level generalization after three subordinate examples relative to one. \textcite{lewis2018} recovered the effect with a large effect size under both sequential and simultaneous presentation, but found it sensitive to trial order: it was absent, or reversed under sequential presentation, when the three-example trials preceded the one-example trial. We used their public, anonymized trial-level data and the original stimulus images. Participant identifiers in that release are assigned across experiments, so the data comprise \HFourSessions{} sessions from \HFourPersons{} distinct people (\HFourRepeaters{} people took part more than once), \HFourTrials{} trials, and \HFourNobs{} item-level decisions.
+
+\subsection{Visual Representations and Distance}
+
+We measured visual distance with ten representations. The eight trained encoders were DINOv2-small and DINOv2-base \parencite{oquab2023}; the vision encoder of CVCL, trained on one child's head-camera recordings \parencite{vong2024}; SigLIP \parencite{zhai2023}; an OpenCLIP ViT-B/32 model trained on LAION-2B \parencite{cherti2023,schuhmann2022}; a supervised ViT-B/16 \parencite{dosovitskiy2020} and a supervised ResNet-50 \parencite{he2016}, both trained on ImageNet \parencite{deng2009}; and a masked autoencoder \parencite[MAE;][]{he2022}. The two controls were a randomly initialized ResNet-50, which has the architecture but no training, and raw pixels. Checkpoints, pinned revisions, and the embedding taken from each model are listed in Appendix~\ref{app:checkpoints}; for brevity we refer to each by these names. DINOv2-small, the encoder also used for the artificial learners in Section~\ref{sec:learners}, is the reference: we report its analyses in detail and use the other representations to test how far the results depend on it. For every trial and test item we computed $d$, the cosine distance between the item's L2-normalized embedding and the normalized centroid of the training examples shown on that trial, separately in each representation. The distance is defined entirely by the images, independently of participants' responses.
+
+\subsection{Analysis}
+
+\paragraph{Analysis plans.} All analyses followed internally frozen plans (not externally preregistered); deviations and timestamps are documented in Appendix~\ref{app:deviations} and the repository. The DINOv2-small analyses of the human data followed the first plan; the multi-encoder adult and learner analyses followed later plans, frozen before those runs, in which results already known for DINOv2-small and CVCL were treated as descriptive. The comparison on the same images (Section~\ref{sec:matched}) was exploratory and was not frozen.
+
+For the reference encoder, the confirmatory hypothesis (H4 in the analysis plan) was that the probability of selecting a test item decreases with $d$, controlling for the item's taxonomic level and the teaching condition. We fitted a logistic mixed model, $\mathrm{selected} \sim z(d) + \mathrm{level} + \mathrm{condition} + (1 + z(d) \mid \mathrm{person}) + (1 \mid \mathrm{image})$, over all 24 items. Random effects are grouped by person, as the plan specified (Appendix~\ref{app:deviations}). Support required a negative coefficient with Holm-adjusted $p < .05$ within the six-test confirmatory family. Distance was standardized within each model, so a standard deviation corresponds to \SDdAll{} cosine units over all 24 items and to \SDdTarget{} over the 8 target-domain items; coefficients from the two item sets are therefore not on exactly the same scale. Sensitivity analyses used only the 8 target-domain items, only each person's first session (identified by its recorded start time), excluded people who participated more than once, or excluded the two experiments that were not preregistered by the original authors. The plan listed a distance $\times$ condition interaction as exploratory. A descriptive comparison of conditions and a post hoc test of the incremental contribution of distance were not part of the plan and are reported as exploratory. Two further post hoc exploratory analyses were specified after the main results were known, and before they were run (Appendix~\ref{app:deviations}). First, a superordinate-only model restricted to the four superordinate target-domain items of each trial (12 images) compared $\mathrm{selected} \sim z(d) + \mathrm{condition}$ with models dropping either term, with random intercepts by person and image (sensitivity: adding a by-person distance slope). Second, a trial-order model used the experiment-level order of the one-example and three-example trials (one-example trial first or last; six experiments each) and tested, by likelihood ratio, whether order moderated the distance slope ($z(d) \times \mathrm{order}$, 1 \textit{df}) and the distance $\times$ condition interaction ($z(d) \times \mathrm{condition} \times \mathrm{order}$, 3 \textit{df}), with Holm correction over these two tests. Order varies only between experiments and is therefore confounded with other experiment-level differences.
+
+\paragraph{Distance and order across representations.} Visual distance and presentation order are separate questions, and the multi-encoder analyses address them separately. The \emph{positive control} asks whether distance is associated with extension: for each representation, the model above was fitted to the eight within-domain test images (\VtPcNobs{} observations, \VtPersons{} people). In the frozen plan it was a gate, not the primary test. The \emph{primary} analysis asks whether presentation order changes the distance slope. Order varied across the \VtNexp{} experiments, so inference was at the experiment level: a two-stage permutation test of the slope difference $\hat\Delta$, classified into decision regions at three effect margins ($\delta = .05, .10, .20$) and summarized by a global rule across margins and geometry cutoffs. We also refitted the 24-item H4 model with each representation (\VtHfourNobs{} observations). Mixed models were fitted with lme4 \parencite{bates2015}.
+
+\subsection{Results}
+
+\paragraph{Distance across representations.} Figure~\ref{fig:forest}a shows the positive-control slopes. All \VtPcTrainedNeg{} trained encoders gave a negative distance slope whose 95\% interval excluded zero, from \VtPcViTB{} [\VtPcViTLo,~\VtPcViTHi] for supervised ViT to \VtPcMaeB{} [\VtPcMaeLo,~\VtPcMaeHi] for MAE; the reference, DINOv2-small, gave \VtPcRefB{} [\VtPcRefLo,~\VtPcRefHi]. The randomly initialized ResNet-50 also gave a negative slope, \VtPcRandB{} [\VtPcRandLo,~\VtPcRandHi], steeper than those of CVCL (\VbPcCvclB{} [\VbPcCvclLo,~\VbPcCvclHi]) and MAE, whereas pixels gave \VtPcPixB{} [\VtPcPixLo,~\VtPcPixHi]. The association therefore appears with several representations, including one with no training, and cannot be attributed only to what the encoders learned. The primary question was not resolved (Figure~\ref{fig:forest}b): for DINOv2-small the slope difference by order was $\hat\Delta = \VtOrdDelta$ (95\% CI [\VtOrdLo,~\VtOrdHi]), and the frozen global rule returned \VtGlobalLabel{} (inconclusive) at all \VtGlobalCells{} combinations of margin and geometry cutoff. Because the reference encoder was inconclusive, we make no claim that order moderation is equivalent across encoders. In the 24-item H4 model, all \VbHfourAllNeg{} representations, including both controls, gave negative slopes, and their ordering differs from that of the positive control (e.g., \VbHfourRandB{} for the untrained network, \VbHfourCvclB{} for CVCL, and \VbHfourMaeB{} for MAE; Appendix Table~\ref{tab:v2adults}); as for DINOv2-small below, these coefficients are dominated by the contrast between the taught domain and the other domains.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{figs/fig_forest_adults.pdf}
+\caption{Adult Word Extension and Visual Distance by Representation}
+\label{fig:forest}
+\par\smallskip{\raggedright\footnotesize\textit{Note.} (a) Positive control: distance slope (log odds per standard deviation of $d$) in the logistic mixed model fitted to the eight within-domain test images (\VtPcNobs{} observations, \VtPersons{} adults), with 95\% Wald intervals; rows are ordered by this slope. Blue: reference encoder; black: trained encoders; orange: controls. (a) after MAE: fitted with random intercepts only, because the model with by-person distance slopes did not pass the convergence and non-singularity check. (b) Primary test: experiment-level slope difference by presentation order over \VtNexp{} experiments, with 95\% intervals; dotted lines mark the effect margins $\pm.05$, $\pm.10$, and $\pm.20$. The frozen global rule was inconclusive. Exact values, the 24-item model, and the decision regions are in Appendix Table~\ref{tab:v2adults}.\par}
+\end{figure}
+
+\paragraph{The reference encoder in detail.} Visual distance was associated with extension: the log odds of selecting an item fell by \HFourB{} per standard deviation of distance (95\% CI [\HFourLo,~\HFourHi]; Holm-adjusted $p < .001$), with level and condition in the model. The estimate was stable across specifications (Table~\ref{tab:h4}): \HFourTargetB{} with only the 8 target-domain items, \HFourFirstB{} with first sessions only, \HFourExclB{} excluding repeat participants, and \HFourTargetExclB{} combining the last restriction with target items. Over all 24 items, however, the coefficient is dominated by the contrast between the taught domain and the other domains, whose items were almost never selected. The target-only analyses address this. In an exploratory post hoc comparison restricted to the 8 target-domain items, adding distance to a model with level and condition (and the same random intercepts) improved fit markedly (likelihood ratio $\chi^2(1) = \IncChi$, $\Delta\mathrm{AIC} = \IncDAIC$; $\chi^2(3) = \IncChiRE$ when the by-person distance slope was also added). Within each taxonomic level the distance slope was negative: \LvlSubB{} [\LvlSubLo,~\LvlSubHi] for subordinate, \LvlBasB{} [\LvlBasLo,~\LvlBasHi] for basic-level, and \LvlSupB{} [\LvlSupLo,~\LvlSupHi] for superordinate items (log odds per target-model standard deviation). Distance and level remain correlated by construction in this stimulus set, so these estimates describe an association beyond the coded level, not a separable causal contribution of similarity.
+
+
+\begin{table}[!htbp]
+\centering\small
+\begin{tabular}{lcrl}
+\toprule
+Specification (random effects by person) & People & \multicolumn{2}{c}{Log odds per \textit{SD} of $d$} \\ \cmidrule(lr){3-4}
+ & & \multicolumn{1}{c}{Est.} & \multicolumn{1}{c}{95\% CI} \\
+\midrule
+Primary: all 24 items & \HFourPersons & \HFourBshort{} & \mbox{[\HFourLoshort,~\HFourHishort]} \\
+First session only & \HFourPersons & \HFourFirstB{} & \mbox{[\HFourFirstLo,~\HFourFirstHi]} \\
+Excluding repeat participants & \HFourExclPersons & \HFourExclB{} & \mbox{[\HFourExclLo,~\HFourExclHi]} \\
+Excluding non-preregistered experiments & \HFourPreregPersons & \HFourPreregB{} & \mbox{[\HFourPreregLo,~\HFourPreregHi]} \\
+8 target-domain items & \HFourPersons & \HFourTargetB{} & \mbox{[\HFourTargetLo,~\HFourTargetHi]} \\
+8 target items, excluding repeat participants & \HFourExclPersons & \HFourTargetExclB{} & \mbox{[\HFourTargetExclLo,~\HFourTargetExclHi]} \\
+\bottomrule
+\end{tabular}
+\caption{Association Between Visual Distance and Word Extension in Adults (H4)}
+\label{tab:h4}
+
+\par\smallskip{\raggedright\footnotesize\textit{Note.}  Logistic mixed models with level and condition as fixed effects and by-person random intercepts and distance slopes plus by-image random intercepts; Wald intervals. All $p < .001$.\par}
+\end{table}
+
+Distance, however, was far from the whole story. Figure~\ref{fig:x1}a shows mean selection for the target-domain items by teaching condition. For superordinate test items, selection was low after one subordinate example (\SelOneSup\%), three subordinate examples (\SelSubSup\%), or three basic-level examples (\SelBasSup\%), but rose to \SelSupSup\% after three superordinate examples. Mean distances of these items to the examples differed only modestly across conditions (range \DistSupMin--\DistSupMax) (\DistOneSup, \DistSubSup, \DistBasSup, and \DistSupSup, respectively). The number of examples was the same in the last three conditions; what changed was their composition. The overall mean for superordinate items (\SelSupOverall\%) conceals this contrast. These percentages are descriptive.
+
+In an exploratory model with a distance $\times$ condition interaction (random effects by person; all 24 items), the distance slope was \IntRefB{} [\IntRefLo,~\IntRefHi] after one example and changed little after three subordinate examples (interaction \IntSubB{} [\IntSubLo,~\IntSubHi]), but became steeper after three basic-level (\IntBasB{} [\IntBasLo,~\IntBasHi]) and three superordinate examples (\IntSupB{} [\IntSupLo,~\IntSupHi]); the interaction improved fit substantially (likelihood ratio $\chi^2(3) = \IntChi$, $p < .001$). Thus, how strongly visual distance relates to extension depends on how the word was taught. Note that this model uses all 24 items, whereas the curves in Figure~\ref{fig:x1}a show only the 8 target-domain items.
+
+In the post hoc superordinate-only model (\SupNobs{} observations, \SupPersons{} people, \SupImages{} images), condition improved fit given distance ($\chi^2(3) = \SupCondChi$, $p \SupCondP$), and distance improved fit given condition ($\chi^2(1) = \SupDistChi$, $p \SupDistP$), with a distance coefficient of \SupZdB{} [\SupZdLo,~\SupZdHi] per within-subset standard deviation. Relative to one example, the condition coefficients were \SupCSubB{} [\SupCSubLo,~\SupCSubHi] for three subordinate, \SupCBasB{} [\SupCBasLo,~\SupCBasHi] for three basic-level, and \SupCSupB{} [\SupCSupLo,~\SupCSupHi] for three superordinate examples. Adding a by-person distance slope gave similar estimates (distance \SupSlZdB{} [\SupSlZdLo,~\SupSlZdHi]; the distance-only model in this sensitivity analysis was singular). In the post hoc trial-order model (\OrdNobs{} observations, \OrdPersons{} people), the distance $\times$ order term was \OrdZdB{} [\OrdZdLo,~\OrdZdHi] ($\chi^2(1) = \OrdZdChi$, $p \OrdZdP$, Holm $p \OrdZdPHolm$), and the three-way distance $\times$ condition $\times$ order terms gave $\chi^2(3) = \OrdIntChi$ ($p \OrdIntP$, Holm $p \OrdIntPHolm$). With the three-way terms in the model, the distance $\times$ order term (for the one-example reference condition) fell to \OrdZdTriB{} ($p \OrdZdTriP$), so moderation of the distance slope by order depended on the teaching condition.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/x1_breadth_gradient_humans_vs_learner.png}
+\caption{Visual Distance and Generalization in Adults and in the Artificial Learner. \emph{Note.} Exploratory comparison. (a) Proportion of target-domain test items selected by adults in \textcite{lewis2018}, by teaching condition and test level, against DINOv2 distance to the training examples; gray points are the \XUnits{} image $\times$ condition units (descriptive logit slope \XSlope{} [\XSlopeLo,~\XSlopeHi], $\rho = \XRho$). (b) Naming accuracy of the centroid learner for two-category words in CIFAR-10, against the distance between member categories. The vertical axes measure different quantities (extension vs.\ naming accuracy) and should not be compared directly.}
+\label{fig:x1}
+\end{figure}
+
+\section{Artificial Learners: A Controlled System}
+\label{sec:learners}
+
+
+The adult data show an association but cannot isolate the role of similarity, because the experimenter does not control the representation the participant uses. In an artificial learner the representation is known and the extension of each word can be fixed. We summarize the core results of the artificial-learner study (full details of the original experiments are in \textcite{vera2026lexical} and in the project repository).
+
+\subsection{Method}
+
+Images from CIFAR-10 and CIFAR-100 \parencite{krizhevsky2009} were encoded once with frozen DINOv2-small \parencite{oquab2023} (384-dimensional CLS embeddings, L2-normalized). Images were preprocessed with the model's default Hugging Face image processor: conversion to RGB, bicubic resizing of the shorter side to 256 pixels (the 32 $\times$ 32 CIFAR images are therefore upsampled), a 224 $\times$ 224 center crop, rescaling to [0, 1], and normalization with ImageNet means and standard deviations. The same preprocessing was applied to the stimulus images of the adult study. We did not test alternative preprocessing choices (e.g., other interpolation methods or crops). Learners received nonce words (e.g., \emph{slithy}, \emph{mimsy}, \emph{vorpal}; \cite{carroll1871}) paired with five images each, in 3-way episodes, and were tested on naming held-out images. The main learner represents a word by the normalized mean of its training embeddings (a prototype; equivalent to a prototypical network over a frozen encoder; \cite{snell2017}); exemplar ($k$-nearest-neighbor) and logistic-regression learners gave the same pattern. Each word was assigned either one category (native) or two categories (disjunctive). Disjunctive words were grouped into near, mid, and far tiers by the cosine distance between the two categories' centroids (mean \DmemNear, \DmemMid, and \DmemFar). For example, \emph{tromble} (cat + dog) and \emph{mivor} (frog + truck) both join exactly two categories; what differs is the distance between them. Thirty paired episodes per condition were run (seed 42), with 95\% bootstrap intervals over episodes. The tiers contain few words (\NPairsNear, \NPairsMid, and \NPairsFar{} category pairs for near, mid, and far), so these intervals reflect episode-level variability and do not generalize over words; the dissociation study below addresses generalization over pairs.
+
+To separate distance in the encoder's space from taxonomic relatedness, a dissociation study on CIFAR-100 sampled 100 category pairs from the four quadrants formed by median splits of perceptual (DINOv2) distance and semantic distance (one minus WordNet Wu--Palmer similarity; \cite{wu1994,miller1995}), taught each pair as one word, and regressed naming accuracy on both distances, under decision rules specified in advance in an internal plan. The reported dissociation results use the original, pre-specified mapping of class names to WordNet synsets. That mapping selected an unintended sense for \WnNCorrected{} classes (e.g., \emph{tiger} as a fierce person; \WnNTouch{} of the 100 sampled pairs involve at least one of them); with these senses corrected, the conclusion was unchanged (perceptual $\beta = \WnCorrBeta$, semantic $p = \WnCorrPsem$, versus $\WnFrozenBeta$ and \WnFrozenPsem{} with the original mapping; with quadrants reassigned, median accuracy remained higher in Q4 than in Q3, \WnCorrQFour{} vs.\ \WnCorrQThree, $n = \WnCorrNQ$ discordant pairs). Details are in the released materials.
+
+\paragraph{Across representations.} The same learners were run on embeddings from each of the ten representations (Appendix~\ref{app:checkpoints}). For each we report naming accuracy by tier (T), the partial correlation between inter-category distance and naming accuracy for the 100 pairs of the dissociation study, adjusting for WordNet distance (D), and the same analysis on all \VtDallN{} CIFAR-100 pairs (D-all; a sensitivity analysis, since the pairs share categories). Results were classified into decision regions at smallest effect sizes of interest (SESOI) of .10, .20, and .30 \parencite{schuirmann1987,lakens2017}. Because the DINOv2-small and CVCL results were known before the plan was frozen, they are descriptive and outside the correction families; the other six trained encoders are confirmatory, and the two controls are floors. Distance effects in T and D are close to mechanical for a learner that operates on the encoder's distances, so only the links tested in Section~\ref{sec:link} are read against people.
+
+
+\subsection{Results}
+
+Naming accuracy was \AccNative\% [\AccNativeLo,~\AccNativeHi] for native words and fell to \AccNear\% [\AccNearLo,~\AccNearHi], \AccMid\% [\AccMidLo,~\AccMidHi], and \AccFar\% [\AccFarLo,~\AccFarHi] for near, mid, and far disjunctive words (chance $\approx 33\%$; Figure~\ref{fig:c1}). The ordering was the same for every non-random learner and replicated across five master seeds. In the dissociation study, perceptual distance predicted accuracy ($\beta = \DisBeta$, $p = \DisPperc$, partial $R^2 = \DisPRperc$), whereas semantic distance did not ($p = \DisPsem$, partial $R^2 = \DisPRsem$; Figure~\ref{fig:quad}); sharing a CIFAR-100 superclass did not add detectable prediction once perceptual distance was controlled ($\beta = \DisSuperB$, $p = \DisSuperP$). Because the learner has no access to semantic information, this is a sufficiency result: distance in the learner's own space suffices to produce the gradient; it does not show that semantics is irrelevant for human learners. Pairs within the same superclass were, on average, learned more accurately (\AccWithin\% vs.\ \AccBetween\%), but only \NWithin{} of the 100 pairs fell within a superclass.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.75\linewidth]{figures/exp007_c1_gradient_clean.png}
+\caption{Naming Accuracy of Artificial Learners Across Concept Tiers. \emph{Note.} 3-way, 5-shot episodes; shaded bands are 95\% bootstrap intervals over 30 episodes. All non-random learners overlap; the random baseline stays at chance.}
+\label{fig:c1}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.65\linewidth]{figures/exp008_quadrant_boxplot.png}
+\caption{Naming Accuracy by Dissociation Quadrant (CIFAR-100). \emph{Note.} Quadrants are defined by median splits on perceptual (DINOv2 inter-centroid cosine) and semantic (WordNet Wu--Palmer) distance. Accuracy follows the perceptual axis.}
+\label{fig:quad}
+\end{figure}
+
+\paragraph{Across representations.} Table~\ref{tab:agents} summarizes the learners. Greater distance between the two categories joined by a word predicted lower naming accuracy (D, support region at all three SESOI) for \VtDSupportWord{} of the eight trained encoders, with partial correlations from \VtDrMin{} to \VtDrMax{} on the \VtDN{} pairs. CVCL ($r = \VtDCvclR$ [\VtDCvclLo,~\VtDCvclHi]) and MAE ($r = \VtDMaeR$ [\VtDMaeLo,~\VtDMaeHi]) did not reach support; both did in the descriptive D-all analysis, whose pairs share classes and are not independent. Neither control reached support in D.
+
+\begin{table}[!htbp]
+\centering\small
+\input{tables/tab_agents_compact.tex}
+\caption{Artificial Learners on CIFAR by Representation}
+\label{tab:agents}
+\par\smallskip{\raggedright\footnotesize\textit{Note.} Native and Far: centroid naming accuracy (\%) for native words and far two-category words in CIFAR-10 (chance $\approx 33\%$). D: partial correlation between inter-category distance and naming accuracy, adjusting for WordNet distance, on the \VtDN{} pairs of the dissociation study; D-all: the same on all \VtDallN{} pairs (descriptive; pairs share classes). $^{\dagger}$Not in the support region at all three SESOI (.10/.20/.30). DINOv2-small and CVCL: descriptive; controls: floors. Intervals for accuracy and the decision regions are in Appendix Table~\ref{tab:v2agentsD}.\par}
+\end{table}
+
+\section{Testing the Link Between the Two Systems}
+\label{sec:link}
+
+
+The two results above use the same similarity spaces, but the adult result does not show that these spaces capture human similarity, and the learner result does not show that human similarity predicts learning. We tested these two distinct relations, alignment between similarity measures (H1) and prediction of learner difficulty from human distances (H2), with public human datasets, under the same analysis plan.
+
+
+\subsection{Data}
+
+We used three independent human datasets that cover CIFAR categories: odd-one-out similarity judgments for THINGS concepts \parencite{hebart2020,hebart2023}, similarity judgments for ImageNet images (ImageNet-HSJ; \cite{roads2021}), and human classification uncertainty for the CIFAR-10 test set (CIFAR-10H; \cite{peterson2019}). Each was converted to a distance between category pairs. CIFAR-100 classes were mapped to THINGS concepts by name and WordNet sense, with ambiguous names resolved to the sense shown in the CIFAR images (e.g., \emph{mouse} as the rodent, \emph{tank} as the military vehicle); \MapThingsClasses{} classes were mapped. Three classes that share a single THINGS concept (maple, oak, and willow, all mapped to \emph{tree}) kept their mapping, but the pairs among them were excluded, which yields \CovThingsPairs{} pairs; \emph{cattle} and \emph{ray} have only hyponym matches in THINGS and were used only in a stricter sensitivity mapping. For ImageNet-HSJ, each CIFAR class was assigned the ImageNet synsets in the hyponym closure of its WordNet synset (synsets claimed by more than one class went to the most specific class, and exact ties were dropped); \MapHsjClasses{} CIFAR-100 classes received at least one synset, and pairs were retained when at least 10 relevant judgments were available, yielding \HOneHsjN{} pairs. CIFAR-10H uses the CIFAR-10 classes directly. Robustness checks with alternative mappings are in the released materials. All mappings were fixed before human distances were computed. THINGS and ImageNet-HSJ judgments reflect both perceptual and conceptual properties of objects \parencite{hebart2020}, and CIFAR-10H measures confusability rather than similarity; none of them is a pure measure of visual similarity. Confirmatory tests (H1 $\times$ 3, H2 $\times$ 2, H4) were Holm-corrected as one family.
+
+\subsection{Results}
+
+\paragraph{The encoder's geometry aligns with human measures (H1; supported).} DINOv2 distances correlated with THINGS distances ($\rho = \HOneThingsRho$ [\HOneThingsLo,~\HOneThingsHi], \HOneThingsN{} pairs), ImageNet-HSJ distances ($\rho = \HOneHsjRho$ [\HOneHsjLo,~\HOneHsjHi], \HOneHsjN{} pairs), and CIFAR-10H confusability ($\rho = \HOneCtenRho$ [\HOneCtenLo,~\HOneCtenHi], \HOneCtenN{} pairs); all Mantel tests \parencite{mantel1967} reached the smallest attainable permutation $p$ (\MantelPmin{} with \MantelPerms{} permutations), so the Holm-adjusted $p = \HOneHolmP$ is a bound rather than an estimate (Figure~\ref{fig:h1}). The alignment is partial: a large part of the variance in human distances is not captured.
+
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/a_h1_scatter_human_vs_dperc.png}
+\caption{Human Distances Versus the Learner's Embedding-Space Distances (H1). \emph{Note.} Each point is a category pair. Brackets give 95\% bootstrap intervals for Spearman's $\rho$.}
+\label{fig:h1}
+\end{figure}
+
+\paragraph{Alignment across representations.} Table~\ref{tab:h1} gives H1 for every representation. The geometry of every trained encoder correlated positively with the three human datasets ($\rho$ from \VtHoneMin{} to \VtHoneMax), in the support region in every case. So did the geometry of the untrained network, although the correlations were small for THINGS and ImageNet-HSJ: $\rho = \VtHoneRandThings$ [\VbHoneRandThingsLo,~\VbHoneRandThingsHi] for THINGS (Mantel $p = \VbHoneRandThingsP$), \VtHoneRandHsj{} [\VbHoneRandHsjLo,~\VbHoneRandHsjHi] for ImageNet-HSJ ($p = \VbHoneRandHsjP$), and \VtHoneRandCten{} [\VbHoneRandCtenLo,~\VbHoneRandCtenHi] for CIFAR-10H ($p = \VbHoneRandCtenP$). Pixels were positive for THINGS and ImageNet-HSJ ($\rho = \VtHonePixThings$ and \VtHonePixHsj); for CIFAR-10H ($\rho = \VtHonePixCten$, Mantel $p = \VtHonePixCtenP$) the frozen rule ($p < .05$) returned inconclusive. Because the calibration across stimulus sets failed at every cutoff, the frozen global profile for H1 was ``holds for all, without evidence of a geometric difference''; these alignments do not show that the encoders differ in a human-relevant way.
+
+\begin{table}[!htbp]
+\centering\small
+\input{tables/tab_h1_compact.tex}
+\caption{Alignment Between Encoder and Human Distances (H1) by Representation}
+\label{tab:h1}
+\par\smallskip{\raggedright\footnotesize\textit{Note.} Spearman $\rho$ between encoder and human distances (THINGS, \VtHoneNThings{} pairs; ImageNet-HSJ, \VtHoneNHsj; CIFAR-10H, \VtHoneNCten). Support requires $\rho > 0$ and Mantel $p < .05$ (10{,}000 permutations). $^{\dagger}$Not in the support region (Mantel $p = \VtHonePixCtenP$). Full results, including H2, are in Appendix Table~\ref{tab:v2agentsH}.\par}
+\end{table}
+
+\paragraph{Human distances do not reliably predict learner difficulty (H2; inconclusive).} A different question is whether human distances, which are independent of the learner's representation, predict which category pairs the learner finds hard. In the dissociation pairs covered by each dataset, with semantic distance in the model, the human coefficient was small for THINGS ($\beta = \HTwoThingsBeta$, $p = \HTwoThingsP$, partial $r = \HTwoThingsR$ [\HTwoThingsRLo,~\HTwoThingsRHi], $n = \HTwoThingsN$) and larger for ImageNet-HSJ ($\beta = \HTwoHsjBeta$, $p = \HTwoHsjP$, Holm $p = \HTwoHsjPHolm$, partial $r = \HTwoHsjR$ [\HTwoHsjRLo,~\HTwoHsjRHi], $n = \HTwoHsjN$). The two results are not symmetric. For THINGS the estimate was small and its interval included zero. For ImageNet-HSJ the effect was in the predicted direction and its interval excluded zero, but it did not survive Holm correction; the plan's decision rule did not anticipate this combination, and we report it as inconclusive without reinterpreting the rule (Appendix Table~\ref{tab:dev}). Both samples are small, which limits power. Across representations, H2 was defined only for THINGS and ImageNet-HSJ, so H2 $\times$ CIFAR-10H is not applicable by design. Because DINOv2-small was inconclusive on THINGS, the multi-encoder comparison for H2 remained descriptive (Appendix Table~\ref{tab:v2agentsH}); its decision regions are unadjusted and therefore classify the ImageNet-HSJ estimate for DINOv2-small as support (Appendix~\ref{app:deviations}).
+
+
+\paragraph{A child-experience encoder reproduces the tiers but not the pair-level effect (H6; exploratory).} To check whether the learner results depend on DINOv2, we repeated the analyses with the vision encoder of CVCL, trained on one child's head-camera recordings \parencite{vong2024}; CVCL is not a source of human data. Images were resized directly to 224 $\times$ 224 pixels (bicubic, no crop), converted to tensors, and normalized with ImageNet means and standard deviations, following the preprocessing in the released CVCL code; the 512-dimensional outputs were L2-normalized. Its distances correlated with DINOv2 ($\rho = \HSixRhoTen$ in CIFAR-10, \HSixRhoHundred{} in CIFAR-100) and with human distances (e.g., THINGS \HSixThingsHundred, HSJ \HSixHsjHundred{} in CIFAR-100). With CVCL, the tier ordering reappeared in CIFAR-10 (\CvclNative\%, \CvclNear\%, \CvclMid\%, \CvclFar\%; $\rho = \CvclTierRho$ across words), but in CIFAR-100 its pair distances did not predict naming accuracy ($\beta = \HSixB$ [\HSixLo,~\HSixHi], $p = \HSixP$), which is inconsistent with the pre-specified criterion (Figure~\ref{fig:h6}). Baseline naming accuracy in CIFAR-100 was also lower with CVCL (\HSixBaseCvcl{} vs.\ \HSixBaseDino{} with DINOv2), which limits the comparison; the CIFAR-10 tier ordering is descriptive and was not tested inferentially.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/e_h6_dino_vs_cvcl.png}
+\caption{DINOv2 Versus a Child-Experience Encoder (CVCL; H6, Exploratory). \emph{Note.} Left and center: pair distances in the two encoders. Right: learner naming accuracy by CIFAR-10 tier with each encoder.}
+\label{fig:h6}
+\end{figure}
+
+\paragraph{Age of acquisition (H5; exploratory).} Category coherence in DINOv2 was not related to the age of acquisition of the category names in the Glasgow norms \parencite{scott2019} in CIFAR-100 (partial $\rho = \HFiveHundredRho$, $p = \HFiveHundredP$, $n = \HFiveHundredN$); in CIFAR-10 the partial correlation was \HFiveTenRho{} (BH $p = \HFiveTenPBH$), but with only ten categories. We do not draw conclusions from H5.
+
+
+\section{Adults and Agents on the Same Images (Exploratory)}
+\label{sec:matched}
+
+\paragraph{Units of analysis.} The comparisons in this article combine three different units. Adults contribute judgments per session; each agent contributes one decision per image and word; and the CIFAR distance analyses use pairs of classes. Counts and coefficients in different tables are therefore not on a common scale.
+
+
+This comparison was exploratory. It was specified after the adult outcomes and the motivating image pairs were known, and it was run before the multi-encoder learner analyses were frozen (timestamps in Appendix~\ref{app:deviations}); its protocol and outputs were committed together and were not frozen separately. Each agent was a centroid learner over one encoder, fitted to the same teaching images that adults saw in \textcite{lewis2018} and deciding on the same 24 test images with a support-dependent acceptance rule. Adults contribute selections in \VtXPerCell{} sessions per word--image pairing; each agent makes one deterministic decision per pairing.
+
+
+Table~\ref{tab:v2matched} shows extension by teaching condition. After three examples of the same basic type, adults selected other members of the broader category on \VtXSameBasicPct\% of judgments; after three examples from different basic types of the domain, on \VtXBroadPct\%; images from other domains remained at \VtXOutBroadPct\% after broad teaching. Supervised ViT and DINOv2-base each accepted \VtXViTIn{} of \VtXInN{} within-domain candidates after broad teaching, but ViT accepted \VtXViTOut{} of the \VtXOutN{} other-domain pairings and DINOv2-base accepted \VtXDinoBOut. Across the eight trained encoders, the largest narrow-to-broad gain attainable with a common threshold on the centroid score ranged from \VtXJumpMin{} to \VtXJumpMax{} percentage points, against \VtXJumpAdult{} points for adults.
+
+% Patricio's sentence for Results (texto_patricio_results.md), verbatim; numbers rendered by macros with identical output.
+The central example is a single photograph (\texttt{c3\_sup2}, a turtle). In the exploratory matched-stimulus comparison, adults selected the same turtle photograph in \VtTurtleAnimalsK{} of \VtTurtleSessions{} sessions after broad animal teaching and in \VtTurtleVehiclesK{} of \VtTurtleSessions{} after broad vehicle teaching. DINOv2-base accepted the turtle in both contexts, while supervised ViT rejected it in both. The three adult counts come from the same \VtTurtleSessions{} sessions, because each broad-teaching session had one trial per domain. Paired within session, \VtTurtleOnlyAnimals{} sessions selected the turtle only under the animal word, \VtTurtleOnlyVehicles{} only under the vehicle word, \VtTurtleBoth{} under both, and \VtTurtleNeither{} under neither; under the vegetable word it was selected in \VtTurtleVegK{} of \VtTurtleSessions{} sessions (Table~\ref{tab:v2turtle}; Figure~\ref{fig:v2turtle} shows an illustrative turtle photograph, not the stimulus). The two agents thus departed from the adult pattern in opposite directions.
+% Figure~\ref{fig:v2turtle}: illustrative Creative Commons photograph authorized by P. M. Vera (23-11-2026); attribution verified on the Wikimedia Commons file page (figs/ATTRIBUTION_Florida_Box_Turtle_Digon3.txt).
+
+Table~\ref{tab:v2images} lists the decision of each trained encoder on each of the 12 within-domain candidates after broad teaching. It describes which images received the novel word in this task. For example, supervised ResNet-50 accepted \VtXEthreeAnimals{} of 4 animal and \VtXEthreeVeg{} of 4 vegetable candidates and \VtXEthreeVeh{} of 4 vehicle candidates, whereas adults selected even the least chosen vehicle candidate in \VtXRailcarK{} of \VtXPerCell{} sessions; this is a statement about which images received the word, not about whether the network recognizes vehicles.
+
+\begin{table}[!htbp]
+\centering\small
+\input{tables/tab3_matched.tex}
+\caption{Exploratory: Extension by Teaching Condition, Adults and Agents on the Same Images}
+\label{tab:v2matched}
+\par\smallskip{\raggedright\footnotesize\textit{Note.} Exploratory; specified after the adult outcomes were known and run before the agent freeze. Cells give selections or acceptances over pairings: within-domain superordinates (\VtXInDenom{} adult judgments, 12 agent decisions per condition) and other-domain images (\VtXOutDenom{} adult judgments, 48 agent decisions). Adult judgments are repeated within person; agent decisions are deterministic. Centroid learner with a support-dependent acceptance rule.\par}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\small
+\input{tables/tab3b_imagenes_por_encoder.tex}
+\caption{Exploratory: Decisions on the 12 Within-Domain Candidates After Broad Teaching}
+\label{tab:v2images}
+\par\smallskip{\raggedright\footnotesize\textit{Note.} Exploratory. A = accepted; R = rejected (centroid learner). Image IDs are those of the original stimulus set \parencite{lewis2018}; descriptions are visual descriptions of the photographs, not category labels used in the task. Adults: selections in \VtXPerCell{} sessions per image. The table describes which images received the novel word in this task.\par}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\small
+\input{tables/tab3c_tortuga_por_contexto.tex}
+\caption{Exploratory: The Turtle Photograph (\texttt{c3\_sup2}) Under the Three Broad-Teaching Words}
+\label{tab:v2turtle}
+\par\smallskip{\raggedright\footnotesize\textit{Note.} Exploratory. Adults: selections in the same \VtTurtleSessions{} sessions under each word. A = accepted; R = rejected.\par}
+\end{table}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.45\linewidth]{figs/Florida_Box_Turtle_Digon3_1280px.jpg}
+\caption{Illustrative Photograph of a Turtle}
+\label{fig:v2turtle}
+\par\smallskip{\raggedright\footnotesize\textit{Note.} Illustrative image only (a Florida box turtle, \textit{Terrapene carolina bauri}). It is \emph{not} the stimulus \texttt{c3\_sup2} shown to participants, which is not reproduced here; it only conveys the kind of image (a whole turtle, side view, plain background). Photo: Jonathan Zander, CC BY-SA 3.0, via Wikimedia Commons, \url{https://commons.wikimedia.org/wiki/File:Florida_Box_Turtle_Digon3.jpg}. Resized; otherwise unmodified. The photograph is licensed under CC BY-SA 3.0 (\url{https://creativecommons.org/licenses/by-sa/3.0/}); this license applies to the photograph only, and any adaptation of it must be shared under the same license.\par}
+\end{figure}
+
+\section{Discussion}
+
+
+We asked how much visual similarity explains when two objects share a name, and what the teaching examples add. In adults, distance in a self-supervised visual space was associated with the decision to extend a novel word across specifications, and, in an exploratory post hoc test, it added to taxonomic level and teaching condition within the taught domain. In artificial learners operating over the same space, words joining more distant categories were harder to learn, and taxonomic relatedness did not predict accuracy beyond perceptual distance in this sample (only \NWithin{} of 100 pairs fell within a superclass); because the learner has no access to semantic information, this is a sufficiency result. The encoder's geometry aligned partially with three independent human measures of similarity and confusability. Taken together, these results suggest that a shared, partly human-aligned similarity space describes part of the organization of generalization in both systems.
+
+Across representations, the picture is consistent but limited. Within the taught domain, every trained encoder, and also a randomly initialized network, gave a negative distance slope, so the association cannot be attributed only to what the encoders learned; the frozen primary test of whether presentation order changes that slope was inconclusive. In the learners, the distance effect appeared for most but not all trained encoders, and alignment with human similarity did not separate the trained encoders from the untrained network. In the exploratory comparison on the same images, learners with equal within-domain acceptance extended the word to different images, and none reproduced the adults' response to the composition of the examples.
+
+
+The limits are as informative as the associations. First, in adults the composition of the examples changed extension dramatically at comparable distances: three superordinate examples licensed broad extension, whereas three subordinate examples suppressed it, and, in an exploratory analysis, the slope of distance itself depended on the teaching condition. This is the kind of evidence-sensitive inference that Bayesian accounts emphasize \parencite{xu2007} and that \textcite{lewis2018} showed to be sensitive to trial order; the distance-to-centroid measure we used does not, by itself, account for these differences between conditions. In our exploratory post hoc models, terms involving experiment-level trial order improved fit, and within superordinate items both condition and distance improved fit given the other; because order is confounded with other experiment-level differences, we do not interpret these terms further. Second, representational alignment did not translate into conclusive evidence that human distances predict learner difficulty: the encoder's geometry aligned partially with human measures (H1), but human-derived distances did not reliably predict which words the learner found difficult (H2, inconclusive; one dataset showed an effect in the predicted direction that did not survive correction). Correlation between two representational spaces does not guarantee that both predict learning in the same way. Third, the pair-level learner effect did not reappear with an encoder trained on child experience, so it may depend on properties of the specific encoder. And because THINGS and ImageNet-HSJ mix perceptual and conceptual information, the alignment we observe cannot be attributed to perceptual similarity alone.
+
+We therefore claim similarity in the organization of generalization, not a shared mechanism. The adult and the learner performed different tasks, measured on different scales (Figure~\ref{fig:x1}), and the learner has no access to the pragmatic and sampling considerations that adults bring to the task. The value of the artificial system is that it isolates one factor, similarity in a known space, and shows what that factor alone can and cannot produce.
+
+\subsection{Limitations}
+
+All human data are secondary. The experiments were designed by other teams for other questions, with different stimuli, tasks, and participants, and we could not alter their designs. The adult analysis is correlational: distance and taxonomic level are related by construction in the stimulus sets, and although models control for level and condition, distance in any one encoder is one of many possible similarity measures, and ten representations do not exhaust them. The descriptive contrast between conditions and the interaction model are exploratory. The H2 analyses had small samples (\HTwoThingsN{} and \HTwoHsjN{} pairs). All learner results rest on frozen encoders and CIFAR images, two-category words, and shallow learners; only one final-layer global embedding per encoder was used. The human mixed models include random intercepts by image but no by-image random slopes for distance, so heterogeneity across images in sensitivity to distance was not estimated. The CIFAR-10 tier intervals are episode-level and do not separate pair-level variability. Taxonomic relatedness was measured only with WordNet Wu--Palmer similarity, with few within-superclass pairs. The two post hoc analyses of trial order and superordinate items were specified before being run but after the data had been analyzed, and trial order varied between experiments, together with other design features. The previous multi-agent consensus experiments of this project are reported in \textcite{vera2026lexical} and are not part of this article.
+
+The frozen primary test of order moderation was inconclusive, so it supports neither moderation nor its absence. The distance association in adults also appeared with a randomly initialized network, and the alignment of encoder geometry with human similarity (H1) did not separate trained encoders from the controls. The \VtDallN-pair sensitivity analysis uses pairs that share classes. The comparison on the same images is exploratory, was specified after the adult outcomes were known, and rests on \VtXInN{} and \VtXOutN{} deterministic decisions per agent and teaching condition, so a single decision moves a within-domain rate by one twelfth; it uses one stimulus set with three domains. Optional sensitivity analyses (MAE with CLS pooling, random-network seeds) were not run.
+
+
+\section{Conclusions and Future Work}
+
+\subsection{Conclusions}
+
+% Text contributed by P. M. Vera (author's text), with two minimal edits accepted
+% on editorial grounds: "In an exploratory comparison," added at the start of the exploratory part, and "illustrated" instead of
+% "revealed". Numbers are rendered by script-generated macros with output identical to the original text.
+Visual distance predicted adult word extension across all eight trained encoders, extending the original finding beyond DINOv2.\footnote{This statement rests on the positive-control models of the eight within-domain test images (Figure~\ref{fig:forest}a). A randomly initialized ResNet-50 also gave a negative slope (\VtPcRandB{} [\VtPcRandLo,~\VtPcRandHi]), so the association is not attributed to what the encoders learned, and the frozen primary test of whether presentation order changes the slope was inconclusive ($\hat\Delta = \VtOrdDelta$ [\VtOrdLo,~\VtOrdHi]).} In an exploratory comparison, presenting adults and agents with the same images illustrated two features of generalization: \textbf{when a learner broadens a word’s scope and where that extension stops}. After three examples of the same basic type, adults selected other members of the broader category on only \VtXSameBasicPct\% of judgments. After three examples drawn from different basic types within one domain, that rate rose to \VtXBroadPct\%, while selection outside the domain remained at \VtXOutBroadPct\%. In the broad teaching condition, supervised ViT and DINOv2-base each accepted \VtXViTIn{} of \VtXInN{} within-domain candidates. Yet ViT accepted none of the \VtXOutN{} outside-domain combinations, whereas DINOv2-base accepted \VtXDinoBOut. Thus, two agents can attain the same within-domain score while drawing substantially different category boundaries. The adult pattern is consistent with an inference about the intended scope of a novel word. Whether adults arrive at that inference through the same processes as any of these agents remains open.
+
+% Additional sentences added editorially (propuesta_conclusions_adicional.md). ENTERED: 1 (primary inconclusive),
+% 2 (agent distance effect, D), 3 (H1 alignment including controls), 4 (exploratory common threshold).
+% NOT ENTERED: the optional H2 sentence (it would need the H2 label change to be explained here; it is in Appendix~\ref{app:deviations}).
+% None of these contradicts P. M. Vera's precisions of 23-11 (distance vs order as separate questions; no attribution to learning;
+% H2 x CIFAR-10H not applicable; matched-image comparison exploratory).
+The internally frozen primary analysis did not establish whether teaching order changes the slope of visual distance: for DINOv2-small, the experiment-level slope difference was \VtOrdDelta{} (95\% CI \VtOrdLo{} to \VtOrdHi), and the frozen decision rule returned an inconclusive global result at every combination of effect margin and geometry cutoff. In the CIFAR agents, greater visual distance between the two classes predicted lower naming accuracy for \VtDSupportWord{} of the eight trained encoders (partial correlations from \VtDrMin{} to \VtDrMax{} on the \VtDN{} original class pairs), but not for CVCL ($r = \VtDCvclR$, 95\% CI \VtDCvclLo{} to \VtDCvclHi) or MAE ($r = \VtDMaeR$, 95\% CI \VtDMaeLo{} to \VtDMaeHi); these two moved into the support region only in the descriptive analysis of all \VtDallN{} class pairs, which share classes and are not independent. The geometry of every trained encoder correlated positively with human similarity judgments on THINGS, ImageNet-HSJ, and CIFAR-10H (Spearman $\rho$ from \VtHoneMin{} to \VtHoneMax), but so did the geometry of a randomly initialized network ($\rho = \VtHoneRandThings$, \VtHoneRandHsj, and \VtHoneRandCten), and the pixel baseline was positive on THINGS and ImageNet-HSJ ($\rho = \VtHonePixThings$ and \VtHonePixHsj) and inconclusive on CIFAR-10H ($\rho = \VtHonePixCten$, Mantel $p = \VtHonePixCtenP$); because the geometry calibration failed at every cutoff, these alignments do not show that the encoders differ in a human-relevant way. In the exploratory matched-image comparison, which was specified after the adult outcomes were known, no common threshold on a trained encoder's centroid score reproduced the adult narrow-to-broad gain: the largest attainable gain ranged from \VtXJumpMin{} to \VtXJumpMax{} percentage points across the eight trained encoders, against \VtXJumpAdult{} points for adults.
+
+\subsection{Future Work}
+
+% Text contributed by P. M. Vera (texto_patricio_conclusions_futurework.md), verbatim.
+A next step is to train agents to use relations among categories to infer how broadly a novel word applies. A bus, a motorcycle, and a tractor provide evidence that a word may denote \emph{vehicle}. Three buses also belong to that category, but provide weaker evidence that the speaker intends the broader meaning. This distinction can be tested by holding the visual encoder and training images fixed while varying whether the learner receives information about relations among subtypes, basic types, and broader categories. At test, both learners would encounter novel words and previously unseen category members. The critical case is one in which visual resemblance and category membership favor different choices. A learner that uses category relations should extend the word to a visually dissimilar member after broad teaching, reject a visually similar outsider, and preserve a narrower extension after same-type teaching. Transfer of this pattern to new cases would provide evidence that learned relations help the agent interpret what a word refers to.
+
+\section{Ethics Statement}
+
+No new data were collected for this article. The human analyses used only publicly available, anonymized data released by the authors of published studies \parencite{lewis2018,hebart2023,roads2021,peterson2019,scott2019}. Ethical approval and participant consent were handled by the original studies, and no attempt was made to re-identify participants.
+
+\section{Code and Data Availability}
+
+Code, analysis plans, logs, the deviation log, and figure-generation scripts for the artificial-learner experiments and for the human-data analyses (folder \texttt{human\_data\_analyses/}) are available at \url{https://github.com/patriciomvera/lexical-consensus}. The hashes of the analysis plans are listed in Appendix~\ref{app:deviations}. Derived datasets released with this article are available on Hugging Face: \url{https://huggingface.co/datasets/MrPatoVera/lexical-consensus-data} (CC BY 4.0) and \url{https://huggingface.co/datasets/MrPatoVera/lexical-consensus-data-cifar10h} (CC BY-NC-SA 4.0). Human datasets are publicly available from their original authors \parencite{lewis2018,hebart2023,roads2021,peterson2019,scott2019}; files that are not redistributed are downloaded by a script from their official sources. Licenses, as stated by the original sources: the data of \textcite{lewis2018} are released on the authors' OSF project under CC BY 4.0 (the GitHub copy carries no license file); we do not redistribute these data or any per-participant or per-trial derivative of them, and the scripts download them from the source. THINGS odd-one-out data are released under CC BY 4.0 (with exceptions for some images, which we do not use or redistribute); ImageNet-HSJ (psiz-datasets) under CC BY 4.0; the Glasgow Norms in an article published under CC BY 4.0; CIFAR-10H under CC BY-NC-SA 4.0; and the wordfreq data under CC BY-SA 4.0. Derived files that include CIFAR-10H aggregates or wordfreq frequencies are marked in the repository as share-alike (and, for CIFAR-10H, non-commercial); CIFAR images are not redistributed. CIFAR-10/100 \parencite{krizhevsky2009}, DINOv2 \parencite{oquab2023}, CVCL \parencite{vong2024}, and WordNet \parencite{miller1995} are publicly available, as are the other encoders at the revisions listed in Appendix~\ref{app:checkpoints}.
+
+The multi-encoder analyses, freeze manifests, deviation logs, item-level outputs, and exhibit scripts are in the folder \texttt{visual\_similarity\_v2/} of the same repository, cited here at commit \texttt{a945ed2}: \url{https://github.com/patriciomvera/lexical-consensus/tree/a945ed2cbdd9365fe346b262763f0262eaf686ea/visual_similarity_v2}. The CIFAR embedding caches are not redistributed; their manifest is. All tables, figures, and numbers of the multi-encoder analyses are generated by scripts from those files.
+
+
+{\emergencystretch=2em\printbibliography}
+
+\appendix
+\section{Analysis Plans, Deviations, and Timestamps}
+\label{app:deviations}
+
+\paragraph{Plans and hashes.} The analysis plan for the human-data analyses with DINOv2-small was fixed before the confirmatory analyses, after a check of dataset coverage, and was not deposited in an external registry (sha256 \texttt{\PlanHash\ldots}). The hash identifies the version of the plan that was used, but it does not certify when the plan was written; we therefore do not describe it as a preregistration. A copy that differs only in the replacement of a personal name, prepared for an earlier anonymized review, has sha256 \texttt{\PlanHashAnon\ldots}. The multi-encoder plans were frozen by checksum manifests released in the repository. The learner analyses were frozen on \VtFreezeDate{} at \VtFreezeTime{} (UTC$-$3); the exploratory comparison on the same images was run on \VtXtDate{} at \VtXtTime{} (UTC$-$3), before that freeze. Table~\ref{tab:dev} lists the main deviations in the DINOv2-small human-data analyses and Table~\ref{tab:devtwo} those in the multi-encoder analyses; the released deviation logs document every step.
+
+\begin{table}[!htbp]
+\centering\footnotesize
+\begin{tabular}{p{0.28\linewidth}p{0.64\linewidth}}
+\toprule
+Deviation & Description and consequence \\
+\midrule
+Random effects by person (H4) & The plan specified random effects by participant identifier (\texttt{subid}). Our initial implementation grouped by experiment $\times$ identifier, on the mistaken assumption that identifiers were reused across experiments for different people; they denote persons across experiments (\HFourPersons{} people, \HFourSessions{} sessions). All H4 models were re-estimated with random effects by person, as the plan specified, and these are reported. Conclusions unchanged. \\
+First session (H4 sensitivity) & Defined by the recorded start time of each session rather than by experiment number; the two criteria differ for \FirstSessDiff{} person. \\
+Teaching-condition labels (exploratory) & Equivalent condition labels spelled differently across experiments were unified in the descriptive analyses after an error was found; H4 models were not affected. \\
+Coverage & THINGS: \CovThingsPairs{} category pairs and \HTwoThingsN{} sampled pairs, versus \CovThingsPairsPlan{} and \CovThingsNPlan{} planned, due to category mapping. Glasgow norms: \HFiveHundredN{} words versus \CovGlasgowPlan{} planned. \\
+H2 decision rule & The ImageNet-HSJ result (uncorrected $p = \HTwoHsjP$, Holm $p = \HTwoHsjPHolm$, interval excluding zero) was not covered by any of the plan's decision rules; reported as inconclusive. \\
+Analyses not run & Wordbank analyses (data available only through an authenticated service) and overextension analyses (unclear license). \\
+H6 correction family & Benjamini--Hochberg correction over \HSixBHTests{} tests; the plan did not specify how the family was composed. \\
+Post hoc H4 analysis & Incremental contribution of distance within the taught domain (the distance $\times$ condition interaction was planned as exploratory and is not a deviation); exploratory, outside the confirmatory family. \\
+Post hoc analyses after external review & Moderation by trial order and a superordinate-only model, specified after an automated external review and after the main results were known; exploratory, outside the confirmatory family. \\
+\bottomrule
+\end{tabular}
+\caption{Main Deviations From the Analysis Plan for the Human Data (DINOv2-small Analyses)}
+\label{tab:dev}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\footnotesize
+\begin{tabular}{p{0.28\linewidth}p{0.64\linewidth}}
+\toprule
+Deviation & Description and consequence \\
+\midrule
+Pipeline control 1 tolerance & The rule text required a maximum margin difference $\le 10^{-6}$; the frozen code accepted $\le 10^{-6} + 10^{-12}$ (line \VtCtrlOneLine{} of the agent simulation script), a margin agreed before the run to absorb sixth-decimal rounding. The observed value was $\VtCtrlOneObs$; the control passed under the frozen implementation. Pipeline control 2 passed (maximum difference $\VtCtrlTwoMax$ over \VtCtrlTwoPairs{} pairs). \\
+Checksum of a historical patch & The archived file \texttt{DIFF\_agentes\_propuesta.patch} (a proposal that was never applied) is published with sha256 \texttt{\VtPatchPub}; the agent freeze manifest (line \VtPatchFrzLine) expects \texttt{\VtPatchFrz}. The two differ only in a \VtPatchHdrLines-line header marking the file as obsolete and not applied; the difference predates the consolidation of the archive. No analysis reads this file. \\
+Optional sensitivities not run & CIFAR analyses with MAE CLS pooling and with random ResNet-50 seeds 1 and 2, the optional H5 block, and the full T-sem block were not run; they remain pending. In adults, these variants exist only as sensitivity analyses of the primary test. \\
+Exploratory comparison & Specified after the adult outcomes were known, run before the learner freeze, and not frozen separately (protocol and outputs share one commit). \\
+H2 label for DINOv2-small & On ImageNet-HSJ, the DINOv2-small analysis (Section~\ref{sec:link}) reports the estimate as inconclusive (Holm-adjusted); the multi-encoder regions are unadjusted and classify the same estimate as support. \\
+MAE positive control & Fitted with random intercepts only, because the model with by-person distance slopes did not pass the convergence and non-singularity check (the planned fallback). \\
+Run interruptions & The human run exceeded its planned CPU budget without cuts; the agent run was suspended once and interrupted by a machine restart, and was resumed with the same frozen code. Results were unaffected. \\
+\bottomrule
+\end{tabular}
+\caption{Deviations and Pending Analyses in the Multi-Encoder Analyses}
+\label{tab:devtwo}
+\end{table}
+
+\subsection{History of Corrections to the Human-Data Analyses}
+\label{app:history}
+
+This appendix summarizes the history of the human-data analyses; the released deviation log documents each step with its scripts and outputs. The analysis plan specified random effects by participant identifier. Our first implementation grouped random effects by experiment $\times$ identifier, assuming that identifiers were reused across experiments for different people. An external review of the analyses pointed out that the original authors assigned identifiers after pooling the twelve experiments, so that one identifier is one person; we verified this in their anonymization script and re-estimated all H4 models, including the planned exploratory interaction, with random effects by person. The conclusions did not change. The person-level first-session sensitivity analysis was then redefined by each session's recorded start time. In the descriptive comparison of conditions, equivalent condition labels spelled differently across experiments were unified after an error was found; the H4 models were not affected. The test of the incremental contribution of distance within the taught domain was added after an internal critical review. The superordinate-only and trial-order models were specified after an automated external review of the manuscript, when the main results were already known; their specifications were written into the deviation log before they were run.
+
+\section{Encoder Checkpoints}
+\label{app:checkpoints}
+
+\begin{table}[!htbp]
+\centering\small
+\input{tables/tab_checkpoints.tex}
+\caption{Encoders and Pinned Checkpoint Revisions}
+\label{tab:checkpoints}
+\par\smallskip{\raggedright\footnotesize\textit{Note.} Revisions are the first eight characters of the Hugging Face commit pinned in the embedding script.\par}
+\end{table}
+
+\clearpage
+\section{Full Results by Representation}
+\label{app:full}
+
+\begin{table}[!htbp]
+\centering\small
+\input{tables/tab1_adults.tex}
+\caption{Adult Word Extension by Representation}
+\label{tab:v2adults}
+\par\smallskip{\raggedright\footnotesize\textit{Note.} \VtPersons{} adults. Positive control: \VtPcNobs{} observations on the eight within-domain test images; a gate in the frozen plan, not the primary test. H4 replication: \VtHfourNobs{} observations on all 24 test images; largely driven by the contrast between in-domain and out-of-domain images, as for DINOv2-small. Order moderation (primary, confirmatory): experiment-level slope difference over \VtNexp{} experiments. Regions: I = inconclusive; E = equivalent within margin $\delta$. $^{a}$Fitted with random intercepts only, because the model with by-person distance slopes did not pass the convergence and non-singularity check. The controls are not gates. Variants not run for these analyses: MAE with CLS pooling and random ResNet-50 seeds 1 and 2.\par}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\small
+\input{tables/tab2a_agents_distance.tex}
+\caption{Artificial Learners on CIFAR: Naming Accuracy and Distance (T, D) by Representation}
+\label{tab:v2agentsD}
+\par\smallskip{\raggedright\footnotesize\textit{Note.} C1: centroid naming accuracy for native and far CIFAR-10 tiers. D: partial correlation between inter-category distance and naming accuracy adjusting for WordNet distance, on the 100 pairs of the dissociation study; D-all: the same on all \VtDallN{} pairs (descriptive sensitivity; pairs share classes). Regions at SESOI .10/.20/.30: S = support, I = inconclusive, N = no support. DINOv2-small and CVCL: descriptive. Not run: MAE with CLS pooling and random ResNet-50 seeds 1 and 2.\par}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\small
+\input{tables/tab2b_agents_human.tex}
+\caption{Artificial Learners and Human Similarity (H1, H2) by Representation}
+\label{tab:v2agentsH}
+\par\smallskip{\raggedright\footnotesize\textit{Note.} H1: Spearman correlation between encoder and human distances (THINGS, \VtHoneNThings{} pairs; ImageNet-HSJ, \VtHoneNHsj{}; CIFAR-10H, \VtHoneNCten{}), with region at SESOI .10/.20/.30 (support requires $\rho > 0$ and Mantel $p < .05$). Mantel $p$ from 10{,}000 permutations. H2: region for human distance predicting learner difficulty. $^{b}$Not applicable by design: H2 was defined only for THINGS and ImageNet-HSJ.\par}
+\end{table}
+
+\end{document}

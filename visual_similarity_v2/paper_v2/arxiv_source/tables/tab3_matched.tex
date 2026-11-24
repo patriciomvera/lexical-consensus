@@ -1,0 +1,26 @@
+\setlength{\tabcolsep}{4pt}
+\noindent\adjustbox{max width=\linewidth}{%
+\begin{tabular}{lcccccc}
+\toprule
+ & \multicolumn{3}{c}{Within-domain superordinates} & \multicolumn{3}{c}{Other-domain images} \\ \cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Learner & Same subtype & Same basic type & Broad & Same subtype & Same basic type & Broad \\
+\midrule
+Adults (selections / judgments) & 76/7200 & 132/7200 & 5579/7200 & 177/28800 & 83/28800 & 97/28800 \\
+\midrule
+DINOv2-small & 0/12 & 3/12 & 7/12 & 0/48 & 2/48 & 6/48 \\
+DINOv2-base & 0/12 & 6/12 & 10/12 & 0/48 & 12/48 & 20/48 \\
+CVCL & 0/12 & 6/12 & 11/12 & 0/48 & 5/48 & 14/48 \\
+SigLIP & 0/12 & 0/12 & 5/12 & 0/48 & 0/48 & 8/48 \\
+OpenCLIP & 0/12 & 0/12 & 6/12 & 0/48 & 0/48 & 1/48 \\
+Supervised ViT & 0/12 & 3/12 & 10/12 & 0/48 & 0/48 & 0/48 \\
+Supervised ResNet-50 & 0/12 & 4/12 & 8/12 & 0/48 & 2/48 & 8/48 \\
+MAE & 0/12 & 9/12 & 8/12 & 0/48 & 22/48 & 23/48 \\
+\midrule
+Random ResNet-50 (s0) & 1/12 & 9/12 & 9/12 & 4/48 & 30/48 & 38/48 \\
+Pixels & 4/12 & 9/12 & 9/12 & 14/48 & 35/48 & 20/48 \\
+\midrule
+MAE (CLS) & 0/12 & 2/12 & 11/12 & 0/48 & 0/48 & 16/48 \\
+Random ResNet-50 (s1) & 2/12 & 7/12 & 8/12 & 8/48 & 31/48 & 35/48 \\
+Random ResNet-50 (s2) & 2/12 & 7/12 & 6/12 & 10/48 & 25/48 & 30/48 \\
+\bottomrule
+\end{tabular}}

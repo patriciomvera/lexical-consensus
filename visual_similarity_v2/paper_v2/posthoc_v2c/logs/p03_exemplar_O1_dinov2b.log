@@ -1,0 +1,14 @@
+      model                                   re   estimate         lo
+1  pc8_dist  (1 + z_dist | person) + (1 | image) -2.8479315 -2.9767204
+2  pc8_dmin  (1 + z_dmin | person) + (1 | image) -3.0295417 -3.2402382
+3 pc8_dmean (1 + z_dmean | person) + (1 | image) -2.3563447 -2.4585993
+4  sup_dist           (1 | person) + (1 | image) -0.1583267 -0.2716703
+5  sup_dmin           (1 | person) + (1 | image) -0.1300191 -0.2471259
+6 sup_dmean           (1 | person) + (1 | image) -0.1837495 -0.3075843
+           hi       AIC converged_ok seconds
+1 -2.71914250 27795.653         TRUE     0.0
+2 -2.81884514 29260.164         TRUE    68.4
+3 -2.25409012 27873.931         TRUE    68.0
+4 -0.04498313  8248.287         TRUE    14.5
+5 -0.01291229  8251.143         TRUE    12.2
+6 -0.05991468  8247.390         TRUE    12.3

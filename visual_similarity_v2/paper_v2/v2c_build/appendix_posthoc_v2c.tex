@@ -1,0 +1,41 @@
+
+\clearpage
+\section{Post Hoc Analyses after Review}
+\label{app:posthoc}
+
+The analyses in this appendix were specified on \VcPosthocDate, after two external reviews of an earlier draft and after all results were known. They are outside every frozen plan, are exploratory, and are reported as they came out. All use the frozen per-trial data and embeddings, with seed 42; a model counts as converged only under the criterion of the frozen plan (no error or convergence warning and a non-singular fit).
+
+\paragraph{By-image random slopes.} The positive-control model of Section~\ref{sec:adults} (8 within-domain items) was refitted with a by-image random slope for distance, trying in order (1 + $z_d$~$\mid$~person) + (1 + $z_d$~$\mid$~image), the same with uncorrelated image effects, and the two corresponding structures with by-person intercepts only. The first structure converged for all ten representations (Table~\ref{tab:posthoc}). The average slope stayed negative for \VcImgTrSameSignWord{} of the eight trained encoders, but the image slopes varied widely (standard deviations from \VcImgSdMin{} to \VcImgSdMax{} log odds per standard deviation of distance) and the intervals widened accordingly: the interval excluded zero for \VcImgTrExclWord{} trained encoders and included it for \VcImgTrInclList. Under this model, the reference encoder would not have passed the positive control (\VcImgRzB{} [\VcImgRzLo,~\VcImgRzHi]). The random network kept an interval below zero, and the pixel slope turned negative with an interval that included zero. Models with an additional intercept for each image--condition cell did not converge for any representation. In the superordinate-only model of Section~\ref{sec:adults}, a by-image slope for distance removed the evidence that distance improved fit given condition ($\chi^2(1) = \VcSupImgChi$, $p = \VcSupImgP$, against \VcSupFrozenDistChi{} without it), whereas condition still improved fit given distance ($\chi^2(3) = \VcSupImgCondChi$). These results do not change the frozen analyses, but they show that the within-domain association between distance and extension is less certain at the level of images than the frozen models, which estimate a single slope for all images, suggest.
+
+\paragraph{Exemplar distances.} For a test image $x$ and teaching images $s_1, \dots, s_k$, the nearest-exemplar distance is $\min_j d(x, s_j)$ and the mean-exemplar distance is $k^{-1}\sum_j d(x, s_j)$, where $d$ is the cosine distance between single embeddings; with one teaching image both equal the centroid distance. Each was standardized and entered in place of the centroid distance, with the random-effects structure that had converged for the centroid model, so that AIC values are comparable. Across the eight within-domain items, the mean-exemplar distance fitted better than the centroid distance for \VcDmeanBetterN{} of the ten representations and the nearest-exemplar distance for \VcDminBetterN; for DINOv2-small the differences were \VcPcDmeandAIC{} and \VcPcDmindAIC{} AIC points, with slopes of \VcPcDmeanB{} and \VcPcDminB{} (centroid: \VtPcRefB). In the superordinate-only model, teaching condition improved fit given each distance for every representation (smallest $\chi^2(3) = \VcSupCondChiMinAll$). Exemplar readouts therefore do not absorb the effect of the composition of the examples. Teaching sets differed sharply in dispersion (mean pairwise distance among the three teaching images for DINOv2-small: \VcDispSub{} after same-subtype and \VcDispSup{} after broad teaching), a property that the centroid distance and these exemplar readouts do not use; models that scale generalization by dispersion were not fitted.
+
+\begin{table}[!htbp]
+\centering
+\caption{Post Hoc Adult Models (Exploratory)}
+\label{tab:posthoc}
+\small
+\setlength{\tabcolsep}{3pt}
+\noindent\adjustbox{max width=\linewidth}{%
+\input{tables/tab_posthoc_v2c.tex}}
+\par\smallskip{\raggedright\footnotesize\textit{Note.} SD of $d$: raw standard deviation of the cosine distance over the trial rows of the 8-item and 24-item data, the unit of each slope. Slopes: log odds per standard deviation of distance, with Wald 95\% CIs, in the 8-item positive-control model with (1 + $z_d$~$\mid$~person) + (1~$\mid$~image) (frozen) or (1 + $z_d$~$\mid$~person) + (1 + $z_d$~$\mid$~image) (by-image slopes). SD$_{\text{image}}$: standard deviation of the by-image slopes. $\Delta$AIC: AIC with the mean- or nearest-exemplar distance minus AIC with the centroid distance (negative favors the exemplar readout). $\chi^2_{\text{cond}}$: smallest likelihood-ratio statistic for condition given distance (3 df) in the superordinate-only model across the three readouts. $^{a}$Random intercepts only, as in Figure~\ref{fig:forest}.\par}
+\end{table}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{figs/fig_sup_distances.pdf}
+\caption{Distances of Superordinate Test Items by Teaching Condition (DINOv2-small, Post Hoc). Distance of each superordinate test item to the centroid (left) and to the nearest teaching image (right), by teaching condition; points are the distinct image--teaching-set combinations, red lines the means, and the percentages above each violin the adults' selection rates. Mean centroid distance was \VcSupMeanSub{} (SD \VcSupSdSub) after same-subtype and \VcSupMeanSup{} (SD \VcSupSdSup) after broad teaching, while selection rose from \VcXSameSubPct\% to \VtXBroadPct\%.}
+\label{fig:supdist}
+\end{figure}
+
+\paragraph{H2 estimates and detectable effects.} Table~\ref{tab:h2post} reports the H2 partial correlations for every representation with Fisher-$z$ intervals and HC3 $p$ values for the distance coefficient, the quantities behind the regions of Table~\ref{tab:v2agentsH}. With $n = 61$ and 32 pairs, the half-width of the 95\% interval at $r = 0$ is \VcMdeHalfThings{} and \VcMdeHalfHsj, and the smallest correlation detectable with 80\% power at two-sided $\alpha = .05$ is \VcMdeThings{} and \VcMdeHsj{}. The descriptive analysis on all mapped pairs (\VcHtwoAllThingsN{} for THINGS and \VcHtwoAllHsjN{} for ImageNet-HSJ) gave negative correlations for every representation, but its pairs share categories and are not independent, so it is not a test.
+
+\begin{table}[!htbp]
+\centering
+\caption{Human Distance and Learner Difficulty (H2) by Representation (Post Hoc Summary)}
+\label{tab:h2post}
+\small
+\setlength{\tabcolsep}{3pt}
+\noindent\adjustbox{max width=\linewidth}{%
+\input{tables/tab_h2post_v2c.tex}}
+\par\smallskip{\raggedright\footnotesize\textit{Note.} $r$: partial correlation of human distance with naming accuracy, controlling semantic distance, on the covered pairs of the 100 dissociation pairs; 95\% CI from the Fisher $z$ transformation. $p$: HC3 $p$ value of the distance coefficient, used by the unadjusted regions. All pairs $r$: the same partial correlation over all mapped pairs, descriptive.\par}
+\end{table}

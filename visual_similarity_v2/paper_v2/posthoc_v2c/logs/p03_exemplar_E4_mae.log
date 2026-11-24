@@ -1,0 +1,15 @@
+boundary (singular) fit: see help('isSingular')
+      model                         re    estimate          lo          hi
+1  pc8_dist (1 | person) + (1 | image) -0.19824432 -0.30843432 -0.08805432
+2  pc8_dmin (1 | person) + (1 | image) -2.46715415 -2.75901262 -2.17529569
+3 pc8_dmean (1 | person) + (1 | image) -0.01953162 -0.09498375  0.05592052
+4  sup_dist (1 | person) + (1 | image) -0.14204375 -0.40692619  0.12283869
+5  sup_dmin (1 | person) + (1 | image)  0.09044856 -0.16118121  0.34207832
+6 sup_dmean (1 | person) + (1 | image)  0.31908989  0.08985490  0.54832487
+        AIC converged_ok seconds
+1 31311.709         TRUE     0.0
+2 30931.302         TRUE    54.9
+3 31326.331         TRUE    14.4
+4  8254.696         TRUE    11.9
+5  8255.372         TRUE    12.5
+6  8247.847         TRUE    12.3
